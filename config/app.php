@@ -151,10 +151,13 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        City\Providers\AppServiceProvider::class,
+        City\Providers\AuthServiceProvider::class,
+        City\Providers\EventServiceProvider::class,
+        City\Providers\RouteServiceProvider::class,
+
+        /* News */
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -201,6 +204,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /* News */
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
