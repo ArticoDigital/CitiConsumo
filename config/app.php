@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Bogota',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -158,7 +158,7 @@ return [
 
         /* News */
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        'AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider',
     ],
 
     /*
@@ -208,7 +208,7 @@ return [
         /* News */
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'SocialAuth' => 'AdamWathan\EloquentOAuth\Facades\OAuth',
     ],
 
 ];
