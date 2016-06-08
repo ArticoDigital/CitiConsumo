@@ -16,6 +16,6 @@ Route::get('auth', function() {
         $user->nickname = $details->nickname;
         $user->name = $details->full_name;
         $user->profile_image = $details->avatar;
-        dd($details);
+        $user->save();
     });
 });
