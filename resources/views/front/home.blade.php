@@ -1,6 +1,7 @@
 @extends('layoutFront')
 
 @section('content')
-    <h1>Home</h1>
-    <span>ruta: localhost</span>
+    <header>
+
+    </header>
 @endsection
