@@ -557,6 +557,9 @@ li {
 img {
   width: 100%; }
 
+body {
+  background: tomato; }
+
 .Container {
   margin: auto;
   width: 100%;
