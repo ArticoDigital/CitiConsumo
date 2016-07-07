@@ -577,14 +577,15 @@ img {
   .Header q:before,
   .Header q:after {
     visibility: hidden; }
-  .Header figure.Logo {
-    width: 9.5rem; }
+  .Header .Logo {
+    padding: 1rem 2.5rem;
+    margin: 0; }
   .Header .Socials {
     padding: 0; }
     .Header .Socials li {
-      margin-right: 0.9375rem; }
+      padding-right: 0.9375rem; }
   .Header .Menu li {
-    margin-right: 2.8125rem; }
+    padding-right: 2.8125rem; }
   .Header .Services {
     padding-bottom: 2.375rem;
     color: #fff; }
@@ -606,9 +607,6 @@ img {
     z-index: -1;
     left: 0;
     top: 0; }
-    .Header .backgroundVideo img {
-      height: 100%;
-      width: 100%; }
 
 .icon {
   float: left;

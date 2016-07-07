@@ -9,10 +9,10 @@
 <body>
     <header class="Header Container">
         <div class="BarNav row middle between">
-            <figure class="Logo">
+            <figure class="Logo col-2">
                 <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
             </figure>
-            <nav class="row">
+            <nav class="row col-10 end">
                 <ul class="Socials">
                     <li class="icon"><a href="#">T</a></li>
                     <li class="icon"><a href="#">I</a></li>
