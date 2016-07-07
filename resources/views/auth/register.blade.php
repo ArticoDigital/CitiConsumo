@@ -1,6 +1,6 @@
-@extends('layoutFront')
+@extends('layoutRegistergit ')
 
 @section('content')
-    <h1>Registro</h1>
-    <span>ruta: localhost/registro</span>
+
+
 @endsection
