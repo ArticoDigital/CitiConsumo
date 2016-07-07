@@ -1,0 +1,60 @@
+.Header
+  height: rem(115)
+  min-height: 100vh
+  display: flex
+  overflow: hidden
+  flex-direction: column
+  justify-content: space-between
+  a, q
+    color: $white
+  q:before,
+  q:after
+      visibility: hidden
+
+  figure.Logo
+    width: rem(152)
+
+  .Socials
+    padding: 0
+    li
+      margin-right: rem(15)
+
+  .Menu li
+    margin-right: rem(45)
+
+  .Services
+    padding-bottom: rem(38)
+    color: $white
+
+    .Images, .Leyend
+      text-align: center
+      padding: rem(50)
+
+    .Service-image
+      width: rem(159)
+      text-align: center
+
+    .Arrow
+      transform: rotate(90deg)
+      width: rem(5)
+      height: rem(15)
+      font-weight: 800
+      margin: auto
+
+  .backgroundVideo
+    height: 100%
+    position: absolute
+    z-index: -1
+    left: 0
+    top: 0
+    img
+      height: 100%
+      width: 100%
+
+.icon
+  float: left
+  display: flex
+  justify-content: center
+  align-items: center
+  width: rem(28)
+  height: rem(28)
