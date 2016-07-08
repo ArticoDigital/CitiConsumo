@@ -594,55 +594,80 @@ body.Register {
   background-size: cover;
   min-height: 100vh;
   padding-bottom: 0 !important;
-  font-weight: 300;
-  color: #fff; }
+  font-weight: 500;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif; }
 
 .Register-Logo {
   text-align: center; }
 
+.Register .errors {
+  background: #ee6666;
+  padding: 0.625rem;
+  margin-top: 0.9375rem;
+  font-weight: 100;
+  font-size: 0.875rem; }
+  .Register .errors div {
+    margin: 0.125rem; }
+
+.Register .Header {
+  min-height: inherit; }
+
+.Register .Socials li:last-child {
+  padding-right: 0; }
+
+.Register .Menu a {
+  color: white; }
+
+.Register .Menu li {
+  padding-right: 1.25rem; }
+
 .Register h1 {
   color: white;
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 400;
   margin-bottom: 0; }
 
 .Register h2 {
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: white;
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
   text-align: center;
   font-weight: 300;
   line-height: 1.4rem;
   margin: 1rem auto 1.2rem;
-  width: 28rem; }
+  width: 30rem; }
 
 .Register h3 {
   text-align: center;
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
   font-weight: 300; }
 
 .Register main {
-  max-width: 60rem;
+  max-width: 70rem;
   margin: auto; }
 
 .Register form {
   background: white;
-  padding: 2rem;
+  padding: 1rem 2rem;
   margin: auto;
   border-radius: 0.25rem;
   max-width: 16rem; }
   .Register form button {
     margin: 1rem auto;
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 3rem;
     display: block;
     color: white;
     border: none;
     background: #004f8f;
-    font-size: 0.75rem; }
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif !important;
+    cursor: pointer; }
   .Register form label {
-    color: #4e4e4e;
+    color: #aeaeae;
     display: block;
     font-size: 0.75rem; }
   .Register form input {
