@@ -13,16 +13,32 @@
                 <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
             </figure>
             <nav class="row col-10 end">
-                <ul class="Socials">
-                    <li class="icon"><a href="#">T</a></li>
-                    <li class="icon"><a href="#">I</a></li>
-                    <li class="icon"><a href="#">F</a></li>
+                <ul class="Socials row">
+                    <li class="icon">
+                        <a href="https://twitter.com/city_consumo">
+                            <img src="{{asset('img/twitter.svg')}}" alt="twitter">
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="#">
+                            <img src="{{asset('img/instagram.svg')}}" alt="instagram">
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="https://www.facebook.com/City-Consumo-1269145086448897/">
+                            <img src="{{asset('img/facebook.svg')}}" alt="facebook">
+                        </a>
+                    </li>
                 </ul>
                 <ul class="Menu row between">
                     <li><a href="">Postula tu servicio</a></li>
                     <li><a href="">Registrate</a></li>
                     <li><a href="">Entrar</a></li>
-                    <li class="icon"><a href="#">M</a></li>
+                    <li class="icon">
+                        <a href="#">
+                            <img src="{{asset('img/menu.svg')}}" alt="menu">
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -42,20 +58,99 @@
                 </figure>
             </section>
             <article class="Leyend"><q>Innovando la forma en como consumimos</q></article>
-            <div class="Arrow"><a href="#"> > </a></div>
+            <div class="Arrow"><a href="#"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>
         </section>
         <div class="backgroundVideo">
-            <img src="{{asset('img/background.png')}}" alt="video">
-            <!--<video src="" class="VideoBackground" loop>
-                 <source src="{asset('video1.mp4')}}" type="video/mp4">
-                  <source src="{asset('video1.ogg')}}" type="video/ogg">
-                  Por favor actualice su navegador
-            </video>-->
+            <video class="cover" width="960" height="540" autoplay loop>
+                <source src="http://cache.yoyodesign.com/media/137385/2014-09-08.mp4" type="video/mp4">
+                <source src="http://cache.yoyodesign.com/media/137386/2014-09-08.webm" type="video/webm; codecs=&quot;vp8, vorbis&quot;">
+            </video>
         </div>
     </header>
     @yield('content')
-    <footer class="Footer">
-
+    <footer class="Footer row middle center">
+        <section class="row center middle col-5">
+            <figure class="Logo col-6">
+                <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
+            </figure>
+            <nav class="col-12 self-end">
+                <ul class="Menu-footer row">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Testimonios</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="row col-7 middle">
+            <nav class="col-10">
+                <ul class="Menu row">
+                   <li><a href="#">DOCUMENTACIÓN</a></li>
+                   <li><a href="#">TERMINOS Y CONDICIONES</a></li>
+                   <li><a href="#">COPYRIGHT</a></li>
+                </ul>
+            </nav>
+            <nav class="col-2 end">
+                <ul class="Socials">
+                    <li class="icon">
+                        <a href="https://twitter.com/city_consumo">
+                            <img src="{{asset('img/twitter.svg')}}" alt="twitter">
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="#">
+                            <img src="{{asset('img/instagram.svg')}}" alt="instagram">
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="https://www.facebook.com/City-Consumo-1269145086448897/">
+                            <img src="{{asset('img/facebook.svg')}}" alt="facebook">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="Copy col-12 row end self-end">
+                <p>2016 - Cityconsumo | Diseño Web &amp; posicionamiento SEO por Mouse Interactivo</p>
+            </div>
+        </section>
+        <!--<div class="col-12 BarNav row middle around">
+            <figure class="Logo col-2">
+                <img src="{asset('img/logo.svg')}}" alt="cityconsumo">
+            </figure>
+            <nav class="col-10 end">
+                <ul class="Socials">
+                    <li class="icon">
+                        <a href="https://twitter.com/city_consumo">
+                            <img src="{asset('img/twitter.svg')}}" alt="twitter">
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="#">
+                            <img src="{asset('img/instagram.svg')}}" alt="instagram">
+                        </a>
+                    </li>
+                    <li class="icon">
+                        <a href="https://www.facebook.com/City-Consumo-1269145086448897/">
+                            <img src="{asset('img/facebook.svg')}}" alt="facebook">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <nav class="col-6 self-end">
+            <ul class="Menu-footer row">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Testimonios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="Copy col-6 row end self-end">
+            <p>2016 - Cityconsumo | Diseño Web &amp; posicionamiento SEO por Mouse Interactivo</p>
+        </div>
+        -->
     </footer>
     @yield('scripts')
 </body>
