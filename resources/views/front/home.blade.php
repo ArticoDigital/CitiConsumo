@@ -30,5 +30,4 @@
 @endsection
 
 @section('content')
-
 @endsection
