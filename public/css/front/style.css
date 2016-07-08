@@ -557,8 +557,51 @@ li {
 img {
   width: 100%; }
 
-body {
-  background: tomato; }
+body.Register {
+  background: url("../../img/register.jpg") center;
+  background-size: cover;
+  min-height: 100vh;
+  padding-bottom: 0 !important;
+  font-weight: 300;
+  color: #fff; }
+
+.Register-Logo {
+  text-align: center; }
+
+.Register h1 {
+  color: white;
+  font-family: 'Lato', sans-serif !important;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 0; }
+
+.Register h2 {
+  font-size: 1rem;
+  color: white;
+  font-family: 'Lato', sans-serif !important;
+  text-align: center;
+  font-weight: 300;
+  line-height: 1.4rem;
+  margin: 1rem auto 1.2rem;
+  width: 28rem; }
+
+.Register h3 {
+  text-align: center;
+  font-family: 'Lato', sans-serif !important;
+  text-align: center;
+  font-weight: 300; }
+
+.Register main {
+  max-width: 60rem;
+  margin: auto; }
+
+.Register form {
+  background: white;
+  padding: 2rem;
+  margin: auto;
+  border-radius: 0.25rem;
+  max-width: 20rem; }
 
 .Container {
   margin: auto;
@@ -596,7 +639,6 @@ body {
       text-align: center;
       padding: 3.125rem; }
     .Header .Services .Service-image {
-      width: 9.9375rem;
       text-align: center; }
     .Header .Services .Arrow {
       transform: rotate(90deg);

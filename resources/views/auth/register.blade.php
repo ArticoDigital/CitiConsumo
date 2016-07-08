@@ -1,4 +1,4 @@
-@extends('layoutRegistergit ')
+@extends('layoutRegister')
 
 @section('content')
 
