@@ -561,6 +561,9 @@ li {
 img {
   width: 100%; }
 
+.no-padding {
+  padding: 0; }
+
 body {
   background: tomato; }
 
@@ -572,6 +575,20 @@ body {
 .Logo {
   padding: 1rem 2.5rem;
   margin: 0; }
+
+.icon {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  margin-bottom: 1.5625rem; }
+  .icon a {
+    display: block;
+    height: 100%; }
 
 .Menu li {
   padding-right: 2.8125rem; }
@@ -592,10 +609,11 @@ body {
   .Header q:before,
   .Header q:after {
     visibility: hidden; }
-  .Header .Socials {
-    padding: 0; }
-    .Header .Socials li {
-      padding-right: 0.9375rem; }
+  .Header .icon {
+    margin: 0;
+    padding-right: 1.25rem; }
+    .Header .icon img {
+      height: 100%; }
   .Header .Services {
     padding-bottom: 2.375rem;
     color: #fff; }
@@ -613,20 +631,6 @@ body {
       height: 1.5625rem;
       font-weight: 800;
       margin: auto; }
-
-.icon {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 1.625rem;
-  height: 1.625rem;
-  margin-bottom: 1.5625rem; }
-  .icon a {
-    display: block;
-    height: 100%; }
 
 .backgroundVideo {
   overflow: hidden;

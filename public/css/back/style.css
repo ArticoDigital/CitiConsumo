@@ -561,4 +561,7 @@ li {
 img {
   width: 100%; }
 
+.no-padding {
+  padding: 0; }
+
 /*# sourceMappingURL=style.css.map */
