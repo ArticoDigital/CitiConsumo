@@ -61,8 +61,13 @@
     <h1>Una forma diferente de consumir.</h1>
     <h2>Registrate y empeiza a vivir una experiencia difrente con nosotros.
         Es facil, solo ingresas tus datos y listo !comienza a disfrutar!</h2>
-    <form action="">
-
+    <form method="POST" action="{{ route('register') }}">
+        @if($errors->has())
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        @endif
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h3>Regístrate Ahora</h3>
         <span class="Register-social">
             <a href="{{route('facebook')}}">

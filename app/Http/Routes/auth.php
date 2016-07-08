@@ -4,10 +4,15 @@ Route::get('login', function(){
     return view('auth.login');
 });
 
-Route::get('registro', function(){
+Route::get('registro', ['as'=>'register', function(){
     return view('auth.register');
-});
+}]);
 
+Route::post('registro', [
+        'uses' => 'Auth\AuthController@postRegister',
+        'as' => 'register'
+    ]
+);
 Route::get('facebook/authorize', ['as' => 'facebook', function() {
     return SocialAuth::authorize('facebook');
 }]);
