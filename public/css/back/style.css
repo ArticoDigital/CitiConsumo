@@ -501,6 +501,10 @@ textarea {
   -ms-flex-item-align: start;
   align-self: flex-start; }
 
+.self-end {
+  -ms-flex-item-align: end;
+  align-self: flex-end; }
+
 .columns div:nth-child(even) {
   padding-right: 0.625rem; }
 
