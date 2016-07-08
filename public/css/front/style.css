@@ -593,7 +593,6 @@ body.Register {
 .Register h3 {
   text-align: center;
   font-family: 'Lato', sans-serif !important;
-  text-align: center;
   font-weight: 300; }
 
 .Register main {
@@ -605,7 +604,33 @@ body.Register {
   padding: 2rem;
   margin: auto;
   border-radius: 0.25rem;
-  max-width: 20rem; }
+  max-width: 16rem; }
+  .Register form button {
+    margin: 1rem auto;
+    padding: 0.75rem 2rem;
+    display: block;
+    color: white;
+    border: none;
+    background: #004f8f;
+    font-size: 0.75rem; }
+  .Register form label {
+    color: #4e4e4e;
+    display: block;
+    font-size: 0.75rem; }
+  .Register form input {
+    border: none;
+    border-bottom: 0.0625rem solid #9f9e9b;
+    width: 100%;
+    margin: .5rem 0rem 1rem;
+    padding: 0 0 0.125rem 0.125rem; }
+    .Register form input:focus {
+      outline: 0; }
+
+.Register .Register-social {
+  margin: 1.5rem 3rem;
+  display: block; }
+  .Register .Register-social path {
+    fill: #004f8f; }
 
 .Container {
   margin: auto;
