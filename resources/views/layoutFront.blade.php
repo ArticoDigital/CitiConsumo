@@ -34,7 +34,7 @@
                 </ul>
                 <ul class="Menu row between">
                     <li><a href="">Postula tu servicio</a></li>
-                    <li><a href="">Registrate</a></li>
+                    <li><a href="{{route('register')}}">Registrate</a></li>
                     <li><a href="">Entrar</a></li>
                     <li class="icon">
                         <a href="#">
