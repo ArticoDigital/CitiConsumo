@@ -8,7 +8,15 @@
     <section class="Images row center">
         <a href="{{url('servicios-generales')}}">
             <figure class="Service-image">
-                <img src="{{asset('img/oficios.svg')}}" alt="oficios">
+                <div class="circle">
+                    <div class="front">
+                        <img src="{{asset('img/oficios.svg')}}" alt="oficios">
+                    </div>
+                    <div class="back">
+                        <img src="{{asset('img/oficios.svg')}}" alt="oficios">
+                        <span>Encuentra alguien que te ayude con los oficios del hogar!</span>
+                    </div>
+                </div>
                 <figcaption>Oficios</figcaption>
             </figure>
         </a>

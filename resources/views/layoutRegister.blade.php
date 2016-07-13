@@ -14,23 +14,6 @@
         <div class="BarNav row middle between">
 
             <nav class="row col-10 offset-2 end">
-                <ul class="Socials row no-padding">
-                    <li class="icon">
-                        <a href="https://twitter.com/city_consumo">
-                            <img src="{{asset('img/twitter.svg')}}" alt="twitter">
-                        </a>
-                    </li>
-                    <li class="icon">
-                        <a href="#">
-                            <img src="{{asset('img/instagram.svg')}}" alt="instagram">
-                        </a>
-                    </li>
-                    <li class="icon">
-                        <a href="https://www.facebook.com/City-Consumo-1269145086448897/">
-                            <img src="{{asset('img/facebook.svg')}}" alt="menu">
-                        </a>
-                    </li>
-                </ul>
                 <ul class="Menu row between">
                     <li><a href="">Postula tu servicio</a></li>
                     <li><a href="">Entrar</a></li>
@@ -86,9 +69,6 @@
             </svg>
         </a>
     </figure>
-    <h1>Una forma diferente de consumir.</h1>
-    <h2>Registrate y empeiza a vivir una experiencia difrente con nosotros.
-        Es facil, solo ingresas tus datos y listo !comienza a disfrutar!</h2>
     <form method="POST" action="{{ route('register') }}">
         @if($errors->has())
             <div class="errors">

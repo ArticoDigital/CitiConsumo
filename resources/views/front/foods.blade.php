@@ -9,7 +9,15 @@
     <section class="Images row center">
         <a href="{{url('/alimentos')}}">
             <figure class="Service-image">
-                <img src="{{asset('img/comidas.svg')}}" alt="comidas">
+                <div class="circle">
+                    <div class="front">
+                        <img src="{{asset('img/comidas.svg')}}" alt="comidas">
+                    </div>
+                    <div class="back">
+                        <img src="{{asset('img/comidas.svg')}}" alt="comidas">
+                        <span>Encuentra alguien que prepare un plato delicioso para ti!</span>
+                    </div>
+                </div>
                 <figcaption>Comidas</figcaption>
             </figure>
         </a>

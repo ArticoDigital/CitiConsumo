@@ -8,7 +8,15 @@
     <section class="Images row center">
         <a href="{{url('mascotas')}}">
             <figure class="Service-image">
-                <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
+                <div class="circle">
+                    <div class="front">
+                        <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
+                    </div>
+                    <div class="back">
+                        <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
+                        <span>Encuentra alguien que cuide de tu mascota!</span>
+                    </div>
+                </div>
                 <figcaption>Mascotas</figcaption>
             </figure>
         </a>

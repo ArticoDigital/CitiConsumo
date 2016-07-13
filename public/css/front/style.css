@@ -613,15 +613,6 @@ body.Register {
 .Register .Header {
   min-height: inherit; }
 
-.Register .Socials li:last-child {
-  padding-right: 0; }
-
-.Register .Menu a {
-  color: white; }
-
-.Register .Menu li {
-  padding-right: 1.25rem; }
-
 .Register h1 {
   color: white;
   font-family: 'Open Sans', sans-serif !important;
@@ -726,6 +717,8 @@ body.Register {
   .Header q:before,
   .Header q:after {
     visibility: hidden; }
+  .Header .BarNav {
+    min-height: 6.25rem; }
   .Header .icon {
     margin: 0;
     padding-right: 1.25rem; }
@@ -765,6 +758,68 @@ body.Register {
     min-width: 100%;
     height: auto;
     min-height: 100%; }
+
+/************** GIRAR IMAGEN ***************/
+.Images {
+  display: -ms-flexbox;
+  display: flex; }
+
+.Services {
+  perspective: 1000;
+  margin: 0 auto;
+  padding-bottom: 2.375rem;
+  color: #fff; }
+
+.Services .Images a {
+  position: relative; }
+
+.Services .Images a:hover .circle {
+  transform: rotate3d(0, 45, 0, 180deg); }
+
+.front, .back {
+  position: relative;
+  left: 0;
+  width: 150px;
+  height: 150px; }
+
+.circle {
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  height: 170px; }
+
+.back {
+  position: relative; }
+  .back img {
+    opacity: .3; }
+  .back span {
+    padding: 0.3125rem 0.9375rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center; }
+
+.front, .back {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.front {
+  z-index: 2; }
+
+.back {
+  transform: rotate3d(0, 45, 0, 180deg); }
+  .back svg path {
+    fill: black; }
 
 .Footer {
   background: #002444 url("../../img/footer.jpg") repeat-x center center;
