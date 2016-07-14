@@ -22,9 +22,9 @@ Route::get('auth', function() {
         $user->name = $details->full_name;
         $user->profile_image = $details->avatar;
         $user->role_id = 1;
-        dd($user);
         $user->save();
     });
     Auth::user();
     return Redirect::intended();
 });
+
