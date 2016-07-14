@@ -18,9 +18,11 @@ Route::get('facebook/authorize', ['as' => 'facebook', function() {
 }]);
 Route::get('auth', function() {
     SocialAuth::login('facebook', function($user, $details) {
-        $user->nickname = $details->nickname;
+        $user->email = $details->nickname;
         $user->name = $details->full_name;
         $user->profile_image = $details->avatar;
-        dd($details);
+        $user->save();
     });
+    Auth::user();
+    return Redirect::intended();
 });

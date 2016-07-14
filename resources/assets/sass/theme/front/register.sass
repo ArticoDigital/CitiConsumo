@@ -64,6 +64,7 @@ body.Register
       color: #aeaeae
       display: block
       font-size: rem(12)
+
     input
       border: none
       border-bottom: rem(1) solid #9f9e9b
@@ -78,4 +79,15 @@ body.Register
     display: block
     path
       fill: #004f8f
-
+  .Register-label
+    position: relative
+    svg
+      position: absolute
+      top: rem(18)
+      width: rem(24)
+      right: 0
+      cursor: pointer
+  #Eye-white
+    @include transition(all .3s)
+  .openEye
+    fill: white

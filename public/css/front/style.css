@@ -676,6 +676,21 @@ body.Register {
   .Register .Register-social path {
     fill: #004f8f; }
 
+.Register .Register-label {
+  position: relative; }
+  .Register .Register-label svg {
+    position: absolute;
+    top: 1.125rem;
+    width: 1.5rem;
+    right: 0;
+    cursor: pointer; }
+
+.Register #Eye-white {
+  transition: all 0.3s; }
+
+.Register .openEye {
+  fill: white; }
+
 .Container {
   margin: auto;
   width: 100%;
