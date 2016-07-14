@@ -21,6 +21,7 @@ Route::get('auth', function() {
         $user->email = $details->nickname;
         $user->name = $details->full_name;
         $user->profile_image = $details->avatar;
+        $user->role_id = 1;
         $user->save();
     });
     Auth::user();
