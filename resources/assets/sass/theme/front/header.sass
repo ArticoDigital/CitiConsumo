@@ -1,6 +1,5 @@
 .Header
   margin: auto
-  //height: rem(115)
   min-height: 100vh
   display: flex
   overflow: hidden
@@ -64,9 +63,13 @@
 /************** GIRAR IMAGEN ***************/
 
 .Images
+  position: relative
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex
 
 .Services
+  -webkit-perspective: 1000
   perspective: 1000
   margin: 0 auto
   padding-bottom: 2.375rem
@@ -75,53 +78,80 @@
 .Services .Images a
   position: relative
 
-.Services .Images a:hover .circle
+.Services a:hover .circle
+  -webkit-transform: rotate3d(0, 45, 0, 180deg)
   transform: rotate3d(0, 45, 0, 180deg)
 
+.Services a:hover .front
+  transform: rotateY(45deg)
+  z-index: 0
+
 .front, .back
+  transition: 0.5s
   position: relative
   left: 0
   width: 150px
   height: 150px
 
 .circle
+  -webkit-transition: 0.5s
   transition: 0.5s
+
+  -webkit-transform-style: preserve-3d
   transform-style: preserve-3d
+
+  -webkit-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860)
   transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860)
+
   height: 170px
 
-.back
-  position: relative
-  img
-    opacity: .3
-  span
-    padding: rem(5) rem(15)
-    height: 100%
+  .back
+    position: relative
+    img
+      opacity: .8
+    span
+      padding: rem(5) rem(15)
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      display: -webkit-box
+      display: -ms-flexbox
+      display: flex
+      align-items: center
+
+  .front, .back
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    -webkit-backface-visibility: hidden
+    -moz-backface-visibility: hidden
+    backface-visibility: hidden
     position: absolute
     top: 0
     left: 0
-    display: flex
-    align-items: center
 
-.front, .back
-  width: 150px
-  height: 150px
-  border-radius: 50%
-  -webkit-backface-visibility: hidden
-  -moz-backface-visibility: hidden
-  -o-backface-visibility: hidden
-  backface-visibility: hidden
+  .front
+    z-index: 2
+
+  .back
+    -webkit-transform: rotate3d(0,45,0,180deg)
+    -moz-transform: rotate3d(0,45,0,180deg)
+    -o-transform: rotate3d(0,45,0,180deg)
+    transform: rotate3d(0,45,0,180deg)
+    svg path
+      fill : black
+
+.arrow
   position: absolute
-  top: 0
-  left: 0
-
-.front
-  z-index: 2
-
-.back
-  -webkit-transform: rotate3d(0,45,0,180deg)
-  -moz-transform: rotate3d(0,45,0,180deg)
-  -o-transform: rotate3d(0,45,0,180deg)
-  transform: rotate3d(0,45,0,180deg)
-  svg path
-    fill : black
+  top: 50%
+  margin-top: -1.8rem
+  .Service-image
+    width: 3.5rem !important
+    opacity: .7
+    &:hover
+      opacity: 1
+  &.right
+    left: 0
+  &.left
+    right: 0

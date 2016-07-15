@@ -691,6 +691,28 @@ body.Register {
 .Register .openEye {
   fill: white; }
 
+#Map {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; }
+
+.Platform-Logo {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.875rem; }
+
+.Platform {
+  max-height: 100vh;
+  overflow-y: hidden; }
+  .Platform .Header {
+    position: relative;
+    min-height: inherit; }
+    .Platform .Header a {
+      color: #002444; }
+
 .Container {
   margin: auto;
   width: 100%;
@@ -776,6 +798,7 @@ body.Register {
 
 /************** GIRAR IMAGEN ***************/
 .Images {
+  position: relative;
   display: -ms-flexbox;
   display: flex; }
 
@@ -788,10 +811,15 @@ body.Register {
 .Services .Images a {
   position: relative; }
 
-.Services .Images a:hover .circle {
+.Services a:hover .circle {
   transform: rotate3d(0, 45, 0, 180deg); }
 
+.Services a:hover .front {
+  transform: rotateY(45deg);
+  z-index: 0; }
+
 .front, .back {
+  transition: 0.5s;
   position: relative;
   left: 0;
   width: 150px;
@@ -802,39 +830,48 @@ body.Register {
   transform-style: preserve-3d;
   transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
   height: 170px; }
-
-.back {
-  position: relative; }
-  .back img {
-    opacity: .3; }
-  .back span {
-    padding: 0.3125rem 0.9375rem;
-    height: 100%;
+  .circle .back {
+    position: relative; }
+    .circle .back img {
+      opacity: .8; }
+    .circle .back span {
+      padding: 0.3125rem 0.9375rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center; }
+  .circle .front, .circle .back {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    backface-visibility: hidden;
     position: absolute;
     top: 0;
-    left: 0;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center; }
+    left: 0; }
+  .circle .front {
+    z-index: 2; }
+  .circle .back {
+    transform: rotate3d(0, 45, 0, 180deg); }
+    .circle .back svg path {
+      fill: black; }
 
-.front, .back {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
+.arrow {
   position: absolute;
-  top: 0;
-  left: 0; }
-
-.front {
-  z-index: 2; }
-
-.back {
-  transform: rotate3d(0, 45, 0, 180deg); }
-  .back svg path {
-    fill: black; }
+  top: 50%;
+  margin-top: -1.8rem; }
+  .arrow .Service-image {
+    width: 3.5rem !important;
+    opacity: .7; }
+    .arrow .Service-image:hover {
+      opacity: 1; }
+  .arrow.right {
+    left: 0; }
+  .arrow.left {
+    right: 0; }
 
 .Footer {
   background: #002444 url("../../img/footer.jpg") repeat-x center center;
