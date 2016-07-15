@@ -51,7 +51,12 @@
         </a>
     </section>
     <article class="Leyend"><q>Innovando la forma en como consumimos</q></article>
+
+
 @endsection
 
 @section('content')
+    <section class="HowItWorks">
+        <img src="{{url('img/home.svg')}}" alt="">
+    </section>
 @endsection

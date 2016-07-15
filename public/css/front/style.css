@@ -853,4 +853,8 @@ body.Register {
     padding: 0 15px;
     border-right: 1px solid #fff; }
 
+.HowItWorks {
+  max-width: 45rem;
+  margin: 3.75rem auto; }
+
 /*# sourceMappingURL=style.css.map */
