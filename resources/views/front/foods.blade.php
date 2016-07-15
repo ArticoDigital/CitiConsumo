@@ -14,7 +14,7 @@
                         <img src="{{asset('img/comidas.svg')}}" alt="comidas">
                     </div>
                     <div class="back">
-                        <img src="{{asset('img/comidas.svg')}}" alt="comidas">
+                        <img src="{{asset('img/blue.svg')}}" alt="azul">
                         <span>Encuentra alguien que prepare un plato delicioso para ti!</span>
                     </div>
                 </div>

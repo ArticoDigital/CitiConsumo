@@ -1,20 +1,24 @@
 <?php
 
-Route::get('/', function () {
-    return view('front.home');
-});
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'HomeController@homeIndex'
+]);
 
-Route::get('mascotas', function(){
-    return view('front.pets');
-});
+Route::get('mascotas', [
+    'as' => 'pets',
+    'uses' => 'HomeController@petsIndex'
+]);
 
-Route::get('servicios-generales', function(){
-    return view('front.generalServices');
-});
+Route::get('servicios-generales', [
+    'as' => 'services',
+    'uses' => 'HomeController@servicesIndex'
+]);
 
-Route::get('alimentos', function(){
-    return view('front.foods');
-});
+Route::get('alimentos', [
+    'as' => 'foods',
+    'uses' => 'HomeController@foodsIndex'
+]);
 
 Route::get('plataforma', function(){
     return view('front.platform');

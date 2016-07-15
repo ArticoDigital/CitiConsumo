@@ -13,7 +13,7 @@
                         <img src="{{asset('img/oficios.svg')}}" alt="oficios">
                     </div>
                     <div class="back">
-                        <img src="{{asset('img/oficios.svg')}}" alt="oficios">
+                        <img src="{{asset('img/blue.svg')}}" alt="azul">
                         <span>Encuentra alguien que te ayude con los oficios del hogar!</span>
                     </div>
                 </div>
