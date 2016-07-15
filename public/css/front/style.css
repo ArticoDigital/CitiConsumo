@@ -798,6 +798,7 @@ body.Register {
 
 /************** GIRAR IMAGEN ***************/
 .Images {
+  position: relative;
   display: -ms-flexbox;
   display: flex; }
 
@@ -857,6 +858,20 @@ body.Register {
     transform: rotate3d(0, 45, 0, 180deg); }
     .circle .back svg path {
       fill: black; }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -1.8rem; }
+  .arrow .Service-image {
+    width: 3.5rem !important;
+    opacity: .7; }
+    .arrow .Service-image:hover {
+      opacity: 1; }
+  .arrow.right {
+    left: 0; }
+  .arrow.left {
+    right: 0; }
 
 .Footer {
   background: #002444 url("../../img/footer.jpg") repeat-x center center;

@@ -5,6 +5,18 @@
 @endsection
 
 @section('Header')
+    <div class="arrow left" href="{{url('mascotas')}}">
+        <a href="{{url('mascotas')}}">
+            <figure class="Service-image">
+                <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
+            </figure>
+        </a>
+        <a href="{{url('alimentos')}}">
+            <figure class="Service-image">
+                <img src="{{asset('img/comidas.svg')}}" alt="mascotas">
+            </figure>
+        </a>
+    </div>
     <section class="Images row center">
         <a href="{{url('servicios-generales')}}">
             <figure class="Service-image">
