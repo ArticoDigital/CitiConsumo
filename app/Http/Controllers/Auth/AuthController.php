@@ -51,10 +51,12 @@ class AuthController extends Controller
 
         return Validator::make($data,
             [
+                'name' => 'required',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|min:6',
             ],
             [
+                'name.required' => 'El nombre es requerido',
                 'email.required' => 'El email es obligatorio ',
                 'email.email' => 'El email no es valido ',
                 'email.unique' => 'Este usuario ya esta registrado',
@@ -68,6 +70,7 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
+
     protected function create(array $data)
     {
         $user = new User([
@@ -76,6 +79,7 @@ class AuthController extends Controller
             'role_id' => '1',
         ]);
         $user->save();
+        auth()->loginUsingId($user->id);
         return $user;
     }
 }

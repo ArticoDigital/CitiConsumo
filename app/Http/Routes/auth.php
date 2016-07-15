@@ -13,14 +13,23 @@ Route::post('registro', [
         'as' => 'register'
     ]
 );
+Route::get('logout', [
+        'uses' => 'Auth\AuthController@getLogout',
+        'as' => 'logout'
+    ]
+);
 Route::get('facebook/authorize', ['as' => 'facebook', function() {
     return SocialAuth::authorize('facebook');
 }]);
 Route::get('auth', function() {
     SocialAuth::login('facebook', function($user, $details) {
-        $user->nickname = $details->nickname;
+        $user->email = $details->nickname;
         $user->name = $details->full_name;
         $user->profile_image = $details->avatar;
-        dd($details);
+        $user->role_id = 1;
+        $user->save();
     });
+    Auth::user();
+    return Redirect::intended();
 });
+

@@ -676,6 +676,43 @@ body.Register {
   .Register .Register-social path {
     fill: #004f8f; }
 
+.Register .Register-label {
+  position: relative; }
+  .Register .Register-label svg {
+    position: absolute;
+    top: 1.125rem;
+    width: 1.5rem;
+    right: 0;
+    cursor: pointer; }
+
+.Register #Eye-white {
+  transition: all 0.3s; }
+
+.Register .openEye {
+  fill: white; }
+
+#Map {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; }
+
+.Platform-Logo {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.875rem; }
+
+.Platform {
+  max-height: 100vh;
+  overflow-y: hidden; }
+  .Platform .Header {
+    position: relative;
+    min-height: inherit; }
+    .Platform .Header a {
+      color: #002444; }
+
 .Container {
   margin: auto;
   width: 100%;
