@@ -21,7 +21,7 @@
             </figure>
         </a>
     </section>
-    <form class="Form row center col-9">
+    <form class="Form row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
         <label for="place" class="col-3">
             <input id="place" name="place" type="text" placeholder="Lugar">
         </label>
@@ -31,9 +31,9 @@
         <label for="size" class="col-3">
             <select class="js-example-basic-single" id="breed" name="breed">
                 <option value="" selected>Tamaño</option>
-                <option value="1" selected>Pequeño</option>
-                <option value="2" selected>Mediano</option>
-                <option value="3" selected>Grande</option>
+                <option value="1">Pequeño</option>
+                <option value="2">Mediano</option>
+                <option value="3">Grande</option>
             </select>
         </label>
         <label for="breed" class="col-3">

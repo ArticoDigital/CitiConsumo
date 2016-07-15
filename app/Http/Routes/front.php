@@ -20,6 +20,7 @@ Route::get('alimentos', [
     'uses' => 'HomeController@foodsIndex'
 ]);
 
-Route::get('plataforma', function(){
-    return view('front.platform');
-});
+Route::get('plataforma/{service}', [
+    'as' => 'platform',
+    'uses' => 'MapController@index'
+]);

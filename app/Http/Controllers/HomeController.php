@@ -2,8 +2,10 @@
 
 namespace City\Http\Controllers;
 
+use City\Entities\FoodType;
 use Illuminate\Http\Request;
 use City\Entities\PetBreed;
+use City\Entities\GeneralType;
 use City\Http\Requests;
 
 class HomeController extends Controller
@@ -19,10 +21,12 @@ class HomeController extends Controller
     }
 
     public function servicesIndex(){
-        return view('front.generalServices');
+        $services = GeneralType::all();
+        return view('front.generalServices', ['services' => $services]);
     }
 
-    public function footsIndex(){
-        return view('front.foods');
+    public function foodsIndex(){
+        $foods = FoodType::all();
+        return view('front.foods', ['foods' => $foods]);
     }
 }
