@@ -807,7 +807,6 @@ body.Register {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  -o-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
