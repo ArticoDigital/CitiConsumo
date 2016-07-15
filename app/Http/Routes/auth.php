@@ -13,6 +13,11 @@ Route::post('registro', [
         'as' => 'register'
     ]
 );
+Route::get('logout', [
+        'uses' => 'Auth\AuthController@getLogout',
+        'as' => 'logout'
+    ]
+);
 Route::get('facebook/authorize', ['as' => 'facebook', function() {
     return SocialAuth::authorize('facebook');
 }]);

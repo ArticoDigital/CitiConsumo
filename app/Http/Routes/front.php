@@ -19,3 +19,4 @@ Route::get('alimentos', function(){
 Route::get('plataforma', function(){
     return view('front.platform');
 });
+

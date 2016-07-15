@@ -691,6 +691,28 @@ body.Register {
 .Register .openEye {
   fill: white; }
 
+#Map {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; }
+
+.Platform-Logo {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.875rem; }
+
+.Platform {
+  max-height: 100vh;
+  overflow-y: hidden; }
+  .Platform .Header {
+    position: relative;
+    min-height: inherit; }
+    .Platform .Header a {
+      color: #002444; }
+
 .Container {
   margin: auto;
   width: 100%;

@@ -70,6 +70,7 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
+
     protected function create(array $data)
     {
         $user = new User([
@@ -78,6 +79,7 @@ class AuthController extends Controller
             'role_id' => '1',
         ]);
         $user->save();
+        auth()->loginUsingId($user->id);
         return $user;
     }
 }
