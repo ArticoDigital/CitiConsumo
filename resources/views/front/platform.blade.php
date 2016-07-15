@@ -16,11 +16,12 @@
 
         <nav class="row col-10 offset-2 end">
             <ul class="Menu row between">
-                @if(Auth::check())
+                @if(!Auth::check())
                     <li><a href="">Postula tu servicio</a></li>
                     <li><a href="">Entrar</a></li>
+
                 @else
-                    <li>{{dd(Auth::user())}}</li>
+                    <li>Bienvenid@ {{Auth::user()->name}}</li>
                 @endif
 
                 <li class="icon">
