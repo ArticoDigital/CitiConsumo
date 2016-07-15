@@ -51,8 +51,6 @@
         </a>
     </section>
     <article class="Leyend"><q>Innovando la forma en como consumimos</q></article>
-
-
 @endsection
 
 @section('content')
