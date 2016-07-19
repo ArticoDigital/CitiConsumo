@@ -53,6 +53,9 @@
 @endsection
 
 @section('content')
+    <section class="HowItWorks">
+        <img src="{{url('img/servicios_how.svg')}}" alt="">
+    </section>
 @endsection
 
 @section('scripts')

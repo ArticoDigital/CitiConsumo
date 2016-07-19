@@ -51,12 +51,29 @@
         </a>
     </section>
     <article class="Leyend"><q>Innovando la forma en como consumimos</q></article>
-
-
 @endsection
 
 @section('content')
     <section class="HowItWorks">
-        <img src="{{url('img/home.svg')}}" alt="">
+        <span class="how_title">¿Cómo funciona?</span>
+        <div>
+            <img src="{{url('img/home.svg')}}" alt="">
+            <div class="how_box">
+            <span class="how_number">1</span><br><span class="how_text">Selecciona un servicio en el landing.</span>
+            </div>
+            <div class="how_box">
+            <span class="how_number">2</span><br><span class="how_text">Ingresa los datos para tu búsqueda.</span>
+            </div>
+            <div class="how_box">
+            <span class="how_number">3</span><br><span class="how_text">Ubica quien te ayude en el mapa.</span>
+            </div>
+            <div class="how_box">
+            <span class="how_number">4</span><br><span class="how_text">¡Disfruta al máximo el servicio!</span>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="div_box_center">
+            <a class="btn_blue" href="#">Ver Video</a>
+        </div>
     </section>
 @endsection

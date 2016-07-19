@@ -931,6 +931,31 @@ body.Register {
 
 .HowItWorks {
   max-width: 45rem;
-  margin: 3.75rem auto; }
+  margin: 3.75rem auto;
+  text-align: center; }
+  .HowItWorks .how_title {
+    font-size: 3rem;
+    color: #04529D; }
+  .HowItWorks img {
+    margin-top: 2rem; }
+  .HowItWorks .how_box {
+    width: 125px;
+    float: left;
+    margin: 10px; }
+  .HowItWorks .how_number {
+    color: #F8BA45;
+    font-size: 1.4em;
+    font-weight: bold; }
+  .HowItWorks .how_text {
+    color: #04529D; }
+  .HowItWorks .btn_blue {
+    background-color: #04529D;
+    color: white;
+    padding: 0.7em 5em;
+    font-size: 1.3em; }
+
+.div_box_center {
+  margin: 3em 0em;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
