@@ -49,10 +49,23 @@
                 @else
                     <li><a href="#" onclick="return false">Bienvenid@ {{Auth::user()->name}}</a></li>
                 @endif
-                <li class="icon">
-                    <a href="#">
-                        <img src="{{asset('img/menu.svg')}}" alt="menu">
-                    </a>
+                <li>
+                    <div class="Menu-fixed">
+                        <a href="#" class="Hamburguer">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                        <nav>
+                            <ul class="col-4">
+                                <li><a href="#">QUIENES SOMOS?</a></li>
+                                <li><a href="#">PREGUNTAS FRECUENTES</a></li>
+                                <li><a href="#">AYUDANOS A MEJORAR</a></li>
+                                <li><a href="#">CONTACTANOS</a></li>
+                                <li><a href="#">TESTIMONIOS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </li>
             </ul>
         </nav>
