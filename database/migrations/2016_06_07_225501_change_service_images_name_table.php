@@ -12,8 +12,6 @@ class ChangeServiceImagesNameTable extends Migration
      */
     public function up()
     {
-        Schema::drop('service_images');
-
         Schema::create('service_files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
