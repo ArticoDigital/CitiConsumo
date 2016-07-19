@@ -16,7 +16,11 @@
             <nav class="row col-10 offset-2 end">
                 <ul class="Menu row between">
                     <li><a href="">Postula tu servicio</a></li>
-                    <li><a href="">Entrar</a></li>
+                    @if(!Auth::check())
+                        <li><a href="">Entrar</a></li>
+                    @else
+                        <li>Bienvenid@ {{Auth::user()->name}}</li>
+                    @endif
                     <li class="icon">
                         <a href="{{url('/')}}">
                             <img src="{{asset('img/menu.svg')}}" alt="menu">

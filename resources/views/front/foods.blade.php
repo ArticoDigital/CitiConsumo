@@ -36,7 +36,9 @@
     </section>
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
         <label for="place" class="col-4">
-            <input id="place" name="place" type="text" placeholder="Lugar">
+            <div id="locationField">
+                <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text">
+            </div>
         </label>
         <label for="food_type" class="col-4">
             <select class="js-example-basic-single" id="food_type" name="food_type">
@@ -57,6 +59,7 @@
 @endsection
 
 @section('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="{{asset('js/datetimepicker.js')}}"></script>
     <script src="{{asset('js/select2.js')}}"></script>
 @endsection

@@ -589,6 +589,45 @@ img {
   .Button.yellow {
     background: #f6b11e; }
 
+body {
+  overflow: hidden; }
+
+#preloader {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.99);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  transition: top .5s ease; }
+  #preloader .image {
+    width: 90%;
+    max-width: 300px; }
+  #preloader.hide {
+    top: -100%; }
+  #preloader #signal-1,
+  #preloader #signal-2,
+  #preloader #signal-3 {
+    fill: white;
+    opacity: .9;
+    animation: preloader 1s infinite; }
+  #preloader #signal-1 {
+    animation-delay: .7s; }
+  #preloader #signal-2 {
+    animation-delay: .35s; }
+
+@keyframes preloader {
+  50% {
+    fill: white; }
+  100% {
+    fill: #EFA43A; } }
+
 body.Register {
   background: url("../../img/register.jpg") center;
   background-size: cover;
