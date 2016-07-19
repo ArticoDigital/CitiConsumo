@@ -1,6 +1,8 @@
 $(window).load(function(){
-    $('#preloader').addClass('hide');
-    $('body').css('overflow', 'visible');
+    setTimeout(function(){
+        $('#preloader').addClass('hide');
+        $('body').css('overflow', 'visible');
+    }, 2000);
 });
 
 $('.Hamburguer').click(function(){
