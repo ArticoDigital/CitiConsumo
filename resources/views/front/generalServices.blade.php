@@ -4,19 +4,7 @@
     <source src="{{url('videos/servicios-generales.mov')}}">
 @endsection
 
-@section('Header')
-    <div class="arrow left" href="{{url('mascotas')}}">
-        <a href="{{url('mascotas')}}">
-            <figure class="Service-image">
-                <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
-            </figure>
-        </a>
-        <a href="{{url('alimentos')}}">
-            <figure class="Service-image">
-                <img src="{{asset('img/comidas.svg')}}" alt="mascotas">
-            </figure>
-        </a>
-    </div>
+@section('Services')
     <section class="Images row center">
         <a href="{{url('servicios-generales')}}">
             <figure class="Service-image">
@@ -33,6 +21,22 @@
             </figure>
         </a>
     </section>
+@endsection
+
+@section('Header')
+    <div class="arrow right" href="{{url('mascotas')}}">
+        <a href="{{url('mascotas')}}">
+            <figure class="Service-image">
+                <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
+            </figure>
+        </a>
+        <a href="{{url('alimentos')}}">
+            <figure class="Service-image">
+                <img src="{{asset('img/comidas.svg')}}" alt="mascotas">
+            </figure>
+        </a>
+    </div>
+
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'oficios')}}">
         <label for="place" class="col-4">
             <input id="place" name="place" type="text" placeholder="Lugar">

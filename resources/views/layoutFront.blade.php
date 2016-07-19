@@ -70,6 +70,7 @@
             </ul>
         </nav>
     </div>
+    @yield('Services')
     <section class="Services middle">
         @yield('Header')
         <div class="Arrow"><a href="#"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>

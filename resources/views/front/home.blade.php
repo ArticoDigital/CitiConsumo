@@ -5,8 +5,8 @@
     <source src="http://cache.yoyodesign.com/media/137386/2014-09-08.webm" type="video/webm; codecs=&quot;vp8, vorbis&quot;">
 @endsection
 
-@section('Header')
-    <section class="Images row center">
+@section('Services')
+    <section class="Images row between">
         <a href="{{url('mascotas')}}">
             <figure class="Service-image">
                 <div class="circle">
@@ -50,6 +50,9 @@
             </figure>
         </a>
     </section>
+@endsection
+
+@section('Header')
     <article class="Leyend"><q>Innovando la forma en como consumimos</q></article>
 @endsection
 

@@ -4,20 +4,7 @@
     <source src="{{url('videos/comidas.mov')}}">
     <!--<source src="http://cache.yoyodesign.com/media/137386/2014-09-08.webm" type="video/webm; codecs=&quot;vp8, vorbis&quot;">-->
 @endsection
-
-@section('Header')
-    <div class="arrow left">
-        <a href="{{url('mascotas')}}">
-            <figure class="Service-image">
-                <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
-            </figure>
-        </a>
-        <a href="{{url('servicios-generales')}}">
-            <figure class="Service-image">
-                <img src="{{asset('img/oficios.svg')}}" alt="oficios">
-            </figure>
-        </a>
-    </div>
+@section('Services')
     <section class="Images row center">
         <a href="{{url('/alimentos')}}">
             <figure class="Service-image">
@@ -34,6 +21,21 @@
             </figure>
         </a>
     </section>
+@endsection
+
+@section('Header')
+    <div class="arrow right">
+        <a href="{{url('mascotas')}}">
+            <figure class="Service-image">
+                <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
+            </figure>
+        </a>
+        <a href="{{url('servicios-generales')}}">
+            <figure class="Service-image">
+                <img src="{{asset('img/oficios.svg')}}" alt="oficios">
+            </figure>
+        </a>
+    </div>
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
         <label for="place" class="col-4">
             <div id="locationField">

@@ -64,34 +64,28 @@
 
 .Images
   position: relative
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex
-
-.Services
+  width: 600px
   -webkit-perspective: 1000
   perspective: 1000
   margin: 0 auto
   padding-bottom: 2.375rem
   color: #fff
 
-.Services .Images a
-  position: relative
+  .Service-image
+    width: 150px
+    margin: 0
+    text-align: center
 
-.Services a:hover .circle
-  -webkit-transform: rotate3d(0, 45, 0, 180deg)
-  transform: rotate3d(0, 45, 0, 180deg)
-
-.Services a:hover .front
-  transform: rotateY(45deg)
-  z-index: 0
-
-.front, .back
-  transition: 0.5s
-  position: relative
-  left: 0
-  width: 150px
-  height: 150px
+  a
+    position: relative
+    &:hover
+      .circle
+        -webkit-transform: rotate3d(0, 45, 0, 180deg)
+        transform: rotate3d(0, 45, 0, 180deg)
+      .front
+        transform: rotateY(45deg)
+        z-index: 0
 
 .circle
   -webkit-transition: 0.5s
@@ -105,8 +99,25 @@
 
   height: 170px
 
+  .front, .back
+    transition: 0.5s
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    -webkit-backface-visibility: hidden
+    -moz-backface-visibility: hidden
+    backface-visibility: hidden
+    position: absolute
+    top: 0
+    left: 0
+
   .back
     position: relative
+    -webkit-transform: rotate3d(0,45,0,180deg)
+    -moz-transform: rotate3d(0,45,0,180deg)
+    -o-transform: rotate3d(0,45,0,180deg)
+    transform: rotate3d(0,45,0,180deg)
+
     img
       opacity: .8
     span
@@ -120,27 +131,11 @@
       display: flex
       align-items: center
 
-  .front, .back
-    width: 150px
-    height: 150px
-    border-radius: 50%
-    -webkit-backface-visibility: hidden
-    -moz-backface-visibility: hidden
-    backface-visibility: hidden
-    position: absolute
-    top: 0
-    left: 0
+      svg path
+        fill : black
 
   .front
     z-index: 2
-
-  .back
-    -webkit-transform: rotate3d(0,45,0,180deg)
-    -moz-transform: rotate3d(0,45,0,180deg)
-    -o-transform: rotate3d(0,45,0,180deg)
-    transform: rotate3d(0,45,0,180deg)
-    svg path
-      fill : black
 
 .arrow
   position: absolute
@@ -152,6 +147,6 @@
     &:hover
       opacity: 1
   &.right
-    left: 0
-  &.left
     right: 0
+  &.left
+    left: 0
