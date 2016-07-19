@@ -614,9 +614,9 @@ body {
   #preloader #signal-1,
   #preloader #signal-2,
   #preloader #signal-3 {
-    fill: white;
+    fill: #EFA43A;
     opacity: .9;
-    animation: preloader 1s infinite; }
+    animation: preloader 1.5s infinite; }
   #preloader #signal-1 {
     animation-delay: .7s; }
   #preloader #signal-2 {
@@ -624,9 +624,9 @@ body {
 
 @keyframes preloader {
   50% {
-    fill: white; }
+    fill: #EFA43A; }
   100% {
-    fill: #EFA43A; } }
+    fill: white; } }
 
 body.Register {
   background: url("../../img/register.jpg") center;
