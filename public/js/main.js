@@ -1,8 +1,10 @@
 $(window).load(function(){
-    $('#preloader').addClass('hide');
-    $('body').css('overflow', 'visible');
+    setTimeout(function(){
+        $('#preloader').addClass('hide');
+        $('body').css('overflow', 'visible');
+    }, 1000);
 });
-
+    
 $('.Hamburguer').click(function(){
     $(this).toggleClass('open');
     $(this).siblings().toggleClass('show');
