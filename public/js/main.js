@@ -2,9 +2,9 @@ $(window).load(function(){
     setTimeout(function(){
         $('#preloader').addClass('hide');
         $('body').css('overflow', 'visible');
-    }, 2000);
+    }, 1000);
 });
-
+    
 $('.Hamburguer').click(function(){
     $(this).toggleClass('open');
     $(this).siblings().toggleClass('show');
