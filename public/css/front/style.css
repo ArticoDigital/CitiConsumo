@@ -1032,4 +1032,8 @@ body.Register {
   margin: 3em 0em;
   text-align: center; }
 
+.orange-text {
+  color: #f5b019 !important;
+  text-shadow: 2px 2px 1px black; }
+
 /*# sourceMappingURL=style.css.map */

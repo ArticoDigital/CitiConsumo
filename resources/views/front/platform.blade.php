@@ -16,7 +16,7 @@
 
         <nav class="row col-10 offset-2 end">
             <ul class="Menu row between">
-                <li><a href="">Postula tu servicio</a></li>
+                <li><a href="" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
                     <li><a href="">Entrar</a></li>
                 @else
