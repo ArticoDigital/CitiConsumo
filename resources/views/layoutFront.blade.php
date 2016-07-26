@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}">
     @yield('styles')
 </head>
-<body>
+<body class="{{Request::route()->getName()}}">
 <div id="preloader">
     <figure class="image">
         <svg width="100%" height="100%" viewBox="0 0 566 331" xmlns="http://www.w3.org/2000/svg">
