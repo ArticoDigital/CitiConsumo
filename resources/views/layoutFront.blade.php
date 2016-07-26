@@ -37,7 +37,7 @@
     <div class="BarNav row middle between">
         <a href="{{url('/')}}" class="col-2">
             <figure class="Logo">
-                <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
+                    <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
             </figure>
         </a>
         <nav class="row col-10 end">

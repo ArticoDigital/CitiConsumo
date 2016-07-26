@@ -1,4 +1,53 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,800);
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Bold.eot");
+  src: url("../fonts/SourceSansPro-Bold.eot?#iefix") format("embedded-opentype"); }
+
+url('../fonts/SourceSansPro-Bold.woff') format('woff'),
+url('../fonts/SourceSansPro-Bold.ttf') format('truetype') {
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-It.eot");
+  src: url("../fonts/SourceSansPro-It.eot?#iefix") format("embedded-opentype"); }
+
+url('../fonts/SourceSansPro-It.woff') format('woff'),
+url('../fonts/SourceSansPro-It.ttf') format('truetype') {
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Regular.eot");
+  src: url("../fonts/SourceSansPro-Regular.eot?#iefix") format("embedded-opentype"); }
+
+url('../fonts/SourceSansPro-Regular.woff') format('woff'),
+url('../fonts/SourceSansPro-Regular.ttf') format('truetype') {
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-ExtraLight.eot");
+  src: url("../fonts/SourceSansPro-ExtraLight.eot?#iefix") format("embedded-opentype"); }
+
+url('../fonts/SourceSansPro-ExtraLight.woff') format('woff'),
+url('../fonts/SourceSansPro-ExtraLight.ttf') format('truetype') {
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../fonts/SourceSansPro-Semibold.eot");
+  src: url("../fonts/SourceSansPro-Semibold.eot?#iefix") format("embedded-opentype"); }
+
+url('../fonts/SourceSansPro-Semibold.woff') format('woff'),
+url('../fonts/SourceSansPro-Semibold.ttf') format('truetype') {
+  font-weight: 600;
+  font-style: normal; }
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -513,7 +562,7 @@ textarea {
 
 body {
   background: #fff;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Source Sans Pro";
   color: #000;
   overflow-x: hidden; }
 
@@ -531,7 +580,7 @@ p {
     margin: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Source Sans Pro";
   font-weight: 700;
   text-transform: normal;
   color: #000; }

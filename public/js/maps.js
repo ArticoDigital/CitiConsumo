@@ -28,11 +28,11 @@ function initMap() {
     var mapOptions = {
         zoom: 18,
         center: myLatlng,
-
+        disableDefaultUI: true,
         //scrollwheel: false,
         styles: styleMap
     };
-
+    $('iframe').contents().find('.login-control').css('opacity','0');
 
     map = new google.maps.Map(document.getElementById("Map"), mapOptions);
     if (navigator.geolocation) {
