@@ -549,7 +549,8 @@ body {
   background: #fff;
   font-family: "Source Sans Pro";
   color: #000;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  font-size: 17px; }
 
 a {
   color: initial;
@@ -663,7 +664,7 @@ body {
   100% {
     fill: white; } }
 
-body.Register {
+body.Register, body.Login {
   background: url("../../img/register.jpg") center;
   background-size: cover;
   min-height: 100vh;
@@ -672,22 +673,25 @@ body.Register {
   color: #fff;
   font-family: 'Open Sans', sans-serif; }
 
+body.Login {
+  background: url("../../img/Bogota-2.jpg") center; }
+
 .Register-Logo {
   text-align: center; }
 
-.Register .errors {
+.Register .errors, .Login .errors {
   background: #ee6666;
   padding: 0.625rem;
   margin-top: 0.9375rem;
   font-weight: 100;
   font-size: 0.875rem; }
-  .Register .errors div {
+  .Register .errors div, .Login .errors div {
     margin: 0.125rem; }
 
-.Register .Header {
+.Register .Header, .Login .Header {
   min-height: inherit; }
 
-.Register h1 {
+.Register h1, .Login h1 {
   color: white;
   font-family: 'Open Sans', sans-serif !important;
   text-align: center;
@@ -695,7 +699,7 @@ body.Register {
   font-weight: 400;
   margin-bottom: 0; }
 
-.Register h2 {
+.Register h2, .Login h2 {
   font-size: 0.875rem;
   color: white;
   font-family: 'Open Sans', sans-serif !important;
@@ -705,22 +709,22 @@ body.Register {
   margin: 1rem auto 1.2rem;
   width: 30rem; }
 
-.Register h3 {
+.Register h3, .Login h3 {
   text-align: center;
   font-family: 'Open Sans', sans-serif !important;
   font-weight: 300; }
 
-.Register main {
+.Register main, .Login main {
   max-width: 70rem;
   margin: auto; }
 
-.Register form {
+.Register form, .Login form {
   background: white;
   padding: 1rem 2rem;
   margin: auto;
   border-radius: 0.25rem;
   max-width: 16rem; }
-  .Register form button {
+  .Register form button, .Login form button {
     margin: 1rem auto;
     padding: 0.75rem 3rem;
     display: block;
@@ -731,38 +735,38 @@ body.Register {
     font-weight: 300;
     font-family: 'Open Sans', sans-serif !important;
     cursor: pointer; }
-  .Register form label {
+  .Register form label, .Login form label {
     color: #aeaeae;
     display: block;
     font-size: 0.75rem; }
-  .Register form input {
+  .Register form input, .Login form input {
     border: none;
     border-bottom: 0.0625rem solid #9f9e9b;
     width: 100%;
     margin: .5rem 0rem 1rem;
     padding: 0 0 0.125rem 0.125rem; }
-    .Register form input:focus {
+    .Register form input:focus, .Login form input:focus {
       outline: 0; }
 
-.Register .Register-social {
+.Register .Register-social, .Login .Register-social {
   margin: 1.5rem 3rem;
   display: block; }
-  .Register .Register-social path {
+  .Register .Register-social path, .Login .Register-social path {
     fill: #004f8f; }
 
-.Register .Register-label {
+.Register .Register-label, .Login .Register-label {
   position: relative; }
-  .Register .Register-label svg {
+  .Register .Register-label svg, .Login .Register-label svg {
     position: absolute;
     top: 1.125rem;
     width: 1.5rem;
     right: 0;
     cursor: pointer; }
 
-.Register #Eye-white {
+.Register #Eye-white, .Login #Eye-white {
   transition: all 0.3s; }
 
-.Register .openEye {
+.Register .openEye, .Login .openEye {
   fill: white; }
 
 #Map {

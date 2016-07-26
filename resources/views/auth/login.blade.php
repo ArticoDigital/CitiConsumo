@@ -1,6 +1,20 @@
-@extends('layoutFront')
+@extends('layoutLogin')
 
 @section('content')
-    <h1>Login</h1>
-    <span>ruta: localhost/login</span>
+@endsection
+
+@section('scripts')
+    <script>
+        $('#preloader').addClass('hide');
+        $('body').css('overflow', 'visible');
+
+        $('.Hamburguer').click(function(){
+            $(this).toggleClass('open');
+            $(this).siblings().toggleClass('show');
+            if($(this).hasClass('open'))
+                $('body').css('overflow', 'hidden');
+            else
+                $('body').css('overflow', 'visible');
+        });
+    </script>
 @endsection

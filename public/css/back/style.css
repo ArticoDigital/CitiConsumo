@@ -549,7 +549,8 @@ body {
   background: #fff;
   font-family: "Source Sans Pro";
   color: #000;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  font-size: 17px; }
 
 a {
   color: initial;

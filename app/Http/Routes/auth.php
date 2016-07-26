@@ -1,9 +1,13 @@
 <?php
 
-Route::get('login', function(){
+Route::get('login',[ function(){
     return view('auth.login');
-});
-
+}, 'as' => 'login']);
+Route::post('login', [
+        'uses' => 'Auth\AuthController@postLogin',
+        'as' => 'login'
+    ]
+);
 Route::get('registro', ['as'=>'register', function(){
     return view('auth.register');
 }]);
