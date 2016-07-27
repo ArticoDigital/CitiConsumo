@@ -51,7 +51,7 @@
             </select>
         </label>
         <label for="date" class="col-4">
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off">
         </label>
         <button class="Button" style="margin: 65px 0">Buscar</button>
     </form>
@@ -69,11 +69,11 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
-        $('#date').daterangepicker(getConfig('single'),
-                function(start, end, label) {
-                    console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-                }
-        );
+        var $date = $('#date');
+        $date.daterangepicker(getConfig('single'));
+        $date.on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY'));
+        });
     </script>
 @endsection
 @section('styles')

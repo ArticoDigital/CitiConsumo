@@ -1663,49 +1663,26 @@ function getToday(){
 }
 
 function getConfig(type){
-    if(type == 'multiple'){
-        return {
-            "timePicker": false,
-            "singleDatePicker": false,
-            "autoApply": true,
-            "locale": {
+    var data = {
+        'autoUpdateInput' : false,
+        'timePicker': false,
+        'locale' : {
             "format": "MM/DD/YYYY",
-                "separator": " - ",
-                "applyLabel": "Apply",
-                "cancelLabel": "Cancel",
-                "fromLabel": "From",
-                "toLabel": "To",
-                "customRangeLabel": "Custom",
-                "weekLabel": "W",
-                "daysOfWeek": getDays(),
-                "monthNames": getMonths(),
-                "firstDay": 1
+            "separator": " - ",
+            "daysOfWeek": getDays(),
+            "monthNames": getMonths()
         },
-            "startDate": getToday(),
-            "endDate": getToday(),
-            "minDate": getToday(),
-            "opens": "center"
-        }
+        'startDate': false,
+        'minDate' : getToday(),
+        'opens': 'center'
+    };
+    if(type == 'multiple') {
+        data['autoApply'] = true;
+        data['endDate'] = getToday();
     }
     else{
-        return {
-            "timePicker": false,
-            "singleDatePicker": true,
-            "locale": {
-                "format": "MM/DD/YYYY",
-                "separator": " - ",
-                "applyLabel": "Apply",
-                "cancelLabel": "Cancel",
-                "fromLabel": "From",
-                "toLabel": "To",
-                "customRangeLabel": "Custom",
-                "weekLabel": "W",
-                "daysOfWeek": getDays(),
-                "monthNames": getMonths(),
-                "firstDay": 1
-            },
-            "minDate": getToday(),
-            "opens": "center"
-        }
+        data['singleDatePicker'] = true;
     }
+
+    return data;
 }
