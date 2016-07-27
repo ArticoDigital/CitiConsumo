@@ -50,7 +50,7 @@
             </select>
         </label>
         <label for="date" class="col-4">
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha">
+            <input class="dateMultiple" id="date" name="date" type="text" placeholder="Fecha">
         </label>
         <button class="Button" style="margin: 65px 0">Buscar</button>
     </form>
@@ -63,11 +63,19 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/datetimepicker.js')}}"></script>
     <script src="{{asset('js/select2.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
+    <script>
+        $('#date').daterangepicker(getConfig('multiple'),
+            function(start, end, label) {
+                console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+            }
+        );
+    </script>
 @endsection
 
 @section('styles')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-    <link href="{{asset('css/datetimepicker.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
 @endsection
