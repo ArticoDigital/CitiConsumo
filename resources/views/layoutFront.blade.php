@@ -37,7 +37,7 @@
                 <li><a href="" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
                     <li><a href="{{route('register')}}">Registrate</a></li>
-                    <li><a href="">Entrar</a></li>
+                    <li><a href="{{route('login')}}">Entrar</a></li>
                 @else
                     <li><a href="#" onclick="return false">Bienvenid@ {{Auth::user()->name}}</a></li>
                 @endif
@@ -51,7 +51,7 @@
                         <nav>
                             <ul class="col-4">
                                 <li><a href="#">QUIENES SOMOS?</a></li>
-                                <li><a href="#">PREGUNTAS FRECUENTES</a></li>
+                                <li><a href="#">PREGUNTAS FRECUENTES </a></li>
                                 <li><a href="#">AYUDANOS A MEJORAR</a></li>
                                 <li><a href="#">CONTACTANOS</a></li>
                                 <li><a href="#">TESTIMONIOS</a></li>
@@ -83,7 +83,7 @@
             <ul class="Menu-footer row center no-padding">
                 <li><a href="{{url('/')}}">Home</a></li>
                 <li><a href="#">Nosotros</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Preguntas frecuentes</a></li>
                 <li><a href="#">Testimonios</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>

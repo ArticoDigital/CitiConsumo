@@ -14,19 +14,32 @@
 <header class="Header">
     <div class="BarNav row middle between">
 
-        <nav class="row col-10 offset-2 end">
+        <nav class="row col-12 end">
             <ul class="Menu row between">
                 <li><a href="" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
-                    <li><a href="">Entrar</a></li>
+                    <li><a href="{{route('register')}}">Registrate</a></li>
+                    <li><a href="{{route('login')}}">Entrar</a></li>
                 @else
-                    <li>Bienvenid@ {{Auth::user()->name}}</li>
+                    <li><a href="#" onclick="return false">Bienvenid@ {{Auth::user()->name}}</a></li>
                 @endif
-
-                <li class="icon">
-                    <a href="{{url('/')}}">
-                        <img src="{{asset('img/menu.svg')}}" alt="menu">
-                    </a>
+                <li>
+                    <div class="Menu-fixed">
+                        <a href="#" class="Hamburguer ">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                        <nav>
+                            <ul class="col-4">
+                                <li><a href="#">QUIENES SOMOS?</a></li>
+                                <li><a href="#">PREGUNTAS FRECUENTES </a></li>
+                                <li><a href="#">AYUDANOS A MEJORAR</a></li>
+                                <li><a href="#">CONTACTANOS</a></li>
+                                <li><a href="#">TESTIMONIOS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -77,8 +90,9 @@
 </figure>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+<script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/maps.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap"
         async defer></script>

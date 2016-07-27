@@ -785,10 +785,14 @@ body.Login {
 .Platform {
   max-height: 100vh;
   overflow-y: hidden; }
+  .Platform .Hamburguer span, .Platform .Hamburguer span:after {
+    background: #002444; }
+  .Platform .orange-text {
+    text-shadow: 0 0 0 black; }
   .Platform .Header {
     position: relative;
     min-height: inherit; }
-    .Platform .Header a {
+    .Platform .Header .Menu > li > a {
       color: #002444; }
 
 .Container {
