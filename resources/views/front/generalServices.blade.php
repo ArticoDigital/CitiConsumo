@@ -38,10 +38,12 @@
     </div>
 
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'oficios')}}">
-        <label for="place" class="col-4">
+        <label for="place" class="col-4 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
             <input id="place" name="place" type="text" placeholder="Lugar">
         </label>
-        <label for="service" class="col-4">
+        <label for="service" class="col-4 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/service.svg')}}" alt="service"></span>
             <select class="js-example-basic-single" id="service" name="service">
                 <option value="" selected>Servicio</option>
                 @foreach($services as $service)
@@ -49,8 +51,9 @@
                 @endforeach
             </select>
         </label>
-        <label for="date" class="col-4">
-            <input id="date" name="date" type="text" placeholder="Fecha" autocomplete="off">
+        <label for="date" class="col-4 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
+            <input id="date" name="date" type="text" autocomplete="off" placeholder="Fecha">
         </label>
         <button class="Button" style="margin: 65px 0">Buscar</button>
     </form>
@@ -67,6 +70,8 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
+        $(".js-example-basic-single").select2({width: '100%'});
+
         var $date = $('#date');
         $date.daterangepicker(getConfig('multiple'));
         $date.on('apply.daterangepicker', function(ev, picker) {
@@ -76,6 +81,6 @@
 @endsection
 
 @section('styles')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
 @endsection

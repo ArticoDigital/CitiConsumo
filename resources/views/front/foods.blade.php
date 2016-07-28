@@ -37,12 +37,12 @@
         </a>
     </div>
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
-        <label for="place" class="col-4">
-            <div id="locationField">
-                <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text">
-            </div>
+        <label for="place" class="col-4 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
+            <input id="autocomplete" placeholder="Lugar" onFocus="geolocate()" type="text">
         </label>
-        <label for="food_type" class="col-4">
+        <label for="food_type" class="col-4 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
             <select class="js-example-basic-single" id="food_type" name="food_type">
                 <option value="" selected>Tipo de comida</option>
                 @foreach($foods as $food)
@@ -50,7 +50,8 @@
                 @endforeach
             </select>
         </label>
-        <label for="date" class="col-4">
+        <label for="date" class="col-4 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off">
         </label>
         <button class="Button" style="margin: 65px 0">Buscar</button>
@@ -69,6 +70,8 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
+        $(".js-example-basic-single").select2({width: '100%'});
+
         var $date = $('#date');
         $date.daterangepicker(getConfig('single'));
         $date.on('apply.daterangepicker', function(ev, picker) {
@@ -77,6 +80,6 @@
     </script>
 @endsection
 @section('styles')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
 @endsection
