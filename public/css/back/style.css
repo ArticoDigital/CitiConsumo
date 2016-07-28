@@ -612,6 +612,21 @@ img {
 
 .Form-Control {
   position: relative; }
+  .Form-Control .name {
+    font-size: .97rem;
+    position: absolute;
+    color: #AAA;
+    width: calc(100% - 30px);
+    height: 40px;
+    text-align: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 26px;
+    background: white; }
   .Form-Control .icon {
     position: absolute;
     z-index: 2;
@@ -633,17 +648,6 @@ img {
     color: black;
     height: 40px;
     text-align: center; }
-  .Form-Control .text {
-    width: 100%;
-    height: 40px;
-    text-align: center;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-right: 26px; }
 
 .Button {
   width: 16.25rem;

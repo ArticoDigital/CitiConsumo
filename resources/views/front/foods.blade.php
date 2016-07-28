@@ -43,8 +43,9 @@
         </label>
         <label for="food_type" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
-            <select class="js-example-basic-single" id="food_type" name="food_type">
-                <option value="" selected>Tipo de comida</option>
+            <span class="name">Tipo de Comida</span>
+            <select class="js-example-basic-multiple" id="food_type" name="food_type" multiple>
+                <option value=""></option>
                 @foreach($foods as $food)
                     <option value="{{$food->id}}">{{$food->name}}</option>
                 @endforeach
@@ -70,7 +71,7 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
-        $(".js-example-basic-single").select2({width: '100%'});
+        $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');
         $date.daterangepicker(getConfig('single'));

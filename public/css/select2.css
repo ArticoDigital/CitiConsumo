@@ -41,7 +41,11 @@
     overflow: hidden;
     padding-left: 8px;
     text-overflow: ellipsis;
-    white-space: nowrap; }
+    white-space: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
 .select2-container .select2-search--inline {
     float: left; }
 .select2-container .select2-search--inline .select2-search__field {
@@ -137,7 +141,7 @@
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #444;
     line-height: 28px;
-    font-size: .97rem;
+    font-size: 1rem;
 }
 .select2-container--default .select2-selection--single .select2-selection__clear {
     cursor: pointer;
@@ -183,7 +187,7 @@
 .select2-container--default .select2-selection--multiple {
     background-color: white;
     border: 1px solid #aaa;
-    border-radius: 4px;
+    height: 41px;
     cursor: text; }
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
     box-sizing: border-box;
@@ -211,7 +215,11 @@
     float: left;
     margin-right: 5px;
     margin-top: 5px;
-    padding: 0 5px; }
+    padding: 0 5px;
+    font-size: 1rem;
+    color: #555;
+    overflow: hidden;
+}
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     color: #999;
     cursor: pointer;
@@ -399,7 +407,7 @@
 .select2-container--classic .select2-selection--multiple {
     background-color: white;
     border: 1px solid #aaa;
-    border-radius: 4px;
+    height: 41px;
     cursor: text;
     outline: 0; }
 .select2-container--classic .select2-selection--multiple:focus {
@@ -407,7 +415,9 @@
 .select2-container--classic .select2-selection--multiple .select2-selection__rendered {
     list-style: none;
     margin: 0;
-    padding: 0 5px; }
+    padding: 0 5px;
+    overflow-x: scroll;
+}
 .select2-container--classic .select2-selection--multiple .select2-selection__clear {
     display: none; }
 .select2-container--classic .select2-selection--multiple .select2-selection__choice {
@@ -491,3 +501,7 @@
 
 .select2-container--classic.select2-container--open .select2-dropdown {
     border-color: #5897fb; }
+
+.select2-selection.select2-selection--multiple{
+    background: transparent;
+}

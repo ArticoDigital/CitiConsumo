@@ -1346,7 +1346,6 @@
 
                 BaseSelection.prototype.bind = function (container, $container) {
                     var self = this;
-
                     var id = container.id + '-container';
                     var resultsId = container.id + '-results';
 
@@ -1648,14 +1647,15 @@
                     this.clear();
 
                     if (data.length === 0) {
+                        $('.select2-selection.select2-selection--multiple').css('background', 'transparent');
                         return;
                     }
 
+                    $('.select2-selection.select2-selection--multiple').css('background', 'white');
                     var $selections = [];
 
                     for (var d = 0; d < data.length; d++) {
                         var selection = data[d];
-
                         var $selection = this.selectionContainer();
                         var formatted = this.display(selection, $selection);
 
