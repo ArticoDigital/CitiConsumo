@@ -45,7 +45,6 @@
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
             <span class="name">Tipo de Comida</span>
             <select class="js-example-basic-multiple" id="food_type" name="food_type" multiple>
-                <option value=""></option>
                 @foreach($foods as $food)
                     <option value="{{$food->id}}">{{$food->name}}</option>
                 @endforeach

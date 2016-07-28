@@ -65,7 +65,7 @@
     @yield('Services')
     <section class="Services middle">
         @yield('Header')
-        <div class="Arrow"><a href="#"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>
+        <div class="Arrow"><a href="#" onclick="return false;"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>
     </section>
     <div class="backgroundVideo">
         <video class="cover" width="960" height="540" autoplay loop>
