@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link rel="stylesheet" href="{{asset('back/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/back/style.css')}}">
     @yield('styles')
 </head>
 <body>
@@ -11,6 +11,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{asset('js/main.js')}}"></script>
     @yield('scripts')
-    <script src="{{asset('js/config.js')}}"></script>
 </body>
 </html>

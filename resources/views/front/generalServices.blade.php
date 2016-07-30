@@ -40,7 +40,13 @@
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'oficios')}}">
         <label for="place" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="place" name="place" type="text" placeholder="Lugar">
+            <input id="autocomplete" name="place" type="text" placeholder="Lugar" onFocus="geolocate()">
+            <input class="field" id="street_number" type="hidden"> <!-- Direccion -->
+            <input class="field" id="route" type="hidden"> <!-- Direccion -->
+            <input class="field" id="locality" type="hidden"> <!-- Ciudad -->
+            <input class="field" id="administrative_area_level_1" type="hidden"> <!-- Estado -->
+            <input class="field" id="postal_code" type="hidden"> <!-- Codigo Postal -->
+            <input class="field" id="country" type="hidden"> <!-- Pais -->
         </label>
         <label for="service" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/service.svg')}}" alt="service"></span>
@@ -78,6 +84,8 @@
             $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
         });
     </script>
+    <script src="{{asset('js/address.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
 @endsection
 
 @section('styles')

@@ -39,7 +39,13 @@
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
         <label for="place" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="autocomplete" placeholder="Lugar" onFocus="geolocate()" type="text">
+            <input id="autocomplete" name="place" type="text" placeholder="Lugar" onFocus="geolocate()">
+            <input class="field" id="street_number" type="hidden"> <!-- Direccion -->
+            <input class="field" id="route" type="hidden"> <!-- Direccion -->
+            <input class="field" id="locality" type="hidden"> <!-- Ciudad -->
+            <input class="field" id="administrative_area_level_1" type="hidden"> <!-- Estado -->
+            <input class="field" id="postal_code" type="hidden"> <!-- Codigo Postal -->
+            <input class="field" id="country" type="hidden"> <!-- Pais -->
         </label>
         <label for="food_type" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
@@ -65,7 +71,6 @@
 @endsection
 
 @section('scripts')
-    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="{{asset('js/select2.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
@@ -78,6 +83,8 @@
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
         });
     </script>
+    <script src="{{asset('js/address.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">

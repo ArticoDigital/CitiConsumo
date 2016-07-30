@@ -24,7 +24,3 @@ Route::get('plataforma/{service}', [
     'as' => 'platform',
     'uses' => 'MapController@index'
 ]);
-
-Route::get('prueba', function(){
-    return view('front.prueba');
-});
