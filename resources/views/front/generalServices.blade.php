@@ -79,7 +79,7 @@
         $(".js-example-basic-single").select2({width: '100%'});
 
         var $date = $('#date');
-        $date.daterangepicker(getConfig('multiple'));
+        $date.daterangepicker(getConfig('single'));
         $date.on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
         });
