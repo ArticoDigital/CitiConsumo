@@ -24,3 +24,8 @@ Route::get('plataforma/{service}', [
     'as' => 'platform',
     'uses' => 'MapController@index'
 ]);
+
+Route::get('postular-servicio', [
+    'as' => 'addService',
+    'uses' => 'HomeController@addService'
+]);

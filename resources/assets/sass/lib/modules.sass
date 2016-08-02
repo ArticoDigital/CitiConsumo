@@ -56,7 +56,18 @@
   text-transform: uppercase
   font-size: 1.1rem
   font-weight: 200
-  letter-spacing: 2px
   cursor: pointer
+  &.small
+    width: auto
+    height: auto
+    border-radius: 5px
+    padding: 3px 15px
+    font-weight: 400
   &.yellow
     background: $yellow
+  &.right
+    float: right
+  &.disabled
+    background: gray
+    opacity: .5
+    cursor: default

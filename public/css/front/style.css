@@ -596,6 +596,9 @@ li {
 img {
   width: 100%; }
 
+figure figcaption {
+  text-align: center; }
+
 .no-padding {
   padding: 0; }
 
@@ -659,10 +662,21 @@ img {
   text-transform: uppercase;
   font-size: 1.1rem;
   font-weight: 200;
-  letter-spacing: 2px;
   cursor: pointer; }
+  .Button.small {
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    padding: 3px 15px;
+    font-weight: 400; }
   .Button.yellow {
     background: #f6b11e; }
+  .Button.right {
+    float: right; }
+  .Button.disabled {
+    background: gray;
+    opacity: .5;
+    cursor: default; }
 
 body {
   overflow: hidden; }
@@ -1088,6 +1102,59 @@ body.Login {
   .Footer .Menu-footer li {
     padding: 0 15px;
     border-right: 1px solid #fff; }
+
+svg#Steps .gray1 {
+  cursor: pointer; }
+
+svg#Steps .gray2,
+svg#Steps .gray3,
+svg#Steps .gray4 {
+  cursor: pointer;
+  -webkit-filter: url(#filter);
+  filter: url(#filter); }
+
+svg#Steps .active {
+  -webkit-filter: none !important;
+  filter: none !important; }
+
+.Steps {
+  overflow: hidden; }
+  .Steps .Service-image {
+    text-align: center;
+    width: 13.75rem; }
+  .Steps .StepsForm {
+    width: 400%;
+    position: relative;
+    transition: all .5s ease;
+    left: 0;
+    padding: 0.9375rem 0; }
+  .Steps .Step {
+    width: 25%;
+    height: 100%;
+    float: left;
+    margin-top: 1.875rem; }
+  .Steps #Step1 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .Steps #Step1 input {
+      display: none; }
+    .Steps #Step1 label {
+      opacity: .5;
+      cursor: pointer; }
+
+.StepText {
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px 0; }
+
+#foods:checked ~ [for="foods"],
+#pets:checked ~ [for="pets"],
+#service:checked ~ [for="service"] {
+  opacity: 1; }
 
 div.profile-photo-light {
   display: none; }

@@ -34,7 +34,7 @@
         </a>
         <nav class="row col-10 end">
             <ul class="Menu row between">
-                <li><a href="" class="orange-text">Postula tu servicio</a></li>
+                <li><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
                     <li><a href="{{route('register')}}">Registrate</a></li>
                     <li><a href="{{route('login')}}">Entrar</a></li>

@@ -29,4 +29,8 @@ class HomeController extends Controller
         $foods = FoodType::all();
         return view('front.foods', ['foods' => $foods]);
     }
+
+    public function addService(){
+        return view('front.addService');
+    }
 }
