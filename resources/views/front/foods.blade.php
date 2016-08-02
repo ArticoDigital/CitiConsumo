@@ -66,7 +66,14 @@
 
 @section('content')
     <section class="HowItWorks">
+    <span class="how_title">¿Cómo funciona?</span>
+        <div>
         <img src="{{url('img/cocina_how.svg')}}" alt="">
+         </div>
+        <div style="clear:both;"></div>
+        <div class="div_box_center">
+            <a class="btn_blue" href="#">VER VIDEO</a>
+        </div>
     </section>
 @endsection
 
