@@ -66,7 +66,7 @@
         </div>
         <div style="clear:both;"></div>
         <div class="div_box_center">
-            <a class="btn_blue" href="#">Ver Video</a>
+            <a class="btn_blue" href="#">VER VIDEO</a>
         </div>
     </section>
 @endsection
