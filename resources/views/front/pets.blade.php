@@ -39,13 +39,9 @@
     <form class="Form row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
         <label for="place" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="autocomplete" name="place" type="text" placeholder="Lugar" onFocus="geolocate()">
-            <input class="field" id="street_number" type="hidden"> <!-- Direccion -->
-            <input class="field" id="route" type="hidden"> <!-- Direccion -->
-            <input class="field" id="locality" type="hidden"> <!-- Ciudad -->
-            <input class="field" id="administrative_area_level_1" type="hidden"> <!-- Estado -->
-            <input class="field" id="postal_code" type="hidden"> <!-- Codigo Postal -->
-            <input class="field" id="country" type="hidden"> <!-- Pais -->
+            <input id="autocomplete" name="place" type="text" placeholder="Lugar" >
+            <input class="field" id="lat" name="lat" type="hidden">
+            <input class="field" id="lng" name="lng" type="hidden">
         </label>
         <label for="date" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>

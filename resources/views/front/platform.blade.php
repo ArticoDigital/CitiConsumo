@@ -11,6 +11,9 @@
 </head>
 <body class="Platform">
 <div id="Map"></div>
+<input type="hidden" value="{{$dataMap['lng']}}" id="lat">
+<input type="hidden" value="{{$dataMap['lat']}}" id="lng">
+
 <header class="Header">
     <div class="BarNav row middle between">
 

@@ -23,10 +23,10 @@ styleMap = [{
 }, {"featureType": "road", "elementType": "geometry", "stylers": [{"lightness": 57}]}]
 
 function initMap() {
-    var myLatlng = new google.maps.LatLng(4.6008543, -74.0705667);
+    var myLatlng = new google.maps.LatLng($('#lng').val(), $('#lat').val());
 
     var mapOptions = {
-        zoom: 18,
+        zoom: 17,
         center: myLatlng,
         disableDefaultUI: true,
         //scrollwheel: false,
@@ -41,6 +41,12 @@ function initMap() {
             console.log(position.coords.latitude + " Longitud: " + position.coords.longitude) ;
         }
     }
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: 'Hello World!'
+    });
+
 
 }
 
