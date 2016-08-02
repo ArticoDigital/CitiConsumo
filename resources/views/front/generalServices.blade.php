@@ -40,13 +40,9 @@
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'oficios')}}">
         <label for="place" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="autocomplete" name="place" type="text" placeholder="Lugar" onFocus="geolocate()">
-            <input class="field" id="street_number" type="hidden"> <!-- Direccion -->
-            <input class="field" id="route" type="hidden"> <!-- Direccion -->
-            <input class="field" id="locality" type="hidden"> <!-- Ciudad -->
-            <input class="field" id="administrative_area_level_1" type="hidden"> <!-- Estado -->
-            <input class="field" id="postal_code" type="hidden"> <!-- Codigo Postal -->
-            <input class="field" id="country" type="hidden"> <!-- Pais -->
+            <input id="autocomplete" name="place" type="text" placeholder="Lugar" >
+            <input class="field" id="lat" name="lat" type="hidden">
+            <input class="field" id="lng" name="lng" type="hidden">
         </label>
         <label for="service" class="col-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/service.svg')}}" alt="service"></span>
