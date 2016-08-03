@@ -277,6 +277,13 @@
                 pReader.readAsDataURL(file);
             });
         });
+
+        $(document).keydown(function(e) {
+            if (e.keyCode == 9) {  //tab pressed
+                e.preventDefault(); // stops its action
+            }
+        })
+
     </script>
 @endsection
 
