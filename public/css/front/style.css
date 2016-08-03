@@ -1161,6 +1161,9 @@ svg#Steps .active {
   -webkit-filter: none !important;
   filter: none !important; }
 
+svg#Steps .disabled {
+  cursor: default !important; }
+
 .Steps {
   overflow: hidden; }
   .Steps .Service-image {
