@@ -29,3 +29,8 @@ Route::get('postular-servicio', [
     'as' => 'addService',
     'uses' => 'HomeController@addService'
 ]);
+
+Route::get('subir-archivos', [
+    'as' => 'uploadFiles',
+    'uses' => 'HomeController@uploadFiles'
+]);
