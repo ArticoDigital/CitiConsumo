@@ -3,38 +3,60 @@
 @section('content')
 <div class="content-form">
         <div class="left-block"><img src="{{url('img/bg-formulario.svg')}}" alt="">
-        <p class="text-over">Para ser parte de cityconsumo y puedas ofrecer tus servicios , necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servcios.</p>
+        <p class="text-over">Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servcios.</p>
         </div>
         <div class="block-form">
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <div class="fileUpload">
-            RUT:<br>
+            <section class="DropFilesSmall">
+                        <label class="DropFiles-inside" for="RutFile">
+                            <span class="rectangle">Selecciona el archivo</span> <span class="text_file">Arrastra aquí el RUT</span>
+                            <input type="file"  class="drop-files-input" name="RutFile" id="RutFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                        </label>
+            </section>
+
+            <section class="DropFilesSmall">
+                        <label class="DropFiles-inside" for="CCFile">
+                            
+                            <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí la CC escaneada</span>
+                           
+                            <input type="file"  class="drop-files-input" name="CCFile" id="CCFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                        </label>
+            </section>
             
-            <input type="file" name="RUTFile" id="RutFile">
-            <br><br>
-            Cédula de ciudadania escaneada:<br>
-            <input type="file" name="CCFile" id="CCFile">
-            <br><br>
-            Certificado bancario:<br>
-            <input type="file" name="BankFile" id="BankFile">
-            <br><br>
-            Recibo servicios públicos:<br>
-            <input type="file" name="ServicesFile" id="ServicesFile">
-            <br><br>
-            Antecedentes procuraduría:<br>
-            <input type="file" name="HistoryFile" id="HistoryFile">
-            <br><br>
-            <input type="submit" value="Enviar" name="submit">
+            <section class="DropFilesSmall">
+                        <label class="DropFiles-inside" for="BankFile">
+                            <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí el Certificado bancario</span>
+                            
+                          
+                            <input type="file"  class="drop-files-input" name="BankFile" id="BankFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                        </label>
+            </section>
+
+            <section class="DropFilesSmall">
+                        <label class="DropFiles-inside" for="ServicesFile">
+                            <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí el Recibo servicios públicos</span>
+                            
+                            <input type="file"  class="drop-files-input" name="ServicesFile" id="ServicesFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                        </label>
+            </section>
+
+            <section class="DropFilesSmall">
+                        <label class="DropFiles-inside" for="HistoryFile">
+                            <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí el antecedente de procuraduría</span>
+                            
+                            
+                            <input type="file"  class="drop-files-input" name="HistoryFile" id="HistoryFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                        </label>
+            </section>
+            <div style="text-align:center">
+            <input type="submit" id="boton-enviar" value="" name="submit">
+            </div>
             </div>
             
             
         </form>
         
-
-       <!-- <div class="">
-            <a class="btn_blue" href="#">VER VIDEO</a>
-        </div>
-        -->
         </div>
         
         <div style="clear:both;"></div>
@@ -46,20 +68,28 @@
 @section('scripts')
     <script src="{{asset('js/select2.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
+    
     <script>
-        $(".js-example-basic-single").select2({width: '100%'});
-
-        var $date = $('#date');
-        $date.daterangepicker(getConfig('multiple'));
-        $date.on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $('.DropFiles-inside').on('dragenter click', function(e){
+            $(this).addClass('Drag');
+        }).on('dragleave dragend mouseout drop', function(e){
+            $(this).removeClass('Drag');
         });
+
+
+        $(".drop-files-input").change(function() {
+                //alert(this.value);
+               // $(this).removeClass('drop-files-input');
+                $( this ).parent().find( '.text_file' ).text(this.value);
+                $( this ).parent().find( '.rectangle' ).css("background-color","green");
+                $( this ).parent().css("border","dashed 2px green");
+//                $(this).find(".text_file").text(this.value);
+            });
+
+      
     </script>
-    <script src="{{asset('js/address.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
+    
 @endsection
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
-    <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
+
 @endsection
