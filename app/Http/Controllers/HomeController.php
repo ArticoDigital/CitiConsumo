@@ -33,4 +33,8 @@ class HomeController extends Controller
     public function addService(){
         return view('front.addService');
     }
+
+    public function uploadFiles(){
+        return view('front.uploadFiles');
+    }
 }

@@ -893,6 +893,10 @@ body.Login {
     font-weight: 400;
     font-size: 1.5rem; }
 
+.logged {
+  min-height: unset !important;
+  background-color: #001F3E; }
+
 .Container {
   margin: auto;
   width: 100%;
@@ -1161,6 +1165,9 @@ svg#Steps .active {
   -webkit-filter: none !important;
   filter: none !important; }
 
+svg#Steps .disabled {
+  cursor: default !important; }
+
 .Steps {
   overflow: hidden; }
   .Steps .Service-image {
@@ -1235,5 +1242,41 @@ div.profile-photo-light {
 .orange-text {
   color: #f5b019 !important;
   text-shadow: 2px 2px 1px black; }
+
+.content-form {
+  max-width: 900px;
+  margin: 0px auto; }
+
+.left-block {
+  float: left;
+  background-color: black;
+  position: relative; }
+
+.text-over {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 44%;
+  padding: 10px; }
+
+.block-form {
+  padding: 20px;
+  float: left; }
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px; }
+
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0); }
 
 /*# sourceMappingURL=style.css.map */
