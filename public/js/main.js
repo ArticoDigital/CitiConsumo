@@ -15,7 +15,5 @@ $('.Hamburguer').click(function(){
 });
 
 $('.Header .Arrow').on('click', function(){
-    
     var position = $('body > section').eq(-1).position().top;
-    $('body').stop().animate({scrollTop:position}, '1000', 'swing');
-});
+    $('body, html').stop(true, true).animate({scrollTop:position}, '1000', 'swing');});
