@@ -151,7 +151,8 @@
                     </g>
                 </g>
             </svg>
-            <form class="StepsForm Form2">
+            <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
+                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                 <article id="Step1" class="Step row">
                     <input type="radio" value="1" id="foods" name="service">
                     <input type="radio" value="2" id="pets" name="service">
@@ -187,7 +188,7 @@
                     </label>
                     <label class="col-12 required" for="description">
                         <span class="text">Descripción</span>
-                        <textarea class="col-12" id="description" name="description">dlsjaldjsa</textarea>
+                        <textarea class="col-12" id="description" name="description"></textarea>
                     </label>
                     <div id="petInputs" class="col-12 row" style="padding-right: 20px">
                         <label class="col-4 required" for="available_foods">
@@ -217,10 +218,25 @@
 
                 </article>
                 <article id="Step3" class="Step">
-                    paso3
+                    <section class="DropFiles">
+                        <label class="DropFiles-inside" for="files">
+                            <figure class="icon" style="width: 40px">
+                                <img src="{{asset('img/icons/images.svg')}}" alt="images">
+                            </figure>
+                            <span>Arrastra aquí los archivos <br> o <br></span>
+                            <span class="rectangle">Selecciona un archivo</span><br>
+                            <span style="font-size: .8rem;">Tamaño máximo de archivo 128 MB.</span>
+                        </label>
+                        <input type="file" id="files" style="display: none;" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
+                    </section>
+                    <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
+                    <section class="FilesPreview" id="result"></section>
+                    <div class="col-12">
+                        <div id="toStep4" class="Button small right disabled" style="margin: 40px 0 20px">Siguiente</div>
+                    </div>
                 </article>
                 <article id="Step4" class="Step">
-                    paso4
+                    <input class="Button" type="submit" value="Crear servicio">
                 </article>
             </form>
         </section>
@@ -228,73 +244,28 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('js/front/steps.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script>
+        $('.FilesPreview').sortable();
+        var filesInput = $("#files");
 
-        /* REMOVER CLASE "DISABLED" */
+        filesInput.on("change", function(e) {
+            var files = e.target.files;
+            var result = $("#result");
 
-        $('#Step1 label').on('click', function(){
-            $('#toStep2, .gray2').removeClass('disabled');
+            $.each(files, function(i, file) {
+                var pReader = new FileReader();
+                console.log(file);
+                pReader.addEventListener("load", function(e){
+                    var pic = e.target;
+                    result.append("<article class='File'><img class='thumbnail' src='" + pic.result + "'/></article>");
+                    show();
+                });
+                pReader.readAsDataURL(file);
+
+            });
         });
-
-        $("#Step2").on('keyup', 'input, textarea', function(){
-            var $StepItems = $("#Step2 input, #Step2 textarea");
-            var flag = true;
-            for(var i = 0; i < $StepItems.length; i++){
-                if($StepItems.eq(i).is('input'))
-                    if(!$StepItems.eq(i).val())
-                        flag = false;
-                else
-                    if($StepItems.eq(i).text())
-                        flag = false;
-            }
-            if(flag) $('#toStep3, .gray3').removeClass('disabled');
-        });
-
-        /* CLIC EN BOTON SIGUIENTE*/
-
-        $('#toStep2').click(function(){
-            nextStep($(this), 2);
-        });
-
-        $('#toStep3').click(function(){
-            nextStep($(this), 3);
-        });
-
-        $('#toStep4').click(function(){
-            nextStep($(this), 4);
-        });
-
-        /* CLIC EN SVG PASO A PASO*/
-
-        $('#Steps').on('click', '[class*="gray"]', function(){
-
-            if($(this).hasClass('gray1')){
-                nextStep($(this), 1);
-            }
-            else if($(this).hasClass('gray2')){
-                nextStep($(this), 2);
-            }
-            else if($(this).hasClass('gray3')){
-                nextStep($(this), 3);
-            }
-            else if($(this).hasClass('gray4')){
-                nextStep($(this), 4);
-            }
-        });
-
-        /* EJECUTAR PASO A PASO */
-        function nextStep(element, step){
-            var $all = $('[class*="gray"]'),
-                $form = $('.StepsForm');
-
-            if(!element.hasClass('disabled')){
-                $all.removeClass('active');
-                $form.css('left', -(step * 100 - 100) + '%');
-                for(var i = 2; i <= step; i++){
-                    $('.gray' + i).addClass('active');
-                }
-            }
-        }
     </script>
 @endsection
 

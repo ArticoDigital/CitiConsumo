@@ -706,6 +706,58 @@ figure figcaption {
     opacity: .5;
     cursor: default; }
 
+.DropFiles {
+  width: 100%;
+  background: #ebebeb;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .DropFiles .DropFiles-inside {
+    padding: 10px;
+    text-align: center;
+    color: gray;
+    cursor: pointer;
+    width: 100%;
+    height: calc(100% - 40px);
+    margin: 20px;
+    border: dashed 3px gray;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .DropFiles .DropFiles-inside span {
+      line-height: 30px; }
+    .DropFiles .DropFiles-inside .rectangle {
+      background: white;
+      border: 1px solid #C3C3C3;
+      padding: 5px 10px;
+      display: inline-block;
+      margin-top: 10px;
+      border-radius: 5px; }
+
+.FilesPreview {
+  overflow: hidden; }
+  .FilesPreview .File {
+    padding: 10px;
+    margin: 20px 20px 0 0;
+    height: 100px;
+    float: left;
+    cursor: move;
+    border: 1px dotted gray;
+    background-color: #fff; }
+    .FilesPreview .File:last-child {
+      margin-right: 0; }
+    .FilesPreview .File img {
+      height: 100%;
+      width: auto; }
+
 body {
   overflow: hidden; }
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use City\Entities\PetBreed;
 use City\Entities\GeneralType;
 use City\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,11 @@ class HomeController extends Controller
 
     public function addService(){
         return view('front.addService');
+    }
+
+    public function newService(Request $request){
+        dd($request->all());
+        return Redirect::route('addService');
     }
 
     public function uploadFiles(){

@@ -101,3 +101,49 @@
     background: gray
     opacity: .5
     cursor: default
+
+.DropFiles
+  width: 100%
+  background: $gray
+  display: flex
+  justify-content: center
+  align-items: center
+  .DropFiles-inside
+    padding: 10px
+    text-align: center
+    color: gray
+    cursor: pointer
+    width: 100%
+    height: calc(100% - 40px)
+    margin: 20px
+    border: dashed 3px gray
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    span
+      line-height: 30px
+    .rectangle
+      background: white
+      border: 1px solid #C3C3C3
+      padding: 5px 10px
+      display: inline-block
+      margin-top: 10px
+      border-radius: 5px
+
+.FilesPreview
+  overflow: hidden
+  .File
+    padding: 10px
+    margin: 20px 20px 0 0
+    height: 100px
+    float: left
+    cursor: move
+    border: 1px dotted gray
+    background-color: $white
+
+    &:last-child
+      margin-right: 0
+    img
+      height: 100%
+      width: auto
