@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}">
     @yield('styles')
 </head>
-<body class="Platform">
-<div id="Map"></div>
+<body class="Platform" >
+<div id="Map" data-image="{{asset('img/cocinaIcon.png')}}"></div>
 <input type="hidden" value="{{$dataMap['lng']}}" id="lat">
 <input type="hidden" value="{{$dataMap['lat']}}" id="lng">
 

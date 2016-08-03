@@ -4,6 +4,7 @@
 var arrayMarkers = new Array;
 var map;
 var position;
+var icon = $('#Map').data('image');
 styleMap = [{
     "featureType": "landscape",
     "elementType": "labels",
@@ -46,10 +47,40 @@ function initMap() {
         map: map,
         title: 'Hello World!'
     });
+    var locations = [
+        ['Daily Record Building', 55.861136, -4.257803],
+        ['The Glasgow School of Art', 55.865958, -4.263405],
+        ['The Hill House', 56.017421, -4.729455],
+        ['House for an Art Lover', 55.847325, -4.313746],
+        ['The Hunterian', 55.871751, -4.288360]
+    ];
 
+    /*infowindow = new google.maps.InfoWindow({
+     size: new google.maps.Size(150,50)
+     });*/
 
+    function setMarkers(locations) {
+        for (var i = 0; i < locations.length; i++) {
+            var location = locations[i];
+
+            var myLatLng = new google.maps.LatLng(parseFloat($('#lng').val()) + (.0005 * (i + 1)), parseFloat($('#lat').val())+ (.0005 * (i + 1)));
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                animation: google.maps.Animation.DROP,
+                map: map,
+                title: location[0],
+                icon:icon
+            });
+
+            // Standard markers - if not using infobox
+            google.maps.event.addListener(marker, "click", function () {
+
+            });
+
+        }
+    }
+    setMarkers(locations);
 }
-
 
 function addMarker(n) {
     var marker = new google.maps.Marker({
