@@ -151,7 +151,7 @@
                     </g>
                 </g>
             </svg>
-            <form style="left:-200%" method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
+            <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                 <article id="Step1" class="Step row">
                     <input type="radio" value="1" id="foods" name="service">
@@ -254,14 +254,14 @@
     <script src="{{asset('js/front/steps.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script>
+        var filesInput = $("#files");
+        $('.FilesPreview').sortable();
+
         $('.DropFiles-inside').on('dragenter click', function(e){
             $(this).addClass('Drag');
         }).on('dragleave dragend mouseout drop', function(e){
             $(this).removeClass('Drag');
         });
-
-        $('.FilesPreview').sortable();
-        var filesInput = $("#files");
 
         filesInput.on("change", function(e) {
             var files = e.target.files;
@@ -275,7 +275,6 @@
                     show();
                 });
                 pReader.readAsDataURL(file);
-
             });
         });
     </script>
