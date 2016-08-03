@@ -151,7 +151,7 @@
                     </g>
                 </g>
             </svg>
-            <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
+            <form style="left:-200%" method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                 <article id="Step1" class="Step row">
                     <input type="radio" value="1" id="foods" name="service">
@@ -221,16 +221,23 @@
                     <section class="DropFiles">
                         <label class="DropFiles-inside" for="files">
                             <figure class="icon" style="width: 40px">
-                                <img src="{{asset('img/icons/images.svg')}}" alt="images">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 36 32">
+                                    <g fill="gray">
+                                        <path d="M34 4h-2v-2c0-1.1-0.9-2-2-2h-28c-1.1 0-2 0.9-2 2v24c0 1.1 0.9 2 2 2h2v2c0 1.1 0.9 2 2 2h28c1.1 0 2-0.9 2-2v-24c0-1.1-0.9-2-2-2zM4 6v20h-1.996c-0.001-0.001-0.003-0.002-0.004-0.004v-23.993c0.001-0.001 0.002-0.003 0.004-0.004h27.993c0.001 0.001 0.003 0.002 0.004 0.004v1.996h-24c-1.1 0-2 0.9-2 2v0zM34 29.996c-0.001 0.001-0.002 0.003-0.004 0.004h-27.993c-0.001-0.001-0.003-0.002-0.004-0.004v-23.993c0.001-0.001 0.002-0.003 0.004-0.004h27.993c0.001 0.001 0.003 0.002 0.004 0.004v23.993z"></path>
+                                        <path d="M30 11c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"></path>
+                                        <path d="M32 28h-24v-4l7-12 8 10h2l7-6z"></path>
+                                    </g>
+                                </svg>
                             </figure>
                             <span>Arrastra aquí los archivos <br> o <br></span>
                             <span class="rectangle">Selecciona un archivo</span><br>
                             <span style="font-size: .8rem;">Tamaño máximo de archivo 128 MB.</span>
+                            <input type="file" id="files" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
                         </label>
-                        <input type="file" id="files" style="display: none;" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
                     </section>
                     <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                     <section class="FilesPreview" id="result"></section>
+
                     <div class="col-12">
                         <div id="toStep4" class="Button small right disabled" style="margin: 40px 0 20px">Siguiente</div>
                     </div>
@@ -247,6 +254,12 @@
     <script src="{{asset('js/front/steps.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script>
+        $('.DropFiles-inside').on('dragenter click', function(e){
+            $(this).addClass('Drag');
+        }).on('dragleave dragend mouseout drop', function(e){
+            $(this).removeClass('Drag');
+        });
+
         $('.FilesPreview').sortable();
         var filesInput = $("#files");
 
@@ -256,7 +269,6 @@
 
             $.each(files, function(i, file) {
                 var pReader = new FileReader();
-                console.log(file);
                 pReader.addEventListener("load", function(e){
                     var pic = e.target;
                     result.append("<article class='File'><img class='thumbnail' src='" + pic.result + "'/></article>");

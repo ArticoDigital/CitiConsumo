@@ -109,6 +109,7 @@
   justify-content: center
   align-items: center
   .DropFiles-inside
+    position: relative
     padding: 10px
     text-align: center
     color: gray
@@ -130,6 +131,20 @@
       display: inline-block
       margin-top: 10px
       border-radius: 5px
+    &.Drag
+      color: $light-blue
+      border-color: $light-blue
+      svg g
+        fill: $light-blue
+    #files
+      opacity: 0
+      position: absolute
+      top: 0
+      left: 0
+      background: red
+      display: block
+      width: 100%
+      height: 100%
 
 .FilesPreview
   overflow: hidden
