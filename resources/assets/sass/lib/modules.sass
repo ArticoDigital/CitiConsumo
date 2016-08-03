@@ -1,17 +1,47 @@
 .no-padding
   padding: 0
 
-.Form
+.Form, .Form2
   width: 100%
   margin: auto
   label
     padding: rem(5) rem(15)
-  input[type='text']
-    font-size: .97rem
+  input[type='text'],
+  input[type='number']
     width: 100%
     height: rem(35)
+  textarea
+    width: 100%
+    scallable: false
+    height: rem(200)
+    padding: rem(10) !important
+
+.Form
+  input[type='text'],
+  input[type='number']
+    font-size: .97rem
     text-align: center
-.Form-Control
+.Form2
+  font-size: 1.2rem
+  label
+    &.required .text:after
+      content: " * "
+      color: $light-blue
+    span.text
+      display: inline-block
+      padding: rem(10) 0
+  input[type='text'],
+  input[type='number'],
+  textarea
+    outline-color: $light-blue
+    background: $gray
+    border: none
+    padding: 0 rem(10)
+
+  input[type='number']
+    text-align: center
+
+.Form .Form-Control
   position: relative
   .name
     font-size: .97rem
@@ -56,7 +86,18 @@
   text-transform: uppercase
   font-size: 1.1rem
   font-weight: 200
-  letter-spacing: 2px
   cursor: pointer
+  &.small
+    width: auto
+    height: auto
+    border-radius: 5px
+    padding: 3px 15px
+    font-weight: 400
   &.yellow
     background: $yellow
+  &.right
+    float: right
+  &.disabled
+    background: gray
+    opacity: .5
+    cursor: default

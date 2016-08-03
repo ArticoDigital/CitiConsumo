@@ -25,7 +25,7 @@
         </svg>
     </figure>
 </div>
-<header class="Header Container">
+<header class="Header logged">
     <div class="BarNav row middle between">
         <a href="{{url('/')}}" class="col-2">
             <figure class="Logo">
@@ -34,7 +34,7 @@
         </a>
         <nav class="row col-10 end">
             <ul class="Menu row between">
-                <li><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                <li><a href="" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
                     <li><a href="{{route('register')}}">Registrate</a></li>
                     <li><a href="{{route('login')}}">Entrar</a></li>
@@ -62,16 +62,7 @@
             </ul>
         </nav>
     </div>
-    @yield('Services')
-    <section class="Services middle">
-        @yield('Header')
-        <div class="Arrow"><a href="#" onclick="return false;"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>
-    </section>
-    <div class="backgroundVideo">
-        <video class="cover" width="960" height="540" autoplay loop>
-            @yield('Video')
-        </video>
-    </div>
+    
 </header>
 @yield('content')
 <footer class="Footer row middle center">

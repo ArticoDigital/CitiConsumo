@@ -1,0 +1,55 @@
+svg#Steps .gray1
+  cursor: pointer
+
+svg#Steps .gray2,
+svg#Steps .gray3,
+svg#Steps .gray4
+  cursor: pointer
+  filter: url(#filter)
+
+svg#Steps .active
+    filter: none !important
+
+svg#Steps .disabled
+  cursor: default !important
+
+.Steps
+  overflow: hidden
+
+  .Service-image
+    text-align: center
+    width: rem(220)
+
+  .StepsForm
+    width: 400%
+    position: relative
+    transition: all .5s ease
+    left: 0
+    padding: rem(15) 0
+
+  .Step
+    width: 25%
+    height: 100%
+    float: left
+    margin-top: rem(30)
+
+  #Step1
+    display: flex
+    justify-content: center
+    align-items: center
+
+    input
+      display: none
+    label
+      opacity: .5
+      cursor: pointer
+.StepText
+  font-size: 1.2rem
+  display: block
+  padding: 10px 0
+
+
+#foods:checked ~ [for="foods"],
+#pets:checked ~ [for="pets"],
+#service:checked ~ [for="service"]
+  opacity: 1
