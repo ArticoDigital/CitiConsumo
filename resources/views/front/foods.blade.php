@@ -37,13 +37,13 @@
         </a>
     </div>
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
-        <label for="place" class="col-4 Form-Control">
+        <label for="place" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
             <input id="autocomplete" name="place" type="text" placeholder="Lugar" >
             <input class="field" id="lat" name="lat" type="hidden">
             <input class="field" id="lng" name="lng" type="hidden">
         </label>
-        <label for="food_type" class="col-4 Form-Control">
+        <label for="food_type" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
             <span class="name">Tipo de Comida</span>
             <select class="js-example-basic-multiple" id="food_type" name="food_type" multiple>
@@ -52,7 +52,7 @@
                 @endforeach
             </select>
         </label>
-        <label for="date" class="col-4 Form-Control">
+        <label for="date" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off">
         </label>

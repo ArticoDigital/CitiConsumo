@@ -151,7 +151,7 @@
                     </g>
                 </g>
             </svg>
-            <form class="StepsForm">
+            <form class="StepsForm Form2">
                 <article id="Step1" class="Step row">
                     <input type="radio" value="1" id="foods" name="service">
                     <input type="radio" value="2" id="pets" name="service">
@@ -175,13 +175,46 @@
                             <figcaption>Oficios</figcaption>
                         </figure>
                     </label>
-                    <div class="col-12 Box">
+                    <div class="col-12">
                         <div id="toStep2" class="Button small right disabled" style="margin: 40px 0 20px">Siguiente</div>
                     </div>
 
                 </article>
-                <article id="Step2" class="Step">
-                    paso2
+                <article id="Step2" class="Step row">
+                    <label class="col-12 required" for="name">
+                        <span class="text">Nombre</span>
+                        <input class="col-12" type="text" id="name" name="name">
+                    </label>
+                    <label class="col-12 required" for="description">
+                        <span class="text">Descripción</span>
+                        <textarea class="col-12" id="description" name="description">dlsjaldjsa</textarea>
+                    </label>
+                    <div id="petInputs" class="col-12 row" style="padding-right: 20px">
+                        <label class="col-4 required" for="available_foods">
+                            <span class="text">Platos disponibles</span><br>
+                            <input type="number" id="available_foods" name="available_foods">
+                        </label>
+
+                        <label class="col-4 required" for="price">
+                            <span class="text">Precio</span><br>
+                            <input type="number" id="price" name="price">
+                        </label>
+
+                        <label class="col-4 required" for="address">
+                            <span class="text">Dirección</span><br>
+                            <input type="text" id="address" name="address">
+                        </label>
+                    </div>
+
+                    <div id="petInputs" style="display: none;">
+                    </div>
+                    <div id="serviceInputs" style="display: none;">
+                    </div>
+
+                    <div class="col-12">
+                        <div id="toStep3" class="Button small right disabled" style="margin: 40px 0 20px">Siguiente</div>
+                    </div>
+
                 </article>
                 <article id="Step3" class="Step">
                     paso3
@@ -196,13 +229,42 @@
 
 @section('scripts')
     <script>
+
+        /* REMOVER CLASE "DISABLED" */
+
         $('#Step1 label').on('click', function(){
             $('#toStep2, .gray2').removeClass('disabled');
         });
 
+        $("#Step2").on('keyup', 'input, textarea', function(){
+            var $StepItems = $("#Step2 input, #Step2 textarea");
+            var flag = true;
+            for(var i = 0; i < $StepItems.length; i++){
+                if($StepItems.eq(i).is('input'))
+                    if(!$StepItems.eq(i).val())
+                        flag = false;
+                else
+                    if($StepItems.eq(i).text())
+                        flag = false;
+            }
+            if(flag) $('#toStep3, .gray3').removeClass('disabled');
+        });
+
+        /* CLIC EN BOTON SIGUIENTE*/
+
         $('#toStep2').click(function(){
             nextStep($(this), 2);
         });
+
+        $('#toStep3').click(function(){
+            nextStep($(this), 3);
+        });
+
+        $('#toStep4').click(function(){
+            nextStep($(this), 4);
+        });
+
+        /* CLIC EN SVG PASO A PASO*/
 
         $('#Steps').on('click', '[class*="gray"]', function(){
 
@@ -220,6 +282,7 @@
             }
         });
 
+        /* EJECUTAR PASO A PASO */
         function nextStep(element, step){
             var $all = $('[class*="gray"]'),
                 $form = $('.StepsForm');

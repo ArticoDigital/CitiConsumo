@@ -602,20 +602,48 @@ figure figcaption {
 .no-padding {
   padding: 0; }
 
-.Form {
+.Form, .Form2 {
   width: 100%;
   margin: auto; }
-  .Form label {
+  .Form label, .Form2 label {
     padding: 0.3125rem 0.9375rem; }
-  .Form input[type='text'] {
-    font-size: .97rem;
+  .Form input[type='text'],
+  .Form input[type='number'], .Form2 input[type='text'],
+  .Form2 input[type='number'] {
     width: 100%;
-    height: 2.1875rem;
+    height: 2.1875rem; }
+  .Form textarea, .Form2 textarea {
+    width: 100%;
+    scallable: false;
+    height: 12.5rem;
+    padding: 0.625rem !important; }
+
+.Form input[type='text'],
+.Form input[type='number'] {
+  font-size: .97rem;
+  text-align: center; }
+
+.Form2 {
+  font-size: 1.2rem; }
+  .Form2 label.required .text:after {
+    content: " * ";
+    color: #05347a; }
+  .Form2 label span.text {
+    display: inline-block;
+    padding: 0.625rem 0; }
+  .Form2 input[type='text'],
+  .Form2 input[type='number'],
+  .Form2 textarea {
+    outline-color: #05347a;
+    background: #ebebeb;
+    border: none;
+    padding: 0 0.625rem; }
+  .Form2 input[type='number'] {
     text-align: center; }
 
-.Form-Control {
+.Form .Form-Control {
   position: relative; }
-  .Form-Control .name {
+  .Form .Form-Control .name {
     font-size: .97rem;
     position: absolute;
     color: #AAA;
@@ -630,7 +658,7 @@ figure figcaption {
     align-items: center;
     margin-right: 26px;
     background: white; }
-  .Form-Control .icon {
+  .Form .Form-Control .icon {
     position: absolute;
     z-index: 2;
     left: 15px;
@@ -639,7 +667,7 @@ figure figcaption {
     color: black;
     width: 20px !important;
     padding: 0 10px !important; }
-  .Form-Control .placeholder {
+  .Form .Form-Control .placeholder {
     position: absolute;
     z-index: 2;
     top: 5px;
