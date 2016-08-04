@@ -252,7 +252,8 @@
 
 @section('scripts')
     <script src="{{asset('js/front/steps.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+    <script src="jquery.ui.touch-punch.min.js"></script>
     <script>
         var filesInput = $("#files");
         $('.FilesPreview').sortable();

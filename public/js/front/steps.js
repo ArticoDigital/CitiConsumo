@@ -15,7 +15,7 @@ $("#Step2").on('keyup', 'input, textarea', function(){
 });
 
 $("#Step3 #files").on('change', function(){
-    $('#toStep4, .gray3').removeClass('disabled');
+    $('#toStep4, .gray4').removeClass('disabled');
 });
 
 /* CLIC EN BOTON SIGUIENTE*/
