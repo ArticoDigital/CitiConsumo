@@ -43,4 +43,8 @@ class HomeController extends Controller
     public function uploadFiles(){
         return view('front.uploadFiles');
     }
+
+    public function profile(){
+        return view('front.profile');
+    }
 }

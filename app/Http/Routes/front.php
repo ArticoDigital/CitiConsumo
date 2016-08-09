@@ -39,3 +39,8 @@ Route::get('subir-archivos', [
     'as' => 'uploadFiles',
     'uses' => 'HomeController@uploadFiles'
 ]);
+
+Route::get('perfil', [
+    'as' => 'profile',
+    'uses' => 'HomeController@profile'
+]);
