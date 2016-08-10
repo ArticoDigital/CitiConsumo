@@ -1003,4 +1003,13 @@ svg#Steps .disabled {
 #service:checked ~ [for="service"] {
   opacity: 1; }
 
+#Step4 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100px; }
+
 /*# sourceMappingURL=style.css.map */

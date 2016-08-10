@@ -184,25 +184,16 @@
                     <span class="text">Descripción</span>
                     <textarea class="col-12" id="description" name="description"></textarea>
                 </label>
-                <div id="petInputs" class="col-12 row" style="padding-right: 20px">
-                    <label class="col-4 required" for="available_foods">
-                        <span class="text">Platos disponibles</span><br>
-                        <input type="number" id="available_foods" name="available_foods">
-                    </label>
-                    <label class="col-4 required" for="price">
-                        <span class="text">Precio</span><br>
-                        <input type="number" id="price" name="price">
-                    </label>
-                    <label class="col-4 required" for="address">
-                        <span class="text">Dirección</span><br>
-                        <input type="text" id="address" name="address">
-                    </label>
-                </div>
+                <div id="ChangeService" class="col-4 row"></div>
+                <label class="col-4 required" for="price">
+                    <span class="text">Precio</span><br>
+                    <input type="number" id="price" name="price">
+                </label>
+                <label class="col-4 required" for="autocomplete">
+                    <span class="text">Dirección</span><br>
+                    <input type="text" id="autocomplete" name="address" autocomplete="off" placeholder="">
+                </label>
 
-                <div id="petInputs" style="display: none;">
-                </div>
-                <div id="serviceInputs" style="display: none;">
-                </div>
                 <div class="col-12">
                     <div id="toStep3" class="Button small right disabled" style="margin: 40px 0 20px">Siguiente</div>
                 </div>
@@ -243,6 +234,7 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script>
+
         $('#result').sortable();
         var filesInput = $("#files");
 
@@ -271,7 +263,11 @@
             if (e.keyCode == 9) {  //tab pressed
                 e.preventDefault(); // stops its action
             }
-        })
+        });
 
     </script>
+
+    <script src="{{asset('js/address.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
 @endsection
+
