@@ -24,23 +24,3 @@ Route::get('plataforma/{service}', [
     'as' => 'platform',
     'uses' => 'MapController@index'
 ]);
-
-Route::get('postular-servicio', [
-    'as' => 'addService',
-    'uses' => 'HomeController@addService'
-]);
-
-Route::post('postular-servicio', [
-    'as' => 'newService',
-    'uses' => 'HomeController@newService'
-]);
-
-Route::get('subir-archivos', [
-    'as' => 'uploadFiles',
-    'uses' => 'HomeController@uploadFiles'
-]);
-
-Route::get('perfil', [
-    'as' => 'profile',
-    'uses' => 'HomeController@profile'
-]);

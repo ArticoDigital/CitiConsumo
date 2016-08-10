@@ -599,6 +599,112 @@ img {
 figure figcaption {
   text-align: center; }
 
+.Container {
+  margin: auto;
+  width: 100%;
+  max-width: 73.125rem; }
+
+.Logo {
+  padding: 1rem 2.5rem;
+  margin: 0; }
+
+.icon {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  margin-bottom: 1.5625rem; }
+  .icon a {
+    display: block;
+    height: 100%; }
+
+.Menu li {
+  padding-right: 2.8125rem; }
+
+.Menu-fixed nav {
+  display: none;
+  background: rgba(0, 79, 143, 0.95);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 500; }
+
+.Menu-fixed ul {
+  margin: auto;
+  height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.Menu-fixed li {
+  width: 100%; }
+  .Menu-fixed li a {
+    border-bottom: 1px solid white;
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 15px 0 5px; }
+    .Menu-fixed li a:hover {
+      border-color: #f6b11e;
+      color: #f6b11e; }
+
+.Hamburguer {
+  display: block;
+  position: relative;
+  width: 2.0625rem !important;
+  height: 1.4375rem !important; }
+  .Hamburguer span,
+  .Hamburguer span:after {
+    display: block;
+    height: 0.3125rem;
+    background: white; }
+  .Hamburguer span {
+    transition: all .3s ease;
+    position: absolute;
+    right: 0;
+    width: 1.5625rem; }
+    .Hamburguer span:after {
+      content: "";
+      width: 0.3125rem;
+      position: absolute;
+      left: -7px; }
+    .Hamburguer span:nth-child(2) {
+      top: 50%;
+      margin-top: -0.15625rem; }
+    .Hamburguer span:nth-child(3) {
+      bottom: 0; }
+  .Hamburguer.open {
+    position: relative;
+    margin-right: 5px;
+    z-index: 600;
+    width: 2.0625rem; }
+    .Hamburguer.open span {
+      top: 50%;
+      margin-top: -0.15625rem;
+      width: 100%; }
+      .Hamburguer.open span:after {
+        display: none; }
+      .Hamburguer.open span:nth-child(1) {
+        transform: rotate(-45deg); }
+      .Hamburguer.open span:nth-child(2) {
+        opacity: 0; }
+      .Hamburguer.open span:nth-child(3) {
+        transform: rotate(45deg); }
+
+.show {
+  display: block !important; }
+
 .no-padding {
   padding: 0; }
 
@@ -835,5 +941,66 @@ figure figcaption {
   width: 154px;
   height: 73px;
   cursor: pointer; }
+
+.Header {
+  width: 100%;
+  background: #002444;
+  margin-bottom: 1.875rem; }
+
+svg#Steps .gray1 {
+  cursor: pointer; }
+
+svg#Steps .gray2,
+svg#Steps .gray3,
+svg#Steps .gray4 {
+  cursor: pointer;
+  -webkit-filter: url(#filter);
+  filter: url(#filter); }
+
+svg#Steps .active {
+  -webkit-filter: none !important;
+  filter: none !important; }
+
+svg#Steps .disabled {
+  cursor: default !important; }
+
+.Steps {
+  overflow: hidden; }
+  .Steps .Service-image {
+    text-align: center;
+    width: 13.75rem; }
+  .Steps .StepsForm {
+    width: 400%;
+    position: relative;
+    transition: all .5s ease;
+    left: 0;
+    padding: 0.9375rem 0; }
+  .Steps .Step {
+    width: 25%;
+    height: 100%;
+    float: left;
+    margin-top: 1.875rem; }
+  .Steps #Step1 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .Steps #Step1 input {
+      display: none; }
+    .Steps #Step1 label {
+      opacity: .5;
+      cursor: pointer; }
+
+.StepText {
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px 0; }
+
+#foods:checked ~ [for="foods"],
+#pets:checked ~ [for="pets"],
+#service:checked ~ [for="service"] {
+  opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */
