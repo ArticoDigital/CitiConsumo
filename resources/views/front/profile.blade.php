@@ -3,18 +3,19 @@
 @section('content')
 <div class="content-form">
         <div class="row" style="padding: 30px 0px;">
-            <div class="col-5 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
+            <div class="col-4 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
                <div style="position:relative">
                 <div class="image-cropper">
-                    <img class="img-profile" src="http://www.electricvelocity.com.au/Upload/Blogs/smart-e-bike-side_2.jpg"  />
+                    <img class="img-profile" src="https://upload.wikimedia.org/wikipedia/commons/9/91/F-15_vertical_deploy.jpg"  />
                 </div>
                 <img class="small-icon" src="{{url('img/lapiz-edicion.svg')}}" alt="">
                </div>
                <div class="name-profile">DANIEL RICARDO Quintero</div>
             </div>
-            <div class="col-7">
+            
+            <div class="col-5">
 
-                <p class="profile-title">Datos personales</p>
+                <p class="profile-title" style="position: relative;">Datos personales<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></p>
                 <div class="row profile-item">
                     <div class="col-6">Usuario</div>
                     <div class="col-6 profile-data">danielrqo</div>
@@ -49,6 +50,21 @@
                     <div class="col-12">Información de la cuenta <img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
                 </div>
             </div>
+            <div class="col-3">
+                    <div class="Image-money row center">
+            
+                <div class="circle-money">
+                 <div class="front">
+                            <img src="{{asset('img/blue.svg')}}" alt="azul">
+                            <div id="inner-text" class="row center" style="flex-direction: column; align-items: center;">
+                                <span class="txt-value">Valor recaudado</span>
+                                <span class="profile-value">$100.000</span>
+                                <span class="btn-charge">Cobrar</span>
+                            </div>
+                            </div>
+                            </div>
+                </div>
+            </div>
         </div>
         <div class="row border-bottom">
             <div class="row profile-servicesquant">Servicios (0)</div>
@@ -57,6 +73,67 @@
         <div class="div_box_center">
                 <a class="profile-btn-blue" href="#">¡Empieza a ofrecer tus servicios!</a>
         </div>
+
+        <!--Servicios-->
+        <table class="rwd-table">
+          <tr class="header-table">
+            <th>Editar</th>
+            <th width="50%">Servicio</th>
+            <th>Precio</th>
+            <th>Activar</th>
+          </tr>
+          <tr>
+            <td data-th="Actions" class="row"> 
+                <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
+                <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
+
+            </td>
+            <td data-th="Service">
+              <article class="row top Profile-productSection " style="align-items: stretch">
+                <figure class="col-3">
+                    <img src="{{asset('img/plato.png')}}" alt="">
+                </figure>
+                <div class="Profile-productInfo col-9">
+                    <h3>Ensalada de Manzana-kiwi</h3>
+                    <b>5 platos disponibles</b>
+                </div>
+              </article>
+            </td>
+            <td data-th="Price" class="center"><b>$30.000</b></td>
+            <td data-th="Enable">
+                <div class="switch">
+                  <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                  <label for="cmn-toggle-1"></label>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td data-th="Actions" class="row"> 
+                <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
+                <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
+
+            </td>
+            <td data-th="Service">
+              <article class="row top Profile-productSection " style="align-items: stretch">
+                <figure class="col-3">
+                    <img src="{{asset('img/plato.png')}}" alt="">
+                </figure>
+                <div class="Profile-productInfo col-9">
+                    <h3>Sancocho de espinazo con aguacate y arepa, jugo de mora</h3>
+                    <b>5 platos disponibles</b>
+                </div>
+              </article>
+            </td>
+            <td data-th="Price" class="center"><b>$10.000</b></td>
+            <td data-th="Enable">
+                 <div class="switch">
+                  <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                  <label for="cmn-toggle-2"></label>
+                </div>
+            </td>
+          </tr>
+        </table>
+
         
         <div style="clear:both; padding: 0px 0px 30px 0px"></div>        
     </div>
@@ -67,6 +144,18 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     
     <script>
+
+    
+    //Cuando la imagen de perfil es vertical
+        $('.img-profile').each(function(){
+        if($(this).width() < $(this).height()){
+            $(this).css('width', '100%');
+            $(this).css('height', 'auto');
+        }
+
+        });
+
+
         $('.DropFiles-inside').on('dragenter click', function(e){
             $(this).addClass('Drag');
         }).on('dragleave dragend mouseout drop', function(e){
@@ -88,5 +177,67 @@
     
 @endsection
 @section('styles')
+    <style type="text/css">
+        .cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
 
+
+input.cmn-toggle-round-flat + label {
+  padding: 2px;
+  width: 60px;
+  height: 30px;
+  /*background-color: #dddddd;*/
+  border-radius: 30px;
+  transition: background 0.4s;
+  margin: 0 auto;
+}
+input.cmn-toggle-round-flat + label:before,
+input.cmn-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+input.cmn-toggle-round-flat + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #C33D2D;
+  border-radius: 30px;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round-flat + label:after {
+  top: 0px;
+  left: 0px;
+  bottom: 4px;
+  width: 34px;
+  height: 34px;
+  /*background-color: #dddddd;*/
+  background-color:#0D2E47;
+  border-radius: 50%;
+  transition: margin 0.4s, background 0.4s;
+}
+input.cmn-toggle-round-flat:checked + label {
+  /*background-color: #8ce196;*/
+}
+input.cmn-toggle-round-flat:checked + label:after {
+  margin-left: 35px;
+  /*background-color: #8ce196;*/
+}
+
+input.cmn-toggle-round-flat:checked  + label:before {
+  background-color: #49B488;
+}
+
+    </style>
 @endsection
