@@ -43,7 +43,7 @@
                     @if(!Auth::check())
                         @yield('action')
                     @else
-                        <li>Bienvenid@ {{Auth::user()->name}}</li>
+                        <li><a href="{{route('profile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                     @endif
                     <li>
                         <div class="Menu-fixed">
