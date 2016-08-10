@@ -64,7 +64,7 @@ function nextStep(element, step){
     }
 }
 
-$('[name="service"]').on('change click', function(){
+$('[name="service"]').on('change', function(){
     var html = '';
 
     if($(this).attr('id') == 'foods'){

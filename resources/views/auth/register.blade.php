@@ -1,5 +1,9 @@
 @extends('layoutAuth')
 
+@section('action')
+    <li><a href="{{route('login')}}">Entrar</a></li>
+@endsection
+
 @section('content')
     <form method="POST" action="{{ route('register') }}">
         @if($errors->has())

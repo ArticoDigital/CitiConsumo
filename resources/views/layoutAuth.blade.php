@@ -41,7 +41,7 @@
                 <ul class="Menu row between">
                     <li><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                     @if(!Auth::check())
-                        <li><a href="{{route('register')}}">Registrate</a></li>
+                        @yield('action')
                     @else
                         <li>Bienvenid@ {{Auth::user()->name}}</li>
                     @endif
