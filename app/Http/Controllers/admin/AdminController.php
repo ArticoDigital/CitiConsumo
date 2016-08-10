@@ -22,6 +22,6 @@ class AdminController extends Controller
     }
 
     public function profile(){
-        return view('front.profile');
+        return view('back.profile');
     }
 }

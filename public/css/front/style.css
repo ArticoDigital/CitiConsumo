@@ -982,7 +982,7 @@ body {
   100% {
     fill: white; } }
 
-body.Register, body.Login {
+body.register, body.login {
   background: url("../../img/register.jpg") center;
   background-size: cover;
   min-height: 100vh;
@@ -991,25 +991,25 @@ body.Register, body.Login {
   color: #fff;
   font-family: 'Open Sans', sans-serif; }
 
-body.Login {
+body.login {
   background: url("../../img/Bogota-2.jpg") center; }
 
 .Register-Logo {
   text-align: center; }
 
-.Register .errors, .Login .errors {
+.register .errors, .login .errors {
   background: #ee6666;
   padding: 0.625rem;
   margin-top: 0.9375rem;
   font-weight: 100;
   font-size: 0.875rem; }
-  .Register .errors div, .Login .errors div {
+  .register .errors div, .login .errors div {
     margin: 0.125rem; }
 
-.Register .Header, .Login .Header {
+.register .Header, .login .Header {
   min-height: inherit; }
 
-.Register h1, .Login h1 {
+.register h1, .login h1 {
   color: white;
   font-family: 'Open Sans', sans-serif !important;
   text-align: center;
@@ -1017,7 +1017,7 @@ body.Login {
   font-weight: 400;
   margin-bottom: 0; }
 
-.Register h2, .Login h2 {
+.register h2, .login h2 {
   font-size: 0.875rem;
   color: white;
   font-family: 'Open Sans', sans-serif !important;
@@ -1027,22 +1027,22 @@ body.Login {
   margin: 1rem auto 1.2rem;
   width: 30rem; }
 
-.Register h3, .Login h3 {
+.register h3, .login h3 {
   text-align: center;
   font-family: 'Open Sans', sans-serif !important;
   font-weight: 300; }
 
-.Register main, .Login main {
+.register main, .login main {
   max-width: 70rem;
   margin: auto; }
 
-.Register form, .Login form {
+.register form, .login form {
   background: white;
   padding: 1rem 2rem;
   margin: auto;
   border-radius: 0.25rem;
   max-width: 16rem; }
-  .Register form button, .Login form button {
+  .register form button, .login form button {
     margin: 1rem auto;
     padding: 0.75rem 3rem;
     display: block;
@@ -1053,38 +1053,38 @@ body.Login {
     font-weight: 300;
     font-family: 'Open Sans', sans-serif !important;
     cursor: pointer; }
-  .Register form label, .Login form label {
+  .register form label, .login form label {
     color: #aeaeae;
     display: block;
     font-size: 0.75rem; }
-  .Register form input, .Login form input {
+  .register form input, .login form input {
     border: none;
     border-bottom: 0.0625rem solid #9f9e9b;
     width: 100%;
     margin: .5rem 0rem 1rem;
     padding: 0 0 0.125rem 0.125rem; }
-    .Register form input:focus, .Login form input:focus {
+    .register form input:focus, .login form input:focus {
       outline: 0; }
 
-.Register .Register-social, .Login .Register-social {
+.register .Register-social, .login .Register-social {
   margin: 1.5rem 3rem;
   display: block; }
-  .Register .Register-social path, .Login .Register-social path {
+  .register .Register-social path, .login .Register-social path {
     fill: #004f8f; }
 
-.Register .Register-label, .Login .Register-label {
+.register .Register-label, .login .Register-label {
   position: relative; }
-  .Register .Register-label svg, .Login .Register-label svg {
+  .register .Register-label svg, .login .Register-label svg {
     position: absolute;
     top: 1.125rem;
     width: 1.5rem;
     right: 0;
     cursor: pointer; }
 
-.Register #Eye-white, .Login #Eye-white {
+.register #Eye-white, .login #Eye-white {
   transition: all 0.3s; }
 
-.Register .openEye, .Login .openEye {
+.register .openEye, .login .openEye {
   fill: white; }
 
 #Map {
