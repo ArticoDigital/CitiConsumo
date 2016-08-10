@@ -747,7 +747,7 @@ figure figcaption {
       border-color: #05347a; }
       .DropFiles .DropFiles-inside.Drag svg g {
         fill: #05347a; }
-    .DropFiles .DropFiles-inside #files {
+    .DropFiles .DropFiles-inside #files, .DropFiles .DropFiles-inside .drop-files-input {
       cursor: pointer !important;
       opacity: 0;
       position: absolute;
@@ -773,6 +773,68 @@ figure figcaption {
     .FilesPreview .File img {
       height: 100%;
       width: auto; }
+
+.DropFilesSmall {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .DropFilesSmall .DropFiles-inside {
+    position: relative;
+    padding: 5px;
+    text-align: left;
+    color: gray;
+    cursor: pointer;
+    width: 100%;
+    height: calc(100% - 40px);
+    margin: 15px;
+    border: dashed 2px gray;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: initial;
+    justify-content: initial;
+    min-height: 50px; }
+    .DropFilesSmall .DropFiles-inside span {
+      line-height: 30px; }
+    .DropFilesSmall .DropFiles-inside .rectangle {
+      background: #054CCF;
+      color: white;
+      border: 1px solid #C3C3C3;
+      padding: 3px 10px;
+      max-width: 100px;
+      display: inline-block;
+      text-align: center;
+      margin-right: 10px;
+      border-radius: 5px; }
+    .DropFilesSmall .DropFiles-inside.Drag {
+      color: #05347a;
+      border-color: #05347a; }
+      .DropFilesSmall .DropFiles-inside.Drag svg g {
+        fill: #05347a; }
+    .DropFilesSmall .DropFiles-inside #files, .DropFilesSmall .DropFiles-inside .drop-files-input {
+      cursor: pointer !important;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: red;
+      display: block;
+      width: 100%;
+      height: 100%; }
+
+#boton-enviar {
+  border: none;
+  background: url(/img/boton-enviar.svg) no-repeat;
+  width: 154px;
+  height: 73px;
+  cursor: pointer; }
 
 body {
   overflow: hidden; }
@@ -1346,7 +1408,8 @@ div.profile-photo-light {
 .left-block {
   float: left;
   background-color: black;
-  position: relative; }
+  position: relative;
+  width: 50%; }
 
 .text-over {
   position: absolute;
@@ -1356,23 +1419,11 @@ div.profile-photo-light {
   padding: 10px; }
 
 .block-form {
-  padding: 20px;
-  float: left; }
+  float: left;
+  width: 50%; }
 
 .fileUpload {
   position: relative;
-  overflow: hidden;
-  margin: 10px; }
-
-.fileUpload input.upload {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-  filter: alpha(opacity=0); }
+  overflow: hidden; }
 
 /*# sourceMappingURL=style.css.map */
