@@ -226,7 +226,8 @@
                     </label>
                 </section>
                 <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
-                <section class="FilesPreview" id="result"></section>                    <div class="col-12">
+                <section class="FilesPreview" id="result"></section>
+                <div class="col-12">
                     <div id="toStep4" class="Button small right disabled" style="margin: 40px 0 20px">Siguiente</div>
                 </div>
             </article>
@@ -238,12 +239,12 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/front/steps.js')}}"></script>
-    <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
-    <script src="jquery.ui.touch-punch.min.js"></script>
+    <script src="{{asset('js/steps.js')}}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script>
+        $('#result').sortable();
         var filesInput = $("#files");
-        $('.FilesPreview').sortable();
 
         $('.DropFiles-inside').on('dragenter click', function(e){
             $(this).addClass('Drag');
