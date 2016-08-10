@@ -20,4 +20,8 @@ class AdminController extends Controller
     public function uploadFiles(){
         return view('back.uploadFiles');
     }
+
+    public function profile(){
+        return view('front.profile');
+    }
 }

@@ -1,10 +1,9 @@
 @extends('layoutBack')
 
 @section('content')
-<div class="content-form">
-        <div class="row" style="padding: 30px 0px;">
-            <div class="col-4 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
-               <div style="position:relative">
+    <div class="row" style="padding: 30px 0px;">
+        <div class="col-4 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
+            <div style="position:relative">
                 <div class="image-cropper">
                     <img class="img-profile" src="https://upload.wikimedia.org/wikipedia/commons/9/91/F-15_vertical_deploy.jpg"  />
                 </div>
@@ -133,10 +132,6 @@
             </td>
           </tr>
         </table>
-
-        
-        <div style="clear:both; padding: 0px 0px 30px 0px"></div>        
-    </div>
 @endsection
 
 @section('scripts')
