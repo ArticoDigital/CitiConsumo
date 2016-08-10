@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'admin'], function(){
     require __DIR__ . '/Routes/back.php';
 });
     

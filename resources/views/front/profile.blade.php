@@ -1,4 +1,4 @@
-@extends('layoutLoggedIn')
+@extends('layoutBack')
 
 @section('content')
 <div class="content-form">

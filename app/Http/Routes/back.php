@@ -22,20 +22,20 @@ Route::get('confirmar-compra', function(){
 
 Route::get('postular-servicio', [
     'as' => 'addService',
-    'uses' => 'HomeController@addService'
+    'uses' => 'AdminController@addService'
 ]);
 
 Route::post('postular-servicio', [
     'as' => 'newService',
-    'uses' => 'HomeController@newService'
+    'uses' => 'AdminController@newService'
 ]);
 
 Route::get('subir-archivos', [
     'as' => 'uploadFiles',
-    'uses' => 'HomeController@uploadFiles'
+    'uses' => 'AdminController@uploadFiles'
 ]);
 
 Route::get('perfil', [
     'as' => 'profile',
-    'uses' => 'HomeController@profile'
+    'uses' => 'AdminController@profile'
 ]);

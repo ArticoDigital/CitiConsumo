@@ -1012,4 +1012,16 @@ svg#Steps .disabled {
   align-items: center;
   height: 100px; }
 
+.TextOver {
+  position: relative;
+  margin: 0; }
+  .TextOver figcaption {
+    position: absolute;
+    height: 130px;
+    padding: 10px;
+    color: #fff;
+    top: 50%;
+    margin-top: -65px;
+    text-align: center; }
+
 /*# sourceMappingURL=style.css.map */
