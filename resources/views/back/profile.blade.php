@@ -76,7 +76,7 @@
         <!--Servicios-->
         <table class="rwd-table">
           <tr class="header-table">
-            <th>Editar</th>
+            <th width="80px">Editar</th>
             <th width="50%">Servicio</th>
             <th>Precio</th>
             <th>Activar</th>
@@ -142,6 +142,7 @@
 
     
     //Cuando la imagen de perfil es vertical
+    $(window).load(function(){
         $('.img-profile').each(function(){
         if($(this).width() < $(this).height()){
             $(this).css('width', '100%');
@@ -149,6 +150,8 @@
         }
 
         });
+
+      });
 
 
         $('.DropFiles-inside').on('dragenter click', function(e){
@@ -171,68 +174,6 @@
     </script>
     
 @endsection
+
 @section('styles')
-    <style type="text/css">
-        .cmn-toggle {
-  position: absolute;
-  margin-left: -9999px;
-  visibility: hidden;
-}
-.cmn-toggle + label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  user-select: none;
-}
-
-
-input.cmn-toggle-round-flat + label {
-  padding: 2px;
-  width: 60px;
-  height: 30px;
-  /*background-color: #dddddd;*/
-  border-radius: 30px;
-  transition: background 0.4s;
-  margin: 0 auto;
-}
-input.cmn-toggle-round-flat + label:before,
-input.cmn-toggle-round-flat + label:after {
-  display: block;
-  position: absolute;
-  content: "";
-}
-input.cmn-toggle-round-flat + label:before {
-  top: 2px;
-  left: 2px;
-  bottom: 2px;
-  right: 2px;
-  background-color: #C33D2D;
-  border-radius: 30px;
-  transition: background 0.4s;
-}
-input.cmn-toggle-round-flat + label:after {
-  top: 0px;
-  left: 0px;
-  bottom: 4px;
-  width: 34px;
-  height: 34px;
-  /*background-color: #dddddd;*/
-  background-color:#0D2E47;
-  border-radius: 50%;
-  transition: margin 0.4s, background 0.4s;
-}
-input.cmn-toggle-round-flat:checked + label {
-  /*background-color: #8ce196;*/
-}
-input.cmn-toggle-round-flat:checked + label:after {
-  margin-left: 35px;
-  /*background-color: #8ce196;*/
-}
-
-input.cmn-toggle-round-flat:checked  + label:before {
-  background-color: #49B488;
-}
-
-    </style>
 @endsection

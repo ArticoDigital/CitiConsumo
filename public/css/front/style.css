@@ -1393,23 +1393,23 @@ body.login {
     font-weight: 400;
     font-size: 0.9375rem; }
 
-table {
+.rwd-table {
   border-collapse: collapse;
   width: 100%; }
-  table th:first-child {
+  .rwd-table th:first-child {
     border-radius: 13px 0 0 13px; }
-  table th:last-child {
+  .rwd-table th:last-child {
     border-radius: 0 13px 13px 0; }
-  table th {
+  .rwd-table th {
     background-color: #00508e;
     padding: 4px 8px;
     color: white; }
-  table tr td:first-child {
+  .rwd-table tr td:first-child {
     -ms-flex-direction: column;
     flex-direction: column;
     -ms-flex-align: center;
     align-items: center; }
-  table td {
+  .rwd-table td {
     padding-top: 10px; }
 
 /*IMAGEN */
@@ -1495,5 +1495,60 @@ div.profile-photo-light {
 .fileUpload {
   position: relative;
   overflow: hidden; }
+
+/*switch/* */
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden; }
+
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.switch input.cmn-toggle-round-flat + label {
+  padding: 2px;
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  transition: background 0.4s;
+  margin: 0 auto; }
+
+.switch input.cmn-toggle-round-flat + label:before,
+.switch input.cmn-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+  content: ""; }
+
+.switch input.cmn-toggle-round-flat + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #C33D2D;
+  border-radius: 30px;
+  transition: background 0.4s; }
+
+.switch input.cmn-toggle-round-flat + label:after {
+  top: 0px;
+  left: 0px;
+  bottom: 4px;
+  width: 34px;
+  height: 34px;
+  background-color: #0D2E47;
+  border-radius: 50%;
+  transition: margin 0.4s, background 0.4s; }
+
+.switch input.cmn-toggle-round-flat:checked + label:after {
+  margin-left: 35px; }
+
+.switch input.cmn-toggle-round-flat:checked + label:before {
+  background-color: #49B488; }
 
 /*# sourceMappingURL=style.css.map */

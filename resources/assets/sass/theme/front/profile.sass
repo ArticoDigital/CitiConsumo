@@ -78,7 +78,7 @@
     font-weight: 400
     font-size: rem(15)
 
-table
+.rwd-table
   border-collapse: collapse
   width: 100%
   th:first-child
@@ -187,4 +187,58 @@ div.profile-photo-light
 
 .fileUpload
   position: relative
-  overflow: hidden
+  overflow: hidden 
+
+/*switch/*
+.cmn-toggle 
+  position: absolute
+  margin-left: -9999px
+  visibility: hidden
+
+.cmn-toggle + label 
+  display: block
+  position: relative
+  cursor: pointer
+  outline: none
+  user-select: none
+
+
+.switch
+  input.cmn-toggle-round-flat + label 
+    padding: 2px
+    width: 60px
+    height: 30px
+    border-radius: 30px
+    transition: background 0.4s
+    margin: 0 auto
+
+  input.cmn-toggle-round-flat + label:before,
+  input.cmn-toggle-round-flat + label:after 
+    display: block
+    position: absolute
+    content: ""
+
+  input.cmn-toggle-round-flat + label:before 
+    top: 2px
+    left: 2px
+    bottom: 2px
+    right: 2px
+    background-color: #C33D2D
+    border-radius: 30px
+    transition: background 0.4s
+
+  input.cmn-toggle-round-flat + label:after 
+    top: 0px
+    left: 0px
+    bottom: 4px
+    width: 34px
+    height: 34px
+    background-color:#0D2E47
+    border-radius: 50%
+    transition: margin 0.4s, background 0.4s
+
+  input.cmn-toggle-round-flat:checked + label:after 
+    margin-left: 35px
+
+  input.cmn-toggle-round-flat:checked  + label:before 
+    background-color: #49B488
