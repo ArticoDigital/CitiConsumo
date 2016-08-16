@@ -87,7 +87,6 @@ function initMap() {
         },
             function (error) {
                 if (error.code == error.PERMISSION_DENIED)
-
                     alert('Debes ingresar la ubicación o permitir ')
             });
     } else {
