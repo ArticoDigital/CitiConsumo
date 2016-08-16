@@ -15,7 +15,7 @@ $("#Step2").on('keyup', 'input, textarea', function(){
 });
 
 $("#Step3 #files").on('change', function(){
-    $('#toStep4, .gray3').removeClass('disabled');
+    $('#toStep4, .gray4').removeClass('disabled');
 });
 
 /* CLIC EN BOTON SIGUIENTE*/
@@ -63,3 +63,28 @@ function nextStep(element, step){
         }
     }
 }
+
+$('[name="service"]').on('change', function(){
+    var html = '';
+
+    if($(this).attr('id') == 'foods'){
+        html += '<label class="required col-12" for="available_foods">' +
+                    '<span class="text">Platos disponibles</span><br>' +
+                    '<input type="number" id="available_foods" name="available_foods">' +
+                '</label>';
+    }
+    else if($(this).attr('id') == 'pets'){
+        html += '<label class="required col-12" for="available_foods">' +
+                    '<span class="text">Numero de animales</span><br>' +
+                    '<input type="number" id="available_foods" name="available_foods">' +
+                '</label>';
+    }
+    else {
+        html += '<label class="required col-12" for="available_foods">' +
+                    '<span class="text">Tiempo del servicio</span><br>' +
+                    '<input type="number" id="available_foods" name="available_foods">' +
+                '</label>';
+    }
+
+    $('#ChangeService').html(html);
+});

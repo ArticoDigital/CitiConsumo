@@ -75,8 +75,7 @@ function showInfoProduct(data){
     $('.InfoServices').addClass('show')
 }
 function initMap() {
-    succesfull(null);
-    return;
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
 

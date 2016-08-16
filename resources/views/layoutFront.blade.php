@@ -39,7 +39,7 @@
                     <li><a href="{{route('register')}}">Registrate</a></li>
                     <li><a href="{{route('login')}}">Entrar</a></li>
                 @else
-                    <li><a href="#" onclick="return false">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li><a href="{{route('profile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                 @endif
                 <li>
                     <div class="Menu-fixed">

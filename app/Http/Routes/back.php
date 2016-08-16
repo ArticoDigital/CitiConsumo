@@ -19,3 +19,23 @@ Route::get('checkout', function(){
 Route::get('confirmar-compra', function(){
     return view('back.shopConfirm');
 });
+
+Route::get('postular-servicio', [
+    'as' => 'addService',
+    'uses' => 'AdminController@addService'
+]);
+
+Route::post('postular-servicio', [
+    'as' => 'newService',
+    'uses' => 'AdminController@newService'
+]);
+
+Route::get('subir-archivos', [
+    'as' => 'uploadFiles',
+    'uses' => 'AdminController@uploadFiles'
+]);
+
+Route::get('perfil', [
+    'as' => 'profile',
+    'uses' => 'AdminController@profile'
+]);
