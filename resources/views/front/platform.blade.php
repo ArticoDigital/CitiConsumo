@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}">
     @yield('styles')
 </head>
-<body class="Platform" >
+<body class="Platform">
 <div id="Map" data-image="{{asset('img/cocinaIcon.png')}}"></div>
 <input type="hidden" value="{{$dataMap['lng']}}" id="lat">
 <input type="hidden" value="{{$dataMap['lat']}}" id="lng">
@@ -103,7 +103,7 @@
             </label>
         </div>
         <div class="col-4">
-            <label for="" >
+            <label for="">
                 <select name="" id="">
                     <option value="">Selecione una opción</option>
                     <option value=""></option>
@@ -112,7 +112,7 @@
             </label>
         </div>
         <div class="col-4">
-            <label for="" >
+            <label for="">
                 <select name="" id="">
                     <option value="">Selecione una opción</option>
                     <option value=""></option>
@@ -127,8 +127,8 @@
                 <img src="{{asset('img/plato.png')}}" alt="">
             </figure>
             <div class="Platform-productInfo col-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>$10.000</b>
+                <h3>Ensalada de Manzana-kiwi</h3>
+                <b>$10.000</b>
             </div>
         </article>
         <article class="row top Platform-productSection " style="align-items: stretch">
@@ -136,8 +136,8 @@
                 <img src="{{asset('img/plato.png')}}" alt="">
             </figure>
             <div class="Platform-productInfo col-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>$10.000</b>
+                <h3>Ensalada de Manzana-kiwi</h3>
+                <b>$10.000</b>
             </div>
         </article>
         <article class="row top Platform-productSection " style="align-items: stretch">
@@ -145,8 +145,8 @@
                 <img src="{{asset('img/plato.png')}}" alt="">
             </figure>
             <div class="Platform-productInfo col-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>$10.000</b>
+                <h3>Ensalada de Manzana-kiwi</h3>
+                <b>$10.000</b>
             </div>
         </article>
         <article class="row top Platform-productSection " style="align-items: stretch">
@@ -154,8 +154,8 @@
                 <img src="{{asset('img/plato.png')}}" alt="">
             </figure>
             <div class="Platform-productInfo col-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>$10.000</b>
+                <h3>Ensalada de Manzana-kiwi</h3>
+                <b>$10.000</b>
             </div>
         </article>
         <article class="row top Platform-productSection " style="align-items: stretch">
@@ -163,12 +163,39 @@
                 <img src="{{asset('img/plato.png')}}" alt="">
             </figure>
             <div class="Platform-productInfo col-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>$10.000</b>
+                <h3>Ensalada de Manzana-kiwi</h3>
+                <b>$10.000</b>
             </div>
         </article>
     </section>
 </div>
+
+<aside class="InfoServices row middle center">
+    <div class="InfoServices-content row">
+        <div class="InfoServices-close">x</div>
+        <figure class="col-6" style="background-image: url('{{asset('img/servicio.png')}}') "></figure>
+        <div class="col-6 InfoServices-info">
+            <h2>Ensalada de frutas frescas</h2>
+            <h3 >5 platos disponibles</h3>
+            <div class="InfoServices-stars row ">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo). </p>
+            <a href="">Ver perfil del autor</a>
+            <form action="">
+                <div class="row between middle">
+                    <select name="number" id="">
+                        <option value="">Selecione el número de platos</option>
+                    </select>
+                    <val>$12.000</val>
+                </div>
+                <div class="row center">
+                    <button>Comprar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</aside>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 

@@ -1051,6 +1051,82 @@ body.Login {
     font-weight: 400;
     font-size: 1.5rem; }
 
+.InfoServices {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  transition: all 0.5s; }
+  .InfoServices h2 {
+    color: #004f8f;
+    font-weight: 400;
+    margin-bottom: 0.1875rem; }
+  .InfoServices h3 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem; }
+  .InfoServices a {
+    margin: 0.75rem 0 1rem;
+    display: block;
+    font-size: 0.9375rem;
+    color: #232323; }
+
+.InfoServices.show {
+  display: -ms-flexbox !important;
+  display: flex !important;
+  opacity: 1; }
+
+.InfoServices-info {
+  padding: 1.25rem;
+  text-align: left; }
+
+.InfoServices-content {
+  position: relative;
+  max-width: 56.25rem;
+  width: 100%;
+  height: 31.25rem;
+  background: white; }
+  .InfoServices-content figure {
+    margin: 0;
+    background-size: cover; }
+  .InfoServices-content p {
+    margin: 1rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
+    text-align: justify;
+    height: 8.125rem;
+    overflow: hidden; }
+  .InfoServices-content val {
+    font-size: 1.5rem; }
+  .InfoServices-content select {
+    height: 2.125rem;
+    background: white; }
+  .InfoServices-content button {
+    background: #004f8f;
+    color: white;
+    margin: 2.8125rem;
+    border: none;
+    padding: 0.625rem 1.5rem;
+    cursor: pointer; }
+
+.InfoServices-stars span {
+  color: #ffd909;
+  font-size: 1.75rem;
+  margin: 0.75rem 0 0; }
+
+.InfoServices-close {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  color: #004f8f;
+  font-size: 2.75rem;
+  cursor: pointer; }
+
 .logged {
   min-height: unset !important;
   background-color: #001F3E; }

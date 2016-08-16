@@ -3,7 +3,6 @@
  */
 var arrayMarkers = new Array;
 var map;
-var position;
 var icon = $('#Map').data('image');
 styleMap = [{
     "featureType": "landscape",
@@ -23,8 +22,16 @@ styleMap = [{
     "stylers": [{"visibility": "on"}, {"lightness": 24}]
 }, {"featureType": "road", "elementType": "geometry", "stylers": [{"lightness": 57}]}]
 
-function initMap() {
-    var myLatlng = new google.maps.LatLng($('#lng').val(), $('#lat').val());
+function succesfull(pos) {
+    var lng = $('#lat').val(),
+        lat = $('#lng').val();
+
+    if (!lng || !lat) {
+        lat = pos.lat;
+        lng = pos.lng
+        console.log(pos.lat)
+    }
+    var myLatlng = new google.maps.LatLng(lat, lng);
 
     var mapOptions = {
         zoom: 17,
@@ -33,100 +40,62 @@ function initMap() {
         //scrollwheel: false,
         styles: styleMap
     };
-    $('iframe').contents().find('.login-control').css('opacity','0');
+
 
     map = new google.maps.Map(document.getElementById("Map"), mapOptions);
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position) {
-            console.log(position.coords.latitude + " Longitud: " + position.coords.longitude) ;
-        }
-    }
+
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
         title: 'Hello World!'
     });
-    var locations = [
-        ['Daily Record Building', 55.861136, -4.257803],
-        ['The Glasgow School of Art', 55.865958, -4.263405],
-        ['The Hill House', 56.017421, -4.729455],
-        ['House for an Art Lover', 55.847325, -4.313746],
-        ['The Hunterian', 55.871751, -4.288360]
-    ];
-
-    /*infowindow = new google.maps.InfoWindow({
-     size: new google.maps.Size(150,50)
-     });*/
-
-    function setMarkers(locations) {
-        for (var i = 0; i < locations.length; i++) {
-            var location = locations[i];
-
-            var myLatLng = new google.maps.LatLng(parseFloat($('#lng').val()) + (.0005 * (i + 1)), parseFloat($('#lat').val())+ (.0005 * (i + 1)));
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                animation: google.maps.Animation.DROP,
-                map: map,
-                title: location[0],
-                icon:icon
-            });
-
-            // Standard markers - if not using infobox
-            google.maps.event.addListener(marker, "click", function () {
-
-            });
-
-        }
-    }
-    setMarkers(locations);
-}
-
-function addMarker(n) {
-    var marker = new google.maps.Marker({
-        position: map.getCenter(),
-        map: map,
-        animation: google.maps.Animation.DROP,
-        draggable: true,
-        identificador: n
-    });
-
-    arrayMarkers.push(marker);
-
-    google.maps.event.addListener(marker, 'dblclick', function () {
-        for (var a = 0; a < arrayMarkers.length; a++) {
-            if (arrayMarkers[a]['identificador'] == this.identificador) {
-                arrayMarkers[a].setMap(null);
-                arrayMarkers.splice(a, 1);
-            }
-        }
-    });
-}
+    for (var i = 0; i < 7; i++) {
 
 
-$('#addMaker').on('click', function () {
-    addMarker(arrayMarkers.length, true);
-});
-
-function getPosition(position) {
-    this.position = position;
-}
-
-function showMarkers(isDraggable) {
-    var coord = this.position.split(';');
-    for (var i = 0; i < coord.length; i++) {
-
-        var lat = parseFloat(coord[i].split('&')[0]);
-        var lng = parseFloat(coord[i].split('&')[1]);
-
+        var myLatLng = new google.maps.LatLng(parseFloat(lat) + (.0005 * (i + 1)), parseFloat(lng)+ (.0005 * (i + 1)));
         var marker = new google.maps.Marker({
-            position: {lat: lat, lng: lng},
+            position: myLatLng,
+            animation: google.maps.Animation.DROP,
             map: map,
-            draggable: isDraggable
+            title:'asdas',
+            icon:icon
         });
 
-        arrayMarkers.push(marker);
+        google.maps.event.addListener(marker, "click", function () {
+            showInfoProduct(this.title)
+        });
+
     }
-    setMapOnAll(map);
+
+}
+$('.InfoServices-close').on('click',function(){
+    $('.InfoServices').removeClass('show    ')
+});
+function showInfoProduct(data){
+    $('.InfoServices').addClass('show')
+}
+function initMap() {
+    succesfull(null);
+    return;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            succesfull(pos);
+        },
+            function (error) {
+                if (error.code == error.PERMISSION_DENIED)
+
+                    alert('Debes ingresar la ubicación o permitir ')
+            });
+    } else {
+        succesfull(null);
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+
 }
 

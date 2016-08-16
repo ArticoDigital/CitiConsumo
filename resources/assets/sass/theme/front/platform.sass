@@ -64,3 +64,77 @@
     font-weight: 400
     font-size: rem(24)
 
+.InfoServices
+  display: none
+  opacity: 0
+  position: fixed
+  top: 0
+  left: 0
+  background: rgba(0,0,0,.8)
+  width: 100vw
+  height: 100vh
+  z-index: 10
+  @include transition(all .5s)
+  h2
+    color: #004f8f
+    font-weight: 400
+    margin-bottom: rem(3)
+  h3
+    margin: 0
+    font-weight: 400
+    font-size: rem(16)
+  a
+    margin: rem(12) 0 rem(16)
+    display: block
+    font-size: rem(15)
+    color: #232323
+.InfoServices.show
+  display: flex !important
+  opacity: 1
+.InfoServices-info
+  padding: rem(20)
+  text-align: left
+.InfoServices-content
+  position: relative
+  max-width: rem(900)
+  width: 100%
+  height: rem(500)
+  background: white
+  figure
+    margin: 0
+    background-size: cover
+  p
+    margin: rem(16) 0
+    font-size: rem(15)
+    line-height: rem(18)
+    text-align: justify
+    height: rem(130)
+    overflow: hidden
+  val
+    font-size: rem(24)
+  select
+    height: rem(34)
+    background: white
+  button
+    background: #004f8f
+    color: white
+    margin: rem(45)
+    border: none
+    padding: rem(10) rem(24)
+    cursor: pointer
+
+.InfoServices-stars span
+  color: #ffd909
+  font-size: rem(28)
+  margin: rem(12) 0 0
+.InfoServices-close
+  position: absolute
+  right: rem(16)
+  top: 0
+  color: #004f8f
+  font-size: rem(44)
+  cursor: pointer
+
+
+
+
