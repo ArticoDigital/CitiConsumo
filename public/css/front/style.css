@@ -726,8 +726,11 @@ figure figcaption {
 
 .Form input[type='text'],
 .Form input[type='number'] {
+  padding: 0 2.3125rem;
   font-size: .97rem;
-  text-align: center; }
+  text-align: center;
+  box-sizing: border-box;
+  height: 2.625rem; }
 
 .Form2 {
   font-size: 1.2rem; }
