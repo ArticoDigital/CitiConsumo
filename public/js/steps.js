@@ -8,7 +8,8 @@ $("#Step2").on('keyup', 'input, textarea', function(){
     var $StepItems = $('#Step2 input');
     var flag = true;
     for(var i = 0; i < $StepItems.length; i++){
-        if(!$StepItems.eq(i).val())
+        var $StepItem = $StepItems.eq(i);
+        if(!$StepItem.val() && $StepItem.parent().hasClass('required'))
             flag = false;
     }
     if(flag) $('#toStep3, .gray3').removeClass('disabled');
@@ -65,26 +66,28 @@ function nextStep(element, step){
 }
 
 $('[name="service"]').on('change', function(){
-    var html = '';
 
-    if($(this).attr('id') == 'foods'){
-        html += '<label class="required col-12" for="available_foods">' +
-                    '<span class="text">Platos disponibles</span><br>' +
-                    '<input type="number" id="available_foods" name="available_foods">' +
-                '</label>';
-    }
-    else if($(this).attr('id') == 'pets'){
-        html += '<label class="required col-12" for="available_foods">' +
-                    '<span class="text">Numero de animales</span><br>' +
-                    '<input type="number" id="available_foods" name="available_foods">' +
-                '</label>';
-    }
-    else {
-        html += '<label class="required col-12" for="available_foods">' +
-                    '<span class="text">Tiempo del servicio</span><br>' +
-                    '<input type="number" id="available_foods" name="available_foods">' +
-                '</label>';
-    }
+    var element;
+    $('div label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
+    $('#toStep3, .gray3').addClass('disabled');
 
-    $('#ChangeService').html(html);
+    if($(this).attr('id') == 'foods')
+        element = 'foodsInputs';
+    else if($(this).attr('id') == 'pets')
+        element = 'petsInputs';
+    else
+        element = 'servicesInputs';
+
+    element = $('#' + element + ' label').addClass('required').show();
+
+    var inputs = element.children('input');
+    for(var i = 0; i < inputs.length; i++){
+        var input = inputs.eq(i),
+            fakeName = input.attr('fakeName');
+        input.attr('name', fakeName).attr('id', fakeName);
+    }
+});
+
+$('#date').on('click', function(){
+    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
 });

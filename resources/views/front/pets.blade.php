@@ -39,7 +39,7 @@
     <form class="Form row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
         <label for="place" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="autocomplete" name="place" type="text" placeholder="Lugar" >
+            <input id="address1" name="place" type="text" placeholder="Lugar" >
             <input class="field" id="lat" name="lat" type="hidden">
             <input class="field" id="lng" name="lng" type="hidden">
         </label>

@@ -3,14 +3,16 @@ var placeSearch, autocomplete;
 
 function initAutocomplete() {
 
-    autocomplete = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */
-        (document.getElementById('autocomplete')),
-        {types: ['geocode']});
+    var autocompleteInput = $('[id*="address"]');
+    autocomplete = [];
 
-    autocomplete.addListener('place_changed', fillInAddress);
+    for(var i = 0; i < autocompleteInput.length; i++){
+        autocomplete[i] = new google.maps.places.Autocomplete(
+            (document.getElementById('address' + (i+1))),
+            {types: ['geocode']});
+        autocomplete[i].addListener(autocomplete[i], 'place_changed', fillInAddress);
+    }
 }
-
 
 function fillInAddress() {
     var place = autocomplete.getPlace();

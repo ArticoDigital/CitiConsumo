@@ -18,7 +18,7 @@
         <nav class="row col-10 end">
             <ul class="Menu row between">
                 <li><a href="{{route('profile')}}" style="color: white" >Bienvenid@ {{Auth::user()->name}}</a></li>
-                <li><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                <li><a href="{{route('logout')}}" style="color: white" >Cerrar sesión</a></li>
                 <li>
                     <div class="Menu-fixed">
                         <a href="#" class="Hamburguer">

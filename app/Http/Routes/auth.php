@@ -21,7 +21,7 @@ Route::post('registro', [
 ]);
 
 Route::get('logout', [
-    'uses' => 'Auth\AuthController@getLogout',
+    'uses' => 'Auth\AuthController@loginOut',
     'as' => 'logout'
 ]);
 

@@ -37,7 +37,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'loginOut']]);
     }
 
     /**
@@ -81,5 +81,11 @@ class AuthController extends Controller
         $user->save();
         auth()->loginUsingId($user->id);
         return $user;
+    }
+
+    protected function loginOut(){
+        auth()->logout();
+        session()->flush();
+        return redirect()->to('/');
     }
 }
