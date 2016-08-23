@@ -39,9 +39,9 @@
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
         <label for="place" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="address1" name="place" type="text" placeholder="Lugar" >
-            <input class="field" id="lat" name="lat" type="hidden">
-            <input class="field" id="lng" name="lng" type="hidden">
+            <input id="address1" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
+            <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
+            <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
         </label>
         <label for="food_type" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
@@ -54,7 +54,7 @@
         </label>
         <label for="date" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
         </label>
         <button class="Button" style="margin: 65px 0">Buscar</button>
     </form>

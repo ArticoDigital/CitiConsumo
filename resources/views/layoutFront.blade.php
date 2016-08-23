@@ -7,10 +7,18 @@
     @yield('styles')
 </head>
 <body class="{{Request::route()->getName()}}">
-<div id="preloader">
+
+@if(session('alertTitle'))
+    <section class="Alert">
+        <article class="Message">
+            <h2>{{session('alertTitle')}}</h2>
+            <p>{{session('alertText')}}</p>
+            <a href="#" class="close">Cerrar</a>
+        </article>
+    </section>
+@else
+    <div id="preloader">
     <figure class="image">
-
-
         <svg width="285px" height="331px" viewBox="0 0 285 331" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
             <desc>Created with Sketch.</desc>
@@ -25,6 +33,7 @@
         </svg>
     </figure>
 </div>
+@endif
 <header class="Header Container">
     <div class="BarNav row middle between">
         <a href="{{url('/')}}" class="col-2">

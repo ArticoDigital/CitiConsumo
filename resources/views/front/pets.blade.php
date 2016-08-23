@@ -39,17 +39,17 @@
     <form class="Form row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
         <label for="place" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="address1" name="place" type="text" placeholder="Lugar" >
-            <input class="field" id="lat" name="lat" type="hidden">
-            <input class="field" id="lng" name="lng" type="hidden">
+            <input id="address1" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
+            <input class="field" id="lat" name="lat" type="hidden" {{old('lat')}}>
+            <input class="field" id="lng" name="lng" type="hidden" {{old('lng')}}>
         </label>
         <label for="date" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
         </label>
         <label for="size" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
-            <select class="js-example-basic-single" id="breed" name="breed">
+            <select class="js-example-basic-single" id="size" name="size">
                 <option value="" selected>Tamaño</option>
                 <option value="1">Pequeño</option>
                 <option value="2">Mediano</option>
