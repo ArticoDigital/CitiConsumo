@@ -175,7 +175,11 @@
                     <div id="toStep2" class="Button small right disabled" style="margin: 40px 15px 0 20px;">Siguiente</div>
                 </div>
              </article>
+
             <article id="Step2" class="Step row">
+                <label class="required col-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
+                <div id="Map" class="col-12" style="height: 250px; width: calc(100% - 40px);"></div>
+                <input type="hidden" name="location" id="Location" value="">
                 <label class="col-12 required" for="name">
                     <span class="text">Nombre</span>
                     <input class="col-12" type="text" id="name" name="name">
@@ -186,49 +190,37 @@
                 </label>
                 <div id="ChangeInputs col-12 row" style="padding-right: 20px; width: 100%">
                     <div id="foodsInputs" class="col-12 row">
-                        <label class="col-4" for="date">
+                        <label class="col-6" for="date">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off">
                         </label>
-                        <label class="col-4" for="price">
+                        <label class="col-6" for="price">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" fakeName="price">
                         </label>
-                        <label class="col-4" for="address1">
-                            <span class="text">Ubicación</span><br>
-                            <input type="text" id="address1" fakeName="address" autocomplete="off" placeholder="">
-                        </label>
                     </div>
                     <div id="petsInputs" class="col-12 row">
-                        <label class="col-3" for="date">
+                        <label class="col-4" for="date">
                             <span class="text">Fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off">
                         </label>
-                        <label class="col-3" for="pets-quantity">
+                        <label class="col-4" for="pets-quantity">
                             <span class="text">Número de animales</span><br>
                             <input type="number" id="pets-quantity" fakeName="pets-quantity">
                         </label>
-                        <label class="col-3" for="price">
+                        <label class="col-4" for="price">
                             <span class="text">Precio por mascota</span><br>
                             <input type="number" id="price" fakeName="price">
                         </label>
-                        <label class="col-3" for="address2">
-                            <span class="text">Dirección</span><br>
-                            <input type="text" id="address2" fakeName="address" autocomplete="off" placeholder="">
-                        </label>
                     </div>
                     <div id="servicesInputs" class="col-12 row">
-                        <label class="col-4" for="dateRange">
+                        <label class="col-6" for="dateRange">
                             <span class="text">Rango de fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="dateRange" fakeName="date" type="text" autocomplete="off">
                         </label>
-                        <label class="col-4" for="price">
+                        <label class="col-6" for="price">
                             <span class="text">Precio por hora</span><br>
                             <input type="number" id="price" fakeName="price">
-                        </label>
-                        <label class="col-4" for="address3">
-                            <span class="text">Dirección</span><br>
-                            <input type="text" id="address3" fakeName="address" autocomplete="off" placeholder="">
                         </label>
                     </div>
                 </div>
@@ -309,10 +301,12 @@
         $('.dateSingle, .dateRange').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
         });
+
     </script>
 
-    <script src="{{asset('js/address.js')}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="{{asset('js/maps.js')}}"></script>
+    <script>setIsMultiple(false);</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
 @endsection
 
 @section('styles')

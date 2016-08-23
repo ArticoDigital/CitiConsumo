@@ -41,8 +41,8 @@
         <label for="place" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
             <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
-            <input class="field" id="lat" name="lat" type="text" value="{{old('lat')}}">
-            <input class="field" id="lng" name="lng" type="text" value="{{old('lng')}}">
+            <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
+            <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
         </label>
         <label for="date" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>

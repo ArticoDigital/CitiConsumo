@@ -39,7 +39,7 @@
     <form class="Form row center col-8" method="GET" action="{{route('platform', 'comidas')}}">
         <label for="place" class="col-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="address1" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
+            <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
             <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
         </label>

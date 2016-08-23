@@ -13,7 +13,7 @@ class MapController extends Controller
     {
         $validate = $this->validator($request->all(), $service);
         if($validate->fails())
-            return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => 'Para realizar la busqueda, debe llenar todos los campos. Gracias']);
+            return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
 
         $dataMap = [
             'lng' => $request->get('lng'),
@@ -27,7 +27,8 @@ class MapController extends Controller
 
         if($service == 'mascotas'){
             $rules = [
-                'place' => 'required',
+                'lat' => 'required',
+                'lng' => 'required',
                 'date' => 'required',
                 'breed' => 'required',
                 'size' => 'required'
@@ -35,19 +36,31 @@ class MapController extends Controller
         }
         else if($service == 'comidas'){
             $rules = [
-                'place' => 'required',
+                'lat' => 'required',
+                'lng' => 'required',
                 'date' => 'required',
                 'food_type' => 'required'
             ];
         }
         else {
             $rules = [
-                'place' => 'required',
+                'lat' => 'required',
+                'lng' => 'required',
                 'date' => 'required',
                 'service' => 'required'
             ];
         }
 
-        return Validator::make($inputs, $rules);
+        $messages = [
+            'lat.required' => 'El campo Dirección es necesario para la busqueda',
+            'lng.required' => 'El campo Dirección es necesario para la busqueda',
+            'date.required' => 'El campo Fecha es necesario para la busqueda',
+            'service.required' => 'El campo Servicio es necesario para la busqueda',
+            'breed.required' => 'El campo Raza es necesario para la busqueda',
+            'food_type.required' => 'El campo Tipo de comida es necesario para la busqueda',
+            'size.required' => 'El campo Tamaño es necesario para la busqueda',
+        ];
+
+        return Validator::make($inputs, $rules, $messages);
     }
 }

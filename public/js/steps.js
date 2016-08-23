@@ -63,6 +63,8 @@ function nextStep(element, step){
             $('.gray' + i).addClass('active');
         }
     }
+
+    $("html, body").animate({ scrollTop: $('main.Container').position().top }, 1000);
 }
 
 $('[name="service"]').on('change', function(){
