@@ -5,6 +5,7 @@ namespace City\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Http\Controllers\Controller;
+use City\Entities\Service;
 
 class AdminController extends Controller
 {
@@ -13,8 +14,12 @@ class AdminController extends Controller
     }
 
     public function newService(Request $request){
-        dd($request->all());
-        return Redirect::route('addService');
+        $inputs = $request->all();
+        dd($inputs);
+        $service = Service::create($inputs);
+
+        //if($inputs['service'] == 1)
+        return redirect()->route('addService');
     }
 
     public function uploadFiles(){

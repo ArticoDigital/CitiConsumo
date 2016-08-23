@@ -36,12 +36,13 @@
             </figure>
         </a>
     </div>
-    <form class="Form row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
+
+    <form class="Form withAddress row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
         <label for="place" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
-            <input id="address1" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
-            <input class="field" id="lat" name="lat" type="hidden" {{old('lat')}}>
-            <input class="field" id="lng" name="lng" type="hidden" {{old('lng')}}>
+            <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
+            <input class="field" id="lat" name="lat" type="text" value="{{old('lat')}}">
+            <input class="field" id="lng" name="lng" type="text" value="{{old('lng')}}">
         </label>
         <label for="date" class="col-3 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>

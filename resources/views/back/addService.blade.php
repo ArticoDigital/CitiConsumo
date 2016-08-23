@@ -232,7 +232,6 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="col-12">
                     <div id="toStep3" class="Button small right disabled" style="margin: 40px 15px 0 20px;">Siguiente</div>
                 </div>
@@ -303,8 +302,6 @@
         $(document).keydown(function(e) {
             if (e.keyCode == 9) //Tab press
                 e.preventDefault();
-            else if(e.keyCode == 13) //Enter press
-                $('.StepsForm').submit(function() {return false});
         });
 
         $('.dateSingle').daterangepicker(getConfig('single'));

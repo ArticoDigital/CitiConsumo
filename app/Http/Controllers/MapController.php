@@ -11,7 +11,6 @@ class MapController extends Controller
 {
     public function index($service, Request $request)
     {
-
         $validate = $this->validator($request->all(), $service);
         if($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => 'Para realizar la busqueda, debe llenar todos los campos. Gracias']);
@@ -25,19 +24,29 @@ class MapController extends Controller
     }
 
     private function validator($inputs, $service){
-        $rules = [
-            'place' => 'required',
-            'date' => 'required'
-        ];
 
         if($service == 'mascotas'){
-            $rules['breed'] = 'required';
-            $rules['size'] = 'required';
+            $rules = [
+                'place' => 'required',
+                'date' => 'required',
+                'breed' => 'required',
+                'size' => 'required'
+            ];
         }
-        else if($service == 'comidas')
-            $rules['food_type'] = 'required';
-        else
-            $rules['service'] = 'required';
+        else if($service == 'comidas'){
+            $rules = [
+                'place' => 'required',
+                'date' => 'required',
+                'food_type' => 'required'
+            ];
+        }
+        else {
+            $rules = [
+                'place' => 'required',
+                'date' => 'required',
+                'service' => 'required'
+            ];
+        }
 
         return Validator::make($inputs, $rules);
     }
