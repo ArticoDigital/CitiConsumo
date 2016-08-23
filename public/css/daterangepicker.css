@@ -73,7 +73,7 @@
     .daterangepicker .calendar th, .daterangepicker .calendar td {
       white-space: nowrap;
       text-align: center;
-      min-width: 22px; }
+      min-width: 20px; }
   .daterangepicker .calendar-table {
     border: 1px solid #fff;
     padding: 4px;
@@ -91,7 +91,7 @@
     white-space: nowrap;
     cursor: pointer; }
     .daterangepicker td.available:hover, .daterangepicker th.available:hover {
-      background-color: #eee;
+      background-color: #eaeaea;
       border-color: transparent;
       color: inherit; }
     .daterangepicker td.week, .daterangepicker th.week {
@@ -102,7 +102,8 @@
     border-color: transparent;
     color: #999; }
   .daterangepicker td.in-range {
-    background-color: #ebf4f8;
+    //background-color: #ebf4f8;
+    background: #C2DFEC;
     border-color: transparent;
     color: #000;
     border-radius: 0; }
@@ -297,6 +298,9 @@
   position: relative;
 }
 
+.daterangepicker table thead th {
+  background: none;
+}
 .daterangepicker .arrow {
   position: absolute;
   top: 50%;
