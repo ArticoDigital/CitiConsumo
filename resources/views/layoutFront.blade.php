@@ -40,6 +40,7 @@
                     <li><a href="{{route('login')}}">Entrar</a></li>
                 @else
                     <li><a href="{{route('profile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li><a href="{{route('logout')}}">Cerrar sesión</a></li>
                 @endif
                 <li>
                     <div class="Menu-fixed">
