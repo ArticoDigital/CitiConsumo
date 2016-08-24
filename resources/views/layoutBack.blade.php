@@ -8,6 +8,15 @@
 </head>
 <body class="{{Request::route()->getName()}}">
 
+@if(session('alertTitle'))
+    <section class="Alert">
+        <article class="Message">
+            <h2>{{session('alertTitle')}}</h2>
+            {!! session('alertText') !!}
+            <a href="#" class="close">Cerrar</a>
+        </article>
+    </section>
+@endif
 <header class="Header">
     <div class="BarNav row middle between Container">
         <a href="{{url('/')}}" class="col-2">
@@ -46,6 +55,7 @@
 </main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="{{asset('js/main.js')}}"></script>
 @yield('scripts')
 </body>
 </html>

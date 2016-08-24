@@ -12,7 +12,7 @@
     <section class="Alert">
         <article class="Message">
             <h2>{{session('alertTitle')}}</h2>
-            <p>{{session('alertText')}}</p>
+            <p>{!! session('alertText')!!}</p>
             <a href="#" class="close">Cerrar</a>
         </article>
     </section>

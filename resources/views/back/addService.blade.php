@@ -179,48 +179,48 @@
             <article id="Step2" class="Step row">
                 <label class="required col-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
                 <div id="Map" class="col-12" style="height: 250px; width: calc(100% - 40px);"></div>
-                <input type="hidden" name="location" id="Location" value="">
+                <input type="hidden" name="location" id="Location" value="{{old('location')}}">
                 <label class="col-12 required" for="name">
                     <span class="text">Nombre</span>
-                    <input class="col-12" type="text" id="name" name="name">
+                    <input class="col-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
                 </label>
                 <label class="col-12 required" for="description">
                     <span class="text">Descripción</span>
-                    <textarea class="col-12" id="description" name="description"></textarea>
+                    <textarea class="col-12" id="description" name="description">{!! old('description') !!}</textarea>
                 </label>
                 <div id="ChangeInputs col-12 row" style="padding-right: 20px; width: 100%">
                     <div id="foodsInputs" class="col-12 row">
-                        <label class="col-6" for="date">
+                        <label class="col-6" for="date" style="display:none">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off">
+                            <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-6" for="price">
+                        <label class="col-6" for="price" style="display:none">
                             <span class="text">Valor del plato</span><br>
-                            <input type="number" id="price" fakeName="price">
+                            <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                     <div id="petsInputs" class="col-12 row">
-                        <label class="col-4" for="date">
+                        <label class="col-4" for="date" style="display:none">
                             <span class="text">Fechas</span><br>
-                            <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off">
+                            <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
                         <label class="col-4" for="pets-quantity">
                             <span class="text">Número de animales</span><br>
-                            <input type="number" id="pets-quantity" fakeName="pets-quantity">
+                            <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{old('pets-quantity')}}" autocomplete="off">
                         </label>
-                        <label class="col-4" for="price">
+                        <label class="col-4" for="price" style="display:none">
                             <span class="text">Precio por mascota</span><br>
-                            <input type="number" id="price" fakeName="price">
+                            <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                     <div id="servicesInputs" class="col-12 row">
-                        <label class="col-6" for="dateRange">
+                        <label class="col-6" for="dateRange" style="display:none">
                             <span class="text">Rango de fechas</span><br>
-                            <input class="datetimepicker_mask dateRange" id="dateRange" fakeName="date" type="text" autocomplete="off">
+                            <input class="datetimepicker_mask dateRange" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-6" for="price">
+                        <label class="col-6" for="price" style="display:none">
                             <span class="text">Precio por hora</span><br>
-                            <input type="number" id="price" fakeName="price">
+                            <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                 </div>
