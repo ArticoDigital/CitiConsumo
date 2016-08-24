@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Http\Controllers\Controller;
 use City\Entities\Service;
+use Validator;
 
 class AdminController extends Controller
 {
@@ -28,5 +29,21 @@ class AdminController extends Controller
 
     public function profile(){
         return view('back.profile');
+    }
+
+    private function validator($inputs){
+        $rules = [
+            'service' => 'required',
+            'location' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'date' => 'required',
+            'price' => 'required|number',
+        ];
+
+        if($inputs['service'] == 2)
+            $rules['pets-quantity'] = 'required';
+
+        Validator::make($inputs, $rules);
     }
 }

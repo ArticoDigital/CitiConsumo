@@ -266,7 +266,6 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
-
         $('#result').sortable();
         var filesInput = $("#files");
 
@@ -296,14 +295,20 @@
                 e.preventDefault();
         });
 
-        $('.dateSingle').daterangepicker(getConfig('single'));
-        $('.dateRange').daterangepicker(getConfig('multiple'));
-        $('.dateSingle, .dateRange').on('apply.daterangepicker', function(ev, picker) {
+        var dateRange = $('.dateRange'),
+            dateSingle = $('.dateSingle');
+
+        dateRange.daterangepicker(getConfig('multiple'));
+        dateRange.on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+
+        dateSingle.daterangepicker(getConfig('single'));
+        dateSingle.on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
         });
 
     </script>
-
     <script src="{{asset('js/maps.js')}}"></script>
     <script>setIsMultiple(false);</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>

@@ -1662,6 +1662,11 @@ function getToday(){
     return today;
 }
 
+function getTomorrow(){
+    var date = new Date(), tomorrow = (date.getMonth() + 1) + '/' + (date.getDate() + 1) + '/' + date.getFullYear();
+    return tomorrow;
+}
+
 function getConfig(type){
     var data = {
         'autoUpdateInput' : false,

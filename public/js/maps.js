@@ -89,15 +89,13 @@ function initMap() {
             };
 
             succesfull(pos);
-        },
-            function (error) {
-                succesfull(null);
+        }, function (error) {
+                getIpCoords();
                 if (error.code == error.PERMISSION_DENIED)
-                    console.log(error)
+                    console.log(error);
             });
 
     } else {
-        succesfull(null);
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
@@ -109,4 +107,15 @@ function setIsMultiple(bool){
         var pos = marker.getPosition().lat() + '&' + marker.getPosition().lng();
         $('#Location').val(pos);
     })
+}
+
+function getIpCoords(){
+    $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+        var pos = {
+            lat : data.latitude,
+            lng : data.longitude
+        };
+
+        succesfull(pos);
+    });
 }
