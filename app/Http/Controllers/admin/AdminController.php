@@ -19,7 +19,9 @@ class AdminController extends Controller
         $validate = $this->validator($inputs);
         if($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
-        dd('pasa');
+        dd(auth()->user());
+        $inputs['provider_id'] = auth()->user()->provider();
+        dd($inputs);
         $service = Service::create($inputs);
 
         //if($inputs['service'] == 1)
