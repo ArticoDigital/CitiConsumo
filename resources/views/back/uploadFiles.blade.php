@@ -2,14 +2,13 @@
 
 @section('content')
 <section class="row">
-@if (count($errors) > 0)
-
+    @if (count($errors) > 0)
+        <ul>
         @foreach ($errors->all() as $error)
             <li>{!!  $error  !!}</li>
-            @endforeach
-            </ul>
-
-     @endif
+        @endforeach
+        </ul>
+    @endif
               @if(Session::has('success'))
                 <div class="success">
                     <p>¡Se han subido los archivos!</p>

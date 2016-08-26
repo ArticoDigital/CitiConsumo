@@ -21,8 +21,8 @@ class isProvider
         if(isset($provider)){
             if($provider->isActive)
                 return $next($request);
-            return redirect()->to('admin' );
+            return redirect()->to('admin' )->with(['alertTitle' => '¡Aun no eres proveedor!', 'alertText' => '<p>Tus documentos estan en revisión, proximamente prodras ser un proveedor de servicios.</p> <p>Estaremos en contacto contigo.</p>']);
         }
-        return redirect()->route('uploadFiles' );
+        return redirect()->route('uploadFiles');
     }
 }
