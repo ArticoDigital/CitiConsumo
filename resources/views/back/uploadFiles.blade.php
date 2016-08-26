@@ -27,11 +27,11 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
             
-            <input type="hidden" class="required" name="RutFileName" id="RutFileName" value="">
-            <input type="hidden" class="required" name="CCFileName" id="CCFileName" value="">
-            <input type="hidden" class="required" name="BankFileName" id="BankFileName" value="">
-            <input type="hidden" class="required" name="ServicesFileName" id="ServicesFileName" value="">
-            <input type="hidden" class="required" name="HistoryFileName" id="HistoryFileName" value="">
+            <input type="hidden" class="required" name="RutFileName" id="RutFileName" value="{{ old('RutFileName') }}">
+            <input type="hidden" class="required" name="CCFileName" id="CCFileName" value="{{ old('CCFileName') }}">
+            <input type="hidden" class="required" name="BankFileName" id="BankFileName" value="{{ old('BankFileName') }}">
+            <input type="hidden" class="required" name="ServicesFileName" id="ServicesFileName" value="{{ old('ServicesFileName') }}">
+            <input type="hidden" class="required" name="HistoryFileName" id="HistoryFileName" value="{{ old('HistoryFileName') }}">
             
             <section class="DropFilesSmall">
                 <label class="DropFiles-inside" for="RutFile">
