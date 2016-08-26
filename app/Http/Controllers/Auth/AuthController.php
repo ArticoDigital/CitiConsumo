@@ -78,7 +78,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'role_id' => '1',
             'name' => $data['name'],
-            'birthday' => '2000-01-01',
+
         ]);
         $user->save();
         auth()->loginUsingId($user->id);

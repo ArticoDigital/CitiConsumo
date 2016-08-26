@@ -21,7 +21,6 @@ class CheckRoles
 
         if(Gate::denies('hasRole', $user))
             return redirect()->to('admin');
-
         return $next($request);
     }
 
