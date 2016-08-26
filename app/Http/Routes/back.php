@@ -26,8 +26,9 @@ Route::get('confirmar-compra', function(){
 Route::get('postular-servicio', [
     'as' => 'addService',
     'uses' => 'AdminController@addService',
-    'roles' => 2
-])->middleware('isProvider');
+    'roles' => 2,
+    'isProvider' => true
+]);
 
 Route::post('postular-servicio', [
     'as' => 'newService',

@@ -66,10 +66,9 @@ class AdminController extends Controller
     }
 
     public function uploadFiles(){
-        $id = Auth::user()->id;
-        if($this->isProvider($id)){
-            $provider_id = Provider::where('user_id', $id)->first();
-        //$client = $user->client;
+        $user = auth()->user();
+        if(isset($user->provider)){
+            $provider_id = Provider::where('user_id', $user->id)->first();
             $providerfiles = ProviderFiles::where('provider_id', $provider_id->id)->get();
             return view('back.uploadFiles', compact('providerfiles'));
         }else{
@@ -187,31 +186,23 @@ class AdminController extends Controller
 
     function uploadUserFileFields(Request $request)
     {
-        $validator = $this->validatorFiles($request->all());
+        $user = auth()->user();
+        $inputs = $request->all();
+        $validator = $this->validatorFiles($inputs);
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-        $data = $request->all();
-        $user_id=$data['user_id'];
-        if($this->isProvider($user_id)){
-            $this->updateFilesFields($request,$user_id);
-        }
-        else{
-            $provider_id=$this->createProvider($user_id);
-            $this->createFilesFields($request,$provider_id);
+        if ($validator->fails())
+            $this->throwValidationException($request, $validator);
+
+        $user->provider()->isActive = 2;
+        $user->save();
+
+        $this->updateFilesFields($request,$user->id);
+        $provider_id=$this->createProvider($user->id);
+
+        $this->createFilesFields($request,$provider_id);
             //En este punto se debe notificar al administrador para la aprobacion del proveedor
-        }
 
         return redirect()->back()->with('success', true);
-    }
-
-    public function isProvider($user_id){
-        if(Provider::where('user_id', $user_id)->first())
-            return true;
-        return false;
     }
 
     private function createProvider($user_id){

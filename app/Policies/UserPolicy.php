@@ -23,6 +23,12 @@ class UserPolicy
     {
         $roles = $user['roles'];
 
+        if($user->role_id == 2 && isset($user->provider)){
+            if($user->provider->isActive)
+                return true;
+            return false;
+        }
+
         if(is_array($roles)){
             foreach($roles as $role){
                 if($role == $user->role_id)
