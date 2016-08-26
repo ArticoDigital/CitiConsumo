@@ -3,6 +3,7 @@
 namespace City;
 
 use City\Entities\Provider;
+use City\Entities\Role;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -27,5 +28,10 @@ class User extends Authenticatable
 
     protected function provider(){
         $this->hasOne(Provider::class);
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'role_id');
     }
 }

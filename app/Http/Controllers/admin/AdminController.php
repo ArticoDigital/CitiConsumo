@@ -12,6 +12,7 @@ use Validator;
 use City\User;
 use City\Entities\Provider;
 use City\Entities\ProviderFiles;
+use Gate;
 //use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller

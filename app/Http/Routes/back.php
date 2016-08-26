@@ -1,12 +1,15 @@
 <?php
 
-Route::get('/', function(){
-   return view('back.dashboard');
-});
+Route::get('/', [
+    'uses' => function() {
+        return view('back.dashboard');
+    },
+]);
 
 Route::get('mi-perfil', [
     'as' => 'myProfile',
-    'uses' => 'AdminController@myProfile'
+    'uses' => 'AdminController@myProfile',
+    'roles' => [1, 2, 3]
 ]);
 
 Route::get('desembolso', function(){
