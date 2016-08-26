@@ -1280,6 +1280,9 @@ div.profile-photo-light {
   -ms-user-select: none;
   user-select: none; }
 
+.image-upload > input {
+  display: none; }
+
 .switch input.cmn-toggle-round-flat + label {
   padding: 2px;
   width: 60px;

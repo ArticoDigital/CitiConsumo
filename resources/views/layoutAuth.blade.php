@@ -43,7 +43,7 @@
                     @if(!Auth::check())
                         @yield('action')
                     @else
-                        <li><a href="{{route('profile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                        <li><a href="{{route('profile',Auth::user()->id)}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                         <li><a href="{{route('logout')}}">Cerrar sesión</a></li>
                     @endif
                     <li>
