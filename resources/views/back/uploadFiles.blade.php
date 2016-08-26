@@ -12,12 +12,12 @@
      @endif
               @if(Session::has('success'))
                 <div class="success">
-                    <p>¡El usuario se ha actualizado!</p>
+                    <p>¡Se han subido los archivos!</p>
                 </div>
             @endif
 
     @if (isset($providerfiles) > 0)
-    <p>Editar usuario {{$providerfiles}}</p>
+    <p>Archivos: {{$providerfiles}}</p>
     @endif
     <figure class="TextOver col-6">
         <img src="{{url('img/bg-formulario.svg')}}" alt="">

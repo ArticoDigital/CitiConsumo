@@ -76,7 +76,7 @@ class AdminController extends Controller
         if($this->isProvider($id)){
             $provider_id = Provider::where('user_id', $id)->first();
         //$client = $user->client;
-            $providerfiles = ProviderFiles::where('provider_id', $provider_id)->get();
+            $providerfiles = ProviderFiles::where('provider_id', $provider_id->id)->get();
             return view('back.uploadFiles', compact('providerfiles'));
         }else{
             return view('back.uploadFiles');
