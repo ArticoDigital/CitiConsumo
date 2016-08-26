@@ -26,6 +26,7 @@
         </a>
         <nav class="row col-10 end">
             <ul class="Menu row between">
+                <li><a  style="color: white" href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                 <li><a href="{{route('profile',Auth::user()->id)}}" style="color: white" >Bienvenid@ {{Auth::user()->name}}</a></li>
                 <li><a href="{{route('logout')}}" style="color: white" >Cerrar sesión</a></li>
                 <li>

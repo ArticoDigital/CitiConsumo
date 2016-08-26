@@ -27,7 +27,7 @@ class User extends Authenticatable
     ];
 
     protected function provider(){
-        $this->hasOne(Provider::class);
+        return $this->hasOne(Provider::class);
     }
 
     public function role()

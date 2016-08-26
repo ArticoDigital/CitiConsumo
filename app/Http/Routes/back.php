@@ -27,7 +27,7 @@ Route::get('postular-servicio', [
     'as' => 'addService',
     'uses' => 'AdminController@addService',
     'roles' => 2
-]);
+])->middleware('isProvider');
 
 Route::post('postular-servicio', [
     'as' => 'newService',
@@ -36,10 +36,10 @@ Route::post('postular-servicio', [
 ]);
 
 
-Route::get('subir-archivos/{id}', [
+Route::get('subir-archivos', [
     'as' => 'uploadFiles',
     'uses' => 'AdminController@uploadFiles',
-    'roles' => 1
+
 ]);
 
 Route::post('uploadFile', [

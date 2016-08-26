@@ -115,7 +115,7 @@ function getIpCoords(){
             lat : data.latitude,
             lng : data.longitude
         };
-
+        console.log(pos)
         succesfull(pos);
     });
 }

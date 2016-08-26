@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Http\Controllers\Controller;
 use City\Entities\Service;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 use City\User;
@@ -64,7 +65,8 @@ class AdminController extends Controller
         return view('back.profile', compact('userprofile'));
     }
 
-    public function uploadFiles($id){
+    public function uploadFiles(){
+        $id = Auth::user()->id;
         if($this->isProvider($id)){
             $provider_id = Provider::where('user_id', $id)->first();
         //$client = $user->client;
@@ -118,7 +120,7 @@ class AdminController extends Controller
         }
        */
         if ($request->hasFile('profile_image')) {
-            $imageName = $request->file('profile_image')->getClientOriginalName();
+            $imageName =  str_random(20) . $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
 
             $user['profile_image'] = $imageName;
@@ -161,7 +163,7 @@ class AdminController extends Controller
 
     public function uploadFile(Request $request)
     {
-        $fileName = $request->file('file')->getClientOriginalName();
+        $fileName = str_random(20) . '**' . $request->file('file')->getClientOriginalName();
         $request->file('file')->move(base_path() . '/public/uploads/provider/', $fileName);
         $return = ['name' => $fileName, 'url' => url('/uploads/provider/' . $fileName), 'identifier' => $request->identifier , 'success' => true];
         return response()->json($return);
