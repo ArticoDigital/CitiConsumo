@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Http\Controllers\Controller;
 use City\Entities\Service;
-use Illuminate\Support\Facades\Auth;
 use Validator;
 
 use City\User;
@@ -66,22 +65,23 @@ class AdminController extends Controller
     }
 
     public function uploadFiles(){
-        $user = auth()->user();
-        if(isset($user->provider)){
-            $provider_id = Provider::where('user_id', $user->id)->first();
+
+        $id = auth()->user()->id;
+        if($this->isProvider($id)){
+            $provider_id = Provider::where('user_id', $id)->first();
+        //$client = $user->client;
             $providerfiles = ProviderFiles::where('provider_id', $provider_id->id)->get();
             return view('back.uploadFiles', compact('providerfiles'));
         }else{
             return view('back.uploadFiles');
 
         }
-         
     }
 
     public function profile($id){
         $userprofile = User::find($id);
          return view('back.profile', compact('userprofile'));
-        
+
     }
 
 
@@ -119,7 +119,7 @@ class AdminController extends Controller
         }
        */
         if ($request->hasFile('profile_image')) {
-            $imageName =  str_random(20) . $request->file('profile_image')->getClientOriginalName();
+            $imageName = $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
 
             $user['profile_image'] = $imageName;
@@ -133,7 +133,7 @@ class AdminController extends Controller
 
 
 
-    
+
 
     protected function validatorUser(array $data)
     {
@@ -162,7 +162,7 @@ class AdminController extends Controller
 
     public function uploadFile(Request $request)
     {
-        $fileName = str_random(20) . '**' . $request->file('file')->getClientOriginalName();
+        $fileName = $request->file('file')->getClientOriginalName();
         $request->file('file')->move(base_path() . '/public/uploads/provider/', $fileName);
         $return = ['name' => $fileName, 'url' => url('/uploads/provider/' . $fileName), 'identifier' => $request->identifier , 'success' => true];
         return response()->json($return);
@@ -186,23 +186,35 @@ class AdminController extends Controller
 
     function uploadUserFileFields(Request $request)
     {
-        $user = auth()->user();
         $inputs = $request->all();
         $validator = $this->validatorFiles($inputs);
 
-        if ($validator->fails())
-            $this->throwValidationException($request, $validator);
-
-        $user->provider()->isActive = 2;
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+        
+        $user_id = $inputs['user_id'];
+        $user = User::find($user_id);
         $user->save();
-
-        $this->updateFilesFields($request,$user->id);
-        $provider_id=$this->createProvider($user->id);
-
-        $this->createFilesFields($request,$provider_id);
+        
+        if($this->isProvider($user_id)){
+            $this->updateFilesFields($request,$user_id);
+        }
+        else{
+            $provider_id=$this->createProvider($user_id);
+            $this->createFilesFields($request,$provider_id);
             //En este punto se debe notificar al administrador para la aprobacion del proveedor
+        }
 
         return redirect()->back()->with('success', true);
+    }
+
+    public function isProvider($user_id){
+        if(Provider::where('user_id', $user_id)->first())
+            return true;
+        return false;
     }
 
     private function createProvider($user_id){
