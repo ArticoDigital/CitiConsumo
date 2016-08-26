@@ -9,7 +9,6 @@ Route::get('/', [
 Route::get('mi-perfil', [
     'as' => 'myProfile',
     'uses' => 'AdminController@myProfile',
-    'roles' => [1, 2, 3]
 ]);
 
 Route::get('desembolso', function(){
@@ -26,18 +25,21 @@ Route::get('confirmar-compra', function(){
 
 Route::get('postular-servicio', [
     'as' => 'addService',
-    'uses' => 'AdminController@addService'
+    'uses' => 'AdminController@addService',
+    'roles' => 2
 ]);
 
 Route::post('postular-servicio', [
     'as' => 'newService',
-    'uses' => 'AdminController@newService'
+    'uses' => 'AdminController@newService',
+    'roles' => 2
 ]);
 
 
 Route::get('subir-archivos/{id}', [
     'as' => 'uploadFiles',
-    'uses' => 'AdminController@uploadFiles'
+    'uses' => 'AdminController@uploadFiles',
+    'roles' => 1
 ]);
 
 Route::post('uploadFile', [
@@ -47,13 +49,14 @@ Route::post('uploadFile', [
 
 Route::get('perfil/{id}', [
     'as' => 'profile',
-    'uses' => 'AdminController@profile'
+    'uses' => 'AdminController@profile',
+    'roles' => 3
 ]);
 
 Route::post('updateUser', [
-        'uses' => 'AdminController@updateUser',
-        'as' => 'updateUser'
-    ]);
+    'uses' => 'AdminController@updateUser',
+    'as' => 'updateUser'
+]);
 
 Route::post('uploadUserFileFields', [
         'uses' => 'AdminController@uploadUserFileFields',

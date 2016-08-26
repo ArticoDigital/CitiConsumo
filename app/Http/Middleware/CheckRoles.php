@@ -17,8 +17,10 @@ class CheckRoles
     public function handle($request, Closure $next)
     {
         $roles = $this->isRestringed($request->route());
+        $user = auth()->user();
+        $user['roles'] = $roles;
 
-        if(Gate::denies('hasRole', $roles))
+        if(Gate::denies('hasRole', $user))
             return redirect()->to('admin');
         return $next($request);
     }

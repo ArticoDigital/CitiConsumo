@@ -15,7 +15,23 @@ class RoutePolicy
      * @return void
      */
 
-    public function isPrueba(){
+    public function hasRole(User $user){
+        return $this->getRoles($user) || !$user['roles'];
+    }
+
+    private function getRoles($user)
+    {
+        $roles = $user['roles'];
+
+        if(is_array($roles)){
+            foreach($roles as $role){
+                if($role == $user->role_id)
+                    return true;
+            }
+        } else {
+            return $roles == $user->role_id;
+        }
+
         return false;
     }
 }
