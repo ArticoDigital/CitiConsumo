@@ -28,7 +28,7 @@ return [
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
     'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'The :attribute confirmation does not match.',
+    'confirmed'            => '<p>El campo <b> :attribute </b> no coincide.</p>',
     'date'                 => 'The :attribute is not a valid date.',
     'date_format'          => 'The :attribute does not match the format :format.',
     'different'            => 'The :attribute and :other must be different.',
@@ -46,22 +46,22 @@ return [
     'json'                 => 'The :attribute must be a valid JSON string.',
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
-        'file'    => 'The :attribute may not be greater than :max kilobytes.',
+        'file'    => '<p> El archivo del campo <b> :attribute </b> no puede ser mayor a :max kb.</p>',
         'string'  => 'The :attribute may not be greater than :max characters.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
-    'mimes'                => 'The :attribute must be a file of type: :values.',
+    'mimes'                => '<p>Este tipo de archivo no es admitido.</p>',//'The :attribute must be a file of type: :values.',
     'min'                  => [
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => '<p>El campo <b> :attribute </b> debe tener mínimo <b> :min </b> digitos.</p>',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => 'The :attribute must be at least :min characters.',
+        'string'  => '<p>El campo <b> :attribute </b> debe tener mínimo <b> :min </b> caracteres.</p>',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
-    'numeric'              => 'The :attribute must be a number.',
+    'numeric'              => '<p>En el campo <b> :attribute </b>, solo se aceptan números.</p>',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
-    'required'             => 'El :attribute es requerido.',
+    'required'             => '<p>El campo <b> :attribute </b> es requerido.</p>',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
@@ -77,7 +77,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => '<p>Este <b> :attribute </b> ya ha sido registrado.</p>',
     'url'                  => 'The :attribute format is invalid.',
 
     /*
@@ -92,8 +92,29 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'service' => [
+            'required' => '<p>Debe seleccionar el <b>tipo de servicio<b> que va a prestar.</p>',
+        ],
+        'location' => [
+            'required' => '<p>Seleccione la <b>Ubicación</b> donde piensa prestar el servicio.</p>'
+        ],
+        'date' => [
+            'required' => '<p>Es necesario que ingrese una <b>fecha</b> o <b>rango de fechas</b> en las que prestará el servicio.</p>'
+        ],
+        'CCFileName' => [
+            'required' => '<p>Debe adjuntar la copia de su cédula.</p>',
+        ],
+        'RutFileName' => [
+            'required' => '<p>Debe adjuntar su RUT.</p>',
+        ],
+        'BankFileName' => [
+            'required' => '<p>Debe adjuntar su certificado de cuenta bancaria.</p>',
+        ],
+        'ServicesFileName' => [
+            'required' => '<p>Debe adjuntar la copia de un recibo de servicio público.</p>',
+        ],
+        'HistoryFileName' => [
+            'required' => '<p>Debe adjuntar sus antecedentes de procuraduria.</p>',
         ],
     ],
 
@@ -108,6 +129,26 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Nombre',
+        'last_name' => 'Apellido',
+        'description' => 'Descripción',
+        'identification-number' => 'Número de identificación',
+        'email' => 'Email',
+        'password' => 'Contraseña',
+        'profile_image' => 'Imágen de perfil',
+        'cellphone' => 'Número de celular',
+        'phone' => 'Número de teléfono',
+        'address' => 'Dirección',
+        'sector' => 'Sector',
+        'country' => 'País',
+        'city' => 'Ciudad',
+        'company' => 'Empresa',
+        'activities' => 'Actividad',
+        'what-i-do' => 'A qué me dedico',
+        'mobile-1' => 'Teléfono movil',
+        'price' => 'Precio',
+        'pets-quantity' => 'Número de mascotas',
+    ],
 
 ];

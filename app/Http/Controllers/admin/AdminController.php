@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers\admin;
 
+use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Http\Controllers\Controller;
@@ -33,7 +34,7 @@ class AdminController extends Controller
         return redirect()->route('addService');
     }
 
-    
+
 
     private function validator($inputs){
         $rules = [
@@ -48,19 +49,7 @@ class AdminController extends Controller
         if($inputs['service'] == 2)
             $rules['pets-quantity'] = 'required|numeric';
 
-        $messages = [
-            'service.required' => '<p>Debe seleccionar el <b>tipo de servicio<b>.</p>',
-            'location.required' => '<p>Seleccione la <b>ubicación</b> donde piensa prestar el servicio.</p>',
-            'name.required' => '<p>El campo <b>nombre</b> es requerido.</p>',
-            'description.required' => '<p>El campo <b>descripción</b> es requerido.</p>',
-            'date.required' => '<p>Es necesario que ingrese una <b>fecha</b> o <b>rango de fechas</b> en las que prestará el servicio.</p>',
-            'price.required' => '<p>Escriba el <b>precio</b> del servicio.</p>',
-            'pets-quantity.required' => '<p>Escriba el <b>número de mascotas</b> que puede cuidar.</p>',
-            'price.numeric' => '<p>En el campo <b>"precio"</b>, solo se aceptan números.</p>',
-            'pets-quantity.numeric' => '<p>En el campo <b>"numero de mascotas"</b>, solo se aceptan números.</p>'
-        ];
-
-        return Validator::make($inputs, $rules, $messages);
+        return Validator::make($inputs, $rules);
     }
 /*
 
@@ -68,10 +57,12 @@ class AdminController extends Controller
         return view('back.uploadFiles');
     }
 
-    public function profile(){
-        return view('back.profile');
+    */
+    public function myProfile(){
+        $userprofile = auth()->user();
+        return view('back.profile', compact('userprofile'));
     }
-*/
+
     public function uploadFiles($id){
         if($this->isProvider($id)){
             $provider_id = Provider::where('user_id', $id)->first();
@@ -152,35 +143,7 @@ class AdminController extends Controller
             'address'=> 'required|max:255',
             'birthday' => 'date',
             'cellphone' => 'required|max:255',
-        
-        ],
-            [
-                'name.required' => 'El nombre es obligatorio',
-                'last_name.required' => 'El Apellido es obligatorio',
-               /* 'identification-number.required' => 'El número de identificación es obligatorio',
-               */
-                'email.required' => 'El Email es obligatorio',
-                'email.unique' => 'Este mail ya esta registrado',
-                /*'password.required' => 'La contraseña es obligatoria',
-                'password.confirmed' => 'Las contraseñas deben coincidir',
-                'password.min' => 'La contraseña debe contener mas de 6 caráteres',*/
-                'profile_image.mimes' => 'El archivo debe ser una imagen',
-                'profile_image.required' => 'La imagen es obligatoria',
-                'profile_image.max' => 'La imagen no debe ser mayor a 2M',
-                 'cellphone.required' => 'El celular es obligatorio',
-
-                 'address.required' => 'La dirección es obligatoria',
-
-                /*'sector.required' => 'El campo sector es obligatorio',
-                'country.required' => 'El campo país es obligatorio',
-                
-                'company.required' => 'La empresa es obligatorio',
-                'activities.required' => 'La actividad es obligatorio',
-                'what-i-do.required' => 'A que me dedico:    es obligatorio',
-               
-                'mobile-1.required' => 'El Teléfono móvil: es obligatorio',*/
             ]
-
         );
         $v->sometimes('profile_image', 'mimes:jpeg,jpg,png,gif|max:20000', function($data) {
             return !empty($data['profile_image']);
@@ -243,16 +206,13 @@ class AdminController extends Controller
     }
 
     public function isProvider($user_id){
-        if(Provider::where('user_id', $user_id)->first()){
+        if(Provider::where('user_id', $user_id)->first())
             return true;
-        }
-        else{
-            return false;
-        }
+        return false;
     }
 
     private function createProvider($user_id){
-          $provider = new Provider([
+        $provider = new Provider([
             'isActive' => false,
             'user_id' => $user_id,
         ]);
@@ -348,32 +308,13 @@ private function updateFilesFields($request,$user_id){
 
 
 
-    protected function validatorFiles(array $data)
-    {
-
-        $v =  Validator::make($data, [
+    protected function validatorFiles($data) {
+        return  Validator::make($data, [
             'RutFileName' => 'required|max:255',
             'CCFileName' => 'required|max:255',
             'BankFileName' => 'required|max:255',
             'ServicesFileName'=> 'required|max:255',
             'HistoryFileName' => 'required|max:255',
-        
-        ],
-            [
-                'RutFileName.required' => 'El Rut es obligatorio',
-                'CCFileName.required' => 'La copia de la identificación es obligatoria',
-                'BankFileName.required' => 'El certificado bancario es obligatorio',
-                'ServicesFileName.required' => 'La copia de servicios publicos es obligatoria',
-                'HistoryFileName.required' => 'El antecedente de procuraduría es obligatorio',
-
-                
-               /* 'identification-number.required' => 'El número de identificación es obligatorio',
-               */
-            ]
-
-        );
-
-        return $v;
-
+        ]);
     }
 }

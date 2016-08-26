@@ -2,10 +2,6 @@
 
 nextStep($('#toStep1'), 1);
 
-$('#Step1 label').on('click', function(){
-    $('#toStep2, .gray2').removeClass('disabled');
-});
-
 $("#Step2").on('keyup', 'input, textarea', function(){
     var $StepItems = $('#Step2 input');
     var flag = true;
@@ -61,23 +57,23 @@ function nextStep(element, step){
 
     if(!element.hasClass('disabled')){
         $all.removeClass('active');
-        $form.css('left', -(step * 100 - 100) + '%')
-             .parent().css('height', (60 + $('#Steps').height() + height) + 'px');
+        $form.css('left', -(step * 100 - 100) + '%');
+/*             .parent().css('height', (60 + $('#Steps').height() + height) + 'px');
         if(step == 3)
-            $form.parent().css('height', 'auto');
+            $form.parent().css('height', 'auto');*/
 
         for(var i = 2; i <= step; i++){
             $('.gray' + i).addClass('active');
         }
     }
 
-    $("html, body").animate({ scrollTop: $('main.Container').position().top }, 500);
+    $("html, body").animate({ scrollTop: $('main').position().top }, 500);
 }
 
 
 $('[name="service"]').on('change', function(){
-
     var element;
+    $('#toStep2, .gray2').removeClass('disabled');
     $('.changeInputs label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
     $('#toStep3, .gray3').addClass('disabled');
 

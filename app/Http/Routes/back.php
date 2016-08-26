@@ -4,9 +4,10 @@ Route::get('/', function(){
    return view('back.dashboard');
 });
 
-Route::get('perfil', function(){
-    return view('back.profile');
-});
+Route::get('mi-perfil', [
+    'as' => 'myProfile',
+    'uses' => 'AdminController@myProfile'
+]);
 
 Route::get('desembolso', function(){
     return view('back.outlay');

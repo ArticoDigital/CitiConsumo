@@ -37,11 +37,10 @@
                         </a>
                         <nav>
                             <ul class="col-4">
-                                <li><a href="#">QUIENES SOMOS?</a></li>
+                                <li><a href="{{route('myProfile')}}">MI PERFIL</a></li>
                                 <li><a href="#">PREGUNTAS FRECUENTES </a></li>
                                 <li><a href="#">AYUDANOS A MEJORAR</a></li>
                                 <li><a href="#">CONTACTANOS</a></li>
-                                <li><a href="#">TESTIMONIOS</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -50,9 +49,8 @@
         </nav>
     </div>
 </header>
-<div class="Container row">
-    <!--<aside class="AsideMenu"></aside>-->    
-    <main class="Container">
+<div class="Container">
+    <main class="MainBack">
         @yield('content')
     </main>
 </div>
