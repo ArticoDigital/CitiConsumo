@@ -40,7 +40,7 @@ Route::post('postular-servicio', [
 Route::get('subir-archivos', [
     'as' => 'uploadFiles',
     'uses' => 'AdminController@uploadFiles',
-
+    'roles' => 1
 ]);
 
 Route::post('uploadFile', [
