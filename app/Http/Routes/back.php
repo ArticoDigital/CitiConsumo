@@ -30,12 +30,28 @@ Route::post('postular-servicio', [
     'uses' => 'AdminController@newService'
 ]);
 
-Route::get('subir-archivos', [
+
+Route::get('subir-archivos/{id}', [
     'as' => 'uploadFiles',
     'uses' => 'AdminController@uploadFiles'
 ]);
 
-Route::get('perfil', [
+Route::post('uploadFile', [
+    'uses' => 'AdminController@uploadFile',
+    'as' => 'uploadFile'
+]);
+
+Route::get('perfil/{id}', [
     'as' => 'profile',
     'uses' => 'AdminController@profile'
 ]);
+
+Route::post('updateUser', [
+        'uses' => 'AdminController@updateUser',
+        'as' => 'updateUser'
+    ]);
+
+Route::post('uploadUserFileFields', [
+        'uses' => 'AdminController@uploadUserFileFields',
+        'as' => 'uploadUserFileFields'
+    ]);
