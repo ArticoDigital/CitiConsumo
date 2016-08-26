@@ -5,7 +5,7 @@ namespace City\Policies;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use City\User;
 
-class RoutePolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 

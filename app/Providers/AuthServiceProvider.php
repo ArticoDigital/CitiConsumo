@@ -2,9 +2,7 @@
 
 namespace City\Providers;
 
-use Illuminate\Support\Facades\Auth;
-use City\Policies\RoutePolicy;
-use City\Entities\Role;
+use City\Policies\UserPolicy;
 use City\User;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -17,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        User::class => RoutePolicy::class
+        User::class => UserPolicy::class,
     ];
 
     /**

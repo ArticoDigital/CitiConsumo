@@ -59,6 +59,6 @@ Route::post('updateUser', [
 ]);
 
 Route::post('uploadUserFileFields', [
-        'uses' => 'AdminController@uploadUserFileFields',
-        'as' => 'uploadUserFileFields'
-    ]);
+    'uses' => 'AdminController@uploadUserFileFields',
+    'as' => 'uploadUserFileFields'
+]);
