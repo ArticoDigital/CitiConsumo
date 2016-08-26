@@ -188,8 +188,8 @@
                     <span class="text">Descripción</span>
                     <textarea class="col-12" id="description" name="description">{!! old('description') !!}</textarea>
                 </label>
-                <div id="ChangeInputs col-12 row" style="padding-right: 20px; width: 100%">
-                    <div id="foodsInputs" class="col-12 row">
+                <div class="col-12 row" style="padding-right: 20px; width: 100%">
+                    <div id="foodsInputs" class="changeInputs col-12 row">
                         <label class="col-6" for="date" style="display:none">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
@@ -199,12 +199,12 @@
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
-                    <div id="petsInputs" class="col-12 row">
+                    <div id="petsInputs" class="changeInputs col-12 row">
                         <label class="col-4" for="date" style="display:none">
                             <span class="text">Fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-4" for="pets-quantity">
+                        <label class="col-4" for="pets-quantity" style="display:none">
                             <span class="text">Número de animales</span><br>
                             <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{old('pets-quantity')}}" autocomplete="off">
                         </label>
@@ -213,7 +213,7 @@
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
-                    <div id="servicesInputs" class="col-12 row">
+                    <div id="servicesInputs" class="changeInputs col-12 row">
                         <label class="col-6" for="dateRange" style="display:none">
                             <span class="text">Rango de fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">

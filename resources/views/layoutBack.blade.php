@@ -50,9 +50,12 @@
         </nav>
     </div>
 </header>
-<main class="Container">
-@yield('content')
-</main>
+<div class="Container row">
+    <!--<aside class="AsideMenu"></aside>-->    
+    <main class="Container">
+        @yield('content')
+    </main>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>

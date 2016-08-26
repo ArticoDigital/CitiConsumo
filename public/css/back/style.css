@@ -994,8 +994,7 @@ figure figcaption {
 
 .Header {
   width: 100%;
-  background: #002444;
-  margin-bottom: 1.875rem; }
+  background: #002444; }
 
 svg#Steps .gray1 {
   cursor: pointer; }
@@ -1073,6 +1072,14 @@ svg#Steps .disabled {
     top: 50%;
     margin-top: -65px;
     text-align: center; }
+
+main.Container {
+  margin-top: 1.875rem; }
+
+.AsideMenu {
+  height: 100vh;
+  width: 12.1875rem;
+  background: black; }
 
 .profile-title {
   color: #004495;

@@ -71,13 +71,14 @@ function nextStep(element, step){
         }
     }
 
-    $("html, body").animate({ scrollTop: $('main.Container').position().top }, 1000);
+    $("html, body").animate({ scrollTop: $('main.Container').position().top }, 500);
 }
+
 
 $('[name="service"]').on('change', function(){
 
     var element;
-    $('div label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
+    $('.changeInputs label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
     $('#toStep3, .gray3').addClass('disabled');
 
     if($(this).attr('id') == 'foods')
@@ -98,5 +99,5 @@ $('[name="service"]').on('change', function(){
 });
 
 $('.datetimepicker_mask, [id*="address"]').on('click keydown', function(){
-    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    $("html, body").animate({ scrollTop: $(document).height() }, 500);
 });
