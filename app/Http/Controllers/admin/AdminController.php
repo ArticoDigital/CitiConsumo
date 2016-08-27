@@ -2,6 +2,9 @@
 
 namespace City\Http\Controllers\admin;
 
+use City\Entities\FoodType;
+use City\Entities\GeneralType;
+use City\Entities\PetSize;
 use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
 use City\Http\Requests;
@@ -25,8 +28,12 @@ class AdminController extends Controller
     public function addService()
     {
         $user = auth()->user();
+        $foodTypes = FoodType::all();
+        $sizes = PetSize::all();
+        $generalTypes = GeneralType::all();
+
         if(isset($user->provider) && $user->provider->isActive)
-            return view('back.addService');
+            return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
         return redirect()->route('uploadFiles');
     }
 
@@ -45,7 +52,7 @@ class AdminController extends Controller
             Food::create([
                 'food_time' => date_create($inputs['date']),
                 'service_id' => $service->id,
-                'food_type_id' => 1 //**************** AÑADIR FOOD TYPE A VISTA
+                'food_type_id' => $inputs['food_type']
             ]);
         }
         elseif($inputs['service'] == 2) {
@@ -54,14 +61,14 @@ class AdminController extends Controller
                 'date_start' => date_create($date[0]),
                 'date_end' => date_create($date[1]),
                 'service_id' => $service->id,
-                'pet_sizes' => $inputs['pet_sizes'] //**************** AÑADIR PET_SIZES A VISTA
+                'pet_sizes' => $inputs['size']
             ]);
         }
         elseif($inputs['service'] == 3) {
             General::create([
                 'date' => date_create($inputs['date']),
                 'service_id' => $service->id,
-                'general_type_id' => 1 //**************** AÑADIR GENERAL_TYPES A VISTA
+                'general_type_id' => $inputs['general_type']
             ]);
         }
 

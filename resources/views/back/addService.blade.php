@@ -190,35 +190,59 @@
                 </label>
                 <div class="col-12 row" style="padding-right: 20px; width: 100%">
                     <div id="foodsInputs" class="changeInputs col-12 row">
-                        <label class="col-6" for="date" style="display:none">
+                        <label class="col-4" for="date" style="display:none">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-6" for="price" style="display:none">
+                        <label class="col-4" for="price" style="display:none">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
+                        <label for="food_type" class="col-4" style="display:none">
+                            <span class="text">Tipo de comida</span><br>
+                            <select class="js-example-basic-single" id="food_type" name="food_type">
+                                @foreach($foodTypes as $foodType)
+                                    <option value="{{$foodType->id}}">{{$foodType->name}}</option>
+                                @endforeach
+                            </select>
+                        </label>
                     </div>
                     <div id="petsInputs" class="changeInputs col-12 row">
-                        <label class="col-4" for="date" style="display:none">
+                        <label class="col-3" for="date" style="display:none">
                             <span class="text">Fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-4" for="pets-quantity" style="display:none">
+                        <label for="size" class="col-3" style="display:none">
+                            <span class="text">Tamaños</span><br>
+                            <select class="js-example-basic-single" id="size" name="size">
+                                @foreach($sizes as $size)
+                                    <option value="{{$size->id}}">{{$size->name}}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                        <label class="col-3" for="pets-quantity" style="display:none">
                             <span class="text">Número de animales</span><br>
                             <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{old('pets-quantity')}}" autocomplete="off">
                         </label>
-                        <label class="col-4" for="price" style="display:none">
+                        <label class="col-3" for="price" style="display:none">
                             <span class="text">Precio por mascota</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                     <div id="servicesInputs" class="changeInputs col-12 row">
-                        <label class="col-6" for="dateRange" style="display:none">
+                        <label class="col-4" for="dateRange" style="display:none">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-6" for="price" style="display:none">
+                        <label for="general_type" class="col-4" style="display:none">
+                            <span class="text">Tipo de servicio</span><br>
+                            <select class="js-example-basic-single" id="general_type" name="general_type">
+                                @foreach($generalTypes as $generalType)
+                                    <option value="{{$generalType->id}}">{{$generalType->name}}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                        <label class="col-4" for="price" style="display:none">
                             <span class="text">Precio por hora</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
@@ -263,10 +287,13 @@
     <script src="{{asset('js/steps.js')}}"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="{{asset('js/select2.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
+        $(".js-example-basic-single").select2({width:'100%'});
         $('#result').sortable();
+
         var filesInput = $("#files");
 
         $('.DropFiles-inside').on('dragenter click', function(e){
@@ -315,6 +342,7 @@
 @endsection
 
 @section('styles')
+    <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
 @endsection
 

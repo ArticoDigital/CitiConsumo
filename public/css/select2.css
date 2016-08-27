@@ -137,7 +137,8 @@
 
 .select2-container--default .select2-selection--single {
     background-color: #fff;
-    border: 1px solid #aaa;  }
+    border: 1px solid #aaa;
+}
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #444;
     line-height: 28px;
@@ -504,4 +505,16 @@
 
 .select2-selection.select2-selection--multiple{
     background: transparent;
+}
+
+.Form2 .select2-dropdown{
+    border: none !important;
+}
+
+.StepsForm.Form2 .select2-container .select2-selection--single {
+    height: 2.1875rem !important;
+    border: none !important;
+    outline-color: #05347a !important;
+    background: #ebebeb !important;
+    padding: 0 0.625rem !important;
 }

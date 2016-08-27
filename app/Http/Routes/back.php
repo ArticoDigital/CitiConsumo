@@ -26,7 +26,7 @@ Route::get('confirmar-compra', function () {
 Route::get('postular-servicio', [
     'as' => 'addService',
     'uses' => 'AdminController@addService',
-    'roles' => 2
+    'roles' => [1, 2]
 ]);
 
 Route::post('postular-servicio', [
