@@ -47,6 +47,11 @@
                 </g>
             </svg>
         </div>
+        <div class="row end">
+                <a style="color: #67b9e5; font-size: 14px" class="login-restartPassword" href="{{route('getEmail')}}">
+                    Olvido su contraseña?
+                </a>
+            </div>
         <button>INICO SESIÓN</button>
     </form>
 @endsection

@@ -29,7 +29,7 @@ $files.on('change', function () {
 */
 $files.on("change", function (event) {
     var form_url = $(this).data("url");
-    var identifier = $(this).attr('name')+"Name";
+    var identifier = $(this).attr('name');
     //alert(identifier);
     var CSRF_TOKEN = $('input[name="_token"]').val();
     var fd = new FormData();
@@ -38,6 +38,9 @@ $files.on("change", function (event) {
         alert('EL archivo debe ser un pdf, imagen jpg o png');
         return
     }
+    //$(this).parent().find('.preload').removeCalss("hidden");
+    $('.preload').removeClass("hidden");
+    
     fd.append("file", this.files[0]);
     fd.append("identifier", identifier);
     fd.append("_token", CSRF_TOKEN);
@@ -50,9 +53,9 @@ $files.on("change", function (event) {
         type: 'POST',
         success: function (data) {
             if (data.success) {
-            	//alert(identifier);
-                //alert(data.name);
-                $('#'+identifier).val(data.name);
+                $('#'+identifier+"Name").val(data.name);
+                //$('#'+identifier).parent().find('.preload').addCalss("hidden");
+                $('.preload').addClass("hidden");
                 /*PDFObject.embed(data.url, "#pdf", {
                     page: 1,
                     pdfOpenParams: {
