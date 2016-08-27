@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 
 use City\User;
+use City\Entities\Food;
+use City\Entities\General;
+use City\Entities\Pet;
 use City\Entities\Provider;
 use City\Entities\ProviderFiles;
 use Gate;
@@ -29,16 +32,39 @@ class AdminController extends Controller
 
     public function newService(Request $request)
     {
+        $user = Auth::user();
         $inputs = $request->all();
         $validate = $this->validator($inputs);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
-        dd(auth()->user());
-        $inputs['provider_id'] = auth()->user()->provider();
-        dd($inputs);
+
+        $inputs['provider_id'] = $user->provider->id;
         $service = Service::create($inputs);
 
-        //if($inputs['service'] == 1)
+        if($inputs['service'] == 1){
+            Food::create([
+                'food_time' => date_create($inputs['date']),
+                'service_id' => $service->id,
+                'food_type_id' => 1 //**************** AÑADIR FOOD TYPE A VISTA
+            ]);
+        }
+        elseif($inputs['service'] == 2) {
+            $date = explode('-', $inputs['date']);
+            Pet::create([
+                'date_start' => date_create($date[0]),
+                'date_end' => date_create($date[1]),
+                'service_id' => $service->id,
+                'pet_sizes' => $inputs['pet_sizes'] //**************** AÑADIR PET_SIZES A VISTA
+            ]);
+        }
+        elseif($inputs['service'] == 3) {
+            General::create([
+                'date' => date_create($inputs['date']),
+                'service_id' => $service->id,
+                'general_type_id' => 1 //**************** AÑADIR GENERAL_TYPES A VISTA
+            ]);
+        }
+
         return redirect()->route('addService');
     }
 

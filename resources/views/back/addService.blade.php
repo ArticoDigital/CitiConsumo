@@ -215,8 +215,8 @@
                     </div>
                     <div id="servicesInputs" class="changeInputs col-12 row">
                         <label class="col-6" for="dateRange" style="display:none">
-                            <span class="text">Rango de fechas</span><br>
-                            <input class="datetimepicker_mask dateRange" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
+                            <span class="text">Fecha</span><br>
+                            <input class="datetimepicker_mask dateSingle" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
                         <label class="col-6" for="price" style="display:none">
                             <span class="text">Precio por hora</span><br>
