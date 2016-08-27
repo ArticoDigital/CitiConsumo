@@ -89,7 +89,12 @@ Route::post('usuarios-proveedor-activar', [
 
 Route::post('usuarios-proveedor-desactivar', [
     'uses' => 'UserController@disabledProvider',
-    'as' => 'disabledProvider',
+    'as' => 'disableProvider',
+
+]);
+Route::post('usuarios-proveedor-eliminar', [
+    'uses' => 'UserController@deleteProvider',
+    'as' => 'deleteProvider',
 
 ]);
 
