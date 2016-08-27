@@ -21,7 +21,10 @@ class AdminController extends Controller
 {
     public function addService()
     {
-        return view('back.addService');
+        $user = auth()->user();
+        if(isset($user->provider) && $user->provider->isActive)
+            return view('back.addService');
+        return redirect()->route('uploadFiles');
     }
 
     public function newService(Request $request)
