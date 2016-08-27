@@ -23,9 +23,9 @@
                 </td>
                 <td data-th="Service">
                     <article class="row top Profile-productSection " style="align-items: stretch">
-                        <figure class="col-3">
+                        <figure>
                             @if($user->profile_image)
-                                <img src="{{asset('uploads/profiles' . $user->profile_image)}}" alt="">
+                                <img src="{{asset('uploads/profiles/' . $user->profile_image)}}" alt="">
                             @else
                                 <svg width="70px" viewBox="567 256 100 83" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
