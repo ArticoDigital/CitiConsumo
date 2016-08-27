@@ -19,15 +19,17 @@ class UserPolicy
         return $this->getRoles($user) || !$user['roles'];
     }
 
-    private function getRoles($user)
-    {
-        $roles = $user['roles'];
-
-        if($user->role_id == 2 && isset($user->provider)){
+    public function isProvider(User $user){
+        if(isset($user->provider)){
             if($user->provider->isActive)
                 return true;
             return false;
         }
+    }
+
+    private function getRoles($user)
+    {
+        $roles = $user['roles'];
 
         if(is_array($roles)){
             foreach($roles as $role){

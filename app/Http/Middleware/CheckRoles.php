@@ -20,9 +20,7 @@ class CheckRoles
         $user['roles'] = $this->isRestringed($request->route());
 
         if(Gate::denies('hasRole', $user)){
-            if($user->role_id == 2)
-                return redirect()->to('admin')->with(['alertTitle' => '¡Estás cerca de ser un proveedor!', 'alertText' => '<p>Tus documentos estan en revisión, proximamente prodras registrar tus productos y servicios.</p> <p>Estaremos en contacto contigo.</p>']);
-            return redirect()->route('uploadFiles');
+            return redirect()->to('admin');
         }
 
         return $next($request);

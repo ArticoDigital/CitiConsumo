@@ -26,8 +26,7 @@ Route::get('confirmar-compra', function () {
 Route::get('postular-servicio', [
     'as' => 'addService',
     'uses' => 'AdminController@addService',
-    'roles' => 2,
-    'isProvider' => true
+    'roles' => 2
 ]);
 
 Route::post('postular-servicio', [
@@ -68,27 +67,27 @@ Route::post('uploadUserFileFields', [
 Route::get('usuarios-clientes', [
     'uses' => 'UserController@showClient',
     'as' => 'showClient',
-    'role' => 3
+    'roles' => 3
 ]);
 Route::get('usuarios-proveedor', [
     'uses' => 'UserController@showProvider',
     'as' => 'showProvider',
-    'role' => 3
+    'roles' => 3
 ]);
 Route::get('usuarios-proveedor-activar', [
     'uses' => 'UserController@showProviderActive',
     'as' => 'showProviderActive',
-    'role' => 3
+    'roles' => 3
 ]);
 
 Route::post('usuarios-proveedor-activar', [
     'uses' => 'UserController@enabledProvider',
     'as' => 'enabledProvider',
-
 ]);
 
 Route::post('usuarios-proveedor-desactivar', [
     'uses' => 'UserController@disabledProvider',
+<<<<<<< HEAD
     'as' => 'disableProvider',
 
 ]);
@@ -96,5 +95,8 @@ Route::post('usuarios-proveedor-eliminar', [
     'uses' => 'UserController@deleteProvider',
     'as' => 'deleteProvider',
 
+=======
+    'as' => 'disabledProvider',
+>>>>>>> bf0853c7f387f6c01a0df6aabaa4eeea997e88e4
 ]);
 
