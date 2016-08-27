@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', [
-    'uses' => function() {
+    'uses' => function () {
         return view('back.dashboard');
     },
 ]);
@@ -11,15 +11,15 @@ Route::get('mi-perfil', [
     'uses' => 'AdminController@myProfile',
 ]);
 
-Route::get('desembolso', function(){
+Route::get('desembolso', function () {
     return view('back.outlay');
 });
 
-Route::get('checkout', function(){
+Route::get('checkout', function () {
     return view('back.checkout');
 });
 
-Route::get('confirmar-compra', function(){
+Route::get('confirmar-compra', function () {
     return view('back.shopConfirm');
 });
 
@@ -54,6 +54,7 @@ Route::get('perfil/{id}', [
     'roles' => 3
 ]);
 
+
 Route::post('updateUser', [
     'uses' => 'AdminController@updateUser',
     'as' => 'updateUser'
@@ -63,3 +64,32 @@ Route::post('uploadUserFileFields', [
     'uses' => 'AdminController@uploadUserFileFields',
     'as' => 'uploadUserFileFields'
 ]);
+
+Route::get('usuarios-clientes', [
+    'uses' => 'UserController@showClient',
+    'as' => 'showClient',
+    'role' => 3
+]);
+Route::get('usuarios-proveedor', [
+    'uses' => 'UserController@showProvider',
+    'as' => 'showProvider',
+    'role' => 3
+]);
+Route::get('usuarios-proveedor-activar', [
+    'uses' => 'UserController@showProviderActive',
+    'as' => 'showProviderActive',
+    'role' => 3
+]);
+
+Route::post('usuarios-proveedor-activar', [
+    'uses' => 'UserController@enabledProvider',
+    'as' => 'enabledProvider',
+
+]);
+
+Route::post('usuarios-proveedor-desactivar', [
+    'uses' => 'UserController@disabledProvider',
+    'as' => 'disabledProvider',
+
+]);
+

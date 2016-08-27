@@ -6,7 +6,7 @@ use City\Entities\Provider;
 use City\Entities\Role;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class   User extends Authenticatable
 {
     /**
      * The attributes that are mass assignable.

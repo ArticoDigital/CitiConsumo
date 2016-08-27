@@ -9,7 +9,7 @@ class Provider extends Model
 {
     protected $fillable = ['isActive', 'user_id'];
 
-    protected function user(){
-        $this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
