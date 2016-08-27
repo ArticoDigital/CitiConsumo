@@ -3,15 +3,15 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-        <h1>usuarios</h1>
-    <table class="rwd-table" id="tableUsers" data-routeenabled="{{route('enabledProvider')}}" data-routedisabled="{{route('disabledProvider')}}" >
+        <h1>Provedores por aprobar</h1>
+    <table class="rwd-table" id="tableUsers" >
         <tr class="header-table">
             <th>Editar</th>
             <th width="100px">Foto</th>
             <th>Usuario</th>
             <th>email</th>
             <th>Celular</th>
-            <th>Activar/Desactivar</th>
+            <th>Activar/Eliminar</th>
         </tr>
         @foreach($providers as $provider)
 
@@ -19,7 +19,6 @@
             <tr>
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                    <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
                 </td>
                 <td data-th="Service">
                     <article class="row top Profile-productSection " style="align-items: stretch">
@@ -55,8 +54,8 @@
                 </td>
                 <td  class="center">{{$provider->user->cellphone}}</td>
                 <td data-th="Price" class="center">
-                    <a href="#" data-user="{{$provider->id}}" data-action="enabled" class="Admin-updateStateProvider">Activar</a>
-                    <a href="#" data-user="{{$provider->id}}" data-action="disabled" class="Admin-updateStateProvider">Desactivar</a>
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('enabledProvider')}}" class="Admin-updateStateProvider">Activar</a>
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('deleteProvider')}}" class="Admin-updateStateProvider">Eliminar</a>
                 </td>
 
             </tr>
