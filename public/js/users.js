@@ -7,11 +7,12 @@ $('.Admin-updateStateProvider').on('click', function () {
         var data = {
                 idUser: $(this).data('user'),
                 _token: $('#token').val()
-            },
-            $loader = $(this).siblings('.loader');
+            };
+            $('.preload').removeClass("hidden");
         var $tr = $(this).parents('tr');
         var send = $(this).data('action') ;
         $.post(send, data, function (e) {
+            $('.preload').addClass("hidden");
             $('.messages-success').show();
             $tr.remove();
         });

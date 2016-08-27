@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function showProvider()
     {
-        $providers = Provider::with('user')->get();
+        $providers = Provider::with('user')->where("isActive",1)->get();
         return view('back.usersProvider', compact('providers'));
     }
 
@@ -47,8 +47,14 @@ class UserController extends Controller
     }
     public function deleteProvider(Request $request)
     {
+        
         $provider = Provider::find($request->input('idUser'));
-        $provider->delete();
+        $user = $provider->user;
+        $user->role_id = 1;
+        $user->save();
+        //$provider->delete();
+        $provider->isActive=2; //Se le asigna valor 2 para identificar al proveedor deshabilitado
+        $provider->save();
         return json_encode(['success' => true]);
     }
 }

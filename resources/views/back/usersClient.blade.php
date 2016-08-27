@@ -59,5 +59,9 @@
 
         @endforeach
     </table>
+    <div class="preload hidden" id="loader-wrapper">
+                        <div id="loader"></div>
+         </div>
     {{ $users->links() }}
 @endsection
+

@@ -20,11 +20,14 @@
             <tr>
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                    <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('deleteProvider')}}"
+                       class="Admin-updateStateProvider image">
+                        <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
+                    </a>
                 </td>
                 <td data-th="Service">
                     <article class="row top Profile-productSection " style="align-items: stretch">
-                        <figure >
+                        <figure>
                             @if($provider->user->profile_image)
                                 <img src="{{asset('uploads/profiles/' . $provider->user->profile_image)}}" alt="">
                             @else
@@ -54,16 +57,20 @@
                 <td>
                     {{$provider->user->email}}
                 </td>
-                <td  class="center">{{$provider->user->cellphone}}</td>
+                <td class="center">{{$provider->user->cellphone}}</td>
                 <td class="center"><a href="">VER</a></td>
                 <td class="center">
-                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('disableProvider')}}" class="Admin-updateStateProvider">Desactivar</a>
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('disableProvider')}}"
+                       class="Admin-updateStateProvider">Desactivar</a>
                 </td>
             </tr>
 
 
         @endforeach
     </table>
+    <div class="preload hidden" id="loader-wrapper">
+                        <div id="loader"></div>
+         </div>
     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @endsection
 @section('scripts')
