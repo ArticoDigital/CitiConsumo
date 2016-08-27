@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropColumnsToPetsTable extends Migration
+class DropForeignToPetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,10 @@ class DropColumnsToPetsTable extends Migration
      */
     public function up()
     {
-        
+        Schema::table('pets', function(Blueprint $table){
+            $table->dropColumn('pet_size_id');
+            $table->dropColumn('pet_breed_id');
+        });
     }
 
     /**
