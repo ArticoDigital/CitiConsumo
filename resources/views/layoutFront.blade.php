@@ -48,7 +48,7 @@
                     <li><a href="{{route('register')}}">Registrate</a></li>
                     <li><a href="{{route('login')}}">Entrar</a></li>
                 @else
-                    <li><a href="{{route('profile',Auth::user()->id)}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                     <li><a href="{{route('logout')}}">Cerrar sesión</a></li>
                 @endif
                 <li>

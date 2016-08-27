@@ -1,15 +1,17 @@
-@extends('layoutBack')
+@extends('layoutFront')
 
 @section('content')
-
+<!--
 @if (count($errors) > 0)
-
+            <ul>
         @foreach ($errors->all() as $error)
+            
             <li>{{ $error }}</li>
             @endforeach
             </ul>
 
      @endif
+    --> 
      <p>Editar usuario {{$userprofile}}</p>
     
 
@@ -43,6 +45,7 @@
                    
                  </div>
                  <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
+                 <button class="button">Actualizar perfil</button>
               </div>
               
               <div class="col-5">
@@ -53,14 +56,14 @@
                   <p class="profile-title" style="position: relative;">Datos personales<!--<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt="">--></p>
                   <div class="profile-item">
                       <label for="name" class="row middle">
-                        {!!  $errors->first('name', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('name', ':message')  !!}
                         <span class="col-5">Nombre(*)</span>
                         <input class="col-7" name="name" id="name" value="{{$userprofile->name}}" type="text">
                     </label>
                   </div>
                   <div class="profile-item">
                       <label for="last_name" class="row middle">
-                        {!!  $errors->first('last_name', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('last_name', ':message')  !!}
                         <span class="col-5">Apellido(*)</span>
                         <input class="col-7" name="last_name" value="{{ $userprofile->last_name}}" id="last_name"
                                type="text">
@@ -69,7 +72,7 @@
 
                   <div class="profile-item">
                       <label for="email" class="row middle">
-                        {!!  $errors->first('email', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('email', ':message')  !!}
                         <span class="col-5">Correo(*)</span>
                         <input class="col-7" name="email" value="{{ $userprofile->email}}" id="email"
                                type="text">
@@ -78,7 +81,7 @@
                   
                   <div class="profile-item">
                       <label for="birthday" class="row middle">
-                        {!!  $errors->first('created_at', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('created_at', ':message')  !!}
                         <span class="col-5">Fecha de nacimiento</span>
                         
 
@@ -89,7 +92,7 @@
                     </div>
                   <div class="profile-item">                  
                       <label for="place" class="row middle">
-                        {!!  $errors->first('location', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('location', ':message')  !!}
                         <span class="col-5">Ciudad</span>
 
                           <input class="col-7" id="autocomplete" name="place" value="{{ $userprofile->location}}" type="text" placeholder="Lugar" >
@@ -100,7 +103,7 @@
 
                   <div class="profile-item">
                       <label for="address" class="row middle">
-                        {!!  $errors->first('address', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('address',':message')  !!}
                         <span class="col-5">Dirección</span>
                         <input  class="col-7" name="address" value="{{ $userprofile->address}}" id="address"
                                type="text">
@@ -109,7 +112,7 @@
 
                    <div class="profile-item">
                       <label for="cellphone" class="row middle">
-                        {!!  $errors->first('cellphone', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('cellphone', ':message')  !!}
                         <span class="col-5">Celular</span>
                         <input class="col-7" name="cellphone" value="{{ $userprofile->cellphone}}" id="cellphone"
                                type="text">
@@ -118,7 +121,7 @@
 
                   <div class="profile-item">
                       <label for="phone" class="row middle">
-                        {!!  $errors->first('phone', '<p class="error">:message</p>')  !!}
+                        {!!  $errors->first('phone', ':message')  !!}
                         <span class="col-5">Teléfono</span>
                         <input class="col-7" name="phone" value="{{ $userprofile->phone}}" id="phone"
                                type="text">
@@ -151,7 +154,7 @@
                   </div>
               </div>
           </div>
-          <button>Guardar</button>
+          
         </form>
         <div class="row border-bottom">
             <div class="row profile-servicesquant">Servicios (0)</div>
@@ -288,4 +291,9 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
+
+    <style type="text/css">
+
+
+    </style>
 @endsection

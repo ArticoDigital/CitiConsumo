@@ -1053,6 +1053,9 @@ body.register, body.login {
 body.login {
   background: url("../../img/Bogota-2.jpg") center; }
 
+body.getEmail {
+  background: url("../../img/Bogota-2.jpg") center; }
+
 .Register-Logo {
   text-align: center; }
 
@@ -1457,6 +1460,19 @@ body.login {
   margin-left: 10px;
   color: #004495; }
 
+.button {
+  border: none;
+  color: white;
+  margin-top: 15px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #00508e;
+  border-radius: 10px; }
+
 .name-profile {
   color: #6C6C6F;
   font-size: 2em;
@@ -1474,6 +1490,9 @@ body.login {
 .profile-item {
   margin-top: 10px;
   position: relative; }
+  .profile-item p {
+    width: 100%;
+    color: #e14220; }
 
 .profile-data {
   color: #6C6C6F; }

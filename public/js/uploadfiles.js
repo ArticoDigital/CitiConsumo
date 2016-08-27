@@ -38,7 +38,8 @@ $files.on("change", function (event) {
         alert('EL archivo debe ser un pdf, imagen jpg o png');
         return
     }
-    $(this).parent().find('.preload').removeCalss("hidden");
+    //$(this).parent().find('.preload').removeCalss("hidden");
+    $('.preload').removeClass("hidden");
     
     fd.append("file", this.files[0]);
     fd.append("identifier", identifier);
@@ -53,7 +54,8 @@ $files.on("change", function (event) {
         success: function (data) {
             if (data.success) {
                 $('#'+identifier+"Name").val(data.name);
-                $('#'+identifier).parent().find('.preload').addCalss("hidden");
+                //$('#'+identifier).parent().find('.preload').addCalss("hidden");
+                $('.preload').addClass("hidden");
                 /*PDFObject.embed(data.url, "#pdf", {
                     page: 1,
                     pdfOpenParams: {

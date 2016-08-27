@@ -67,6 +67,7 @@ class AdminController extends Controller
     public function myProfile()
     {
         $userprofile = auth()->user();
+        //dd($userprofile);
         return view('back.profile', compact('userprofile'));
     }
 
@@ -275,6 +276,11 @@ class AdminController extends Controller
             'file_type_id' => 2,
         ]);
         $file->save();
+
+        $user = Auth::user();
+        $user1 = User::find($user->id);
+        $user1->role_id = 2;
+        $user1->save();
     }
 
     private function updateFilesFields($request, $user_id)
@@ -319,9 +325,16 @@ class AdminController extends Controller
         $file1->file_type_id = 2;
         $file1->save();
 
-        $user = Auth::user();
+        //$user = Auth::user();
+        $user1 = User::find($user_id);
+        $user1->role_id = 2;
+        $user1->save();
+
+        /*$user = Auth::user();
         $user->role_id = 2;
+        //dd($user);
         $user->save();
+*/
     }
 
 
