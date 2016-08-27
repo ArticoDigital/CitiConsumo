@@ -43,5 +43,6 @@ class UserController extends Controller
         $provider = Provider::find($request->input('idUser'));
         ProviderFiles::where('provider_id', $provider->id)->delete();
         $provider->delete();
+        return json_encode(['success' => true]);
     }
 }

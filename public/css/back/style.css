@@ -1357,4 +1357,11 @@ div.profile-photo-light {
     display: block;
     color: white; }
 
+.messages-success {
+  text-align: center;
+  padding: 1.125rem 0 0.9375rem;
+  background: #98f6c0;
+  margin: 1.5rem;
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */
