@@ -68,6 +68,9 @@
 
         @endforeach
     </table>
+    <div class="preload hidden" id="loader-wrapper">
+                        <div id="loader"></div>
+         </div>
     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @endsection
 @section('scripts')
