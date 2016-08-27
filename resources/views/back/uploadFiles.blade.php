@@ -18,11 +18,11 @@
     @if (isset($providerfiles) > 0)
     <p>Archivos: {{$providerfiles}}</p>
     @endif
-    <figure class="TextOver col-6">
+    <figure class="TextOver col-5 medium-6 small-12">
         <img src="{{url('img/bg-formulario.svg')}}" alt="">
         <figcaption>Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servcios.</figcaption>
     </figure>
-    <section class="col-6">
+    <section class="col-7 medium-6 small-12">
         <form action="{{route('uploadUserFileFields')}}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
