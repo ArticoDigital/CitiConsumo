@@ -3,7 +3,7 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-    <h1>usuarios</h1>
+    <h1>Clientes</h1>
     <table class="rwd-table">
         <tr class="header-table">
             <th>Editar</th>
@@ -15,11 +15,10 @@
         </tr>
         @foreach($users as $user)
 
-
             <tr>
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                    <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
+
                 </td>
                 <td data-th="Service">
                     <article class="row top Profile-productSection " style="align-items: stretch">

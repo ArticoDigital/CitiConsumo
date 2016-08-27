@@ -3,7 +3,7 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-    <h1>usuarios</h1>
+    <h1>Provedores</h1>
     <table class="rwd-table">
         <tr class="header-table">
             <th>Editar</th>
@@ -12,6 +12,7 @@
             <th>email</th>
             <th>Celular</th>
             <th>Ver productos</th>
+            <th>Desactivar</th>
         </tr>
         @foreach($providers as $provider)
 
@@ -54,11 +55,17 @@
                     {{$provider->user->email}}
                 </td>
                 <td  class="center">{{$provider->user->cellphone}}</td>
-                <td data-th="Price" class="center"><a href="">VER</a></td>
-
+                <td class="center"><a href="">VER</a></td>
+                <td class="center">
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('disableProvider')}}" class="Admin-updateStateProvider">Desactivar</a>
+                </td>
             </tr>
 
 
         @endforeach
     </table>
+    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+@endsection
+@section('scripts')
+    <script src="{{asset('js/users.js')}}"></script>
 @endsection

@@ -41,7 +41,13 @@ class UserController extends Controller
     public function disabledProvider(Request $request)
     {
         $provider = Provider::find($request->input('idUser'));
-        ProviderFiles::where('provider_id', $provider->id)->delete();
+        $provider->isActive = 0;
+        $provider->save();
+        return json_encode(['success' => true]);
+    }
+    public function deleteProvider(Request $request)
+    {
+        $provider = Provider::find($request->input('idUser'));
         $provider->delete();
         return json_encode(['success' => true]);
     }
