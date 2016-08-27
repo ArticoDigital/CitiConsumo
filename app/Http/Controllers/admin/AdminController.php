@@ -72,7 +72,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect()->route('addService');
+        return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
     }
 
 
