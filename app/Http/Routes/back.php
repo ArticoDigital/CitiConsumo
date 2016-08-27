@@ -89,7 +89,7 @@ Route::post('usuarios-proveedor-desactivar', [
     'uses' => 'UserController@disabledProvider',
     'as' => 'disableProvider',
 
-]);git a
+]);
 Route::post('usuarios-proveedor-eliminar', [
     'uses' => 'UserController@deleteProvider',
     'as' => 'deleteProvider',
