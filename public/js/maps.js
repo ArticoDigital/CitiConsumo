@@ -75,9 +75,13 @@ function succesfull(pos) {
 
 
     }
-
 }
+<<<<<<< HEAD
 $('.InfoServices-close').on('click', function () {
+=======
+
+$('.InfoServices-close').on('click',function(){
+>>>>>>> be8a89b949d711905f9565813087ceaacef544ec
     $('.InfoServices').removeClass('show')
 });
 function showInfoProduct(data) {
@@ -107,6 +111,7 @@ function initMap() {
     }
 }
 
+<<<<<<< HEAD
 function setIsMultiple(bool) {
     isMultiple = !bool;
     if (isMultiple) {
@@ -115,6 +120,14 @@ function setIsMultiple(bool) {
             $('#lng').val(marker.getPosition().lng());
         })
     }
+=======
+function setIsMultiple(bool){
+    isMultiple = bool;
+    $('form.StepsForm').on('submit', function(e){
+        $('#lat').val(marker.getPosition().lat());
+        $('#lng').val(marker.getPosition().lng());
+    })
+>>>>>>> be8a89b949d711905f9565813087ceaacef544ec
 }
 
 function getIpCoords() {

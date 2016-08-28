@@ -179,8 +179,8 @@
             <article id="Step2" class="Step row">
                 <label class="required col-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
                 <div id="Map" class="col-12" style="height: 250px; width: calc(100% - 40px);"></div>
-                <input type="hidden" name="lat" id="latitude" value="{{old('latitude')}}">
-                <input type="hidden" name="lng" id="longitude" value="{{old('longitude')}}">
+                <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
+                <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
                 <label class="col-12 required" for="name">
                     <span class="text">Nombre</span>
                     <input class="col-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
@@ -348,7 +348,7 @@
 
     </script>
     <script src="{{asset('js/maps.js')}}"></script>
-    <script>setIsMultiple(true);</script>
+    <script>setIsMultiple(false);</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
 @endsection
 

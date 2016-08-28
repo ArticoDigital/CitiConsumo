@@ -115,3 +115,8 @@ Route::post('product/deleteProduct/{id}', [
     'uses' => 'UserController@deleteProductProvider'
 ]);
 
+Route::post('usuarios-proveedor-reactivar', [
+    'uses' => 'UserController@reenableProvider',
+    'as' => 'reenableProvider',
+]);
+
