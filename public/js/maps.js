@@ -69,8 +69,8 @@ function succesfull(pos) {
             });
         }
     }
-
 }
+
 $('.InfoServices-close').on('click',function(){
     $('.InfoServices').removeClass('show')
 });
@@ -102,13 +102,11 @@ function initMap() {
 }
 
 function setIsMultiple(bool){
-    isMultiple = !bool;
-    if(isMultiple){
-        $('form').on('submit', function(){
-            $('#lat').val(marker.getPosition().lat());
-            $('#lng').val(marker.getPosition().lng());
-        })
-    }
+    isMultiple = bool;
+    $('form.StepsForm').on('submit', function(e){
+        $('#lat').val(marker.getPosition().lat());
+        $('#lng').val(marker.getPosition().lng());
+    })
 }
 
 function getIpCoords(){
