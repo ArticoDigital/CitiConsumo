@@ -100,6 +100,20 @@ Route::post('usuarios-proveedor-eliminar', [
     'uses' => 'UserController@deleteProvider',
     'as' => 'deleteProvider',
 ]);
+Route::post('usuarios-proveedor-reactivar', [
+    'uses' => 'UserController@reenableProvider',
+    'as' => 'reenableProvider',
+]);
+
+Route::get('productos-proveedores', [
+    'as' => 'showProductsInactived',
+    'uses' => 'UserController@showProductsInactived'
+]);
+
+Route::post('product/deleteProduct/{id}', [
+    'as' => 'deleteProductProvider',
+    'uses' => 'UserController@deleteProductProvider'
+]);
 
 Route::post('usuarios-proveedor-reactivar', [
     'uses' => 'UserController@reenableProvider',

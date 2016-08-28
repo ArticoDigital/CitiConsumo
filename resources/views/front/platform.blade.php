@@ -122,51 +122,21 @@
         </div>
     </form>
     <section>
-        <article class="row top Platform-productSection " style="align-items: stretch">
-            <figure class="col-3">
-                <img src="{{asset('img/plato.png')}}" alt="">
-            </figure>
-            <div class="Platform-productInfo col-9">
-                <h3>Ensalada de Manzana-kiwi</h3>
-                <b>$10.000</b>
-            </div>
-        </article>
-        <article class="row top Platform-productSection " style="align-items: stretch">
-            <figure class="col-3">
-                <img src="{{asset('img/plato.png')}}" alt="">
-            </figure>
-            <div class="Platform-productInfo col-9">
-                <h3>Ensalada de Manzana-kiwi</h3>
-                <b>$10.000</b>
-            </div>
-        </article>
-        <article class="row top Platform-productSection " style="align-items: stretch">
-            <figure class="col-3">
-                <img src="{{asset('img/plato.png')}}" alt="">
-            </figure>
-            <div class="Platform-productInfo col-9">
-                <h3>Ensalada de Manzana-kiwi</h3>
-                <b>$10.000</b>
-            </div>
-        </article>
-        <article class="row top Platform-productSection " style="align-items: stretch">
-            <figure class="col-3">
-                <img src="{{asset('img/plato.png')}}" alt="">
-            </figure>
-            <div class="Platform-productInfo col-9">
-                <h3>Ensalada de Manzana-kiwi</h3>
-                <b>$10.000</b>
-            </div>
-        </article>
-        <article class="row top Platform-productSection " style="align-items: stretch">
-            <figure class="col-3">
-                <img src="{{asset('img/plato.png')}}" alt="">
-            </figure>
-            <div class="Platform-productInfo col-9">
-                <h3>Ensalada de Manzana-kiwi</h3>
-                <b>$10.000</b>
-            </div>
-        </article>
+        @foreach($services as $service)
+            <article class="row top Platform-productSection "
+                     data-lat="{{$service->lat}}"
+                     data-lng="{{$service->lng}}"
+                  style="align-items: stretch">
+                <figure class="col-3">
+                    <img src="{{asset('img/plato.png')}}" alt="">
+                </figure>
+                <div class="Platform-productInfo col-9">
+                    <h3>Ensalada de Manzana-kiwi</h3>
+                    <b>$10.000</b>
+                </div>
+            </article>
+        @endforeach
+
     </section>
 </div>
 
@@ -176,11 +146,18 @@
         <figure class="col-6" style="background-image: url('{{asset('img/servicio.png')}}') "></figure>
         <div class="col-6 InfoServices-info">
             <h2>Ensalada de frutas frescas</h2>
-            <h3 >5 platos disponibles</h3>
+            <h3>5 platos disponibles</h3>
             <div class="InfoServices-stars row ">
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
-            <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo). </p>
+            <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un
+                sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o
+                menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido
+                aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y
+                editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem
+                Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de
+                desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras
+                veces a propósito (por ejemplo insertándole humor y cosas por el estilo). </p>
             <a href="">Ver perfil del autor</a>
             <form action="">
                 <div class="row between middle">
@@ -195,6 +172,7 @@
             </form>
         </div>
     </div>
+
 </aside>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

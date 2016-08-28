@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = ['name', 'location', 'description', 'isValidate', 'isActive', 'provider_id', 'price'];
+    protected $fillable = ['name', 'location', 'description', 'isValidate', 'isActive', 'provider_id', 'price', 'lat', 'lng'];
 
     public function provider(){
         return $this->belongsTo(Provider::class);

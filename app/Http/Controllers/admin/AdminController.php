@@ -80,7 +80,8 @@ class AdminController extends Controller
     {
         $rules = [
             'service' => 'required',
-            'location' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
             'name' => 'required',
             'description' => 'required',
             'date' => 'required',

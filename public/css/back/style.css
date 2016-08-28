@@ -1399,6 +1399,9 @@ div.profile-photo-light {
     padding: 0;
     color: #002444;
     background: white; }
+    @media (min-width: 45rem) {
+      .Admin-updateStateProvider.image, .Button-table.image {
+        color: red; } }
 
 .Files-container {
   width: 100vw;
