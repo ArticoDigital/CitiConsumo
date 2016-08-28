@@ -1305,7 +1305,10 @@ div.profile-photo-light {
     background-color: #04529D;
     color: white;
     padding: 0.7em 5em;
-    font-size: 1.3em; }
+    font-size: 1em; }
+    @media (min-width: 45rem) {
+      .HowItWorks .btn_blue {
+        font-size: 1.3em; } }
 
 .div_box_center {
   margin: 3em 0;

@@ -1,13 +1,7 @@
 @extends('layoutBack')
 
 @section('content')
-    @if (count($errors) > 0)
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-        </ul>
-     @endif
+   
 
      @if(Session::has('success'))
         <div class="success">
@@ -77,6 +71,14 @@
                                type="text">
                     </label>
                   </div>
+                  <div class="profile-item">
+                      <label for="user_identification" class="row middle">
+                        {!!  $errors->first('user_identification', ':message')  !!}
+                        <span class="col-5 small-5">Número de identificación(*)</span>
+                        <input class="col-7 small-7" name="user_identification" value="{{ $userprofile->user_identification}}" id="last_name"
+                               type="text">
+                    </label>
+                  </div>
 
                   <div class="profile-item">
                       <label for="email" class="row middle">
@@ -140,11 +142,58 @@
 
                   <p class="profile-title">Seguridad</p>
                   <div class="row profile-item border-bottom">
-                      <div class="col-12">Cambiar contraseña <img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
+                      <div class="col-12">Cambiar contraseña <img id="password-option" class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
+                  </div>
+                  <div id="password-option-box" class="hidden">
+                      <div class="profile-item">
+                        <label for="password" class="row middle">
+                          {!!  $errors->first('password', ':message')  !!}
+                          <span class="col-5 small-5">Nueva Contraseña</span>
+                          <input class="col-7 small-7" name="password" value="" id="password"
+                                 type="password">
+                      </label>
+                    </div>
+                    <div class="profile-item">
+                        <label for="password_confirmation" class="row middle">
+                          {!!  $errors->first('password_confirmation', ':message')  !!}
+                          <span class="col-5 small-5">Repita la Contraseña</span>
+                          <input class="col-7 small-7" name="password_confirmation" value="" id="password_confirmation"
+                                 type="password">
+                      </label>
+                    </div>
                   </div>
                   <div class="row profile-item border-bottom">
-                      <div class="col-12">Información de la cuenta <img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
+                      <div class="col-12">Información de la cuenta <img id="account-option" class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
                   </div>
+                  <div id="account-option-box" class="hidden">
+                      <div class="profile-item">
+                        <label for="bank_account_number" class="row middle">
+                          {!!  $errors->first('bank_account_number', ':message')  !!}
+                          <span class="col-5 small-5">Número de la cuenta</span>
+                          <input class="col-7 small-7" name="bank_account_number" value="{{ $userprofile->bank_account_number}}" id="bank_account_number"
+                                 type="text">
+                      </label>
+                    </div>
+                    <div class="profile-item">
+                        <label for="bank_type_account" class="row middle">
+                          {!!  $errors->first('bank_type_account', ':message')  !!}
+                          <span class="col-5 small-5">Tipo de cuenta</span>
+                            <select class="col-7 small-7" id="bank_type_account" name="bank_type_account">
+                                    <option value="Ahorros" {{ ($userprofile->bank_type_account=="Ahorros") ? 'selected' : '' }}>Ahorros</option>
+                                    <option value="Corriente"  {{ ($userprofile->bank_type_account=="Corriente") ? 'selected' : '' }} >Corriente</option>
+                            </select>
+                      </label>
+                    </div>
+                    <div class="profile-item">
+                        <label for="bank_name" class="row middle">
+                          {!!  $errors->first('bank_name', ':message')  !!}
+                          <span class="col-5 small-5">Banco</span>
+                          <input class="col-7 small-7" name="bank_name" value="{{ $userprofile->bank_name}}" id="bank_name"
+                                 type="text">
+                      </label>
+                    </div>
+                  </div>
+
                   <button class="button menu-item-out">Actualizar perfil</button>
               </div>
           @if(isset($userprofile->provider) && $userprofile->provider->isActive)
@@ -281,6 +330,19 @@
         }
 
         });
+
+        $('#password-option').click(function(){
+
+            $('#password-option-box').removeClass("hidden");
+
+        });
+
+        $('#account-option').click(function(){
+
+            $('#account-option-box').removeClass("hidden");
+
+        });
+        
 
       });
 
