@@ -16,8 +16,8 @@
             @endif
 
     <figure class="TextOver col-5 medium-6 small-12" style="background-color: #040A0B;">
-        <img src="{{url('img/bg-formulario.svg')}}" alt="">
-        <figcaption>Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servcios.</figcaption>
+        <img class="menu-item-out-movile" src="{{url('img/bg-formulario.svg')}}" alt="">
+        <figcaption class="texto-imagen-subir">Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servicios.</figcaption>
     </figure>
     <section class="col-7 medium-6 small-12">
         <form action="{{route('uploadUserFileFields')}}" method="post" enctype="multipart/form-data">

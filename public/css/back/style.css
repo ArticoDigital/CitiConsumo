@@ -719,16 +719,16 @@ figure figcaption {
       color: #f6b11e; }
 
 .menu-item-out {
-  display: block; }
+  display: block !important; }
   @media (min-width: 45rem) {
     .menu-item-out {
-      display: none; } }
+      display: none !important; } }
 
 .menu-item-out-movile {
-  display: none; }
+  display: none !important; }
   @media (min-width: 45rem) {
     .menu-item-out-movile {
-      display: block; } }
+      display: block !important; } }
 
 .Hamburguer {
   display: block;
@@ -1093,13 +1093,16 @@ svg#Steps .disabled {
   position: relative;
   margin: 0; }
   .TextOver figcaption {
-    position: absolute;
-    height: 8.125rem;
+    height: auto;
     padding: 0.625rem;
     color: #fff;
     top: 50%;
-    margin-top: -4.0625rem;
     text-align: center; }
+    @media (min-width: 45rem) {
+      .TextOver figcaption {
+        position: absolute;
+        height: 8.125rem;
+        margin-top: -4.0625rem; } }
 
 main.MainBack {
   padding-left: 1.875rem;

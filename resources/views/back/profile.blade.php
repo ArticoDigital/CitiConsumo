@@ -57,7 +57,8 @@
                    
                  </div>
                  <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
-                 <button class="button">Actualizar perfil</button>
+                 <button class="button menu-item-out-movile">Actualizar perfil</button>
+
               </div>
           <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-5 @endif medium-6 small-12">
                   <p class="profile-title" style="position: relative;">Datos personales<!--<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt="">--></p>
@@ -144,7 +145,7 @@
                   <div class="row profile-item border-bottom">
                       <div class="col-12">Información de la cuenta <img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
                   </div>
-                  <button class="button">Actualizar perfil</button>
+                  <button class="button menu-item-out">Actualizar perfil</button>
               </div>
           @if(isset($userprofile->provider) && $userprofile->provider->isActive)
               <div class=" col-3 medium-12 small-12">

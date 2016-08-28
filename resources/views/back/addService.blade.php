@@ -153,53 +153,53 @@
                 <input type="radio" value="1" id="foods" name="service">
                 <input type="radio" value="2" id="pets" name="service">
                 <input type="radio" value="3" id="service" name="service">
-                <label for="foods" class="col-4" style="max-width:340px">
+                <label for="foods" class="col-4 medium-4 small-4" style="max-width:340px">
                     <figure>
                         <img src="{{asset('img/comidas.svg')}}" alt="comidas">
                         <figcaption>Comidas</figcaption>
                     </figure>
                 </label>
-                <label for="pets" class="col-4" style="max-width:340px">
+                <label for="pets" class="col-4 medium-4 small-4" style="max-width:340px">
                     <figure>
                         <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
                         <figcaption>Mascotas</figcaption>
                     </figure>
                 </label>
-                <label for="service" class="col-4" style="max-width:340px">
+                <label for="service" class="col-4 medium-4 small-4" style="max-width:340px">
                     <figure>
                         <img src="{{asset('img/oficios.svg')}}" alt="service">
                         <figcaption>Oficios</figcaption>
                     </figure>
                 </label>
-                <div class="col-12">
+                <div class="col-12 medium-12 small-12">
                     <div id="toStep2" class="Button small right disabled" style="margin: 40px 15px 0 20px;">Siguiente</div>
                 </div>
              </article>
 
             <article id="Step2" class="Step row">
-                <label class="required col-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
-                <div id="Map" class="col-12" style="height: 250px; width: calc(100% - 40px);"></div>
+                <label class="required col-12 medium-12 small-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
+                <div id="Map" class="col-12 medium-12 small-12" style="height: 250px; width: calc(100% - 40px);"></div>
                 <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
                 <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
-                <label class="col-12 required" for="name">
+                <label class="col-12 medium-12 small-12 required" for="name">
                     <span class="text">Nombre</span>
-                    <input class="col-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
+                    <input class="col-12 medium-12 small-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
                 </label>
-                <label class="col-12 required" for="description">
+                <label class="col-12 medium-12 small-12 required" for="description">
                     <span class="text">Descripción</span>
-                    <textarea class="col-12" id="description" name="description">{!! old('description') !!}</textarea>
+                    <textarea class="col-12 medium-12 small-12" id="description" name="description">{!! old('description') !!}</textarea>
                 </label>
-                <div class="col-12 row" style="padding-right: 20px; width: 100%">
-                    <div id="foodsInputs" class="changeInputs col-12 row">
-                        <label class="col-4" for="date" style="display:none">
+                <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
+                    <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
+                        <label class="col-4 medium-4 small-6" for="date" style="display:none">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-4" for="price" style="display:none">
+                        <label class="col-4 medium-4 small-6" for="price" style="display:none">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
-                        <label for="food_type" class="col-4" style="display:none">
+                        <label for="food_type" class="col-4 medium-4 small-12" style="display:none">
                             <span class="text">Tipo de comida</span><br>
                             <select class="js-example-basic-single" id="food_type" name="food_type">
                                 @foreach($foodTypes as $foodType)
@@ -208,12 +208,12 @@
                             </select>
                         </label>
                     </div>
-                    <div id="petsInputs" class="changeInputs col-12 row">
-                        <label class="col-3" for="date" style="display:none">
+                    <div id="petsInputs" class="changeInputs col-12 medium-12 small-12 row">
+                        <label class="col-3 medium-6 small-6" for="date" style="display:none">
                             <span class="text">Fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label for="size" class="col-3" style="display:none">
+                        <label for="size" class="col-3 medium-6 small-6" style="display:none">
                             <span class="text">Tamaños</span><br>
                             <select class="js-example-basic-single" id="size" name="size">
                                 @foreach($sizes as $size)
@@ -221,21 +221,21 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-3" for="pets-quantity" style="display:none">
+                        <label class="col-3 medium-6 small-6" for="pets-quantity" style="display:none">
                             <span class="text">Número de animales</span><br>
                             <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{old('pets-quantity')}}" autocomplete="off">
                         </label>
-                        <label class="col-3" for="price" style="display:none">
+                        <label class="col-3 medium-6 small-6" for="price" style="display:none">
                             <span class="text">Precio por mascota</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
-                    <div id="servicesInputs" class="changeInputs col-12 row">
-                        <label class="col-4" for="dateRange" style="display:none">
+                    <div id="servicesInputs" class="changeInputs col-12 medium-12 small-12 row">
+                        <label class="col-4 medium-4 small-12" for="dateRange" style="display:none">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label for="general_type" class="col-4" style="display:none">
+                        <label for="general_type" class="col-4 medium-4 small-6" style="display:none">
                             <span class="text">Tipo de servicio</span><br>
                             <select class="js-example-basic-single" id="general_type" name="general_type">
                                 @foreach($generalTypes as $generalType)
@@ -243,13 +243,13 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-4" for="price" style="display:none">
+                        <label class="col-4 medium-4 small-6" for="price" style="display:none">
                             <span class="text">Precio por hora</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 medium-12 small-12">
                     <div id="toStep3" class="Button small right disabled" style="margin: 40px 15px 0 20px;">Siguiente</div>
                 </div>
             </article>
@@ -274,7 +274,7 @@
                 <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                 <section class="FilesPreview" id="result"></section>
                 <input type="hidden" name="positions">
-                <div class="col-12">
+                <div class="col-12 medium-12 small-12">
                     <div id="toStep4" class="Button small right disabled" style="margin: 40px 15px 0 20px;" >Siguiente</div>
                 </div>
             </article>
