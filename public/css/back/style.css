@@ -967,17 +967,17 @@ figure figcaption {
     justify-content: initial;
     min-height: 50px; }
     .DropFilesSmall .DropFiles-inside span {
-      line-height: 30px; }
+      line-height: 30px;
+      padding: 5px; }
     .DropFilesSmall .DropFiles-inside .rectangle {
       background: #054CCF;
       color: white;
       border: 1px solid #C3C3C3;
       padding: 3px 10px;
-      max-width: 100px;
       display: inline-block;
       text-align: center;
-      margin-right: 10px;
-      border-radius: 5px; }
+      border-radius: 5px;
+      min-height: 70px; }
     .DropFilesSmall .DropFiles-inside.Drag {
       color: #05347a;
       border-color: #05347a; }
@@ -1095,6 +1095,11 @@ main.MainBack {
   margin-left: 10px;
   color: #004495; }
 
+.ayudaenlace {
+  color: #d81e1e;
+  font-size: 0.9em;
+  z-index: 10; }
+
 .button {
   border: none;
   color: white;
@@ -1107,6 +1112,9 @@ main.MainBack {
   cursor: pointer;
   background-color: #00508e;
   border-radius: 10px; }
+
+.text_file {
+  padding: 5px; }
 
 .name-profile {
   color: #6C6C6F;
@@ -1364,14 +1372,44 @@ div.profile-photo-light {
   margin: 1.5rem;
   display: none; }
 
-.Admin-updateStateProvider {
+.Admin-updateStateProvider, .Button-table {
   background: #002444;
   padding: 0.375rem 0.75rem;
   color: white; }
-  .Admin-updateStateProvider.image {
+  .Admin-updateStateProvider.image, .Button-table.image {
     padding: 0;
     color: #002444;
     background: white; }
+
+.Files-container {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.7);
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: none; }
+
+.showFiles {
+  display: -ms-flexbox;
+  display: flex; }
+
+.Files {
+  background: white;
+  position: relative;
+  padding: 1.25rem 1.5625rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1); }
+  .Files h2 {
+    color: #002444; }
+  .Files .close {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background: #002444;
+    font-size: 1.5625rem;
+    padding: 0.375rem 0.75rem;
+    color: white;
+    cursor: pointer; }
 
 .hidden {
   display: none; }

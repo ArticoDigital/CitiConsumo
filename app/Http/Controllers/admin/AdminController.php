@@ -205,16 +205,39 @@ class AdminController extends Controller
 
 
     public function uploadFile(Request $request)
-    {
+    {       
+        $validator = $this->validatorFile($request->all());
+        
+        if ($validator->fails()) {
+             $return = ['name' => "Archivo no permitido", 'url' => url('/uploads/provider/'), 'identifier' => $request->identifier, 'success' => false];
+            
+            /*$this->throwValidationException(
+                $request, $validator
+            );*/
+        }else{
         $fileName = $request->file('file')->getClientOriginalName();
         $request->file('file')->move(base_path() . '/public/uploads/provider/', $fileName);
         $return = ['name' => $fileName, 'url' => url('/uploads/provider/' . $fileName), 'identifier' => $request->identifier, 'success' => true];
+        }
         return response()->json($return);
+    
+    }
+
+    protected function validatorFile(array $data)
+    {
+     //   dd($data);
+        $v = Validator::make($data, [
+                'file' => 'mimes:jpeg,jpg,png|max:20000',
+            ]
+        );
+
+        return $v;
+
     }
 
     function uploadProviderFiles(Request $request)
     {
-        $validator = $this->validatorfiles($request->all());
+        $validator = $this->validatorFiles($request->all());
 
         if ($validator->fails()) {
             $this->throwValidationException(
@@ -314,6 +337,20 @@ class AdminController extends Controller
         ]);
         $file->save();
 
+        $file = new ProviderFiles([
+            'name' => $data['ContraloriaFileName'],
+            'provider_id' => $provider_id,
+            'file_type_id' => 6,
+        ]);
+        $file->save();
+
+        $file = new ProviderFiles([
+            'name' => $data['PoliciaFileName'],
+            'provider_id' => $provider_id,
+            'file_type_id' => 7,
+        ]);
+        $file->save();
+
         $user = Auth::user();
         $user1 = User::find($user->id);
         $user1->role_id = 2;
@@ -362,6 +399,20 @@ class AdminController extends Controller
         $file1->file_type_id = 2;
         $file1->save();
 
+        $match1 = ['provider_id' => $provider_id, 'file_type_id' => 6];
+        $file1 = ProviderFiles::where($match1)->first();
+        $file1->name = $data['ContraloriaFileName'];
+        $file1->provider_id = $provider_id;
+        $file1->file_type_id = 6;
+        $file1->save();
+
+        $match1 = ['provider_id' => $provider_id, 'file_type_id' => 7];
+        $file1 = ProviderFiles::where($match1)->first();
+        $file1->name = $data['PoliciaFileName'];
+        $file1->provider_id = $provider_id;
+        $file1->file_type_id = 7;
+        $file1->save();
+
         //$user = Auth::user();
         $user1 = User::find($user_id);
         $user1->role_id = 2;
@@ -383,6 +434,9 @@ class AdminController extends Controller
             'BankFileName' => 'required|max:255',
             'ServicesFileName' => 'required|max:255',
             'HistoryFileName' => 'required|max:255',
+            'ContraloriaFileName' => 'required|max:255',
+            'PoliciaFileName' => 'required|max:255',
+
         ]);
     }
 }

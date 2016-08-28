@@ -27,8 +27,13 @@ class UserController extends Controller
 
     public function showProviderActive()
     {
-        $providers = Provider::with('user')->whereRaw('isActive = 0')->get();
+        $providers = Provider::with(['user','providerFiles.fileType'])->whereRaw('isActive = 0')->get();
         return view('back.usersProviderActive', compact('providers'));
+    }
+    public function showProviderDelete()
+    {
+        $providers = Provider::with('user')->whereRaw('isActive = 2')->get();
+        return view('back.usersProviderDelete', compact('providers'));
     }
 
     public function showProductsInactived(){
@@ -58,13 +63,23 @@ class UserController extends Controller
     }
     public function deleteProvider(Request $request)
     {
-        
         $provider = Provider::find($request->input('idUser'));
         $user = $provider->user;
         $user->role_id = 1;
         $user->save();
         //$provider->delete();
         $provider->isActive=2; //Se le asigna valor 2 para identificar al proveedor deshabilitado
+        $provider->save();
+        return json_encode(['success' => true]);
+    }
+    public function reenableProvider(Request $request)
+    {
+        $provider = Provider::find($request->input('idUser'));
+        $user = $provider->user;
+        $user->role_id = 2;
+        $user->save();
+        //$provider->delete();
+        $provider->isActive=1; //Se le asigna valor 2 para identificar al proveedor deshabilitado
         $provider->save();
         return json_encode(['success' => true]);
     }

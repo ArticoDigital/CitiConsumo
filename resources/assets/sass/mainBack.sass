@@ -26,7 +26,7 @@
   background: #98f6c0
   margin: rem(24)
   display: none
-.Admin-updateStateProvider
+.Admin-updateStateProvider, .Button-table
   background: #002444
   padding: rem(6) rem(12)
   color: white
@@ -35,6 +35,37 @@
     color: #002444
     background: white
 
+
+
+.Files-container
+  width: 100vw
+  height: 100vh
+  background: rgba(255, 255, 255, 0.7)
+  top: 0
+  left: 0
+  position: fixed
+  display: none
+
+.showFiles
+  display: flex
+
+.Files
+  background: white
+  position: relative
+  padding: rem(20) rem(25)
+  box-shadow: 0 0 rem(8) rgba(0, 0, 0, 0.1)
+  h2
+    color: #002444
+
+  .close
+    position: absolute
+    top: -1rem
+    right: -1rem
+    background: #002444
+    font-size: rem(25)
+    padding: rem(6) rem(12)
+    color: white
+    cursor: pointer
 
 .hidden
     display: none

@@ -114,7 +114,13 @@ return [
             'required' => '<p>Debe adjuntar la copia de un recibo de servicio público.</p>',
         ],
         'HistoryFileName' => [
-            'required' => '<p>Debe adjuntar sus antecedentes de procuraduria.</p>',
+            'required' => '<p>Debe adjuntar sus antecedentes de procuraduría.</p>',
+        ],
+        'ContraloriaFileName' => [
+            'required' => '<p>Debe adjuntar su certificado de contraloría.</p>',
+        ],
+        'PoliciaFileName' => [
+            'required' => '<p>Debe adjuntar sus antecedentes judiciales.</p>',
         ],
     ],
 

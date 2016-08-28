@@ -26,9 +26,15 @@
         </a>
         <nav class="row col-10 end">
             <ul class="Menu row between">
-                <li><a  style="color: white" href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
-                <li><a href="{{route('myProfile')}}" style="color: white" >Bienvenid@ {{Auth::user()->name}}</a></li>
-                <li><a href="{{route('logout')}}" style="color: white" >Cerrar sesión</a></li>
+                @if(Auth::user()->role_id == 3)
+                    <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
+                @else
+                    <li><a style="color: white" href="{{route('addService')}}" class="orange-text">Postula tu
+                            servicio</a></li>
+                @endif
+
+                <li><a href="{{route('myProfile')}}" style="color: white">Bienvenid@ {{Auth::user()->name}}</a></li>
+                <li><a href="{{route('logout')}}" style="color: white">Cerrar sesión</a></li>
                 <li>
                     <div class="Menu-fixed">
                         <a href="#" class="Hamburguer">
