@@ -22,6 +22,10 @@ class Service extends Model
         return $this->hasOne(General::class);
     }
 
+    public function serviceFiles(){
+        return $this->hasMany(ServiceFile::class);
+    }
+
     protected static function boot() {
         parent::boot();
 

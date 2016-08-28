@@ -16,7 +16,7 @@
      @endif
     
     <form action="{{route('updateUser')}}" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
       <div class="row" style="padding: 30px 0px;">
           <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
@@ -176,7 +176,7 @@
             @if(isset($userprofile->provider))
                 @if($userprofile->provider->isActive)
                     @if(count($services))
-                        <table class="rwd-table">
+                        <table class="rwd-table" style="margin-bottom: 30px">
                             <tr class="header-table">
                                 <th width="80px">Editar</th>
                                 <th width="50%">Servicio</th>
@@ -187,13 +187,13 @@
                                 @if($service->isValidate != 2)
                                     <tr>
                                         <td data-th="Actions" class="row">
-                                            <a href=""><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
-                                            <a href=""><img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
+                                            <a href="" class="EditProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
+                                            <a href="#" class="DeleteProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
                                         </td>
                                         <td data-th="Service">
                                             <article class="row top Profile-productSection " style="align-items: stretch">
                                                 <figure class="col-3 small-3">
-                                                    <img src="{{asset('img/plato.png')}}" alt="">
+                                                    <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
                                                 </figure>
                                                 <div class="Profile-productInfo col-9 small-9">
                                                     <h3>{{$service->name}}</h3>
@@ -239,6 +239,15 @@
                 </div>
             @endif
         @endif
+
+    <section id="ConfirmAlert" class="Alert confirm" style="display: none">
+        <article class="Message">
+            <h2>¡Eliminar!</h2>
+            <p>¿Estás seguro que deseas eliminar el producto?</p>
+            <a href="" class="close">Cancelar</a>
+            <a href="" class="close" id="accept">Aceptar</a>
+        </article>
+    </section>
 @endsection
 
 
@@ -291,15 +300,34 @@
             $(this).removeClass('Drag');
         });
 
+        $('.DeleteProduct').on('click', function(){
+            $('#ConfirmAlert').show();
+            var productId = $(this).attr('data_id');
+
+            $('#ConfirmAlert #accept').click(function() {
+
+                var param = {
+                    '_token' : $('#token').val(),
+                    'id' : productId
+                };
+
+                $.ajax({
+                    url : '{{route('deleteProduct')}}',
+                    data : param,
+                    type: 'POST',
+                    success : function(data){
+                        console.log(data.message);
+                    },
+                    error : function(){
+                        alert('Hubo un error al eliminar el producto.');
+                    }
+                });
+            });
+        });
 
         $(".images").change(function() {
-                //alert(this.value);
-               // $(this).removeClass('drop-files-input');
                 $( this ).parent().find( '.text_file' ).text("Guarda para actualizar");
-//                $(this).find(".text_file").text(this.value);
             });
-
-      
     </script>
     
 @endsection
@@ -307,9 +335,4 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
-
-    <style type="text/css">
-
-
-    </style>
 @endsection

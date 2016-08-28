@@ -130,7 +130,7 @@ class AdminController extends Controller
     public function myProfile()
     {
         $userprofile = auth()->user();
-        $services = isset($userprofile->provider) ? $userprofile->provider->services : null;
+        $services = isset($userprofile->provider) ? Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get() : null;
         return view('back.profile', compact('userprofile', 'services'));
     }
 

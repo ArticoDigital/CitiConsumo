@@ -648,6 +648,20 @@ figure figcaption {
       font-size: 1.5rem;
       font-weight: 500;
       color: #212121; }
+  .Alert.confirm .Message p {
+    margin: 0 0 20px 0; }
+  .Alert.confirm .Message a {
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: white;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+    background: #798ea1;
+    margin: 0 2%;
+    width: 46%; }
+    .Alert.confirm .Message a:hover {
+      background: #002444; }
 
 .Container {
   margin: auto;

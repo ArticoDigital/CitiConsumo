@@ -124,3 +124,10 @@ Route::post('uploadTempFiles', [
     'as' => 'uploadTempFiles',
     'uses' => 'AdminController@uploadTempFiles'
 ]);
+
+/************* ProductController **************/
+
+Route::post('deleteProduct', [
+    'uses' => 'ProductController@delete',
+    'as' => 'deleteProduct'
+]);
