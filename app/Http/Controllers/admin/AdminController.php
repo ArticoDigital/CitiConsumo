@@ -226,7 +226,7 @@ class AdminController extends Controller
     {
      //   dd($data);
         $v = Validator::make($data, [
-                'file' => 'mimes:jpeg,jpg,png|max:20000',
+                'file' => 'mimes:jpeg,jpg,png,pdf|max:20000',
             ]
         );
 

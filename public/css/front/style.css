@@ -675,7 +675,10 @@ figure figcaption {
     height: 100%; }
 
 .Menu li {
-  padding-right: 2.8125rem; }
+  padding-right: 0.9375rem; }
+  @media (min-width: 45rem) {
+    .Menu li {
+      padding-right: 2.8125rem; } }
 
 .Menu-fixed nav {
   display: none;
@@ -714,6 +717,18 @@ figure figcaption {
     .Menu-fixed li a:hover {
       border-color: #f6b11e;
       color: #f6b11e; }
+
+.menu-item-out {
+  display: block; }
+  @media (min-width: 45rem) {
+    .menu-item-out {
+      display: none; } }
+
+.menu-item-out-movile {
+  display: none; }
+  @media (min-width: 45rem) {
+    .menu-item-out-movile {
+      display: block; } }
 
 .Hamburguer {
   display: block;
@@ -830,7 +845,7 @@ figure figcaption {
     top: 50%;
     margin-top: -15px !important;
     color: black;
-    width: 20px !important;
+    width: 40px !important;
     padding: 0 10px !important; }
   .Form .Form-Control .placeholder {
     position: absolute;
@@ -855,7 +870,11 @@ figure figcaption {
   text-transform: uppercase;
   font-size: 1.1rem;
   font-weight: 200;
-  cursor: pointer; }
+  cursor: pointer;
+  margin: 15px 0px 0px 0px; }
+  @media (min-width: 45rem) {
+    .Button {
+      margin: 55px 0; } }
   .Button.small {
     width: auto;
     height: auto;
@@ -1369,44 +1388,58 @@ body.getReset #resetpassword label {
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  width: 600px;
+  width: 100%;
   perspective: 1000;
   margin: 0 auto;
   padding-bottom: 2.375rem;
   color: #fff; }
+  @media (min-width: 45rem) {
+    .Images {
+      width: 600px; } }
   .Images .Service-image {
-    width: 150px;
+    width: 120px;
     margin: 0;
     text-align: center; }
+    @media (min-width: 45rem) {
+      .Images .Service-image {
+        width: 150px; } }
   .Images a {
     position: relative; }
-    .Images a:hover .circle {
-      transform: rotate3d(0, 45, 0, 180deg); }
-    .Images a:hover .front {
-      transform: rotateY(45deg);
-      z-index: 0; }
+    @media (min-width: 45rem) {
+      .Images a:hover .circle {
+        transform: rotate3d(0, 45, 0, 180deg); }
+      .Images a:hover .front {
+        transform: rotateY(45deg);
+        z-index: 0; } }
 
 .circle {
   transition: 0.5s;
   transform-style: preserve-3d;
   transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  height: 170px; }
+  height: 140px; }
+  @media (min-width: 45rem) {
+    .circle {
+      height: 170px; } }
   .circle .front, .circle .back {
     transition: 0.5s;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     backface-visibility: hidden;
     position: absolute;
     top: 0;
     left: 0; }
+    @media (min-width: 45rem) {
+      .circle .front, .circle .back {
+        width: 150px;
+        height: 150px; } }
   .circle .back {
     position: relative;
     transform: rotate3d(0, 45, 0, 180deg); }
     .circle .back img {
       opacity: .8; }
     .circle .back span {
-      padding: 0.3125rem 0.9375rem;
+      padding: 0.9375rem 0.9375rem;
       height: 100%;
       position: absolute;
       top: 0;
@@ -1414,7 +1447,11 @@ body.getReset #resetpassword label {
       display: -ms-flexbox;
       display: flex;
       -ms-flex-align: center;
-      align-items: center; }
+      align-items: center;
+      display: none; }
+      @media (min-width: 45rem) {
+        .circle .back span {
+          display: block; } }
       .circle .back span svg path {
         fill: black; }
   .circle .front {
@@ -1422,8 +1459,11 @@ body.getReset #resetpassword label {
 
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 30%;
   margin-top: -1.8rem; }
+  @media (min-width: 65rem) {
+    .arrow {
+      top: 50%; } }
   .arrow .Service-image {
     width: 3.5rem !important;
     opacity: .7; }

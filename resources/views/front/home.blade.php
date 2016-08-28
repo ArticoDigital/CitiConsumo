@@ -9,8 +9,8 @@
 
 @section('Services')
     <section class="Images row between">
-        <a href="{{url('mascotas')}}">
-            <figure class="Service-image">
+        <a href="{{url('mascotas')}}" class="small-6 col-4 medium-4">
+            <figure class="Service-image"  style="margin: 0 auto;">
                 <div class="circle">
                     <div class="front">
                         <img src="{{asset('img/mascotas.svg')}}" alt="mascotas">
@@ -23,8 +23,8 @@
                 <figcaption>Mascotas</figcaption>
             </figure>
         </a>
-        <a href="{{url('servicios-generales')}}">
-            <figure class="Service-image">
+        <a href="{{url('servicios-generales')}}" class="small-6 col-4 medium-4">
+            <figure class="Service-image"  style="margin: 0 auto;">
                 <div class="circle">
                     <div class="front">
                         <img src="{{asset('img/oficios.svg')}}" alt="oficios">
@@ -37,8 +37,8 @@
                 <figcaption>Oficios</figcaption>
             </figure>
         </a>
-        <a href="{{url('alimentos')}}">
-            <figure class="Service-image">
+        <a href="{{url('alimentos')}}" class="small-12 col-4 medium-4">
+            <figure class="Service-image" style="margin: 0 auto;">
                 <div class="circle">
                     <div class="front">
                         <img src="{{asset('img/comidas.svg')}}" alt="comidas">
@@ -55,7 +55,7 @@
 @endsection
 
 @section('Header')
-    <article class="Leyend"><q>Innovando la forma en como consumimos</q></article>
+    <article class="Leyend menu-item-out-movile"><q>Innovando la forma en como consumimos</q></article>
 @endsection
 
 @section('content')
