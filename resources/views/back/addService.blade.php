@@ -274,6 +274,7 @@
                 <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                 <section class="FilesPreview" id="result"></section>
                 <input type="hidden" name="positions">
+                <input type="hidden" id="ajaxFiles" value="{{route('uploadTempFiles')}}">
                 <div class="col-12">
                     <div id="toStep4" class="Button small right disabled" style="margin: 40px 15px 0 20px;" >Siguiente</div>
                 </div>
@@ -305,25 +306,45 @@
         });
 
         filesInput.on("change", function(e) {
-            var files = e.target.files;
-            var result = $("#result");
 
-            $.each(files, function(i, file) {
-                var pReader = new FileReader();
-                pReader.addEventListener("load", function(e){
-                    var pic = e.target;
-                    result.append("<article class='File'><input type='hidden' class='imagePosition' value='" + (i + 1) + "'><img class='thumbnail' src='" + pic.result + "'/></article>");
-                    show();
-                });
-                pReader.readAsDataURL(file);
+            var fileInput = document.getElementById('files');
+            var arrayFiles = fileInput.files;
+            var files = new FormData();
+
+            for(var i = 0; i < arrayFiles.length; i++){
+                files.append('file' + i, arrayFiles[i]);
+            }
+
+            files.append('_token', $('#token').val());
+
+            $.ajax({
+                url : '{{route("uploadTempFiles")}}',
+                type: 'POST',
+                contentType: false,
+                data: files,
+                processData: false,
+                cache : false,
+                success: function(data){
+                    var result = $("#result");
+                    var images = data.temp;
+                    var position = result.children().length;
+                    for(var i = 0; i < images.length; i++){
+                        position += 1;
+                        result.append("<article class='File'><input type='hidden' name='file" + position +"' value='" +  images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+                    }
+                },
+                error: function(error){
+                    console.log(error);
+                    alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
+                }
             });
         });
 
         $('form').on('submit', function(){
-            var $file = $('#result .File'),
-                positions = '';
+            var $file = $('#result .File'), positions = '';
+
             for(var i = 0; i < $file.length; i++){
-                positions += $file.eq(i).children('input').val() + ',';
+                positions += $file.eq(i).children('.imagePosition').val() + ',';
             }
             $('[name="positions"]').val(positions);
         });
@@ -345,7 +366,6 @@
         dateSingle.on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
         });
-
     </script>
     <script src="{{asset('js/maps.js')}}"></script>
     <script>setIsMultiple(false);</script>

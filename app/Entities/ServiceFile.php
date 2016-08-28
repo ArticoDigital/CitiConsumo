@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceFile extends Model
 {
-    protected $fillable = ['name', 'service_id'];
+    protected $fillable = ['name', 'service_id', 'position'];
 }
