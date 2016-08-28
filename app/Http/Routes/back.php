@@ -120,3 +120,7 @@ Route::post('usuarios-proveedor-reactivar', [
     'as' => 'reenableProvider',
 ]);
 
+Route::post('uploadTempFiles', [
+    'as' => 'uploadTempFiles',
+    'uses' => 'AdminController@uploadTempFiles'
+]);

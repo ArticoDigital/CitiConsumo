@@ -4,7 +4,9 @@ namespace City\Http\Controllers\admin;
 
 use City\Entities\FoodType;
 use City\Entities\GeneralType;
+use City\Entities\ServiceFile;
 use City\Entities\PetSize;
+use Illuminate\Support\Facades\Storage;
 use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
 use City\Http\Requests;
@@ -41,6 +43,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $inputs = $request->all();
+
         $validate = $this->validator($inputs);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
@@ -72,10 +75,33 @@ class AdminController extends Controller
             ]);
         }
 
+        foreach ($inputs as $key => $file){
+            if(strpos($key, 'file') !== false){
+                $fileName = explode('/temp/', $file)[1];
+                rename(base_path('public' . $file), base_path('public/uploads/products/' . $fileName));
+                ServiceFile::create([
+                    'name' => $fileName,
+                    'service_id' => $service->id
+                ]);
+            }
+        }
+
         return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
     }
 
+    public function uploadTempFiles(Request $request){
+        if($request->ajax()) {
+            $tempFiles = [];
+            foreach ($request->file() as $file) {
+                $fileName = str_random(10) . '**' . $file->getClientOriginalName();
+                $file->move(base_path() . '/public/temp/', $fileName);
+                array_push($tempFiles, '/temp/' . $fileName);
+            }
 
+            return ['temp' => $tempFiles];
+        }
+    }
+    
     private function validator($inputs)
     {
         $rules = [
