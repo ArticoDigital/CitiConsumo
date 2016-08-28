@@ -15,8 +15,8 @@ class Provider extends Model
     public function providerFiles(){
         return $this->hasMany(ProviderFiles::class);
     }
-    public function service(){
-        return $this->hasOne(Service::class);
+    public function services(){
+        return $this->hasMany(Service::class);
     }
     protected static function boot() {
         parent::boot();

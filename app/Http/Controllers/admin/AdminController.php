@@ -103,8 +103,8 @@ class AdminController extends Controller
     public function myProfile()
     {
         $userprofile = auth()->user();
-        //dd($userprofile);
-        return view('back.profile', compact('userprofile'));
+        $services = isset($userprofile->provider) ? $userprofile->provider->services : null;
+        return view('back.profile', compact('userprofile', 'services'));
     }
 
     public function uploadFiles()
