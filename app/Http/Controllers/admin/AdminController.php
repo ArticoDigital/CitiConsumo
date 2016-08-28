@@ -41,7 +41,6 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $inputs = $request->all();
-        dd($inputs);
         $validate = $this->validator($inputs);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
