@@ -41,9 +41,20 @@ class UserController extends Controller
         return view('back.produtsCheckout', compact('services'));
     }
 
-    public function deleteProductProvider($id){
-        dd('deleteProductProvider');
-        return redirect()->route('showProductsInactived')->with(['alertTitle' => '¡Producto Eliminado!', 'alertText' => '<p>El producto se ha eliminado satisfactoriamente.</p>']);
+    public function deleteProductProvider(Request $request, $id){
+        $service = Service::find($id);
+        if (!$request->value) {
+            $service->isValidate = 1;
+            $message = "EL usuario ha sido activado.";
+        } else {
+            $service->isValidate = 2;
+            $message = "EL usuario ha sido eliminado.";
+        }
+
+        $service->save();
+
+        if ($request->ajax())
+            return ['message' => $message];
     }
 
     public function enabledProvider(Request $request)

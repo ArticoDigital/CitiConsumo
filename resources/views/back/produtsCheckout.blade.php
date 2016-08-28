@@ -53,10 +53,10 @@
                     dataType: 'json',
                     data : param,
                     success: function(data){
-                        console.log(data);
+                        alert(data.message);
                     },
                     error: function(){
-                        alert('dasd');
+                        console.log('Hubo un error en la consulta por ajax');
                     }
                 });
             }
