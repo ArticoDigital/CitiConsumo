@@ -8,15 +8,20 @@ class Service extends Model
 {
     protected $fillable = ['name', 'location', 'description', 'isValidate', 'isActive', 'provider_id', 'price'];
 
+    public function provider(){
+        return $this->belongsTo(Provider::class);
+    }
     public function pet(){
-        return $this->belongsTo(Pet::class);
+        return $this->hasOne(Pet::class);
     }
     public function food(){
-        return $this->belongsTo(Food::class);
+        return $this->hasOne(Food::class);
     }
+    
     public function general(){
-        return $this->belongsTo(General::class);
+        return $this->hasOne(General::class);
     }
+
     protected static function boot() {
         parent::boot();
 

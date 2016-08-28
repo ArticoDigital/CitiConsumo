@@ -32,7 +32,7 @@ Route::get('postular-servicio', [
 Route::post('postular-servicio', [
     'as' => 'newService',
     'uses' => 'AdminController@newService',
-    'roles' => 2
+    'roles' => [1, 2]
 ]);
 
 

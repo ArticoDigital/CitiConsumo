@@ -173,73 +173,74 @@
           </div>
           
         </form>
-        <div class="row border-bottom">
-            <div class="row profile-servicesquant">Servicios (0)</div>
-            
+
+        <div class="row border-bottom" style="margin-bottom: 30px">
+            <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive) Servicios ({{count($services)}}) @endif </div>
         </div>
-        <div class="div_box_center">
+
+        @if(isset($userprofile->provider))
+            @if($userprofile->provider->isActive)
+                @if(count($services))
+                    <table class="rwd-table">
+                        <tr class="header-table">
+                            <th width="80px">Editar</th>
+                            <th width="50%">Servicio</th>
+                            <th>Precio</th>
+                            <th>Activar</th>
+                        </tr>
+                        @foreach($services as $service)
+                            <tr>
+                                <td data-th="Actions" class="row">
+                                    <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
+                                    <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
+                                </td>
+                                <td data-th="Service">
+                                    <article class="row top Profile-productSection " style="align-items: stretch">
+                                        <figure class="col-3 small-3">
+                                            <img src="{{asset('img/plato.png')}}" alt="">
+                                        </figure>
+                                        <div class="Profile-productInfo col-9 small-9">
+                                            <h3>{{$service->name}}</h3>
+                                            @if(isset($service->pet))
+                                                <?php $date = explode(' ', $service->pet->date_start)[0] . ' - ' . explode(' ', $service->pet->date_end)[0] ?>
+                                            @elseif(isset($service->food))
+                                                <?php $date = explode(' ', $service->food->food_time)[0]?>
+                                            @else
+                                                <?php $date = explode(' ', $service->general->date)[0]?>
+                                            @endif
+                                            <b>Fecha: {{$date}}</b>
+                                        </div>
+                                    </article>
+                                </td>
+                                <td data-th="Price" class="center"><b>${{number_format($service->price, 0, '.', '.')}}</b></td>
+                                <td data-th="Enable">
+                                    @if($service->isValidate)
+                                    <div class="switch">
+                                        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
+                                        <label for="cmn-toggle-1"></label>
+                                    </div>
+                                    @else
+                                        <div style="text-align: center">Por aprobar</div>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                @else
+                    <div class="div_box_center">
+                        <a class="profile-btn-blue" href="{{route('addService')}}">¡Crea tu primer servicio!</a>
+                    </div>
+                @endif
+            @else
+                <div class="div_box_center">
+                    <span>Estamos verificando tus documentos. Pronto prodrás crear tu primer producto.</span>
+                </div>
+            @endif
+        @else
+            <div class="div_box_center">
                 <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus servicios!</a>
-        </div>
-
-        <!--Servicios-->
-        <table class="rwd-table">
-          <tr class="header-table">
-            <th width="80px">Editar</th>
-            <th width="50%">Servicio</th>
-            <th>Precio</th>
-            <th>Activar</th>
-          </tr>
-          <tr>
-            <td data-th="Actions" class="row"> 
-                <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
-
-            </td>
-            <td data-th="Service">
-              <article class="row top Profile-productSection " style="align-items: stretch">
-                <figure class="col-3 small-3">
-                    <img src="{{asset('img/plato.png')}}" alt="">
-                </figure>
-                <div class="Profile-productInfo col-9 small-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>5 platos disponibles</b>
-                </div>
-              </article>
-            </td>
-            <td data-th="Price" class="center"><b>$30.000</b></td>
-            <td data-th="Enable">
-                <div class="switch">
-                  <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                  <label for="cmn-toggle-1"></label>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <td data-th="Actions" class="row"> 
-                <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
-
-            </td>
-            <td data-th="Service">
-              <article class="row top Profile-productSection " style="align-items: stretch">
-                <figure class="col-3 small-3">
-                    <img src="{{asset('img/plato.png')}}" alt="">
-                </figure>
-                <div class="Profile-productInfo col-9 small-9">
-                    <h3>Sancocho de espinazo con aguacate y arepa, jugo de mora</h3>
-                    <b>5 platos disponibles</b>
-                </div>
-              </article>
-            </td>
-            <td data-th="Price" class="center"><b>$10.000</b></td>
-            <td data-th="Enable">
-                 <div class="switch">
-                  <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                  <label for="cmn-toggle-2"></label>
-                </div>
-            </td>
-          </tr>
-        </table>
+            </div>
+        @endif
 @endsection
 
 
