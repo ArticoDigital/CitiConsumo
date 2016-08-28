@@ -179,7 +179,8 @@
             <article id="Step2" class="Step row">
                 <label class="required col-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
                 <div id="Map" class="col-12" style="height: 250px; width: calc(100% - 40px);"></div>
-                <input type="hidden" name="location" id="Location" value="{{old('location')}}">
+                <input type="hidden" name="lat" id="latitude" value="{{old('latitude')}}">
+                <input type="hidden" name="lng" id="longitude" value="{{old('longitude')}}">
                 <label class="col-12 required" for="name">
                     <span class="text">Nombre</span>
                     <input class="col-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
@@ -272,6 +273,7 @@
                 </section>
                 <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                 <section class="FilesPreview" id="result"></section>
+                <input type="hidden" name="positions">
                 <div class="col-12">
                     <div id="toStep4" class="Button small right disabled" style="margin: 40px 15px 0 20px;" >Siguiente</div>
                 </div>
@@ -310,11 +312,20 @@
                 var pReader = new FileReader();
                 pReader.addEventListener("load", function(e){
                     var pic = e.target;
-                    result.append("<article class='File'><img class='thumbnail' src='" + pic.result + "'/></article>");
+                    result.append("<article class='File'><input type='hidden' class='imagePosition' value='" + (i + 1) + "'><img class='thumbnail' src='" + pic.result + "'/></article>");
                     show();
                 });
                 pReader.readAsDataURL(file);
             });
+        });
+
+        $('form').on('submit', function(){
+            var $file = $('#result .File'),
+                positions = '';
+            for(var i = 0; i < $file.length; i++){
+                positions += $file.eq(i).children('input').val() + ',';
+            }
+            $('[name="positions"]').val(positions);
         });
 
         $(document).keydown(function(e) {
@@ -337,7 +348,7 @@
 
     </script>
     <script src="{{asset('js/maps.js')}}"></script>
-    <script>setIsMultiple(false);</script>
+    <script>setIsMultiple(true);</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
 @endsection
 

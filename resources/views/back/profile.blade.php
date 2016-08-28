@@ -1,32 +1,25 @@
 @extends('layoutBack')
 
 @section('content')
-<!--
-@if (count($errors) > 0)
-            <ul>
+    @if (count($errors) > 0)
+        <ul>
         @foreach ($errors->all() as $error)
-            
             <li>{{ $error }}</li>
-            @endforeach
-            </ul>
-
+        @endforeach
+        </ul>
      @endif
-    --> 
-     <p>Editar usuario {{$userprofile}}</p>
-    
 
-            @if(Session::has('success'))
-                <div class="success">
-                    <p>¡El usuario se ha actualizado!</p>
-                </div>
-            @endif
+     @if(Session::has('success'))
+        <div class="success">
+            <p>¡El usuario se ha actualizado!</p>
+        </div>
+     @endif
     
     <form action="{{route('updateUser')}}" method="post" enctype="multipart/form-data">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
-
       <div class="row" style="padding: 30px 0px;">
-          <div class="col-4 medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
+          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
               <div style="position:relative">
                   <div class="image-cropper row middle center">
 
@@ -66,8 +59,7 @@
                  <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
                  <button class="button">Actualizar perfil</button>
               </div>
-              
-              <div class="col-5 medium-6 small-12">
+          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-5 @endif medium-6 small-12">
                   <p class="profile-title" style="position: relative;">Datos personales<!--<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt="">--></p>
                   <div class="profile-item">
                       <label for="name" class="row middle">
@@ -154,9 +146,9 @@
                   </div>
                   <button class="button">Actualizar perfil</button>
               </div>
-
-              <div class="col-3 medium-12 small-12">
-                 <div class="Image-money row center" style="margin-top:10|px">
+          @if(isset($userprofile->provider) && $userprofile->provider->isActive)
+              <div class=" col-3 medium-12 small-12">
+                 <div class="Image-money row center" style="margin-top:10px">
               
                   <div class="circle-money">
                    <div class="front">
@@ -170,76 +162,81 @@
                               </div>
                   </div>
               </div>
-          </div>
+          @endif
+      </div>
           
-        </form>
+    </form>
 
-        <div class="row border-bottom" style="margin-bottom: 30px">
-            <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive) Servicios ({{count($services)}}) @endif </div>
-        </div>
+        @if($userprofile->role_id != 3)
+            <div class="row border-bottom" style="margin-bottom: 30px">
+                <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive) Servicios ({{count($services)}}) @endif </div>
+            </div>
 
-        @if(isset($userprofile->provider))
-            @if($userprofile->provider->isActive)
-                @if(count($services))
-                    <table class="rwd-table">
-                        <tr class="header-table">
-                            <th width="80px">Editar</th>
-                            <th width="50%">Servicio</th>
-                            <th>Precio</th>
-                            <th>Activar</th>
-                        </tr>
-                        @foreach($services as $service)
-                            <tr>
-                                <td data-th="Actions" class="row">
-                                    <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                                    <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
-                                </td>
-                                <td data-th="Service">
-                                    <article class="row top Profile-productSection " style="align-items: stretch">
-                                        <figure class="col-3 small-3">
-                                            <img src="{{asset('img/plato.png')}}" alt="">
-                                        </figure>
-                                        <div class="Profile-productInfo col-9 small-9">
-                                            <h3>{{$service->name}}</h3>
-                                            @if(isset($service->pet))
-                                                <?php $date = explode(' ', $service->pet->date_start)[0] . ' - ' . explode(' ', $service->pet->date_end)[0] ?>
-                                            @elseif(isset($service->food))
-                                                <?php $date = explode(' ', $service->food->food_time)[0]?>
-                                            @else
-                                                <?php $date = explode(' ', $service->general->date)[0]?>
-                                            @endif
-                                            <b>Fecha: {{$date}}</b>
-                                        </div>
-                                    </article>
-                                </td>
-                                <td data-th="Price" class="center"><b>${{number_format($service->price, 0, '.', '.')}}</b></td>
-                                <td data-th="Enable">
-                                    @if($service->isValidate)
-                                    <div class="switch">
-                                        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
-                                        <label for="cmn-toggle-1"></label>
-                                    </div>
-                                    @else
-                                        <div style="text-align: center">Por aprobar</div>
-                                    @endif
-                                </td>
+            @if(isset($userprofile->provider))
+                @if($userprofile->provider->isActive)
+                    @if(count($services))
+                        <table class="rwd-table">
+                            <tr class="header-table">
+                                <th width="80px">Editar</th>
+                                <th width="50%">Servicio</th>
+                                <th>Precio</th>
+                                <th>Activar</th>
                             </tr>
-                        @endforeach
-                    </table>
+                            @foreach($services as $service)
+                                @if($service->isValidate != 2)
+                                    <tr>
+                                        <td data-th="Actions" class="row">
+                                            <a href=""><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
+                                            <a href=""><img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
+                                        </td>
+                                        <td data-th="Service">
+                                            <article class="row top Profile-productSection " style="align-items: stretch">
+                                                <figure class="col-3 small-3">
+                                                    <img src="{{asset('img/plato.png')}}" alt="">
+                                                </figure>
+                                                <div class="Profile-productInfo col-9 small-9">
+                                                    <h3>{{$service->name}}</h3>
+                                                    @if(isset($service->pet))
+                                                        <?php $date = explode(' ', $service->pet->date_start)[0] . ' - ' . explode(' ', $service->pet->date_end)[0] ?>
+                                                    @elseif(isset($service->food))
+                                                        <?php $date = explode(' ', $service->food->food_time)[0] ?>
+                                                    @else
+                                                        <?php $date = explode(' ', $service->general->date)[0] ?>
+                                                    @endif
+                                                    <b>Fecha: {{$date}}</b>
+                                                </div>
+                                            </article>
+                                        </td>
+                                        <td data-th="Price" class="center"><b>${{number_format($service->price, 0, '.', '.')}}</b></td>
+                                        <td data-th="Enable">
+                                            @if($service->isValidate)
+                                            <div class="switch">
+                                                <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
+                                                <label for="cmn-toggle-1"></label>
+                                            </div>
+                                            @else
+                                                <div style="text-align: center">Por aprobar</div>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </table>
+                    @else
+                        <div class="div_box_center">
+                            <a class="profile-btn-blue" href="{{route('addService')}}">¡Crea tu primer servicio!</a>
+                        </div>
+                    @endif
                 @else
                     <div class="div_box_center">
-                        <a class="profile-btn-blue" href="{{route('addService')}}">¡Crea tu primer servicio!</a>
+                        <span>Estamos verificando tus documentos. Pronto prodrás crear tu primer producto.</span>
                     </div>
                 @endif
             @else
                 <div class="div_box_center">
-                    <span>Estamos verificando tus documentos. Pronto prodrás crear tu primer producto.</span>
+                    <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus servicios!</a>
                 </div>
             @endif
-        @else
-            <div class="div_box_center">
-                <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus servicios!</a>
-            </div>
         @endif
 @endsection
 

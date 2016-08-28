@@ -3,6 +3,7 @@
 namespace City\Http\Controllers\Admin;
 
 use City\Entities\Provider;
+use City\Entities\Service;
 use City\Entities\ProviderFiles;
 use City\User;
 use Illuminate\Http\Request;
@@ -28,6 +29,16 @@ class UserController extends Controller
     {
         $providers = Provider::with('user')->whereRaw('isActive = 0')->get();
         return view('back.usersProviderActive', compact('providers'));
+    }
+
+    public function showProductsInactived(){
+        $services = Service::where('isValidate', 0)->paginate(20);
+        return view('back.produtsCheckout', compact('services'));
+    }
+
+    public function deleteProductProvider($id){
+        dd('deleteProductProvider');
+        return redirect()->route('showProductsInactived')->with(['alertTitle' => '¡Producto Eliminado!', 'alertText' => '<p>El producto se ha eliminado satisfactoriamente.</p>']);
     }
 
     public function enabledProvider(Request $request)

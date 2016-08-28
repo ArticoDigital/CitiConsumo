@@ -102,11 +102,13 @@ function initMap() {
 }
 
 function setIsMultiple(bool){
-    isMultiple = bool;
-    $('form').on('submit', function(){
-        var pos = marker.getPosition().lat() + '&' + marker.getPosition().lng();
-        $('#Location').val(pos);
-    })
+    isMultiple = !bool;
+    if(isMultiple){
+        $('form').on('submit', function(){
+            $('#lat').val(marker.getPosition().lat());
+            $('#lng').val(marker.getPosition().lng());
+        })
+    }
 }
 
 function getIpCoords(){
@@ -115,7 +117,6 @@ function getIpCoords(){
             lat : data.latitude,
             lng : data.longitude
         };
-        console.log(pos)
         succesfull(pos);
     });
 }
