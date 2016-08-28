@@ -3,22 +3,19 @@
 @section('content')
 <section class="row">
     @if (count($errors) > 0)
-        <ul>
+        <ul class="col-12">
         @foreach ($errors->all() as $error)
             <li>{!!  $error  !!}</li>
         @endforeach
         </ul>
     @endif
               @if(Session::has('success'))
-                <div class="success">
+                <div class="success col-12">
                     <p>¡Se han subido los archivos!</p>
                 </div>
             @endif
 
-    @if (isset($providerfiles) > 0)
-    <p>Archivos: {{$providerfiles}}</p>
-    @endif
-    <figure class="TextOver col-5 medium-6 small-12">
+    <figure class="TextOver col-5 medium-6 small-12" style="background-color: #040A0B;">
         <img src="{{url('img/bg-formulario.svg')}}" alt="">
         <figcaption>Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servcios.</figcaption>
     </figure>
@@ -32,10 +29,14 @@
             <input type="hidden" class="required" name="BankFileName" id="BankFileName" value="{{ old('BankFileName') }}">
             <input type="hidden" class="required" name="ServicesFileName" id="ServicesFileName" value="{{ old('ServicesFileName') }}">
             <input type="hidden" class="required" name="HistoryFileName" id="HistoryFileName" value="{{ old('HistoryFileName') }}">
+            <input type="hidden" class="required" name="ContraloriaFileName" id="ContraloriaFileName" value="{{ old('ContraloriaFileName') }}">
+            <input type="hidden" class="required" name="PoliciaFileName" id="PoliciaFileName" value="{{ old('PoliciaFileName') }}">
             
+
+
             <section class="DropFilesSmall">
                 <label class="DropFiles-inside" for="RutFile">
-                    <span class="rectangle">Selecciona el archivo</span> <span class="text_file">
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span> <span class="text_file">
                     Arrastra aquí el RUT</span>
                     <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="RutFile" id="RutFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
                 </label>
@@ -43,29 +44,43 @@
 
             <section class="DropFilesSmall">
                 <label class="DropFiles-inside" for="CCFile">
-                    <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí la CC escaneada</span>
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span><span class="text_file">Arrastra aquí la CC escaneada</span>
                     <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="CCFile" id="CCFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
                 </label>
             </section>
 
             <section class="DropFilesSmall">
                 <label class="DropFiles-inside" for="BankFile">
-                    <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí el Certificado bancario</span>
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span><span class="text_file">Arrastra aquí el Certificado bancario</span>
                     <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="BankFile" id="BankFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
                 </label>
             </section>
 
             <section class="DropFilesSmall">
                 <label class="DropFiles-inside" for="ServicesFile">
-                    <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí el Recibo servicios públicos</span>
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span><span class="text_file">Arrastra aquí el Recibo servicios públicos</span>
                     <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="ServicesFile" id="ServicesFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
                 </label>
             </section>
 
             <section class="DropFilesSmall">
                 <label class="DropFiles-inside" for="HistoryFile">
-                    <span class="rectangle">Selecciona el archivo</span><span class="text_file">Arrastra aquí el antecedente de procuraduría</span>
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span><span class="text_file col-7 medium-7 small-7">Arrastra aquí el antecedente de procuraduría</span><a class="ayudaenlace col-2 medium-2 small-2" href="http://siri.procuraduria.gov.co:8086/CertWEB/Certificado.aspx?tpo=2" target="_blank">Obenga el documento</a>
                     <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="HistoryFile" id="HistoryFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                </label>
+            </section>
+
+            <section class="DropFilesSmall">
+                <label class="DropFiles-inside" for="ContraloriaFile">
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span><span class="text_file col-7 medium-7 small-7">Arrastra aquí el certificado de contraloría</span><a class="ayudaenlace col-2 medium-2 small-2" href="http://www.contraloria.gov.co/web/guest/certificados-persona-natural" target="_blank">Obenga el documento</a>
+                    <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="ContraloriaFile" id="ContraloriaFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
+                </label>
+            </section>
+            
+            <section class="DropFilesSmall">
+                <label class="DropFiles-inside" for="PoliciaFile">
+                    <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span><span class="text_file col-7 medium-7 small-7">Arrastra aquí el antecedente de la policía Nacional</span><a class="ayudaenlace col-2 medium-2 small-2" href="https://antecedentes.policia.gov.co:7005/WebJudicial" target="_blank">Obenga el documento</a>
+                    <input type="file" data-url="{{route('uploadFile')}}" class="drop-files-input" name="PoliciaFile" id="PoliciaFile" accept="image/jpeg, image/jpg, image/png, application/pdf">
                 </label>
             </section>
 
@@ -86,93 +101,3 @@
 @endsection
 
 
-
-@section('styles')
-<style type="text/css">
-.hidden{
-    display:none;
-
-}
-#loader-wrapper {
-    background-color: rgba(0, 0, 0, 0.76);
-    z-index: 100000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-}
-#loader {
-
-    display: block;
-    position: relative;
-    left: 50%;
-    top: 50%;
-    width: 150px;
-    height: 150px;
-    margin: -75px 0 0 -75px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #3498db;
-    -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-    animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
- 
-#loader:before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #e74c3c;
-    -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-      animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
- 
-#loader:after {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #f9c922;
-    -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-      animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
-}
- 
-@-webkit-keyframes spin {
-    0%   {
-        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-        -ms-transform: rotate(0deg);  /* IE 9 */
-        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
-    }
-    100% {
-        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-        -ms-transform: rotate(360deg);  /* IE 9 */
-        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
-    }
-}
-@keyframes spin {
-    0%   {
-        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-        -ms-transform: rotate(0deg);  /* IE 9 */
-        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
-    }
-    100% {
-        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-        -ms-transform: rotate(360deg);  /* IE 9 */
-        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
-    }
-}
-
-
-
-</style>
-@endsection

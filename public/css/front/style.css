@@ -967,17 +967,17 @@ figure figcaption {
     justify-content: initial;
     min-height: 50px; }
     .DropFilesSmall .DropFiles-inside span {
-      line-height: 30px; }
+      line-height: 30px;
+      padding: 5px; }
     .DropFilesSmall .DropFiles-inside .rectangle {
       background: #054CCF;
       color: white;
       border: 1px solid #C3C3C3;
       padding: 3px 10px;
-      max-width: 100px;
       display: inline-block;
       text-align: center;
-      margin-right: 10px;
-      border-radius: 5px; }
+      border-radius: 5px;
+      min-height: 70px; }
     .DropFilesSmall .DropFiles-inside.Drag {
       color: #05347a;
       border-color: #05347a; }
@@ -1050,10 +1050,7 @@ body.register, body.login {
   color: #fff;
   font-family: 'Open Sans', sans-serif; }
 
-body.login {
-  background: url("../../img/Bogota-2.jpg") center; }
-
-body.getEmail {
+body.login, body.getEmail, body.getReset {
   background: url("../../img/Bogota-2.jpg") center; }
 
 .Register-Logo {
@@ -1148,6 +1145,9 @@ body.getEmail {
 
 .register .openEye, .login .openEye {
   fill: white; }
+
+body.getReset #resetpassword label {
+  margin-top: 10px; }
 
 #Map {
   width: 100vw;
@@ -1460,6 +1460,11 @@ body.getEmail {
   margin-left: 10px;
   color: #004495; }
 
+.ayudaenlace {
+  color: #d81e1e;
+  font-size: 0.9em;
+  z-index: 10; }
+
 .button {
   border: none;
   color: white;
@@ -1472,6 +1477,9 @@ body.getEmail {
   cursor: pointer;
   background-color: #00508e;
   border-radius: 10px; }
+
+.text_file {
+  padding: 5px; }
 
 .name-profile {
   color: #6C6C6F;

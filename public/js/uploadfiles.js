@@ -54,7 +54,8 @@ $files.on("change", function (event) {
         success: function (data) {
             if (data.success) {
                 $('#'+identifier+"Name").val(data.name);
-                //$('#'+identifier).parent().find('.preload').addCalss("hidden");
+                //$( this ).parent().find( '.text_file' ).text(this.value);
+                //$('#'+identifier).parent().find('.text_file').text("Archivo Subido");
                 $('.preload').addClass("hidden");
                 /*PDFObject.embed(data.url, "#pdf", {
                     page: 1,
@@ -66,6 +67,12 @@ $files.on("change", function (event) {
                 });*/
 
             }
+             if (!data.success) {
+                $('#'+identifier).parent().find( '.rectangle' ).css("background-color","red");
+                $('#'+identifier).parent().find( '.text_file' ).text(data.name);
+                $('#'+identifier).parent().css("border","dashed 2px red");
+                $('.preload').addClass("hidden");
+             }
 
             console.log(data);
         }
