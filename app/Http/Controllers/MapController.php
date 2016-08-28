@@ -2,9 +2,11 @@
 
 namespace City\Http\Controllers;
 
+use City\Entities\Service;
 use Illuminate\Http\Request;
 
 use City\Http\Requests;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class MapController extends Controller
@@ -12,20 +14,56 @@ class MapController extends Controller
     public function index($service, Request $request)
     {
         $validate = $this->validator($request->all(), $service);
-        if($validate->fails())
+        if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
 
-        $dataMap = [
-            'lng' => $request->get('lng'),
-            'lat' => $request->get('lat')
-        ];
-
-        return view('front.platform', compact('dataMap'));
+        $dataMap = ['lng' => $request->get('lng'), 'lat' => $request->get('lat')];
+        $services = $this->queryBuild($dataMap, 2, $this->addWhere($request->all()));
+        return view('front.platform', compact('dataMap', 'services'));
     }
 
-    private function validator($inputs, $service){
+    private function addWhere($request)
+    {
+        dd($request);
+        if($request->typeService == "pet"){
 
-        if($service == 'mascotas'){
+
+        }
+        if($request->typeService == "food"){
+
+        }
+        if($request->typeService == "general"){
+
+        }
+
+    }
+
+    private function queryBuild($dataMap, $distance, $addWhere)
+    {
+        $box = $this->getBoundaries($dataMap['lat'], $dataMap['lng'], $distance);
+        return DB::select('SELECT *, service_files.name as nameFile, (6371 * ACOS(
+                                            SIN(RADIANS(lat))
+                                            * SIN(RADIANS(' . $dataMap['lat'] . '))
+                                            + COS(RADIANS(lng - ' . $dataMap['lng'] . '))
+                                            * COS(RADIANS(lat))
+                                            * COS(RADIANS(' . $dataMap['lat'] . '))
+                                            )
+                               ) AS distance
+                     FROM services
+                     INNER JOIN service_files ON service_files.service_id = services.id
+                     WHERE (lat BETWEEN ' . $box['min_lat'] . ' AND ' . $box['max_lat'] . ')
+                     AND (lng BETWEEN ' . $box['min_lng'] . ' AND ' . $box['max_lng'] . ')
+                     AND (isValidate = 1)
+                     AND (isActive = 1)' .
+            $addWhere .
+            'HAVING distance  < ' . $distance . '
+                     ORDER BY distance ASC ');
+    }
+
+    private function validator($inputs, $service)
+    {
+
+        if ($service == 'mascotas') {
             $rules = [
                 'lat' => 'required',
                 'lng' => 'required',
@@ -33,16 +71,14 @@ class MapController extends Controller
                 'breed' => 'required',
                 'size' => 'required'
             ];
-        }
-        else if($service == 'comidas'){
+        } else if ($service == 'comidas') {
             $rules = [
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
                 'food_type' => 'required'
             ];
-        }
-        else {
+        } else {
             $rules = [
                 'lat' => 'required',
                 'lng' => 'required',
@@ -62,5 +98,30 @@ class MapController extends Controller
         ];
 
         return Validator::make($inputs, $rules, $messages);
+    }
+
+    private function getBoundaries($lat, $lng, $distance = 1, $earthRadius = 6371)
+    {
+        $return = array();
+
+
+        $cardinalCoords = array('north' => '0',
+            'south' => '180',
+            'east' => '90',
+            'west' => '270');
+        $rLat = deg2rad($lat);
+        $rLng = deg2rad($lng);
+        $rAngDist = $distance / $earthRadius;
+        foreach ($cardinalCoords as $name => $angle) {
+            $rAngle = deg2rad($angle);
+            $rLatB = asin(sin($rLat) * cos($rAngDist) + cos($rLat) * sin($rAngDist) * cos($rAngle));
+            $rLonB = $rLng + atan2(sin($rAngle) * sin($rAngDist) * cos($rLat), cos($rAngDist) - sin($rLat) * sin($rLatB));
+            $return[$name] = array('lat' => (float)rad2deg($rLatB),
+                'lng' => (float)rad2deg($rLonB));
+        }
+        return array('min_lat' => $return['south']['lat'],
+            'max_lat' => $return['north']['lat'],
+            'min_lng' => $return['west']['lng'],
+            'max_lng' => $return['east']['lng']);
     }
 }

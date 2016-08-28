@@ -50,31 +50,37 @@ function succesfull(pos) {
         position: myLatlng,
         map: map,
         title: 'Hello World!',
-        draggable : !isMultiple
+        draggable: !isMultiple
     });
 
-    if(isMultiple){
-        for (var i = 0; i < 7; i++) {
-            var myLatLng = new google.maps.LatLng(parseFloat(lat) + (.0005 * (i + 1)), parseFloat(lng)+ (.0005 * (i + 1)));
+    if (isMultiple) {
+        $('.Platform-productSection').each(function (e) {
+            lat = $(this).data('lat');
+            lng = $(this).data('lng');
+            var myLatLng = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
             marker = new google.maps.Marker({
                 position: myLatLng,
                 animation: google.maps.Animation.DROP,
                 map: map,
-                title:'asdas',
-                icon:icon
+                title: 'asdas',
+                icon: icon
             });
 
             google.maps.event.addListener(marker, "click", function () {
                 showInfoProduct(this.title)
             });
-        }
+        });
+
+
+
+
     }
 
 }
-$('.InfoServices-close').on('click',function(){
+$('.InfoServices-close').on('click', function () {
     $('.InfoServices').removeClass('show')
 });
-function showInfoProduct(data){
+function showInfoProduct(data) {
     $('.InfoServices').addClass('show')
 }
 
@@ -90,10 +96,10 @@ function initMap() {
 
             succesfull(pos);
         }, function (error) {
-                getIpCoords();
-                if (error.code == error.PERMISSION_DENIED)
-                    console.log(error);
-            });
+            getIpCoords();
+            if (error.code == error.PERMISSION_DENIED)
+                console.log(error);
+        });
 
     } else {
         // Browser doesn't support Geolocation
@@ -101,21 +107,21 @@ function initMap() {
     }
 }
 
-function setIsMultiple(bool){
+function setIsMultiple(bool) {
     isMultiple = !bool;
-    if(isMultiple){
-        $('form').on('submit', function(){
+    if (isMultiple) {
+        $('form').on('submit', function () {
             $('#lat').val(marker.getPosition().lat());
             $('#lng').val(marker.getPosition().lng());
         })
     }
 }
 
-function getIpCoords(){
-    $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+function getIpCoords() {
+    $.getJSON('//freegeoip.net/json/?callback=?', function (data) {
         var pos = {
-            lat : data.latitude,
-            lng : data.longitude
+            lat: data.latitude,
+            lng: data.longitude
         };
         succesfull(pos);
     });
