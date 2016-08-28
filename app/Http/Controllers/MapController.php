@@ -18,22 +18,24 @@ class MapController extends Controller
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
 
         $dataMap = ['lng' => $request->get('lng'), 'lat' => $request->get('lat')];
-        $services = $this->queryBuild($dataMap, 2, $this->addWhere($request->all()));
+        $services = $this->queryBuild($dataMap, 2, $this->addWhere($request));
         return view('front.platform', compact('dataMap', 'services'));
     }
 
     private function addWhere($request)
     {
-        dd($request);
-        if($request->typeService == "pet"){
+        if ($request->get('typeService') == "pet") {
+            return "";
+            $date = explode('-',$request->get('date'));
 
-
+            return " AND pets.date_start BETWEEN '" . $date[0] . "' AND '" . $date[1] . "'
+             AND pets.pet_sizes = '" . $request->get('size') . "' ";
         }
-        if($request->typeService == "food"){
-
+        if ($request->get('typeService') == "food") {
+            return "";
         }
-        if($request->typeService == "general"){
-
+        if ($request->get('typeService') == "general") {
+            return "";
         }
 
     }
