@@ -3,18 +3,16 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-    <h1>Provedores por aprobar</h1>
-    <table class="rwd-table" id="tableUsers" data-route="{{asset('uploads/provider')}}">
+        <h1>Provedores Eliminados</h1>
+    <table class="rwd-table" id="tableUsers" >
         <tr class="header-table">
             <th>Editar</th>
             <th width="100px">Foto</th>
             <th>Usuario</th>
             <th>email</th>
             <th>Celular</th>
-            <th>Ver Archivos</th>
-            <th>Activar/Denegar</th>
+            <th>Re-Activar</th>
         </tr>
-
         @foreach($providers as $provider)
 
 
@@ -24,7 +22,7 @@
                 </td>
                 <td data-th="Service">
                     <article class="row top Profile-productSection " style="align-items: stretch">
-                        <figure>
+                        <figure >
                             @if($provider->user->profile_image)
                                 <img src="{{asset('uploads/profiles/' . $provider->user->profile_image)}}" alt="">
                             @else
@@ -46,47 +44,29 @@
                         </figure>
                 <td>
                     <div class="Profile-productInfo col-9">
-                        <h3 >{{$provider->user->name}}</h3>
+                        <h3>{{$provider->user->name}}</h3>
                         <b>{{$provider->user->last_name}}</b>
                     </div>
                 </td>
+
                 <td>
                     {{$provider->user->email}}
                 </td>
-                <td class="center">{{$provider->user->cellphone}}</td>
-                <td class="center">
-                    <a href="#" data-id="{{$provider->id}}" data-name="{{$provider->user->name}}" class="Button-table viewFiles">Ver</a>
-                    @foreach($provider->providerFiles as $files)
-                        <input type="hidden" data-type="{{$files->fileType->name}}"
-                               class="files-{{$provider->id}}" value="{{$files->name}}">
-
-                    @endforeach
-                </td>
+                <td  class="center">{{$provider->user->cellphone}}</td>
                 <td data-th="Price" class="center">
-                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('enabledProvider')}}"
-                       class="Admin-updateStateProvider">Activar</a>
-                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('deleteProvider')}}"
-                       class="Admin-updateStateProvider">Denegar</a>
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('reenableProvider')}}" class="Admin-updateStateProvider">Re Activar</a>
                 </td>
+
             </tr>
+
+
         @endforeach
     </table>
     <div class="preload hidden" id="loader-wrapper">
-        <div id="loader"></div>
-    </div>
-    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-
-    <div class="Files-container row center middle">
-        <div class="Files">
-            <span class="close">X</span>
-            <h2>Listado de archivos para <span id="nameUser"></span></h2>
-            <div class="Files-data">
-
-            </div>
-        </div>
-    </div>
+                        <div id="loader"></div>
+         </div>
 @endsection
-
+<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @section('scripts')
     <script src="{{asset('js/users.js')}}"></script>
 @endsection

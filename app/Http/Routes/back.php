@@ -32,7 +32,7 @@ Route::get('postular-servicio', [
 Route::post('postular-servicio', [
     'as' => 'newService',
     'uses' => 'AdminController@newService',
-    'roles' => 2
+    'roles' => [1, 2]
 ]);
 
 
@@ -79,6 +79,11 @@ Route::get('usuarios-proveedor-activar', [
     'as' => 'showProviderActive',
     'roles' => 3
 ]);
+Route::get('usuarios-proveedor-eliminados', [
+    'uses' => 'UserController@showProviderDelete',
+    'as' => 'showProviderDelete',
+    'roles' => 3
+]);
 
 Route::post('usuarios-proveedor-activar', [
     'uses' => 'UserController@enabledProvider',
@@ -94,5 +99,10 @@ Route::post('usuarios-proveedor-desactivar', [
 Route::post('usuarios-proveedor-eliminar', [
     'uses' => 'UserController@deleteProvider',
     'as' => 'deleteProvider',
+]);
+
+Route::post('usuarios-proveedor-reactivar', [
+    'uses' => 'UserController@reenableProvider',
+    'as' => 'reenableProvider',
 ]);
 

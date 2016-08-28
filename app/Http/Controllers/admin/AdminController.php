@@ -72,7 +72,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect()->route('addService');
+        return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
     }
 
 
@@ -103,8 +103,8 @@ class AdminController extends Controller
     public function myProfile()
     {
         $userprofile = auth()->user();
-        //dd($userprofile);
-        return view('back.profile', compact('userprofile'));
+        $services = isset($userprofile->provider) ? $userprofile->provider->services : null;
+        return view('back.profile', compact('userprofile', 'services'));
     }
 
     public function uploadFiles()
