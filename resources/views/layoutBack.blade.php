@@ -26,7 +26,7 @@
         </a>
         <nav class="row col-10 end">
             <ul class="Menu row between">
-                @if(Auth::user()->role_id = 3)
+                @if(Auth::user()->role_id == 3)
                     <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
                 @else
                     <li><a style="color: white" href="{{route('addService')}}" class="orange-text">Postula tu

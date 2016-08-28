@@ -16,7 +16,6 @@ class AddIspayedTable extends Migration
             $table->string('isPayed');
         });
     }
-
     /**
      * Reverse the migrations.
      *
