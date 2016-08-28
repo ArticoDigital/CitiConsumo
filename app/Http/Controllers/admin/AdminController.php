@@ -185,12 +185,18 @@ class AdminController extends Controller
         $user->cellphone = $data['cellphone'];
         $user->phone = $data['phone'];
         $user->location = $data['place'];
-        /*if(empty($data->password)){
+        $user->user_identification = $data['user_identification'];
+        
+
+        $user->bank_account_number=$data['bank_account_number'];
+        $user->bank_type_account=$data['bank_type_account'];
+        $user->bank_name=$data['bank_name'];
+
+        if(empty($data->password)){
             $user->password = bcrypt($data['password']);
-            $user['password_2'] = md5($data['password']);
 
         }
-       */
+
         if ($request->hasFile('profile_image')) {
             $imageName = $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
@@ -203,7 +209,25 @@ class AdminController extends Controller
         $user->save();
 
     }
+/*
+ protected function validator(array $data)
+    {
 
+        return Validator::make($data,
+            [
+                'name' => 'required',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|min:6',
+            ],
+            [
+                'name.required' => 'El nombre es requerido',
+                'email.required' => 'El email es obligatorio ',
+                'email.email' => 'El email no es valido ',
+                'email.unique' => 'Este usuario ya esta registrado',
+                'password.required' => 'La contraseña es obligatoria',
+            ]);
+    }
+*/
 
     protected function validatorUser(array $data)
     {
@@ -215,14 +239,15 @@ class AdminController extends Controller
                 'address' => 'required|max:255',
                 'birthday' => 'date',
                 'cellphone' => 'required|max:255',
+                'user_identification' => 'required|max:255',
             ]
         );
         $v->sometimes('profile_image', 'mimes:jpeg,jpg,png,gif|max:20000', function ($data) {
             return !empty($data['profile_image']);
         });
-        /*$v->sometimes('password', 'min:6', function($data) {
+        $v->sometimes('password', 'min:6|required|confirmed', function($data) {
             return !empty($data->password);
-        });*/
+        });
 
 
         return $v;

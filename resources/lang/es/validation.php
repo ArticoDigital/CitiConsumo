@@ -144,6 +144,7 @@ return [
         'password' => 'Contraseña',
         'profile_image' => 'Imágen de perfil',
         'cellphone' => 'Número de celular',
+        'user_identification' => 'Número de identificación',
         'phone' => 'Número de teléfono',
         'address' => 'Dirección',
         'sector' => 'Sector',
