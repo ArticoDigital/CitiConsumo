@@ -36,20 +36,20 @@
 @endif
 <header class="Header Container">
     <div class="BarNav row middle between">
-        <a href="{{url('/')}}" class="col-2">
+        <a href="{{url('/')}}" class="col-2 small-2">
             <figure class="Logo">
                     <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
             </figure>
         </a>
-        <nav class="row col-10 end">
+        <nav class="row col-10 small-10 end">
             <ul class="Menu row between">
-                <li><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
-                    <li><a href="{{route('register')}}">Registrate</a></li>
-                    <li><a href="{{route('login')}}">Entrar</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
+                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
                 @else
-                    <li><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
-                    <li><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
                 @endif
                 <li>
                     <div class="Menu-fixed">
@@ -60,6 +60,14 @@
                         </a>
                         <nav>
                             <ul class="col-4">
+                                    <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                                 @if(!Auth::check())
+                                    <li class="menu-item-out"><a href="{{route('register')}}" >REGISTRATE</a></li>
+                                    
+                                @else
+                                    <li class="menu-item-out"><a href="{{route('myProfile')}}">Mi perfil</a></li>
+                                    <li class="menu-item-out"><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                                @endif
                                 <li><a href="#">QUIENES SOMOS?</a></li>
                                 <li><a href="#">PREGUNTAS FRECUENTES </a></li>
                                 <li><a href="#">AYUDANOS A MEJORAR</a></li>
@@ -75,7 +83,7 @@
     @yield('Services')
     <section class="Services middle">
         @yield('Header')
-        <div class="Arrow"><a href="#" onclick="return false;"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>
+        <div class="Arrow menu-item-out-movile"><a href="#" onclick="return false;"> <img src="{{asset('img/arrow.svg')}}" alt=""> </a></div>
     </section>
     <div class="backgroundVideo">
         <video class="cover" width="960" height="540" autoplay loop>
@@ -85,11 +93,11 @@
 </header>
 @yield('content')
 <footer class="Footer row middle center">
-    <section class="row center middle col-5">
-        <figure class="Logo col-6" style="margin-top: 20px">
+    <section class="row center middle col-5 medium-5 small-5">
+        <figure class="Logo col-6 small-6" style="margin-top: 20px">
             <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
         </figure>
-        <nav class="col-12 self-end">
+        <nav class="col-12  small-12 medium-12 self-end">
             <ul class="Menu-footer row center no-padding">
                 <li><a href="{{url('/')}}">Home</a></li>
                 <li><a href="#">Nosotros</a></li>
@@ -99,15 +107,15 @@
             </ul>
         </nav>
     </section>
-    <section class="row col-7 middle">
-        <nav class="col-10">
-            <ul class="no-padding Menu row" style="font-size: .77rem;">
+    <section class="row col-7 medium-7 small-7 middle">
+        <nav class="col-10 small-8  medium-10">
+            <ul class="no-padding Menu row menu-item-out-movile" style="font-size: .77rem;">
                 <li><a href="#">DOCUMENTACIÓN</a></li>
                 <li><a href="#">TERMINOS Y CONDICIONES</a></li>
                 <li><a href="#">COPYRIGHT</a></li>
             </ul>
         </nav>
-        <nav class="col-2 end">
+        <nav class="col-2 small-2 end">
             <ul class="Socials">
                 <li class="icon">
                     <a href="https://twitter.com/city_consumo">
@@ -131,7 +139,7 @@
                 </li>
             </ul>
         </nav>
-        <div class="Copy col-12 row end self-end">
+        <div class="Copy col-12 small-12 medium-12 row end self-end">
             <p>2016 - Cityconsumo | Diseño Web &amp; posicionamiento SEO por Mouse Interactivo</p>
         </div>
     </section>

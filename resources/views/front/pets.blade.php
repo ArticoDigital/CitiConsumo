@@ -38,18 +38,18 @@
     </div>
 
     <form class="Form withAddress row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
-        <label for="place" class="col-3 Form-Control">
+        <label for="place" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
             <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
             <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
             <input class="field" id="typeService" name="typeService" type="hidden" value="pet">
         </label>
-        <label for="date" class="col-3 Form-Control">
+        <label for="date" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
         </label>
-        <label for="size" class="col-3 Form-Control">
+        <label for="size" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
             <select class="js-example-basic-single" id="size" name="size">
                 <option value="" selected>Tamaño</option>
@@ -58,7 +58,7 @@
                 <option value="3">Grande</option>
             </select>
         </label>
-        <label for="breed" class="col-3 Form-Control">
+        <label for="breed" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/footprint.svg')}}" alt="footprint"></span>
             <select class="js-example-basic-single" id="breed" name="breed">
                 <option value="" selected>Raza</option>
@@ -67,7 +67,7 @@
                 @endforeach
             </select>
         </label>
-        <button class="Button yellow" style="margin: 65px 0">Buscar</button>
+        <button class="Button yellow">Buscar</button>
     </form>
 @endsection
 

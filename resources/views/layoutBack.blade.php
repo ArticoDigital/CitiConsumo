@@ -19,7 +19,7 @@
 @endif
 <header class="Header">
     <div class="BarNav row middle between Container">
-        <a href="{{url('/')}}" class="col-2">
+        <a href="{{url('/')}}" class="col-2 small-2">
             <figure class="Logo">
                 <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
             </figure>
@@ -33,8 +33,8 @@
                             servicio</a></li>
                 @endif
 
-                <li><a href="{{route('myProfile')}}" style="color: white">Bienvenid@ {{Auth::user()->name}}</a></li>
-                <li><a href="{{route('logout')}}" style="color: white">Cerrar sesión</a></li>
+                <li class="menu-item-out-movile"><a href="{{route('myProfile')}}" style="color: white">Bienvenid@ {{Auth::user()->name}}</a></li>
+                <li class="menu-item-out-movile"><a href="{{route('logout')}}" style="color: white">Cerrar sesión</a></li>
                 <li>
                     <div class="Menu-fixed">
                         <a href="#" class="Hamburguer">
@@ -48,6 +48,7 @@
                                 <li><a href="#">PREGUNTAS FRECUENTES </a></li>
                                 <li><a href="#">AYUDANOS A MEJORAR</a></li>
                                 <li><a href="#">CONTACTANOS</a></li>
+                                <li class="menu-item-out"><a href="{{route('logout')}}" style="color: white">CERRAR SESIÓN</a></li>
                             </ul>
                         </nav>
                     </div>

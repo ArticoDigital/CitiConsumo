@@ -23,7 +23,9 @@
     height: 100%
 
 .Menu li
-  padding-right: rem(45)
+  padding-right: rem(15)
+  @include respond-to (medium)
+   padding-right: rem(45)
 
 .Menu-fixed
   nav
@@ -48,6 +50,7 @@
     align-items: center
   li
     width: 100%
+   
     a
       border-bottom: 1px solid white
       display: block
@@ -59,6 +62,16 @@
       &:hover
         border-color: $yellow
         color: $yellow
+    
+.menu-item-out
+  display: block !important
+  @include respond-to (medium)
+    display: none !important
+.menu-item-out-movile
+  display: none !important
+  @include respond-to (medium)
+    display: block !important
+
 
 .Hamburguer
   display: block
@@ -177,7 +190,7 @@
     top: 50%
     margin-top: -15px !important
     color: black
-    width: 20px !important
+    width: 40px !important
     padding: 0 10px !important
   .placeholder
     position: absolute
@@ -201,6 +214,9 @@
   font-size: 1.1rem
   font-weight: 200
   cursor: pointer
+  margin: 15px 0px 0px 0px
+  @include respond-to (medium)
+    margin: 55px 0
   &.small
     width: auto
     height: auto
