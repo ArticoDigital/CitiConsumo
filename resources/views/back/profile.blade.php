@@ -10,7 +10,7 @@
      @endif
     
     <form action="{{route('updateUser')}}" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+      <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" id="token">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
       <div class="row" style="padding: 30px 0px;">
           <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value']) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
@@ -259,9 +259,14 @@
                                         <td data-th="Price" class="center"><b>${{number_format($service->price, 0, '.', '.')}}</b></td>
                                         <td data-th="Enable">
                                             @if($service->isValidate)
-                                            <div class="switch">
+                                            <!--<div class="switch">
                                                 <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
                                                 <label for="cmn-toggle-1"></label>
+                                            </div>
+                                            -->
+                                            <div class="switch">
+                                                <input id="cmn-toggle-{{$service->id}}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
+                                                <label for="cmn-toggle-{{$service->id}}" data-service="{{$service->id}}" data-action="{{route('updateStateService')}}" class="Provider-updateStateService"></label>
                                             </div>
                                             @else
                                                 <div style="text-align: center">Por aprobar</div>
@@ -331,6 +336,7 @@
 });
        
     </script>
+    <script src="{{asset('js/services.js')}}"></script>
     <script src="{{asset('js/address.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
 
