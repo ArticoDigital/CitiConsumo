@@ -12,8 +12,8 @@ class StatesTableSeeder extends Seeder
      */
     public function run()
     {
-        State::create(['name'=>'En espera de confirmación']);
-        State::create(['name'=>'Confirmado']);
-        State::create(['name'=>'Cancelado']);
+        State::create(['name'=>'Pendiente']);
+        State::create(['name'=>'Solicitado']);
+        State::create(['name'=>'Pagado']);
     }
 }

@@ -32,6 +32,6 @@ class CreateOutlaysTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('outlays');
     }
 }
