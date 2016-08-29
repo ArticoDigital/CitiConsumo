@@ -155,6 +155,10 @@ Route::post('insertOutlay', [
     'uses' => 'BuyController@insertOutlay',
     'as' => 'insertOutlay'
 ]);
+Route::post('buyAction', [
+    'uses' => 'BuyController@buyAction',
+    'as' => 'buyAction'
+]);
 
 Route::post('updateOutlateState/{id}', [
     'uses' => 'BuyController@updateOutlateState',

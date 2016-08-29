@@ -1294,7 +1294,8 @@ body.getReset #resetpassword label {
   background: white; }
   .InfoServices-content figure {
     margin: 0;
-    background-size: cover; }
+    background-size: cover;
+    background-position: center; }
   .InfoServices-content p {
     margin: 1rem 0;
     font-size: 0.9375rem;
@@ -1777,5 +1778,14 @@ div.profile-photo-light {
 
 .switch input.cmn-toggle-round-flat:checked + label:before {
   background-color: #49B488; }
+
+.InfoServices-content .Message-register {
+  text-align: center;
+  margin: 2.875rem 0;
+  font-size: 1.125rem; }
+  .InfoServices-content .Message-register a {
+    display: inline;
+    color: #002444;
+    font-size: 1.125rem; }
 
 /*# sourceMappingURL=style.css.map */

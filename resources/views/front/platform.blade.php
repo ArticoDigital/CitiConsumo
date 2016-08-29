@@ -10,7 +10,11 @@
     @yield('styles')
 </head>
 <body class="Platform">
-<div id="Map" data-image="{{asset('img/cocinaIcon.png')}}"></div>
+<div id="Map"
+     data-typeService="{{$typeService}}"
+     data-image="{{asset('img/' . $icon)}}"
+     data-imagesservice="{{asset('uploads/products/')}}"
+></div>
 <input type="hidden" value="{{$dataMap['lng']}}" id="lat">
 <input type="hidden" value="{{$dataMap['lat']}}" id="lng">
 
@@ -91,7 +95,8 @@
             </svg>
         </a>
     </figure>
-    <form action="" class="row center ">
+
+    {{--<form action="" class="row center ">
 
         <div class="col-4">
             <label for="">
@@ -120,21 +125,25 @@
                 </select>
             </label>
         </div>
-    </form>
+    </form>--}}
+
     <section>
         @foreach($services as $service)
-            <article class="row top Platform-productSection "
-                     data-lat="{{$service->lat}}"
-                     data-lng="{{$service->lng}}"
-                  style="align-items: stretch">
-                <figure class="col-3">
-                    <img src="{{asset('img/plato.png')}}" alt="">
-                </figure>
-                <div class="Platform-productInfo col-9">
-                    <h3>Ensalada de Manzana-kiwi</h3>
-                    <b>$10.000</b>
-                </div>
-            </article>
+            <a href="#" onclick="showInfoProduct({{$service}})">
+                <article class="row top Platform-productSection "
+                         data-lat="{{$service->lat}}"
+                         data-lng="{{$service->lng}}"
+                         data-service="{{$service}}"
+                         style="align-items: stretch">
+                    <figure class="col-3">
+                        <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
+                    </figure>
+                    <div class="Platform-productInfo col-9">
+                        <h3>{{$service->name}}</h3>
+                        <b>${{$service->price}}</b>
+                    </div>
+                </article>
+            </a>
         @endforeach
 
     </section>
@@ -143,32 +152,59 @@
 <aside class="InfoServices row middle center">
     <div class="InfoServices-content row">
         <div class="InfoServices-close">x</div>
-        <figure class="col-6" style="background-image: url('{{asset('img/servicio.png')}}') "></figure>
+        <figure id="imageService" class="col-6">
+        </figure>
         <div class="col-6 InfoServices-info">
-            <h2>Ensalada de frutas frescas</h2>
-            <h3>5 platos disponibles</h3>
+            <h2 id="NameService">Ensalada de frutas frescas</h2>
+            <h3 id="availableService">5 platos disponibles</h3>
             <div class="InfoServices-stars row ">
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
-            <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un
-                sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o
-                menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido
-                aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y
-                editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem
-                Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de
-                desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras
-                veces a propósito (por ejemplo insertándole humor y cosas por el estilo). </p>
-            <a href="">Ver perfil del autor</a>
-            <form action="">
+            <p id="descriptionService">
+                {{-- Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un
+                 sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o
+                 menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido
+                 aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y
+                 editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem
+                 Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de
+                 desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras
+                 veces a propósito (por ejemplo insertándole humor y cosas por el estilo).   --}}
+            </p>
+            {{--<a href="">Ver perfil del autor</a>--}}
+            <div class="data-services">
+
+            </div>
+            <form action="{{route('buyAction')}}" method="POST">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <input type="hidden" name="value" id="valueServiceInput" value="">
+                <input type="hidden" name="idService" id="idServiceInput" value="">
                 <div class="row between middle">
-                    <select name="number" id="">
-                        <option value="">Selecione el número de platos</option>
-                    </select>
-                    <val>$12.000</val>
+                    @if($typeService == "pet")
+                        <label for="">
+                            <span># de días</span>
+                            <input type="number" name="quantity" placeholder="">
+                        </label>
+                    @endif
+                    @if($typeService == "food")
+                        <select name="quantity" id="">
+                            <option value="">Selecione el número de platos</option>
+                        </select>
+                    @endif
+                    @if($typeService == "general")
+                        <div>
+                            <input type="hidden" name="quantity"  value="1">
+                        </div>
+                    @endif
+                    <val id="valueService">$12.000</val>
                 </div>
-                <div class="row center">
-                    <button>Comprar</button>
-                </div>
+                @if( Auth::user() && Auth::user()->role_id !=3 )
+                    <div class="row center">
+                        <button id="buyAction"> Comprar</button>
+                    </div>
+                @else
+                    <p class="Message-register">Para poder realizar compras debes <a href="{{url('login')}}">iniciar</a>
+                        <a href="{{url('registro')}}">registrarse</a></p>
+                @endif
             </form>
         </div>
     </div>

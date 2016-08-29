@@ -9,6 +9,7 @@ use City\Entities\Buy;
 use City\Entities\Outlay;
 use City\Entities\Provider;
 use City\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BuyController extends Controller
 {
@@ -43,6 +44,22 @@ class BuyController extends Controller
             'id_user' => auth()->user()->id
         ]);
         return ['message' => 'El desembolso ha sido exitoso.'];
+    }
+
+    public function buyAction(Request $request){
+
+        $data = [''];
+        $data['service_id'] =  $request->input('idService');
+        $data['products_quantity'] =  $request->input('quantity');
+        /* para el registro del desembolso */
+        $data['state_id'] =  1;
+        $data['value'] =  $request->input('value');
+        $data['user_id'] =  Auth::user()->id;
+
+        Buy::create($data);
+
+        return redirect()->to('admin')->with(['alertTitle' => 'Compra exitosa', 'alertText' => 'Felicitaciones su compra se ha realizado con éxito']);
+
     }
 
 }
