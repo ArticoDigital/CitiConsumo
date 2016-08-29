@@ -7,7 +7,8 @@ class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * citycons_app
+     * nITlD{b)o*TX
      * @return void
      */
     public function up()

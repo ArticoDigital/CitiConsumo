@@ -16,8 +16,6 @@
         </tr>
 
         @foreach($providers as $provider)
-
-
             <tr>
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
