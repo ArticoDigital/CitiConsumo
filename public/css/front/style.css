@@ -648,6 +648,20 @@ figure figcaption {
       font-size: 1.5rem;
       font-weight: 500;
       color: #212121; }
+  .Alert.confirm .Message p {
+    margin: 0 0 20px 0; }
+  .Alert.confirm .Message a {
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: white;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+    background: #798ea1;
+    margin: 0 2%;
+    width: 46%; }
+    .Alert.confirm .Message a:hover {
+      background: #002444; }
 
 .Container {
   margin: auto;
@@ -719,16 +733,16 @@ figure figcaption {
       color: #f6b11e; }
 
 .menu-item-out {
-  display: block; }
+  display: block !important; }
   @media (min-width: 45rem) {
     .menu-item-out {
-      display: none; } }
+      display: none !important; } }
 
 .menu-item-out-movile {
-  display: none; }
+  display: none !important; }
   @media (min-width: 45rem) {
     .menu-item-out-movile {
-      display: block; } }
+      display: block !important; } }
 
 .Hamburguer {
   display: block;
@@ -1439,7 +1453,7 @@ body.getReset #resetpassword label {
     .circle .back img {
       opacity: .8; }
     .circle .back span {
-      padding: 0.9375rem 0.9375rem;
+      padding: 2.1875rem 0.9375rem;
       height: 100%;
       position: absolute;
       top: 0;
@@ -1465,10 +1479,13 @@ body.getReset #resetpassword label {
     .arrow {
       top: 50%; } }
   .arrow .Service-image {
-    width: 3.5rem !important;
+    width: 2.5rem !important;
     opacity: .7; }
     .arrow .Service-image:hover {
       opacity: 1; }
+    @media (min-width: 45rem) {
+      .arrow .Service-image {
+        width: 3.5rem !important; } }
   .arrow.right {
     right: 0; }
   .arrow.left {
@@ -1688,7 +1705,10 @@ div.profile-photo-light {
     background-color: #04529D;
     color: white;
     padding: 0.7em 5em;
-    font-size: 1.3em; }
+    font-size: 1em; }
+    @media (min-width: 45rem) {
+      .HowItWorks .btn_blue {
+        font-size: 1.3em; } }
 
 .div_box_center {
   margin: 3em 0;

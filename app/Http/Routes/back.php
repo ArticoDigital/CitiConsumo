@@ -120,3 +120,14 @@ Route::post('usuarios-proveedor-reactivar', [
     'as' => 'reenableProvider',
 ]);
 
+Route::post('uploadTempFiles', [
+    'as' => 'uploadTempFiles',
+    'uses' => 'AdminController@uploadTempFiles'
+]);
+
+/************* ProductController **************/
+
+Route::post('deleteProduct', [
+    'uses' => 'ProductController@delete',
+    'as' => 'deleteProduct'
+]);

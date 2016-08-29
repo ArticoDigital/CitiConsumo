@@ -1,13 +1,7 @@
 @extends('layoutBack')
 
 @section('content')
-    @if (count($errors) > 0)
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-        </ul>
-     @endif
+   
 
      @if(Session::has('success'))
         <div class="success">
@@ -16,7 +10,7 @@
      @endif
     
     <form action="{{route('updateUser')}}" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
       <div class="row" style="padding: 30px 0px;">
           <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
@@ -57,7 +51,8 @@
                    
                  </div>
                  <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
-                 <button class="button">Actualizar perfil</button>
+                 <button class="button menu-item-out-movile">Actualizar perfil</button>
+
               </div>
           <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-5 @endif medium-6 small-12">
                   <p class="profile-title" style="position: relative;">Datos personales<!--<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt="">--></p>
@@ -73,6 +68,14 @@
                         {!!  $errors->first('last_name', ':message')  !!}
                         <span class="col-5 small-5">Apellido(*)</span>
                         <input class="col-7 small-7" name="last_name" value="{{ $userprofile->last_name}}" id="last_name"
+                               type="text">
+                    </label>
+                  </div>
+                  <div class="profile-item">
+                      <label for="user_identification" class="row middle">
+                        {!!  $errors->first('user_identification', ':message')  !!}
+                        <span class="col-5 small-5">Número de identificación(*)</span>
+                        <input class="col-7 small-7" name="user_identification" value="{{ $userprofile->user_identification}}" id="last_name"
                                type="text">
                     </label>
                   </div>
@@ -139,12 +142,59 @@
 
                   <p class="profile-title">Seguridad</p>
                   <div class="row profile-item border-bottom">
-                      <div class="col-12">Cambiar contraseña <img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
+                      <div class="col-12">Cambiar contraseña <img id="password-option" class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
+                  </div>
+                  <div id="password-option-box" class="hidden">
+                      <div class="profile-item">
+                        <label for="password" class="row middle">
+                          {!!  $errors->first('password', ':message')  !!}
+                          <span class="col-5 small-5">Nueva Contraseña</span>
+                          <input class="col-7 small-7" name="password" value="" id="password"
+                                 type="password">
+                      </label>
+                    </div>
+                    <div class="profile-item">
+                        <label for="password_confirmation" class="row middle">
+                          {!!  $errors->first('password_confirmation', ':message')  !!}
+                          <span class="col-5 small-5">Repita la Contraseña</span>
+                          <input class="col-7 small-7" name="password_confirmation" value="" id="password_confirmation"
+                                 type="password">
+                      </label>
+                    </div>
                   </div>
                   <div class="row profile-item border-bottom">
-                      <div class="col-12">Información de la cuenta <img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
+                      <div class="col-12">Información de la cuenta <img id="account-option" class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
                   </div>
-                  <button class="button">Actualizar perfil</button>
+                  <div id="account-option-box" class="hidden">
+                      <div class="profile-item">
+                        <label for="bank_account_number" class="row middle">
+                          {!!  $errors->first('bank_account_number', ':message')  !!}
+                          <span class="col-5 small-5">Número de la cuenta</span>
+                          <input class="col-7 small-7" name="bank_account_number" value="{{ $userprofile->bank_account_number}}" id="bank_account_number"
+                                 type="text">
+                      </label>
+                    </div>
+                    <div class="profile-item">
+                        <label for="bank_type_account" class="row middle">
+                          {!!  $errors->first('bank_type_account', ':message')  !!}
+                          <span class="col-5 small-5">Tipo de cuenta</span>
+                            <select class="col-7 small-7" id="bank_type_account" name="bank_type_account">
+                                    <option value="Ahorros" {{ ($userprofile->bank_type_account=="Ahorros") ? 'selected' : '' }}>Ahorros</option>
+                                    <option value="Corriente"  {{ ($userprofile->bank_type_account=="Corriente") ? 'selected' : '' }} >Corriente</option>
+                            </select>
+                      </label>
+                    </div>
+                    <div class="profile-item">
+                        <label for="bank_name" class="row middle">
+                          {!!  $errors->first('bank_name', ':message')  !!}
+                          <span class="col-5 small-5">Banco</span>
+                          <input class="col-7 small-7" name="bank_name" value="{{ $userprofile->bank_name}}" id="bank_name"
+                                 type="text">
+                      </label>
+                    </div>
+                  </div>
+
+                  <button class="button menu-item-out">Actualizar perfil</button>
               </div>
           @if(isset($userprofile->provider) && $userprofile->provider->isActive)
               <div class=" col-3 medium-12 small-12">
@@ -175,7 +225,7 @@
             @if(isset($userprofile->provider))
                 @if($userprofile->provider->isActive)
                     @if(count($services))
-                        <table class="rwd-table">
+                        <table class="rwd-table" style="margin-bottom: 30px">
                             <tr class="header-table">
                                 <th width="80px">Editar</th>
                                 <th width="50%">Servicio</th>
@@ -186,13 +236,13 @@
                                 @if($service->isValidate != 2)
                                     <tr>
                                         <td data-th="Actions" class="row">
-                                            <a href=""><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
-                                            <a href=""><img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
+                                            <a href="" class="EditProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
+                                            <a href="#" class="DeleteProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
                                         </td>
                                         <td data-th="Service">
                                             <article class="row top Profile-productSection " style="align-items: stretch">
                                                 <figure class="col-3 small-3">
-                                                    <img src="{{asset('img/plato.png')}}" alt="">
+                                                    <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
                                                 </figure>
                                                 <div class="Profile-productInfo col-9 small-9">
                                                     <h3>{{$service->name}}</h3>
@@ -238,6 +288,15 @@
                 </div>
             @endif
         @endif
+
+    <section id="ConfirmAlert" class="Alert confirm" style="display: none">
+        <article class="Message">
+            <h2>¡Eliminar!</h2>
+            <p>¿Estás seguro que deseas eliminar el producto?</p>
+            <a href="" class="close">Cancelar</a>
+            <a href="" class="close" id="accept">Aceptar</a>
+        </article>
+    </section>
 @endsection
 
 
@@ -281,6 +340,19 @@
 
         });
 
+        $('#password-option').click(function(){
+
+            $('#password-option-box').removeClass("hidden");
+
+        });
+
+        $('#account-option').click(function(){
+
+            $('#account-option-box').removeClass("hidden");
+
+        });
+        
+
       });
 
 
@@ -290,15 +362,34 @@
             $(this).removeClass('Drag');
         });
 
+        $('.DeleteProduct').on('click', function(){
+            $('#ConfirmAlert').show();
+            var productId = $(this).attr('data_id');
+
+            $('#ConfirmAlert #accept').click(function() {
+
+                var param = {
+                    '_token' : $('#token').val(),
+                    'id' : productId
+                };
+
+                $.ajax({
+                    url : '{{route('deleteProduct')}}',
+                    data : param,
+                    type: 'POST',
+                    success : function(data){
+                        console.log(data.message);
+                    },
+                    error : function(){
+                        alert('Hubo un error al eliminar el producto.');
+                    }
+                });
+            });
+        });
 
         $(".images").change(function() {
-                //alert(this.value);
-               // $(this).removeClass('drop-files-input');
                 $( this ).parent().find( '.text_file' ).text("Guarda para actualizar");
-//                $(this).find(".text_file").text(this.value);
             });
-
-      
     </script>
     
 @endsection
@@ -306,9 +397,4 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
-
-    <style type="text/css">
-
-
-    </style>
 @endsection

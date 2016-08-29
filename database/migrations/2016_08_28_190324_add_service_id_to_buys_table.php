@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAddressToService extends Migration
+class AddServiceIdToBuysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,9 @@ class AddAddressToService extends Migration
      */
     public function up()
     {
-        Schema::table('services', function(Blueprint $table){
-            $table->string('address');
+        Schema::table('buys', function(Blueprint $table){
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 

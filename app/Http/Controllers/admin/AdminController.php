@@ -2,9 +2,12 @@
 
 namespace City\Http\Controllers\admin;
 
+use City\Entities\Buy;
 use City\Entities\FoodType;
 use City\Entities\GeneralType;
+use City\Entities\ServiceFile;
 use City\Entities\PetSize;
+use Illuminate\Support\Facades\Storage;
 use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
 use City\Http\Requests;
@@ -41,6 +44,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $inputs = $request->all();
+
         $validate = $this->validator($inputs);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
@@ -72,10 +76,33 @@ class AdminController extends Controller
             ]);
         }
 
+        foreach ($inputs as $key => $file){
+            if(strpos($key, 'file') !== false){
+                $fileName = explode('/temp/', $file)[1];
+                rename(base_path('public' . $file), base_path('public/uploads/products/' . $fileName));
+                ServiceFile::create([
+                    'name' => $fileName,
+                    'service_id' => $service->id
+                ]);
+            }
+        }
+
         return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
     }
 
+    public function uploadTempFiles(Request $request){
+        if($request->ajax()) {
+            $tempFiles = [];
+            foreach ($request->file() as $file) {
+                $fileName = str_random(10) . '**' . $file->getClientOriginalName();
+                $file->move(base_path() . '/public/temp/', $fileName);
+                array_push($tempFiles, '/temp/' . $fileName);
+            }
 
+            return ['temp' => $tempFiles];
+        }
+    }
+    
     private function validator($inputs)
     {
         $rules = [
@@ -104,8 +131,9 @@ class AdminController extends Controller
     public function myProfile()
     {
         $userprofile = auth()->user();
-        $services = isset($userprofile->provider) ? $userprofile->provider->services : null;
-        return view('back.profile', compact('userprofile', 'services'));
+        $services = isset($userprofile->provider) ? Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get() : null;
+        $buysNotPayed = Buy::whereRaw('state_id', 1);
+        return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
     }
 
     public function uploadFiles()
@@ -127,7 +155,6 @@ class AdminController extends Controller
     {
         $userprofile = User::find($id);
         return view('back.profile', compact('userprofile'));
-
     }
 
 
@@ -159,12 +186,18 @@ class AdminController extends Controller
         $user->cellphone = $data['cellphone'];
         $user->phone = $data['phone'];
         $user->location = $data['place'];
-        /*if(empty($data->password)){
+        $user->user_identification = $data['user_identification'];
+        
+
+        $user->bank_account_number=$data['bank_account_number'];
+        $user->bank_type_account=$data['bank_type_account'];
+        $user->bank_name=$data['bank_name'];
+
+        if(empty($data->password)){
             $user->password = bcrypt($data['password']);
-            $user['password_2'] = md5($data['password']);
 
         }
-       */
+
         if ($request->hasFile('profile_image')) {
             $imageName = $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
@@ -177,7 +210,25 @@ class AdminController extends Controller
         $user->save();
 
     }
+/*
+ protected function validator(array $data)
+    {
 
+        return Validator::make($data,
+            [
+                'name' => 'required',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|min:6',
+            ],
+            [
+                'name.required' => 'El nombre es requerido',
+                'email.required' => 'El email es obligatorio ',
+                'email.email' => 'El email no es valido ',
+                'email.unique' => 'Este usuario ya esta registrado',
+                'password.required' => 'La contraseña es obligatoria',
+            ]);
+    }
+*/
 
     protected function validatorUser(array $data)
     {
@@ -189,14 +240,15 @@ class AdminController extends Controller
                 'address' => 'required|max:255',
                 'birthday' => 'date',
                 'cellphone' => 'required|max:255',
+                'user_identification' => 'required|max:255',
             ]
         );
         $v->sometimes('profile_image', 'mimes:jpeg,jpg,png,gif|max:20000', function ($data) {
             return !empty($data['profile_image']);
         });
-        /*$v->sometimes('password', 'min:6', function($data) {
+        $v->sometimes('password', 'min:6|required|confirmed', function($data) {
             return !empty($data->password);
-        });*/
+        });
 
 
         return $v;

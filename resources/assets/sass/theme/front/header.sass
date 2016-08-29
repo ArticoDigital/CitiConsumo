@@ -131,7 +131,7 @@
     img
       opacity: .8
     span
-      padding: rem(15) rem(15)
+      padding: rem(35) rem(15)
       height: 100%
       position: absolute
       top: 0
@@ -156,10 +156,12 @@
   @include respond-to (large)
     top: 50%
   .Service-image
-    width: 3.5rem !important
+    width: 2.5rem !important
     opacity: .7
     &:hover
       opacity: 1
+    @include respond-to (medium)
+      width: 3.5rem !important
   &.right
     right: 0
   &.left

@@ -1,14 +1,21 @@
 .TextOver
+  
   position: relative
   margin: 0
   figcaption
-    position: absolute
-    height: rem(130)
+    height: auto
     padding: rem(10)
     color: $white
     top: 50%
-    margin-top: rem(-65)
+    
     text-align: center
+    @include respond-to (medium)
+      position: absolute
+      height: rem(130)
+      margin-top: rem(-65)  
+  
+    
+    
 
 main.MainBack
   padding-left: rem(30)

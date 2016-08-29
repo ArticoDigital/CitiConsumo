@@ -43,10 +43,10 @@
         </a>
         <nav class="row col-10 small-10 end">
             <ul class="Menu row between">
-                <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
                     <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
-                    <li class="menu-item-out-movile"><a href="{{route('login')}}" >Entrar</a></li>
+                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
                 @else
                     <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                     <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
@@ -63,7 +63,7 @@
                                     <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                                  @if(!Auth::check())
                                     <li class="menu-item-out"><a href="{{route('register')}}" >REGISTRATE</a></li>
-                                    <li class="menu-item-out"><a href="{{route('login')}}">ENTRAR</a></li>
+                                    
                                 @else
                                     <li class="menu-item-out"><a href="{{route('myProfile')}}">Mi perfil</a></li>
                                     <li class="menu-item-out"><a href="{{route('logout')}}">Cerrar sesión</a></li>
