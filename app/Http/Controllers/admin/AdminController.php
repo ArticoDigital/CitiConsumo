@@ -131,8 +131,26 @@ class AdminController extends Controller
     public function myProfile()
     {
         $userprofile = auth()->user();
-        $services = isset($userprofile->provider) ? Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get() : null;
-        $buysNotPayed = Buy::whereRaw('state_id', 1);
+        $services = '';
+        $buysNotPayed['value'] = 0;
+        $buysNotPayed['buys'] = '';
+
+        if (isset($userprofile->provider)){
+            $services = Service::where('provider_id', $provider = auth()->user()->provider->id)
+                        ->with(['buys' => function ($buys) {
+                            $buys->where('state_id', 1)->get();
+                        }])->get()->toArray();
+            foreach ($services as $service){
+                if(count($service['buys'])){
+                    foreach($service['buys'] as $buy){
+                        if(isset($buy['value']))
+                            $buysNotPayed['value'] += $buy['value'] * $buy['products_quantity'];
+                            $buysNotPayed['buys'] .= $buy['id'] . ',';
+                    }
+                }
+            }
+            $services = Service::whereRaw("provider_id = {$provider} and isValidate <> 2")->get();
+        }
         return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
     }
 

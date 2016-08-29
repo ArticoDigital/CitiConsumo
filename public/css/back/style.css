@@ -1287,6 +1287,8 @@ main.MainBack {
       .circle-money .front div .btn-charge {
         font-size: 1.8em;
         color: #FABC44; }
+        .circle-money .front div .btn-charge:hover {
+          border-bottom: 1px solid #FABC44; }
       .circle-money .front div svg path {
         fill: black; }
   .circle-money .front {
