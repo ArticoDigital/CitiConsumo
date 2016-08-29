@@ -13,7 +13,7 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
       <div class="row" style="padding: 30px 0px;">
-          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
+          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value']) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
               <div style="position:relative">
                   <div class="image-cropper row middle center">
 
@@ -54,7 +54,7 @@
                  <button class="button menu-item-out-movile">Actualizar perfil</button>
 
               </div>
-          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed) col-5 @endif medium-6 small-12">
+          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value']) col-5 @endif medium-6 small-12">
                   <p class="profile-title" style="position: relative;">Datos personales<!--<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt="">--></p>
                   <div class="profile-item">
                       <label for="name" class="row middle">
@@ -196,7 +196,7 @@
 
                   <button class="button menu-item-out">Actualizar perfil</button>
               </div>
-          @if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed)
+          @if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value'])
               <div class=" col-3 medium-12 small-12">
                   <div class="Image-money row center" style="margin-top:10px">
                       <div class="circle-money">
@@ -296,7 +296,7 @@
             <a href="" class="close" id="accept">Aceptar</a>
         </article>
     </section>
-
+    @if($buysNotPayed['value'])
      <!--*********** Formulario de desembolso *****************-->
      <form method="POST" action="{{'insertOutlay'}}">
          <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -304,6 +304,7 @@
          <input type="hidden" name="value" value="{{$buysNotPayed['value']}}">
          <input type="submit" id="insertOutlaySubmit">
      </form>
+    @endif
 @endsection
 
 
