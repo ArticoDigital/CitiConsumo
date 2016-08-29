@@ -43,6 +43,7 @@
             <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
             <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
+            <input class="field" id="typeService" name="typeService" type="hidden" value="general">
         </label>
         <label for="service" class="col-4 small-6 medium-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/service.svg')}}" alt="service"></span>
@@ -84,7 +85,7 @@
         var $date = $('#date');
         $date.daterangepicker(getConfig('single'));
         $date.on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            $(this).val(picker.startDate.format('MM/DD/YYYY'));
         });
     </script>
     <script src="{{asset('js/address.js')}}"></script>

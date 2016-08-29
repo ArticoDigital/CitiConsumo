@@ -42,11 +42,12 @@
             <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
             <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
+            <input class="field" id="typeService" name="typeService" type="hidden" value="food">
         </label>
         <label for="food_type" class="col-4 small-6 medium-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
             <span class="name">Tipo de Comida</span>
-            <select class="js-example-basic-multiple" id="food_type" name="food_type" multiple>
+            <select class="js-example-basic-multiple" id="food_type" name="food_type[]" multiple>
                 @foreach($foods as $food)
                     <option value="{{$food->id}}">{{$food->name}}</option>
                 @endforeach

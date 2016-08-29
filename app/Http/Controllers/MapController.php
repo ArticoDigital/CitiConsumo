@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers;
 
+use Carbon\Carbon;
 use City\Entities\Service;
 use Illuminate\Http\Request;
 
@@ -18,49 +19,71 @@ class MapController extends Controller
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
 
         $dataMap = ['lng' => $request->get('lng'), 'lat' => $request->get('lat')];
-        $services = $this->queryBuild($dataMap, 2, $this->addWhere($request));
+        $distance = 10;
+        $servicesId = $this->queryBuild($dataMap, $distance , $this->addSql($request));
+        $services = Service::with([$request->get('typeService'), 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->get();
         return view('front.platform', compact('dataMap', 'services'));
     }
 
-    private function addWhere($request)
+    private function addSql($request)
     {
-        if ($request->get('typeService') == "pet") {
-            return "";
-            $date = explode('-',$request->get('date'));
+        $sql = [];
 
-            return " AND pets.date_start BETWEEN '" . $date[0] . "' AND '" . $date[1] . "'
-             AND pets.pet_sizes = '" . $request->get('size') . "' ";
+        if ($request->get('typeService') == "pet") {
+
+            $date = explode('-', $request->get('date'));
+            $sql['where'] = " AND pets.date_start BETWEEN '" . Carbon::parse( $date[0] ) . "' AND '" . Carbon::parse( $date[1] ). "'
+            AND pets.pet_sizes = '" . $request->get('size') . "' ";
+            $sql['join'] = "INNER JOIN  `pets` ON `pets`.`service_id` = services.id";
+
+            return $sql;
         }
         if ($request->get('typeService') == "food") {
-            return "";
+            $typeFood = implode($request->get('food_type'),',');
+            $sql['where'] = " AND foods.food_time = '" .  Carbon::parse($request->get('date'))  . "'
+             and food_type_id in ($typeFood)";
+
+            $sql['join'] = "INNER JOIN  `foods` ON `foods`.`service_id` = services.id";
+            return $sql;
         }
         if ($request->get('typeService') == "general") {
-            return "";
+
+            $typeService = $request->get('service');
+
+            $sql['where'] = " AND generals.date = '" .  Carbon::parse($request->get('date'))  . "'
+             and general_type_id = ($typeService)";
+            $sql['join'] = "INNER JOIN  `generals` ON `generals`.`service_id` = services.id";
+            return $sql;
         }
 
     }
 
-    private function queryBuild($dataMap, $distance, $addWhere)
+    private function queryBuild($dataMap, $distance, $sql)
     {
         $box = $this->getBoundaries($dataMap['lat'], $dataMap['lng'], $distance);
-        return DB::select('SELECT *, service_files.name as nameFile, (6371 * ACOS(
-                                            SIN(RADIANS(lat))
-                                            * SIN(RADIANS(' . $dataMap['lat'] . '))
-                                            + COS(RADIANS(lng - ' . $dataMap['lng'] . '))
-                                            * COS(RADIANS(lat))
-                                            * COS(RADIANS(' . $dataMap['lat'] . '))
-                                            )
-                               ) AS distance
-                     FROM services
-                     INNER JOIN service_files ON service_files.service_id = services.id
-                     WHERE (lat BETWEEN ' . $box['min_lat'] . ' AND ' . $box['max_lat'] . ')
-                     AND (lng BETWEEN ' . $box['min_lng'] . ' AND ' . $box['max_lng'] . ')
-                     AND (isValidate = 1)
-                     AND (isActive = 1)' .
-            $addWhere .
-            'HAVING distance  < ' . $distance . '
-                     ORDER BY distance ASC ');
+
+        return DB::select(
+                'SELECT services.id , (6371 * ACOS(
+                                        SIN(RADIANS(lat))
+                                        * SIN(RADIANS(' . $dataMap['lat'] . '))
+                                        + COS(RADIANS(lng - ' . $dataMap['lng'] . '))
+                                        * COS(RADIANS(lat))
+                                        * COS(RADIANS(' . $dataMap['lat'] . '))
+                                        )
+                           ) AS distance
+                FROM services
+                '. $sql['join'] .'
+                WHERE (lat BETWEEN ' . $box['min_lat'] . ' AND ' . $box['max_lat'] . ')
+                AND (lng BETWEEN ' . $box['min_lng'] . ' AND ' . $box['max_lng'] . ')
+                AND (isValidate = 1)
+    AND (isActive = 1)'
+                . $sql['where'] .'
+
+                HAVING distance < ' . $distance . '
+                ORDER BY distance ASC ;');
+
     }
+
 
     private function validator($inputs, $service)
     {
