@@ -30,6 +30,10 @@ class Service extends Model
         return $this->hasMany(Buy::class);
     }
 
+    public function getPriceAttribute($value){
+        return number_format($value, 0, " ", ".");
+    }
+
     protected static function boot() {
         parent::boot();
 

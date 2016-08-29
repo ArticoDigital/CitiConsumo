@@ -12,19 +12,36 @@ use Validator;
 
 class MapController extends Controller
 {
+    private $distance = 100 ;
+
     public function index($service, Request $request)
     {
         $validate = $this->validator($request->all(), $service);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
-
         $dataMap = ['lng' => $request->get('lng'), 'lat' => $request->get('lat')];
-        $distance = 10;
-        $servicesId = $this->queryBuild($dataMap, $distance , $this->addSql($request));
-        $services = Service::with([$request->get('typeService'), 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->get();
-        return view('front.platform', compact('dataMap', 'services'));
+        $typeService = $request->get('typeService');
+        $services = $this->getModelToService($request,$typeService,$dataMap);
+        $icon =  $this->icon($typeService);
+        return view('front.platform', compact('dataMap', 'services', 'icon','typeService'));
     }
 
+    private function getModelToService($request,$service,$dataMap){
+
+        $servicesId = $this->queryBuild($dataMap, $this->distance , $this->addSql($request));
+        if ($service == "pet")
+            return Service::with(['pet', 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
+        if ($service == "food")
+            return Service::with(['food', 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
+        if ($service == "general")
+            return Service::with(['general', 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
+
+    }
+
+    private function icon($service){
+
+        return ($service == 'food')? 'cocinaIcon.png' : (($service == 'general')?'serviciosicon.png':'mascotaicon.png');
+    }
     private function addSql($request)
     {
         $sql = [];
@@ -32,7 +49,7 @@ class MapController extends Controller
         if ($request->get('typeService') == "pet") {
 
             $date = explode('-', $request->get('date'));
-            $sql['where'] = " AND pets.date_start BETWEEN '" . Carbon::parse( $date[0] ) . "' AND '" . Carbon::parse( $date[1] ). "'
+            $sql['where'] = " AND (pets.date_start <=  '" . Carbon::parse( $date[0] ) . "' AND pets.date_end >= '" . Carbon::parse( $date[1] ). "')
             AND pets.pet_sizes = '" . $request->get('size') . "' ";
             $sql['join'] = "INNER JOIN  `pets` ON `pets`.`service_id` = services.id";
 

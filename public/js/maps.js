@@ -37,7 +37,7 @@ function succesfull(pos) {
     var myLatlng = new google.maps.LatLng(lat, lng);
 
     var mapOptions = {
-        zoom: 17,
+        zoom: 13,
         center: myLatlng,
         disableDefaultUI: true,
         //scrollwheel: false,
@@ -57,29 +57,56 @@ function succesfull(pos) {
         $('.Platform-productSection').each(function (e) {
             lat = $(this).data('lat');
             lng = $(this).data('lng');
+            var service = $(this).data('service');
+
             var myLatLng = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
             marker = new google.maps.Marker({
                 position: myLatLng,
                 animation: google.maps.Animation.DROP,
                 map: map,
-                title: 'asdas',
+                title: "asasd",
                 icon: icon
             });
 
             google.maps.event.addListener(marker, "click", function () {
-                showInfoProduct(this.title)
+                showInfoProduct(service)
             });
         });
 
 
-
-
     }
 }
-$('.InfoServices-close').on('click',function(){
+$('.InfoServices-close').on('click', function () {
     $('.InfoServices').removeClass('show')
 });
 function showInfoProduct(data) {
+    var
+        elements = {
+            $imageService: $('#imageService'),
+            $nameService: $('#NameService'),
+            $availableService: $('#availableService'),
+            $descriptionService: $('#descriptionService'),
+            $valueService : $('#valueService'),
+            $valueServiceInput : $('#valueServiceInput'),
+            $idServiceInput: $('#idServiceInput'),
+        },
+        dataMap = $('#Map'),
+        routeImageServices = dataMap.data('imagesservice'),
+        typeService = dataMap.data('typeservice'),
+        imageService = routeImageServices + '/' + data.service_files[0].name;
+
+
+    elements.$imageService.css("background-image", "url('" + imageService + "')");
+    elements.$nameService.html(data.name);
+    elements.$availableService.html();
+    elements.$descriptionService.html(data.description);
+    elements.$valueService.html('$' + data.price);
+    elements.$valueServiceInput.val(data.price);
+    elements.$idServiceInput.val(data.id);
+
+
+    console.log(typeService)
+    console.log(data)
     $('.InfoServices').addClass('show')
 }
 
@@ -107,9 +134,9 @@ function initMap() {
 }
 
 
-function setIsMultiple(bool){
+function setIsMultiple(bool) {
     isMultiple = bool;
-    $('form.StepsForm').on('submit', function(e){
+    $('form.StepsForm').on('submit', function (e) {
         $('#lat').val(marker.getPosition().lat());
         $('#lng').val(marker.getPosition().lng());
     })
