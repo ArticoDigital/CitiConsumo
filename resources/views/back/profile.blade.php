@@ -302,7 +302,7 @@
          <input type="hidden" name="_token" value="{{ csrf_token() }}">
          <input type="hidden" name="buys_id" value="{{$buysNotPayed['buys']}}">
          <input type="hidden" name="value" value="{{$buysNotPayed['value']}}">
-         <input type="submit" id="insertOutlaySubmit">
+         <input type="submit" id="insertOutlaySubmit" style="display:none">
      </form>
     @endif
 @endsection

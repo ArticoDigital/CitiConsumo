@@ -11,4 +11,14 @@ class Buy extends Model
     public function service(){
         $this->belongsTo(Service::class);
     }
+
+    /*
+     *
+     * Editar productos
+     * Desembolsar desde administracion
+     * Historial de pagos
+     * Comentarios y calificacion
+     * Dashboard
+     *
+     */
 }

@@ -46,6 +46,7 @@
                 'action' : $(this).attr('data-action'),
                 'value'  : $(this).attr('data-value')
             };
+
             if(param.value == 0)
                 message = true;
             else

@@ -44,15 +44,15 @@ class UserController extends Controller
     public function deleteProductProvider(Request $request, $id){
         $service = Service::find($id);
         $services = Service::where('isValidate', 0);
+
         if (!$request->value) {
-            $service->isValidate = 1;
+            $service->update(['isValidate' => 1, 'isActive' => 1]);
             $message = "EL usuario ha sido activado.";
         } else {
-            $service->isValidate = 2;
+            $service->update(['isValidate' => 1]);
             $message = "EL usuario ha sido eliminado.";
         }
 
-        $service->save();
         if ($request->ajax())
             return ['message' => $message, 'services' => $services];
     }
