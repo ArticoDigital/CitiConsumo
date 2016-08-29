@@ -26,6 +26,10 @@ class Service extends Model
         return $this->hasMany(ServiceFile::class);
     }
 
+    public function buys(){
+        return $this->hasMany(Buy::class);
+    }
+
     protected static function boot() {
         parent::boot();
 

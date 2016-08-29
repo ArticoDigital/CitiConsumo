@@ -58,30 +58,6 @@
                     dataType: 'json',
                     data : param,
                     success: function(data){
-                        /*var html = '';
-                        html += "<tr class='header-table'>" +
-                                    "<th>Editar</th>" +
-                                    "<th>Nombre</th>" +
-                                    "<th>Precio</th>" +
-                                    "<th>Detalles</th>" +
-                                    "<th>Activar/Eliminar</th>" +
-                                "</tr>";
-
-                        for(var i = 0; i < data.services.length; i++){
-                            html += "<tr>" +
-                                        "<td data-th='Actions' class='row'>" +
-                                            "<img class='small-icon-product' src='/img/lapiz-edicion.svg'>" +
-                                        "</td>" +
-                                    "<td class='center'>" + data.services[i].name + "</td>" +
-                                    "<td class='center'>$" + thousand(data.services[i].price) + "</td>" +
-                                    "<td class='center'><a href='#'>VER</a></td>" +
-                                    "<td class='center'>" +
-                                        "<a href='#' data-value='0' data-action='" + {{route('deleteProductProvider', $service->id)}} + "' class='Admin-updateStateProvider' id='activeProduct'>Activar</a>" +
-                                        "<a href='#' data-value='1' data-action='" + {{route('deleteProductProvider', $service->id)}} + "' class='Admin-updateStateProvider' id='deleteProduct'>Activar</a>" +
-                                    "</td></tr>";
-                        }
-
-                        $('#reload').html(html);*/
                         alert(data.message);
                     },
                     error: function(){

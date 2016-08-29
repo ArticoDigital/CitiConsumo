@@ -131,3 +131,8 @@ Route::post('deleteProduct', [
     'uses' => 'ProductController@delete',
     'as' => 'deleteProduct'
 ]);
+
+Route::post('insertOutlay', [
+    'uses' => 'BuyController@insertOutlay',
+    'as' => 'insertOutlay'
+]);
