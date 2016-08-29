@@ -54,11 +54,13 @@
                 <td class="center">{{$provider->user->cellphone}}</td>
                 <td class="center">
                     <a href="#" data-id="{{$provider->id}}" data-name="{{$provider->user->name}}" class="Button-table viewFiles">Ver</a>
-                    @foreach($provider->providerFiles as $files)
-                        <input type="hidden" data-type="{{$files->fileType->name}}"
-                               class="files-{{$provider->id}}" value="{{$files->name}}">
+                    @if(isset($corregir)) <!-- ************************* Hay un error ************************-->
+                        @foreach($provider->providerFiles as $files)
+                            <input type="hidden" data-type="{{$files->fileType->name}}"
+                                   class="files-{{$provider->id}}" value="{{$files->name}}">
 
-                    @endforeach
+                        @endforeach
+                    @endif
                 </td>
                 <td data-th="Price" class="center">
                     <a href="#" data-user="{{$provider->id}}" data-action="{{route('enabledProvider')}}"
