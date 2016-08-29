@@ -14,7 +14,6 @@ class Buy extends Model
 
     /*
      *
-     * Editar productos
      * Desembolsar desde administracion
      * Historial de pagos
      * Comentarios y calificacion

@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Entities\Buy;
 use City\Entities\Outlay;
+use City\Entities\Provider;
 use City\Http\Controllers\Controller;
 
 class BuyController extends Controller
 {
+    public function outlayList(){
+        $outlays = Outlay::with(['provider'])->where('isPayed', 0)->get();
+        return view('back.outlay', compact('outlays'));
+    }
+
     public function insertOutlay(Request $request){
 
         $inputs = $request->all();
@@ -29,4 +35,11 @@ class BuyController extends Controller
 
         return redirect()->route('myProfile')->with(['alertTitle' => '¡Solicitud de desembolso!', 'alertText' => 'La solicitud de desembolso ha sido exitosa. Te informaremos cuando el monto solicitado sea consignado a tu cuenta.']);
     }
+
+    public function updateOutlateState(Request $request, $id){
+        $outlay = Outlay::find($id);
+        $outlay->update(['isPayed' => 2]);
+        return ['message' => 'El desembolso ha sido exitoso.'];
+    }
+
 }

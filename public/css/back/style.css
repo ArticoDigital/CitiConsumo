@@ -1400,7 +1400,7 @@ div.profile-photo-light {
     flex-grow: 1;
     text-align: center;
     background: #002444;
-    margin: 0 0.25rem; }
+    margin: 0 0.25rem 0.3125rem; }
   .MenuAdmin a {
     padding: 0.625rem;
     display: block;
@@ -1512,5 +1512,8 @@ div.profile-photo-light {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+
+.Table td {
+  padding-top: 0.625rem !important; }
 
 /*# sourceMappingURL=style.css.map */

@@ -18,6 +18,10 @@ class Provider extends Model
     public function services(){
         return $this->hasMany(Service::class);
     }
+    
+    public function outlay(){
+        return $this->hasOne(Outlay::class);
+    }
     protected static function boot() {
         parent::boot();
 

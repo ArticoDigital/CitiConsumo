@@ -11,9 +11,11 @@ Route::get('mi-perfil', [
     'uses' => 'AdminController@myProfile',
 ]);
 
-Route::get('desembolso', function () {
-    return view('back.outlay');
-});
+Route::get('desembolso', [
+    'uses' => 'BuyController@outlayList',
+    'as' => 'outlayList',
+    'roles' => 3
+]);
 
 Route::get('checkout', function () {
     return view('back.checkout');
@@ -152,4 +154,9 @@ Route::post('editar-servicio/{id}', [
 Route::post('insertOutlay', [
     'uses' => 'BuyController@insertOutlay',
     'as' => 'insertOutlay'
+]);
+
+Route::post('updateOutlateState/{id}', [
+    'uses' => 'BuyController@updateOutlateState',
+    'as' => 'updateOutlateState'
 ]);
