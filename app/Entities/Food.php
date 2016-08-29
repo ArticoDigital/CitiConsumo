@@ -11,4 +11,8 @@ class Food extends Model
     function foodTypes(){
         return $this->belongsTo(FoodType::class);
     }
+
+    function getFoodTimeAttribute($value){
+        return date_format(date_create($value), 'm/d/Y');
+    }
 }

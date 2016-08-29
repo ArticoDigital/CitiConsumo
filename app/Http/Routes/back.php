@@ -133,10 +133,21 @@ Route::post('uploadTempFiles', [
 
 /************* ProductController **************/
 
-Route::post('deleteProduct', [
-    'uses' => 'ProductController@delete',
+Route::post('deleteService', [
+    'uses' => 'ServiceController@deleteService',
     'as' => 'deleteProduct'
 ]);
+
+Route::get('editar-servicio/{id}', [
+    'uses' => 'ServiceController@editService',
+    'as' => 'editProduct'
+]);
+
+Route::post('editar-servicio/{id}', [
+    'uses' => 'ServiceController@editServicePost',
+    'as' => 'editServicePost'
+]);
+
 
 Route::post('insertOutlay', [
     'uses' => 'BuyController@insertOutlay',

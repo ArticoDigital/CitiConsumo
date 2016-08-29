@@ -235,7 +235,7 @@
                                 @if($service->isValidate != 2)
                                     <tr>
                                         <td data-th="Actions" class="row">
-                                            <a href="" class="EditProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
+                                            <a href="{{route('editProduct', $service->id)}}" class="EditProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt=""></a>
                                             <a href="#" class="DeleteProduct" data_id="{{$service->id}}"><img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
                                         </td>
                                         <td data-th="Service">
@@ -259,11 +259,6 @@
                                         <td data-th="Price" class="center"><b>${{number_format($service->price, 0, '.', '.')}}</b></td>
                                         <td data-th="Enable">
                                             @if($service->isValidate)
-                                            <!--<div class="switch">
-                                                <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
-                                                <label for="cmn-toggle-1"></label>
-                                            </div>
-                                            -->
                                             <div class="switch">
                                                 <input id="cmn-toggle-{{$service->id}}" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" @if($service->isActive) checked="checked" @endif>
                                                 <label for="cmn-toggle-{{$service->id}}" data-service="{{$service->id}}" data-action="{{route('updateStateService')}}" class="Provider-updateStateService"></label>
@@ -297,7 +292,7 @@
         <article class="Message">
             <h2>¡Eliminar!</h2>
             <p>¿Estás seguro que deseas eliminar el producto?</p>
-            <a href="" class="close">Cancelar</a>
+            <a href="#" class="close">Cancelar</a>
             <a href="" class="close" id="accept">Aceptar</a>
         </article>
     </section>
