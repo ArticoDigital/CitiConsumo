@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers\admin;
 
+use City\Entities\Buy;
 use City\Entities\FoodType;
 use City\Entities\GeneralType;
 use City\Entities\ServiceFile;
@@ -131,7 +132,8 @@ class AdminController extends Controller
     {
         $userprofile = auth()->user();
         $services = isset($userprofile->provider) ? Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get() : null;
-        return view('back.profile', compact('userprofile', 'services'));
+        $buysNotPayed = Buy::whereRaw('state_id', 1);
+        return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
     }
 
     public function uploadFiles()
@@ -153,7 +155,6 @@ class AdminController extends Controller
     {
         $userprofile = User::find($id);
         return view('back.profile', compact('userprofile'));
-
     }
 
 

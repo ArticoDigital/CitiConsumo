@@ -12,10 +12,11 @@ class AddAccountdataToUsers extends Migration
      */
     public function up()
     {
-        //
         Schema::table('users', function(Blueprint $table){
             $table->string('bank_account_number');
             $table->string('bank_type_account');
+            $table->string('bank_name');
+            $table->string('user_identification');
         });
     }
 

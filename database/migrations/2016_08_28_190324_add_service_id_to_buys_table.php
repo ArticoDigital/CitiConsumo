@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAccountdataToUsers extends Migration
+class AddServiceIdToBuysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class AddAccountdataToUsers extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function(Blueprint $table){
-            $table->string('bank_name');
-            $table->string('user_identification');
+        Schema::table('buys', function(Blueprint $table){
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 
