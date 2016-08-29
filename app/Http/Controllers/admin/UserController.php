@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers\Admin;
 
+use City\Entities\FileType;
 use City\Entities\Provider;
 use City\Entities\Service;
 use City\Entities\ProviderFiles;
