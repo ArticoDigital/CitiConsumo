@@ -13,11 +13,11 @@ class PetSizesTableSeeder extends Seeder
     {
         //
         PetSize::create([
-            'name'=>'Muy pequeño',
+            'name'=>'Muy pequeï¿½o',
             'description'=>'Entre 5 y 15 cm de alto',
         ]);
         PetSize::create([
-            'name'=>'Pequeño',
+            'name'=>'PequeÃ±o',
             'description'=>'Entre 16 y 30 cm de alto',
         ]);
         PetSize::create([

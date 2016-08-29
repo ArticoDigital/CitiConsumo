@@ -38,7 +38,10 @@ class BuyController extends Controller
 
     public function updateOutlateState(Request $request, $id){
         $outlay = Outlay::find($id);
-        $outlay->update(['isPayed' => 2]);
+        $outlay->update([
+            'isPayed' => 2,
+            'id_user' => auth()->user()->id
+        ]);
         return ['message' => 'El desembolso ha sido exitoso.'];
     }
 

@@ -12,6 +12,10 @@ class AddServiceIdToBuysTable extends Migration
      */
     public function up()
     {
+        /*
+         * citycons_app
+         * nITlD{b)o*TX
+        */
         Schema::table('buys', function(Blueprint $table){
             $table->integer('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services');
