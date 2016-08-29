@@ -12,7 +12,7 @@ class CreateOutlaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('outlay', function(Blueprint $table){
+        Schema::create('outlays', function(Blueprint $table){
             $table->increments('id');
             $table->integer('value');
             $table->string('buys_id');

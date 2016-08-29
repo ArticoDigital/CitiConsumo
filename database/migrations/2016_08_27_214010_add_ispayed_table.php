@@ -12,7 +12,7 @@ class AddIspayedTable extends Migration
      */
     public function up()
     {
-        Schema::table('outlay', function(Blueprint $table){
+        Schema::table('outlays', function(Blueprint $table){
             $table->string('isPayed');
         });
     }
