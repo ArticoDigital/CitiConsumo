@@ -54,6 +54,12 @@ Route::get('perfil/{id}', [
 ]);
 
 
+Route::post('updateStateService', [
+    'uses' => 'AdminController@updateStateService',
+    'as' => 'updateStateService',
+    'roles' => 2
+]);
+
 Route::post('updateUser', [
     'uses' => 'AdminController@updateUser',
     'as' => 'updateUser'

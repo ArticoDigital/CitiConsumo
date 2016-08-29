@@ -94,7 +94,7 @@ class AdminController extends Controller
         if($request->ajax()) {
             $tempFiles = [];
             foreach ($request->file() as $file) {
-                $fileName = str_random(10) . '**' . $file->getClientOriginalName();
+                $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
                 $file->move(base_path() . '/public/temp/', $fileName);
                 array_push($tempFiles, '/temp/' . $fileName);
             }
@@ -217,7 +217,7 @@ class AdminController extends Controller
         }
 
         if ($request->hasFile('profile_image')) {
-            $imageName = $request->file('profile_image')->getClientOriginalName();
+            $imageName = str_random(10) . '-&&-' . $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
 
             $user['profile_image'] = $imageName;
@@ -285,7 +285,7 @@ class AdminController extends Controller
                 $request, $validator
             );*/
         }else{
-        $fileName = $request->file('file')->getClientOriginalName();
+        $fileName = str_random(10) . '-&&-' . $request->file('file')->getClientOriginalName();
         $request->file('file')->move(base_path() . '/public/uploads/provider/', $fileName);
         $return = ['name' => $fileName, 'url' => url('/uploads/provider/' . $fileName), 'identifier' => $request->identifier, 'success' => true];
         }
@@ -508,5 +508,22 @@ class AdminController extends Controller
             'PoliciaFileName' => 'required|max:255',
 
         ]);
+    }
+
+
+    public function updateStateService(Request $request)
+    {
+        $service = Service::find($request->input('idService'));
+        $service->isActive = $request->input('valor');
+        $return = "";
+        if($service->save()){
+            $return = ['success' => false];
+        }
+        else{
+            $return = ['success' => false];
+        
+        }
+        return response()->json($return);
+
     }
 }
