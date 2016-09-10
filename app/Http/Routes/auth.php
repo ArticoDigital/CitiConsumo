@@ -1,8 +1,10 @@
 <?php
 
-Route::get('login',[
+Route::get('login', [
     'as' => 'login',
-    function(){return view('auth.login');}
+    function () {
+        return view('auth.login');
+    }
 ]);
 
 Route::post('login', [
@@ -11,8 +13,10 @@ Route::post('login', [
 ]);
 
 Route::get('registro', [
-    'as'=>'register',
-    function(){return view('auth.register');}
+    'as' => 'register',
+    function () {
+        return view('auth.register');
+    }
 ]);
 
 Route::post('registro', [
@@ -27,14 +31,18 @@ Route::get('logout', [
 
 Route::get('facebook/authorize', [
     'as' => 'facebook',
-    function() {return SocialAuth::authorize('facebook');}
+    function () {
+        return SocialAuth::authorize('facebook');
+    }
 ]);
 
-Route::get('auth', function() {
-    SocialAuth::login('facebook', function($user, $details) {
-        $user->email = $details->nickname;
+Route::get('auth', function () {
+    SocialAuth::login('facebook', function ($user, $details) {
+
+        dd($user);
+        $user->email = $details->email;
         $user->name = $details->full_name;
-        $user->profile_image = $details->avatar;
+        /* $user->profile_image = $details->avatar;*/
         $user->role_id = 1;
         $user->save();
     });
@@ -43,9 +51,9 @@ Route::get('auth', function() {
 });
 
 // Password reset link request routes...
-Route::get('password/email', ['uses'=>'Auth\PasswordController@getEmail','as'=>'getEmail']);
-Route::post('password/email', ['uses'=>'Auth\PasswordController@postEmail','as'=>'postEmail']);
+Route::get('password/email', ['uses' => 'Auth\PasswordController@getEmail', 'as' => 'getEmail']);
+Route::post('password/email', ['uses' => 'Auth\PasswordController@postEmail', 'as' => 'postEmail']);
 
 // Password reset routes...
-Route::get('password/reset/{token}', ['uses'=>'Auth\PasswordController@getReset','as'=>'getReset']);
-Route::post('password/reset', ['uses'=>'Auth\PasswordController@postReset','as'=>'postReset']);
+Route::get('password/reset/{token}', ['uses' => 'Auth\PasswordController@getReset', 'as' => 'getReset']);
+Route::post('password/reset', ['uses' => 'Auth\PasswordController@postReset', 'as' => 'postReset']);
