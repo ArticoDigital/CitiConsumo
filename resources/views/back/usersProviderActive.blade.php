@@ -16,8 +16,6 @@
         </tr>
 
         @foreach($providers as $provider)
-
-
             <tr>
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
@@ -59,8 +57,7 @@
                     @foreach($provider->providerFiles as $files)
                         <input type="hidden" data-type="{{$files->fileType->name}}"
                                class="files-{{$provider->id}}" value="{{$files->name}}">
-
-                    @endforeach
+                        @endforeach
                 </td>
                 <td data-th="Price" class="center">
                     <a href="#" data-user="{{$provider->id}}" data-action="{{route('enabledProvider')}}"

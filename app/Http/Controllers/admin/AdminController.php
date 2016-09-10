@@ -517,7 +517,7 @@ class AdminController extends Controller
         $service->isActive = $request->input('valor');
         $return = "";
         if($service->save()){
-            $return = ['success' => false];
+            $return = ['success' => true];
         }
         else{
             $return = ['success' => false];

@@ -13,7 +13,7 @@ class FileTypesTableSeeder extends Seeder
     public function run()
     {
         //
-        /*FileType::create([
+        FileType::create([
             'name'=>'Cedula',
             'description'=>'Cedula'
         ]);
@@ -36,7 +36,8 @@ class FileTypesTableSeeder extends Seeder
         FileType::create([
             'name'=>'Cert. Cta bancaria',
             'description'=>'Cert. Cta bancaria'
-        ]);*/
+        ]);
+        
          FileType::create([
             'name'=>'Contraloria',
             'description'=>'Contraloria'
