@@ -39,12 +39,13 @@ Route::get('facebook/authorize', [
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
 
-        dd($user);
-        $user->email = $details->email;
-        $user->name = $details->full_name;
-        /* $user->profile_image = $details->avatar;*/
-        $user->role_id = 1;
-        $user->save();
+        if ($user->exists) {
+            $user->email = $details->email;
+            $user->name = $details->full_name;
+            /* $user->profile_image = $details->avatar;*/
+            $user->role_id = 1;
+            $user->save();
+        }
     });
     Auth::user();
     return Redirect::intended();
