@@ -1034,6 +1034,32 @@ figure figcaption {
   height: 73px;
   cursor: pointer; }
 
+.Video {
+  display: none; }
+  .Video div.Video-child {
+    width: 100%;
+    position: relative; }
+    .Video div.Video-child .play, .Video div.Video-child .stop {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
+      .Video div.Video-child .play img, .Video div.Video-child .stop img {
+        width: 4.375rem; }
+
+#Flex {
+  display: -ms-flexbox !important;
+  display: flex !important; }
+
 .Header {
   width: 100%;
   background: #002444; }

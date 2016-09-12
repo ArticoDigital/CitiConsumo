@@ -1,12 +1,5 @@
 @extends('layoutFront')
 
-{{--
-@section('Video')
-    <source src="http://cache.yoyodesign.com/media/137385/2014-09-08.mp4" type="video/mp4">
-    <source src="http://cache.yoyodesign.com/media/137386/2014-09-08.webm" type="video/webm; codecs=&quot;vp8, vorbis&quot;">
-@endsection
---}}
-
 @section('Services')
     <section class="Images row between">
         <a href="{{url('mascotas')}}" class="small-6 col-4 medium-4">
@@ -66,7 +59,37 @@
         </div>
         <div style="clear:both;"></div>
         <div class="div_box_center">
-            <a class="btn_blue" href="#">VER VIDEO</a>
+            <a id="playVideo" class="btn_blue" href="#">VER VIDEO</a>
         </div>
     </section>
+    <section class="Alert Video">
+        <article class="Message" style="width:800px">
+            <h2>Bienvenido a City Consumo</h2>
+            <div class="Video-child">
+                <video id="videoCorp" class="cover" width="100%" height="auto" controls>
+                    <source src="{{url('videos/corporativo.mp4')}}">
+                </video>
+                <!--<span class="play"><img src="{{url('img/icons/play.svg')}}" alt="play"></span>
+                <span class="stop"><img src="{{url('img/icons/pause.svg')}}" alt="pause"></span>-->
+            </div>
+            <a href="#" class="close">Cerrar</a>
+        </article>
+    </section>
+@endsection
+
+@section('scripts')
+    <script>
+        var video = document.getElementById("videoCorp");
+
+        $('#playVideo').on('click', function(){
+            $('.Alert.Video').attr('id' ,'Flex');
+            video.play();
+        });
+
+        $('.Alert.Video .close').on('click', function(){
+            $('.Alert.Video').attr('id' ,'');
+            video.pause();
+        });
+
+    </script>
 @endsection
