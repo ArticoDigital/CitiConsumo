@@ -120,11 +120,6 @@
         <nav class="col-2 small-2 end">
             <ul class="Socials">
                 <li class="icon">
-                    <a href="https://twitter.com/city_consumo">
-                        <img src="{{asset('img/twitter.svg')}}" alt="twitter">
-                    </a>
-                </li>
-                <li class="icon">
                     <a href="#">
                         <img src="{{asset('img/instagram.svg')}}" alt="instagram">
                     </a>
