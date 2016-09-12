@@ -1060,6 +1060,23 @@ figure figcaption {
   display: -ms-flexbox !important;
   display: flex !important; }
 
+.bounce {
+  animation: bounce 3s infinite; }
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) rotate(90deg); }
+  20% {
+    transform: translateY(-1.25rem) rotate(90deg); }
+  40% {
+    transform: translateY(0rem) rotate(90deg); }
+  60% {
+    transform: translateY(-1.25rem) rotate(90deg); }
+  90% {
+    animation-play-state: paused; }
+  100% {
+    animation-play-state: running; } }
+
 body {
   overflow: hidden; }
 
