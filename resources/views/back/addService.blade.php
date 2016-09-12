@@ -178,9 +178,13 @@
 
             <article id="Step2" class="Step row">
                 <label class="required col-12 medium-12 small-12"><span class="text">Seleccione su ubicación</span><span style="display: block;font-size: 1rem;font-weight: 300;padding: 0 10px 15px;">Arrastra el marcador por el mapa</span></label>
-                <div id="Map" class="col-12 medium-12 small-12" style="height: 250px; width: calc(100% - 40px);"></div>
+                <div id="Map" class="col-12 medium-12 small-12" style="height: 400px; width: calc(100% - 40px);"></div>
                 <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
                 <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
+                <label class="col-12 medium-12 small-12 required" for="address">
+                    <span class="text">Dirección</span>
+                    <input class="col-12 medium-12 small-12" type="text" id="address" name="address" value="{{old('address')}}" autocomplete="off">
+                </label>
                 <label class="col-12 medium-12 small-12 required" for="name">
                     <span class="text">Nombre</span>
                     <input class="col-12 medium-12 small-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
@@ -283,6 +287,10 @@
             </article>
         </form>
     </section>
+    <div class="preload hidden" id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
+
 @endsection
 
 @section('scripts')
@@ -309,34 +317,51 @@
             var fileInput = document.getElementById('files');
             var arrayFiles = fileInput.files;
             var files = new FormData();
+            var count = $('#result .File').length;
 
-            for(var i = 0; i < arrayFiles.length; i++){
-                files.append('file' + i, arrayFiles[i]);
-            }
-
-            files.append('_token', $('#token').val());
-
-            $.ajax({
-                url : '{{route("uploadTempFiles")}}',
-                type: 'POST',
-                contentType: false,
-                data: files,
-                processData: false,
-                cache : false,
-                success: function(data){
-                    var result = $("#result");
-                    var images = data.temp;
-                    var position = result.children().length;
-                    for(var i = 0; i < images.length; i++){
-                        position += 1;
-                        result.append("<article class='File'><input type='hidden' name='file" + position +"' value='" +  images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+            if(count < 10) {
+                for (var i = 0; i < arrayFiles.length; i++) {
+                    if (arrayFiles[i].size < 131072) {
+                        if(count == 10) break;
+                        count += 1;
+                        files.append('file' + i, arrayFiles[i]);
                     }
-                },
-                error: function(error){
-                    console.log(error);
-                    alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
+                    else {
+                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                    }
                 }
-            });
+
+                files.append('_token', $('#token').val());
+
+                $.ajax({
+                    url: '{{route("uploadTempFiles")}}',
+                    type: 'POST',
+                    contentType: false,
+                    data: files,
+                    processData: false,
+                    cache: false,
+                    beforeSend: function () {
+                        $('.preload').removeClass("hidden");
+                    },
+                    success: function (data) {
+                        $('.preload').addClass("hidden");
+                        var result = $("#result");
+                        var images = data.temp;
+                        var position = result.children().length;
+                        for (var i = 0; i < images.length; i++) {
+                            position += 1;
+                            result.append("<article class='File'><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
+                    }
+                });
+            }
+            else {
+                alert('solo puede subir 10 imágenes');
+            }
         });
 
         $('form').on('submit', function(){
