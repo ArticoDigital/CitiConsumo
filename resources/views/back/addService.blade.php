@@ -276,7 +276,7 @@
                         <input type="file" id="files" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
                     </label>
                 </section>
-                <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
+                <span style="display:block; margin-top: 20px">Puedes subir un máximo de 5 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                 <section class="FilesPreview" id="result"></section>
                 <input type="hidden" name="positions">
                 <div class="col-12 medium-12 small-12">
@@ -320,10 +320,10 @@
             var files = new FormData();
             var count = $('#result .File').length;
 
-            if(count < 10) {
+            if(count < 5) {
                 for (var i = 0; i < arrayFiles.length; i++) {
                     if (arrayFiles[i].size < 131072) {
-                        if(count == 10) break;
+                        if(count == 5) break;
                         count += 1;
                         files.append('file' + i, arrayFiles[i]);
                     }

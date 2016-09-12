@@ -182,7 +182,7 @@
                 <input type="hidden" name="lng" id="lng" value="{{$service['lng']}}">
                 <label class="col-12 medium-12 small-12 required" for="address">
                     <span class="text">Dirección</span>
-                    <input class="col-12 medium-12 small-12" type="text" id="address" name="address" value="{{old('address')}}" autocomplete="off">
+                    <input class="col-12 medium-12 small-12" type="text" id="address" name="address" value="{{$service['location']}}" autocomplete="off">
                 </label>
                 <label class="col-12 medium-12 small-12 required" for="name">
                     <span class="text">Nombre</span>
@@ -274,7 +274,7 @@
                         <input type="file" id="files" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
                     </label>
                 </section>
-                <span style="display:block; margin-top: 20px">Puedes subir un máximo de 10 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
+                <span style="display:block; margin-top: 20px">Puedes subir un máximo de 5 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                 <section class="FilesPreview" id="result">
                     @foreach($service['service_files'] as $key => $file)
                         <article class="File"><input type="hidden" name="file{{($key + 1)}}" value="{{$file['name']}}"><input type="hidden" class="imagePosition" value="{{($key + 1)}}"><img class="thumbnail" src="{{asset( 'uploads/products/'. $file['name'])}}"></article>
