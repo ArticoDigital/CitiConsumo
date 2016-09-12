@@ -321,10 +321,10 @@
             var files = new FormData();
             var count = $('#result .File').length;
 
-            if(count < 10) {
+            if(count < 5) {
                 for (var i = 0; i < arrayFiles.length; i++) {
                     if (arrayFiles[i].size < 131072) {
-                        if(count == 10) break;
+                        if(count == 5) break;
                         count += 1;
                         files.append('file' + i, arrayFiles[i]);
                     }
@@ -362,7 +362,7 @@
                 });
             }
             else {
-                alert('solo puede subir 10 imágenes');
+                alert('Solo puedes subir 5 imágenes');
             }
         });
 
