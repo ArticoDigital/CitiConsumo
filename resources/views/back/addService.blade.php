@@ -192,6 +192,7 @@
                 <label class="col-12 medium-12 small-12 required" for="description">
                     <span class="text">Descripción</span>
                     <textarea class="col-12 medium-12 small-12" id="description" name="description">{!! old('description') !!}</textarea>
+                    <span id="nChars" style="float: right; font-size: .95rem"><span>12</span>/800</span>
                 </label>
                 <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
@@ -376,6 +377,11 @@
         $(document).keydown(function(e) {
             if (e.keyCode == 9) //Tab press
                 e.preventDefault();
+        });
+
+        setCharsLength();
+        $('#description').on('change keyup paste', function() {
+            $.ajax({beforeSend: function(){setCharsLength();}});
         });
 
         var dateRange = $('.dateRange'),

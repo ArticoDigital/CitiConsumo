@@ -180,6 +180,10 @@
                 <div id="Map" class="col-12 medium-12 small-12" style="height: 250px; width: calc(100% - 40px);"></div>
                 <input type="hidden" name="lat" id="lat" value="{{$service['lat']}}">
                 <input type="hidden" name="lng" id="lng" value="{{$service['lng']}}">
+                <label class="col-12 medium-12 small-12 required" for="address">
+                    <span class="text">Dirección</span>
+                    <input class="col-12 medium-12 small-12" type="text" id="address" name="address" value="{{old('address')}}" autocomplete="off">
+                </label>
                 <label class="col-12 medium-12 small-12 required" for="name">
                     <span class="text">Nombre</span>
                     <input class="col-12 medium-12 small-12" type="text" id="name" name="name" value="{{$service['name']}}" autocomplete="off">
@@ -286,6 +290,9 @@
             </article>
         </form>
     </section>
+    <div class="preload hidden" id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -308,6 +315,58 @@
         });
 
         filesInput.on("change", function(e) {
+
+            var fileInput = document.getElementById('files');
+            var arrayFiles = fileInput.files;
+            var files = new FormData();
+            var count = $('#result .File').length;
+
+            if(count < 10) {
+                for (var i = 0; i < arrayFiles.length; i++) {
+                    if (arrayFiles[i].size < 131072) {
+                        if(count == 10) break;
+                        count += 1;
+                        files.append('file' + i, arrayFiles[i]);
+                    }
+                    else {
+                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                    }
+                }
+
+                files.append('_token', $('#token').val());
+
+                $.ajax({
+                    url: '{{route("uploadTempFiles")}}',
+                    type: 'POST',
+                    contentType: false,
+                    data: files,
+                    processData: false,
+                    cache: false,
+                    beforeSend: function () {
+                        $('.preload').removeClass("hidden");
+                    },
+                    success: function (data) {
+                        $('.preload').addClass("hidden");
+                        var result = $("#result");
+                        var images = data.temp;
+                        var position = result.children().length;
+                        for (var i = 0; i < images.length; i++) {
+                            position += 1;
+                            result.append("<article class='File'><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
+                    }
+                });
+            }
+            else {
+                alert('solo puede subir 10 imágenes');
+            }
+        });
+
+        /*filesInput.on("change", function(e) {
 
             var fileInput = document.getElementById('files');
             var arrayFiles = fileInput.files;
@@ -340,7 +399,7 @@
                     alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
                 }
             });
-        });
+        });*/
 
         $('form').on('submit', function(){
             var $file = $('#result .File'), positions = '';
@@ -356,8 +415,13 @@
                 e.preventDefault();
         });
 
+        setCharsLength();
+        $('#description').on('change keyup paste', function() {
+            $.ajax({beforeSend: function(){setCharsLength();}});
+        });
+
         var dateRange = $('.dateRange'),
-                dateSingle = $('.dateSingle');
+            dateSingle = $('.dateSingle');
 
         dateRange.daterangepicker(getConfig('multiple'));
         dateRange.on('apply.daterangepicker', function(ev, picker) {

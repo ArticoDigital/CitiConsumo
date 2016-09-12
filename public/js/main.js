@@ -22,3 +22,12 @@ $('.Header .Arrow').on('click', function(){
 $('.Alert .Message .close').on('click', function(){
     $(this).parent().parent().hide();
 });
+
+function setCharsLength(){
+    var size = $('#description').val().length;
+    var nChars = $('#nChars');
+
+    nChars.children('span').text(size);
+    if(size < 800) nChars.css('color', 'red');
+    else nChars.css('color', 'green');
+}

@@ -112,7 +112,7 @@ class AdminController extends Controller
             'lng' => 'required',
             'address' => 'required',
             'name' => 'required',
-            'description' => 'required',
+            'description' => 'required|min:800',
             'date' => 'required',
             'price' => 'required|numeric',
         ];
