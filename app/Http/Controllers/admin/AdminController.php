@@ -50,6 +50,7 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
 
         $inputs['provider_id'] = $user->provider->id;
+        $inputs['location'] = $inputs['address'];
         $service = Service::create($inputs);
 
         if($inputs['service'] == 1){
@@ -109,8 +110,9 @@ class AdminController extends Controller
             'service' => 'required',
             'lat' => 'required',
             'lng' => 'required',
+            'address' => 'required',
             'name' => 'required',
-            'description' => 'required',
+            'description' => 'required|min:800',
             'date' => 'required',
             'price' => 'required|numeric',
         ];

@@ -70,8 +70,21 @@
          </div>
         <div style="clear:both;"></div>
         <div class="div_box_center">
-            <a class="btn_blue" href="#">VER VIDEO</a>
+            <a id="playVideo" class="btn_blue" href="#">VER VIDEO</a>
         </div>
+    </section>
+    <section class="Alert Video">
+        <article class="Message" style="width:800px">
+            <h2>Bienvenido a City Consumo</h2>
+            <div class="Video-child">
+                <video id="videoCorp" class="cover" width="100%" height="auto" controls>
+                    <source src="{{url('videos/corporativo.mp4')}}">
+                </video>
+                <!--<span class="play"><img src="{{url('img/icons/play.svg')}}" alt="play"></span>
+                <span class="stop"><img src="{{url('img/icons/pause.svg')}}" alt="pause"></span>-->
+            </div>
+            <a href="#" class="close">Cerrar</a>
+        </article>
     </section>
 @endsection
 
@@ -86,6 +99,18 @@
         $date.daterangepicker(getConfig('single'));
         $date.on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
+        });
+
+        var video = document.getElementById("videoCorp");
+
+        $('#playVideo').on('click', function(){
+            $('.Alert.Video').attr('id' ,'Flex');
+            video.play();
+        });
+
+        $('.Alert.Video .close').on('click', function(){
+            $('.Alert.Video').attr('id' ,'');
+            video.pause();
         });
     </script>
     <script src="{{asset('js/address.js')}}"></script>

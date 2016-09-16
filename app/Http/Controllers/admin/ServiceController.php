@@ -42,6 +42,7 @@ class ServiceController extends Controller
             'name' => $inputs['name'],
             'description' => $inputs['description'],
             'price' => $inputs['price'],
+            'location' => $inputs['address'],
             'lat' => $inputs['lat'],
             'lng' => $inputs['lng'],
         ]);
