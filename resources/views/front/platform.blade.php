@@ -23,22 +23,31 @@
 
         <nav class="row col-12 end">
             <ul class="Menu row between">
-                <li><a href="" class="orange-text">Postula tu servicio</a></li>
+                <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                 @if(!Auth::check())
-                    <li><a href="{{route('register')}}">Registrate</a></li>
-                    <li><a href="{{route('login')}}">Entrar</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
+                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
                 @else
-                    <li><a href="#" onclick="return false">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
                 @endif
                 <li>
                     <div class="Menu-fixed">
-                        <a href="#" class="Hamburguer ">
+                        <a href="#" class="Hamburguer">
                             <span></span>
                             <span></span>
                             <span></span>
                         </a>
                         <nav>
                             <ul class="col-4">
+                                    <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                                 @if(!Auth::check())
+                                    <li class="menu-item-out"><a href="{{route('register')}}" >REGISTRATE</a></li>
+                                    
+                                @else
+                                    <li class="menu-item-out"><a href="{{route('myProfile')}}">Mi perfil</a></li>
+                                    <li class="menu-item-out"><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                                @endif
                                 <li><a href="#">QUIENES SOMOS?</a></li>
                                 <li><a href="#">PREGUNTAS FRECUENTES </a></li>
                                 <li><a href="#">AYUDANOS A MEJORAR</a></li>

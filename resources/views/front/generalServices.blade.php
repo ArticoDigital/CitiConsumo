@@ -45,7 +45,7 @@
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
             <input class="field" id="typeService" name="typeService" type="hidden" value="general">
         </label>
-        <label for="service" class="col-4 small-6 medium-4 Form-Control">
+        <label for="service" class="col-4 small-12 medium-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/service.svg')}}" alt="service"></span>
             <select class="js-example-basic-single" id="service" name="service">
                 <option value="" selected>Servicio</option>
@@ -54,7 +54,7 @@
                 @endforeach
             </select>
         </label>
-        <label for="date" class="col-4 small-6 medium-4 Form-Control">
+        <label for="date" class="col-4 small-12 medium-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input id="date" name="date" type="text" autocomplete="off" placeholder="Fecha" value="{{old('date')}}">
         </label>

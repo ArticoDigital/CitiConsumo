@@ -1779,6 +1779,221 @@ div.profile-photo-light {
 .switch input.cmn-toggle-round-flat:checked + label:before {
   background-color: #49B488; }
 
+.carrousel-container {
+  width: 95%;
+  margin: -90px auto 0 auto;
+  position: relative; }
+  .carrousel-container .button-nav {
+    width: 5%;
+    cursor: pointer; }
+
+.owl-carousel {
+  width: 90% !important; }
+  .owl-carousel span {
+    width: 100%;
+    text-align: center;
+    font-size: 19px; }
+  .owl-carousel .carrousel-item {
+    background-color: #10549F;
+    margin: 10px;
+    padding: 20px;
+    min-height: 270px; }
+    .owl-carousel .carrousel-item p {
+      font-size: 14px;
+      line-height: 15px;
+      margin-top: 16px; }
+
+.testimony .backgroundVideo {
+  background: url("../../img/Bogota.jpg") center no-repeat;
+  background-size: cover; }
+
+.testimony .section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff; }
+
+.testimony h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 400;
+  width: 100%; }
+
+.testimony .Header {
+  -ms-flex-pack: normal;
+  justify-content: normal;
+  min-height: 50vh; }
+
+.testimony .Services {
+  display: none; }
+
+.testimony .BarNav {
+  z-index: 11; }
+
+.testimony .backgroundVideo {
+  z-index: 0;
+  height: 50%; }
+
+.testimony .section-content {
+  z-index: 10;
+  max-width: 920px; }
+
+.faq .backgroundVideo {
+  background: url("../../img/Bogota.jpg") center no-repeat;
+  background-size: cover; }
+
+.faq .section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff; }
+
+.faq h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 400;
+  width: 100%; }
+
+.faq .section-content {
+  z-index: 10;
+  max-width: 920px; }
+
+.faq .accordion-container {
+  padding: 24px;
+  background-color: rgba(59, 85, 119, 0.33); }
+  .faq .accordion-container button.accordion.active {
+    background-color: rgba(16, 205, 236, 0.41); }
+  .faq .accordion-container button.accordion.active:after {
+    content: "\23EB"; }
+  .faq .accordion-container button.accordion.active:hover {
+    background-color: rgba(16, 205, 236, 0.41); }
+  .faq .accordion-container button.accordion {
+    padding: 13px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    transition: 0.4s;
+    background-color: rgba(42, 42, 42, 0.33);
+    border-top: 2px solid white;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    transition: 0.4s; }
+  .faq .accordion-container .accordion:after {
+    content: '\23EC';
+    font-size: 27px;
+    color: #fff;
+    float: right;
+    margin-left: 5px; }
+  .faq .accordion-container .accordion:hover {
+    background-color: rgba(16, 205, 236, 0.41); }
+  .faq .accordion-container .panel p {
+    margin: 10px 2px 10px 25px; }
+  .faq .accordion-container div.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0; }
+  .faq .accordion-container div.panel.show {
+    opacity: 1;
+    max-height: 500px; }
+
+.faq .Services {
+  display: none; }
+
+.faq .BarNav {
+  z-index: 11; }
+
+.faq .backgroundVideo {
+  z-index: 0; }
+
+body.faq {
+  background-color: #141414; }
+
+.whoweare .backgroundVideo {
+  background: url("../../img/Bogota.jpg") center no-repeat;
+  background-size: cover; }
+
+.whoweare .section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff; }
+
+.whoweare h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 400;
+  width: 100%; }
+
+.whoweare p {
+  font-size: 1.1rem;
+  margin-top: 6.2rem;
+  text-align: justify; }
+
+.contact .contact-cols, .contactPost .contact-cols {
+  width: 100%;
+  margin-top: 3.5rem; }
+  .contact .contact-cols img, .contactPost .contact-cols img {
+    width: 40px !important; }
+  .contact .contact-cols span, .contactPost .contact-cols span {
+    margin-left: 5px; }
+  .contact .contact-cols div, .contactPost .contact-cols div {
+    padding: 5px; }
+
+.contact .Services, .contactPost .Services {
+  display: none; }
+
+.contact .backgroundVideo, .contactPost .backgroundVideo {
+  background: url("../../img/Bogota.jpg") center no-repeat;
+  background-size: cover; }
+
+.contact .section-content, .contactPost .section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: -100px;
+  color: #fff;
+  height: 99vh; }
+
+.contact h1, .contactPost h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 400;
+  width: 100%;
+  margin-top: 8rem; }
+
+.contact p, .contactPost p {
+  font-size: 1.1rem;
+  text-align: center; }
+
+.contact .BarNav, .contactPost .BarNav {
+  z-index: 10; }
+
+.contact .formulario-contacto, .contactPost .formulario-contacto {
+  padding: 40px 30px;
+  background-color: #EFA53C; }
+
+.contact .item-contacto, .contactPost .item-contacto {
+  margin-bottom: 5px; }
+  .contact .item-contacto span, .contactPost .item-contacto span {
+    padding: 5px;
+    font-weight: 600; }
+
+.contact .error-message, .contactPost .error-message {
+  width: 100%;
+  background-color: #b95959; }
+
+.contact .success-message, .contactPost .success-message {
+  width: 100%;
+  background-color: #59b95a; }
+  .contact .success-message p, .contactPost .success-message p {
+    font-size: 1.3rem; }
+
+.contact .help-us .message, .contactPost .help-us .message {
+  padding: 10px;
+  margin-bottom: 30px; }
+
 .InfoServices-content .Message-register {
   text-align: center;
   margin: 2.875rem 0;

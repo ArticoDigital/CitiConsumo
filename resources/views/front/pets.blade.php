@@ -38,14 +38,14 @@
     </div>
 
     <form class="Form withAddress row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
-        <label for="place" class="col-3 medium-3 small-6 Form-Control">
+        <label for="place" class="col-3 medium-3 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/place.svg')}}" alt="place"></span>
             <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
             <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
             <input class="field" id="typeService" name="typeService" type="hidden" value="pet">
         </label>
-        <label for="date" class="col-3 medium-3 small-6 Form-Control">
+        <label for="date" class="col-3 medium-3 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
         </label>

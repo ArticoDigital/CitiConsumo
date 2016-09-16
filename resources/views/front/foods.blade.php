@@ -44,7 +44,7 @@
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
             <input class="field" id="typeService" name="typeService" type="hidden" value="food">
         </label>
-        <label for="food_type" class="col-4 small-6 medium-4 Form-Control small center">
+        <label for="food_type" class="col-4 small-12 medium-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
             <span class="name">Tipo de Comida</span>
             <select class="js-example-basic-multiple" id="food_type" name="food_type[]" multiple>
@@ -53,7 +53,7 @@
                 @endforeach
             </select>
         </label>
-        <label for="date" class="col-4 small-6 medium-4 Form-Control small center">
+        <label for="date" class="col-4 small-12 medium-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
         </label>
