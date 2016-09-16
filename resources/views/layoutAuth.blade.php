@@ -55,11 +55,11 @@
                             </a>
                             <nav>
                                 <ul class="col-4">
-                                    <li><a href="#">QUIENES SOMOS?</a></li>
-                                    <li><a href="#">PREGUNTAS FRECUENTES</a></li>
-                                    <li><a href="#">AYUDANOS A MEJORAR</a></li>
-                                    <li><a href="#">CONTACTANOS</a></li>
-                                    <li><a href="#">TESTIMONIOS</a></li>
+                                    <li><a href="{{route('whoweare')}}">QUIENES SOMOS?</a></li>
+                                    <li><a href="{{route('faq')}}">PREGUNTAS FRECUENTES</a></li>
+                                    <li><a href="{{route('contact')}}">AYUDANOS A MEJORAR</a></li>
+                                    <li><a href="{{route('contact')}}">CONTACTANOS</a></li>
+                                    <li><a href="{{route('testimony')}}">TESTIMONIOS</a></li>
                                 </ul>
                             </nav>
                         </div>
