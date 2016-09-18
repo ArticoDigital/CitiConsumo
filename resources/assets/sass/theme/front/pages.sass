@@ -1,7 +1,9 @@
 .carrousel-container
     width: 95%
-    margin: -90px auto 0 auto
+    margin: -40px auto 0 auto
     position: relative
+    @include respond-to (medium)
+     margin: -90px auto 0 auto
     .button-nav
       width: 5%
       cursor: pointer
@@ -21,6 +23,10 @@
         font-size: 14px
         line-height: 15px
         margin-top: 16px
+      .image-cropper
+        height: 115px
+        width: 115px 
+        margin: 0 auto
 .testimony
   .backgroundVideo
     background: url("../../img/Bogota.jpg") center no-repeat

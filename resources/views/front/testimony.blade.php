@@ -19,56 +19,56 @@
 
     <div id="owl-example" class="owl-carousel row">
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>
         <p class="row">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typese</p>
       </div>
       <div class="carrousel-item col middle center" style="color:white;">
-        <div class="image-cropper row middle center" style="height:50%; width:50%; margin: 0 auto;">
+        <div class="image-cropper row middle center">
             <img src="{{asset('img/mascota.png')}}" class="img-profile" alt="">
         </div> 
         <div class="row middle"><span >Marcela Gómez</span></div>

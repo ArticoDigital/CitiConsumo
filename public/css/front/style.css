@@ -1822,8 +1822,11 @@ div.profile-photo-light {
 
 .carrousel-container {
   width: 95%;
-  margin: -90px auto 0 auto;
+  margin: -40px auto 0 auto;
   position: relative; }
+  @media (min-width: 45rem) {
+    .carrousel-container {
+      margin: -90px auto 0 auto; } }
   .carrousel-container .button-nav {
     width: 5%;
     cursor: pointer; }
@@ -1843,6 +1846,10 @@ div.profile-photo-light {
       font-size: 14px;
       line-height: 15px;
       margin-top: 16px; }
+    .owl-carousel .carrousel-item .image-cropper {
+      height: 115px;
+      width: 115px;
+      margin: 0 auto; }
 
 .testimony .backgroundVideo {
   background: url("../../img/Bogota.jpg") center no-repeat;
