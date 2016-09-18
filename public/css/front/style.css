@@ -2006,7 +2006,8 @@ body.faq {
 
 .contact p, .contactPost p {
   font-size: 1.1rem;
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
 
 .contact .BarNav, .contactPost .BarNav {
   z-index: 10; }
