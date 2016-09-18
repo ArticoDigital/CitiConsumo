@@ -11,10 +11,9 @@
     <section class="section-content row between">
         <h1 class="center">Testimonios</h1>
     </section>
-@endsection
 
-@section('content')
-    <section class="carrousel-container row col">  
+
+     <section class="carrousel-container row col">  
     <div class="button-nav prev row"><img src="{{asset('img/arrow_left.svg')}}" alt=""></div>  
 
     <div id="owl-example" class="owl-carousel row">
@@ -79,6 +78,10 @@
     
         
     </section>
+@endsection
+
+@section('content')
+   
 @endsection
 
 

@@ -744,47 +744,48 @@ figure figcaption {
     .menu-item-out-movile {
       display: block !important; } }
 
-.Hamburguer {
+.Hamburguer, .Hamburguer2 {
   display: block;
   position: relative;
   width: 2.0625rem !important;
   height: 1.4375rem !important; }
   .Hamburguer span,
-  .Hamburguer span:after {
+  .Hamburguer span:after, .Hamburguer2 span,
+  .Hamburguer2 span:after {
     display: block;
     height: 0.3125rem;
     background: white; }
-  .Hamburguer span {
+  .Hamburguer span, .Hamburguer2 span {
     transition: all .3s ease;
     position: absolute;
     right: 0;
     width: 1.5625rem; }
-    .Hamburguer span:after {
+    .Hamburguer span:after, .Hamburguer2 span:after {
       content: "";
       width: 0.3125rem;
       position: absolute;
       left: -7px; }
-    .Hamburguer span:nth-child(2) {
+    .Hamburguer span:nth-child(2), .Hamburguer2 span:nth-child(2) {
       top: 50%;
       margin-top: -0.15625rem; }
-    .Hamburguer span:nth-child(3) {
+    .Hamburguer span:nth-child(3), .Hamburguer2 span:nth-child(3) {
       bottom: 0; }
-  .Hamburguer.open {
+  .Hamburguer.open, .Hamburguer2.open {
     position: relative;
     margin-right: 5px;
     z-index: 600;
     width: 2.0625rem; }
-    .Hamburguer.open span {
+    .Hamburguer.open span, .Hamburguer2.open span {
       top: 50%;
       margin-top: -0.15625rem;
       width: 100%; }
-      .Hamburguer.open span:after {
+      .Hamburguer.open span:after, .Hamburguer2.open span:after {
         display: none; }
-      .Hamburguer.open span:nth-child(1) {
+      .Hamburguer.open span:nth-child(1), .Hamburguer2.open span:nth-child(1) {
         transform: rotate(-45deg); }
-      .Hamburguer.open span:nth-child(2) {
+      .Hamburguer.open span:nth-child(2), .Hamburguer2.open span:nth-child(2) {
         opacity: 0; }
-      .Hamburguer.open span:nth-child(3) {
+      .Hamburguer.open span:nth-child(3), .Hamburguer2.open span:nth-child(3) {
         transform: rotate(45deg); }
 
 .show {
@@ -1822,11 +1823,12 @@ div.profile-photo-light {
 
 .carrousel-container {
   width: 95%;
-  margin: -40px auto 0 auto;
-  position: relative; }
+  margin: 0px auto 0 auto;
+  position: relative;
+  z-index: 10; }
   @media (min-width: 45rem) {
     .carrousel-container {
-      margin: -90px auto 0 auto; } }
+      margin: 10px auto 0 auto; } }
   .carrousel-container .button-nav {
     width: 5%;
     cursor: pointer; }
@@ -1870,7 +1872,7 @@ div.profile-photo-light {
 .testimony .Header {
   -ms-flex-pack: normal;
   justify-content: normal;
-  min-height: 50vh; }
+  min-height: 100vh; }
 
 .testimony .Services {
   display: none; }

@@ -99,7 +99,7 @@
         <figure class="Logo col-6 small-6" style="margin-top: 20px">
             <img src="{{asset('img/logo.svg')}}" alt="cityconsumo">
         </figure>
-        <nav class="col-12  small-12 medium-12 self-end">
+        <nav class="col-12  small-12 medium-12 self-end menu-item-out-movile">
             <ul class="Menu-footer row center no-padding">
                 <li><a href="{{url('/')}}">Home</a></li>
                 <li><a href="{{route('whoweare')}}">Nosotros</a></li>

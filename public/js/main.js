@@ -14,6 +14,15 @@ $('.Hamburguer').click(function(){
         $('body').css('overflow', 'visible');
 });
 
+$('.Hamburguer2').click(function(){
+    $(this).toggleClass('open');
+    $('#fullmenu').toggleClass('show');
+    if($(this).hasClass('open'))
+        $('body').css('overflow', 'hidden');
+    else
+        $('body').css('overflow', 'visible');
+});
+
 $('.Header .Arrow').on('click', function(){
     var position = $('body > section').eq(0).position().top;
     $('body, html').stop(true, true).animate({scrollTop:position}, '1000', 'swing');
