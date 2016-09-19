@@ -196,15 +196,15 @@
                 </label>
                 <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-4 small-6" for="date" style="display:none">
+                        <label class="col-4 medium-12 small-12" for="date" style="display:none">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
+                            <input class="datetimepicker_mask dateSingle" readonly="true" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-4 medium-4 small-6" for="price" style="display:none">
+                        <label class="col-4 medium-12 small-12" for="price" style="display:none">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
-                        <label for="food_type" class="col-4 medium-4 small-12" style="display:none">
+                        <label for="food_type" class="col-4 medium-12 small-12" style="display:none">
                             <span class="text">Tipo de comida</span><br>
                             <select class="js-example-basic-single" id="food_type" name="food_type">
                                 @foreach($foodTypes as $foodType)
@@ -214,11 +214,11 @@
                         </label>
                     </div>
                     <div id="petsInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-3 medium-6 small-6" for="date" style="display:none">
+                        <label class="col-6 medium-6 small-12" for="date" style="display:none">
                             <span class="text">Fechas</span><br>
-                            <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
+                            <input class="datetimepicker_mask dateRange" id="date" fakeName="date" type="text" autocomplete="off" readonly="true" value="{{old('date')}}">
                         </label>
-                        <label for="size" class="col-3 medium-6 small-6" style="display:none">
+                        <label for="size" class="col-6 medium-6 small-12" style="display:none">
                             <span class="text">Tamaños</span><br>
                             <select class="js-example-basic-single" id="size" name="size">
                                 @foreach($sizes as $size)
@@ -226,21 +226,21 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-3 medium-6 small-6" for="pets-quantity" style="display:none">
+                        <label class="col-6 medium-6 small-12" for="pets-quantity" style="display:none">
                             <span class="text">Número de animales</span><br>
                             <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{old('pets-quantity')}}" autocomplete="off">
                         </label>
-                        <label class="col-3 medium-6 small-6" for="price" style="display:none">
+                        <label class="col-6 medium-6 small-12" for="price" style="display:none">
                             <span class="text">Precio por mascota</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                     <div id="servicesInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-4 small-12" for="dateRange" style="display:none">
+                        <label class="col-4 medium-12 small-12" for="dateRange" style="display:none">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="dateRange" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
+                            <input class="datetimepicker_mask dateSingle" id="dateRange" fakeName="date" readonly="true" type="text"  autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label for="general_type" class="col-4 medium-4 small-6" style="display:none">
+                        <label for="general_type" class="col-4 medium-12 small-12" style="display:none">
                             <span class="text">Tipo de servicio</span><br>
                             <select class="js-example-basic-single" id="general_type" name="general_type">
                                 @foreach($generalTypes as $generalType)
@@ -248,7 +248,7 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-4 medium-4 small-6" for="price" style="display:none">
+                        <label class="col-4 medium-12 small-12" for="price" style="display:none">
                             <span class="text">Precio por hora</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
@@ -272,7 +272,7 @@
                         </figure>
                         <span>Arrastra aquí los archivos <br> o <br></span>
                         <span class="rectangle">Selecciona un archivo</span><br>
-                        <span style="font-size: .8rem;">Tamaño máximo de archivo 128 MB.</span>
+                        <span style="font-size: .8rem;">Tamaño máximo de archivo 2 MB.</span>
                         <input type="file" id="files" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
                     </label>
                 </section>
@@ -322,7 +322,7 @@
 
             if(count < 5) {
                 for (var i = 0; i < arrayFiles.length; i++) {
-                    if (arrayFiles[i].size < 131072) {
+                    if (arrayFiles[i].size < 2210720) {
                         if(count == 5) break;
                         count += 1;
                         files.append('file' + i, arrayFiles[i]);

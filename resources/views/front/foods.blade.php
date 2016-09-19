@@ -55,7 +55,7 @@
         </label>
         <label for="date" class="col-4 small-12 medium-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" readonly="true" value="{{old('date')}}">
         </label>
         <button class="Button">Buscar</button>
     </form>

@@ -195,15 +195,15 @@
                 <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
                     @if($service['food'])
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-4 small-6" for="date">
+                        <label class="col-4 medium-12 small-12" for="date">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" name="date" type="text" autocomplete="off" value="{{$service['food']['food_time']}}">
                         </label>
-                        <label class="col-4 medium-4 small-6" for="price">
+                        <label class="col-4 medium-12 small-12" for="price">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
                         </label>
-                        <label for="food_type" class="col-4 medium-4 small-12">
+                        <label for="food_type" class="col-4 medium-12 small-12">
                             <span class="text">Tipo de comida</span><br>
                             <select class="js-example-basic-single" id="food_type" name="food_type">
                                 @foreach($foodTypes as $foodType)
@@ -214,11 +214,11 @@
                     </div>
                     @elseif($service['pet'])
                     <div id="petsInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-6 small-6" for="date">
+                        <label class="col-6 medium-6 small-12" for="date">
                             <span class="text">Fechas</span><br>
                             <input class="datetimepicker_mask dateRange" id="date" name="date" type="text" autocomplete="off" value="{{$service['pet']['date_start'] . ' - ' . $service['pet']['date_end']}}">
                         </label>
-                        <label for="size" class="col-4 medium-6 small-6">
+                        <label for="size" class="col-6 medium-6 small-12">
                             <span class="text">Tamaños</span><br>
                             <select class="js-example-basic-single" id="size" name="size">
                                 @foreach($sizes as $size)
@@ -226,18 +226,24 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-4 medium-6 small-6" for="price">
+
+                        <label class="col-6 medium-6 small-12" for="pets-quantity">
+                            <span class="text">Número de animales</span><br>
+                            <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{$service['pets-quantity']}}" autocomplete="off">
+                        </label>
+
+                        <label class="col-6 medium-6 small-12" for="price">
                             <span class="text">Precio por mascota</span><br>
                             <input type="number" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
                         </label>
                     </div>
                     @elseif($service['general'])
                     <div id="servicesInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-4 small-12" for="dateRange">
+                        <label class="col-4 medium-12 small-12" for="dateRange">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="dateRange" name="date" type="text" autocomplete="off" value="{{$service['general']['date']}}">
                         </label>
-                        <label for="general_type" class="col-4 medium-4 small-6">
+                        <label for="general_type" class="col-4 medium-12 small-12">
                             <span class="text">Tipo de servicio</span><br>
                             <select class="js-example-basic-single" id="general_type" name="general_type">
                                 @foreach($generalTypes as $generalType)
@@ -245,7 +251,7 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-4 medium-4 small-6" for="price">
+                        <label class="col-4 medium-12 small-12" for="price">
                             <span class="text">Precio por hora</span><br>
                             <input type="number" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
                         </label>

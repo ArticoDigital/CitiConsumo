@@ -1968,18 +1968,28 @@ body.faq {
   max-width: 800px;
   margin: 0 auto;
   color: #fff; }
+  .whoweare .section-content p {
+    font-size: 1rem;
+    margin-top: 0rem;
+    text-align: justify; }
+  @media (min-width: 45rem) {
+    .whoweare .section-content p {
+      margin-top: 6rem;
+      font-size: 1.1rem; } }
+  @media (min-width: 65rem) {
+    .whoweare .section-content p {
+      margin-top: 7rem;
+      font-size: 1.1rem; } }
 
 .whoweare h1 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: white;
   font-weight: 400;
   width: 100%; }
-
-.whoweare p {
-  font-size: 1.1rem;
-  margin-top: 6.2rem;
-  text-align: justify; }
+  @media (min-width: 45rem) {
+    .whoweare h1 {
+      font-size: 2.5rem; } }
 
 .contact .contact-cols, .contactPost .contact-cols {
   width: 100%;
