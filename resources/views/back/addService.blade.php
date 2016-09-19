@@ -361,7 +361,7 @@
                 });
             }
             else {
-                alert('solo puede subir 10 imágenes');
+                alert('solo puede subir 5 imágenes');
             }
         });
 

@@ -85,8 +85,8 @@
                         <span class="col-5 small-5">Fecha de nacimiento</span>
                         
 
-                        <input class="col-7 small-7" name="birthday" alt="calendar" value="{{$userprofile->birthday}}" id="birthday"
-                               type="text">
+                        <input class="col-7 small-7" name="birthday" alt="calendar" value="{{$userprofile->birthday}}" readonly="true" id="birthday"
+                               type="text" >
                     </label>
 
                     </div>

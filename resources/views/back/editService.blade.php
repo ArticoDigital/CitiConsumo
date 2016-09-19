@@ -197,7 +197,7 @@
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-4 medium-12 small-12" for="date">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="date" name="date" type="text" autocomplete="off" value="{{$service['food']['food_time']}}">
+                            <input class="datetimepicker_mask dateSingle" id="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['food']['food_time']}}">
                         </label>
                         <label class="col-4 medium-12 small-12" for="price">
                             <span class="text">Valor del plato</span><br>
@@ -216,7 +216,7 @@
                     <div id="petsInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-6 medium-6 small-12" for="date">
                             <span class="text">Fechas</span><br>
-                            <input class="datetimepicker_mask dateRange" id="date" name="date" type="text" autocomplete="off" value="{{$service['pet']['date_start'] . ' - ' . $service['pet']['date_end']}}">
+                            <input class="datetimepicker_mask dateRange" id="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['pet']['date_start'] . ' - ' . $service['pet']['date_end']}}">
                         </label>
                         <label for="size" class="col-6 medium-6 small-12">
                             <span class="text">Tamaños</span><br>
@@ -241,7 +241,7 @@
                     <div id="servicesInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-4 medium-12 small-12" for="dateRange">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="dateRange" name="date" type="text" autocomplete="off" value="{{$service['general']['date']}}">
+                            <input class="datetimepicker_mask dateSingle" id="dateRange" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['general']['date']}}">
                         </label>
                         <label for="general_type" class="col-4 medium-12 small-12">
                             <span class="text">Tipo de servicio</span><br>
@@ -276,7 +276,7 @@
                         </figure>
                         <span>Arrastra aquí los archivos <br> o <br></span>
                         <span class="rectangle">Selecciona un archivo</span><br>
-                        <span style="font-size: .8rem;">Tamaño máximo de archivo 128 MB.</span>
+                        <span style="font-size: .8rem;">Tamaño máximo de archivo 2 MB.</span>
                         <input type="file" id="files" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
                     </label>
                 </section>
@@ -329,7 +329,7 @@
 
             if(count < 5) {
                 for (var i = 0; i < arrayFiles.length; i++) {
-                    if (arrayFiles[i].size < 131072) {
+                    if (arrayFiles[i].size < 2210720) {
                         if(count == 5) break;
                         count += 1;
                         files.append('file' + i, arrayFiles[i]);

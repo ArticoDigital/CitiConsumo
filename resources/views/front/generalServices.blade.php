@@ -56,7 +56,7 @@
         </label>
         <label for="date" class="col-4 small-12 medium-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input id="date" name="date" type="text" autocomplete="off" placeholder="Fecha" value="{{old('date')}}">
+            <input id="date"  readonly="true" name="date" type="text" autocomplete="off" placeholder="Fecha" value="{{old('date')}}">
         </label>
         <button class="Button" >Buscar</button>
     </form>

@@ -47,7 +47,7 @@
         </label>
         <label for="date" class="col-3 medium-3 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" value="{{old('date')}}">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value="{{old('date')}}">
         </label>
         <label for="size" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
