@@ -16,12 +16,12 @@ class CheckRoles
      */
     public function handle($request, Closure $next)
     {
-        $user = auth()->user();
+        /*$user = auth()->user();
         $user['roles'] = $this->isRestringed($request->route());
 
         if(Gate::denies('hasRole', $user)){
             return redirect()->to('admin');
-        }
+        }*/
 
         return $next($request);
     }

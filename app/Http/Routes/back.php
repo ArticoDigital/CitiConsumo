@@ -14,7 +14,7 @@ Route::get('mi-perfil', [
 Route::get('desembolso', [
     'uses' => 'BuyController@outlayList',
     'as' => 'outlayList',
-    'roles' => 3
+    //'roles' => 3
 ]);
 
 Route::get('checkout', function () {
@@ -28,20 +28,20 @@ Route::get('confirmar-compra', function () {
 Route::get('postular-servicio', [
     'as' => 'addService',
     'uses' => 'AdminController@addService',
-    'roles' => [1, 2]
+    //'roles' => [1, 2]
 ]);
 
 Route::post('postular-servicio', [
     'as' => 'newService',
     'uses' => 'AdminController@newService',
-    'roles' => [1, 2]
+    //'roles' => [1, 2]
 ]);
 
 
 Route::get('subir-archivos', [
     'as' => 'uploadFiles',
     'uses' => 'AdminController@uploadFiles',
-    'roles' => 1
+    //'roles' => 1
 ]);
 
 Route::post('uploadFile', [
@@ -52,14 +52,14 @@ Route::post('uploadFile', [
 Route::get('perfil/{id}', [
     'as' => 'profile',
     'uses' => 'AdminController@profile',
-    'roles' => 3
+  //  'roles' => 3
 ]);
 
 
 Route::post('updateStateService', [
     'uses' => 'AdminController@updateStateService',
     'as' => 'updateStateService',
-    'roles' => 2
+//    'roles' => 2
 ]);
 
 Route::post('updateUser', [
@@ -75,22 +75,24 @@ Route::post('uploadUserFileFields', [
 Route::get('usuarios-clientes', [
     'uses' => 'UserController@showClient',
     'as' => 'showClient',
-    'roles' => 3
+    //'roles' => 3
 ]);
+
 Route::get('usuarios-proveedor', [
     'uses' => 'UserController@showProvider',
     'as' => 'showProvider',
-    'roles' => 3
+    //'roles' => 3
 ]);
+
 Route::get('usuarios-proveedor-activar', [
     'uses' => 'UserController@showProviderActive',
     'as' => 'showProviderActive',
-    'roles' => 3
+    //'roles' => 3
 ]);
 Route::get('usuarios-proveedor-eliminados', [
     'uses' => 'UserController@showProviderDelete',
     'as' => 'showProviderDelete',
-    'roles' => 3
+    //'roles' => 3
 ]);
 
 Route::post('usuarios-proveedor-activar', [

@@ -16,13 +16,13 @@ class isProvider
      */
     public function handle($request, Closure $next)
     {
-        $user = Auth::user();
+        /*$user = Auth::user();
         $provider = $user->provider;
         if(isset($provider)){
-            if($provider->isActive)
-                return $next($request);
+            if($provider->isActive)*/
+                return $next($request);/*
             return redirect('admin')->with(['alertTitle' => '¡Aun no eres proveedor!', 'alertText' => '<p>Tus documentos estan en revisión, proximamente prodras ser un proveedor de servicios.</p> <p>Estaremos en contacto contigo.</p>']);
         }
-        return redirect()->route('uploadFiles');
+        return redirect()->route('uploadFiles');*/
     }
 }

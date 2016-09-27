@@ -9,11 +9,6 @@
         @endforeach
         </ul>
     @endif
-              @if(Session::has('success'))
-                <div class="success col-12">
-                    <p>¡Se han subido los archivos!</p>
-                </div>
-            @endif
 
     <figure class="TextOver col-5 medium-6 small-12" style="background-color: #040A0B;">
         <img class="menu-item-out-movile" src="{{url('img/bg-formulario.svg')}}" alt="">
@@ -89,8 +84,8 @@
             </div>
         </form>
         <div class="preload hidden" id="loader-wrapper">
-                        <div id="loader"></div>
-         </div>
+            <div id="loader"></div>
+        </div>
     </section>
 </section>
 @endsection
