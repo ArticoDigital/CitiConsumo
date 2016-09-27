@@ -46,7 +46,7 @@
                             <ul class="col-4">
                                 <li><a href="{{route('myProfile')}}">MI PERFIL</a></li>
                                 <li><a href="{{route('faq')}}">PREGUNTAS FRECUENTES </a></li>
-                                <li><a href="{{route('contact')}}">AYUDANOS A MEJORAR</a></li>
+                                <!--<li><a href="{{route('contact')}}">AYUDANOS A MEJORAR</a></li>-->
                                 <li><a href="{{route('contact')}}">CONTACTANOS</a></li>
                                 <li class="menu-item-out"><a href="{{route('logout')}}" style="color: white">CERRAR SESIÓN</a></li>
                             </ul>

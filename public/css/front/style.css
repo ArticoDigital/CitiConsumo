@@ -1854,7 +1854,7 @@ div.profile-photo-light {
       margin: 0 auto; }
 
 .testimony .backgroundVideo {
-  background: url("../../img/Bogota.jpg") center no-repeat;
+  background: url("../../img/bogota-5.jpg") center no-repeat;
   background-size: cover; }
 
 .testimony .section-content {
@@ -1889,7 +1889,7 @@ div.profile-photo-light {
   max-width: 920px; }
 
 .faq .backgroundVideo {
-  background: url("../../img/Bogota.jpg") center no-repeat;
+  background: url("../../img/bogota-5.jpg") center no-repeat;
   background-size: cover; }
 
 .faq .section-content {
@@ -1957,11 +1957,52 @@ div.profile-photo-light {
 .faq .backgroundVideo {
   z-index: 0; }
 
-body.faq {
+body.faq, body.documents, body.terms {
   background-color: #141414; }
 
-.whoweare .backgroundVideo {
+.documents .backgroundVideo, .terms .backgroundVideo {
   background: url("../../img/Bogota.jpg") center no-repeat;
+  background-size: cover; }
+
+.documents .section-content, .terms .section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #212121; }
+
+.documents h1, .terms h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 400;
+  width: 100%; }
+
+.documents .section-content, .terms .section-content {
+  z-index: 10;
+  max-width: 920px; }
+
+.documents .documentos-container, .terms .documentos-container {
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.73); }
+  .documents .documentos-container li, .terms .documentos-container li {
+    list-style: initial; }
+  .documents .documentos-container a, .terms .documentos-container a {
+    color: blue; }
+  .documents .documentos-container .subtitle, .terms .documentos-container .subtitle {
+    color: #444;
+    font-weight: bold;
+    font-style: oblique; }
+
+.documents .Services, .terms .Services {
+  display: none; }
+
+.documents .BarNav, .terms .BarNav {
+  z-index: 11; }
+
+.documents .backgroundVideo, .terms .backgroundVideo {
+  z-index: 0; }
+
+.whoweare .backgroundVideo {
+  background: url("../../img/bogota-5.jpg") center no-repeat;
   background-size: cover; }
 
 .whoweare .section-content {
@@ -2005,7 +2046,7 @@ body.faq {
   display: none; }
 
 .contact .backgroundVideo, .contactPost .backgroundVideo {
-  background: url("../../img/Bogota.jpg") center no-repeat;
+  background: url("../../img/bogota-5.jpg") center no-repeat;
   background-size: cover; }
 
 .contact .section-content, .contactPost .section-content {

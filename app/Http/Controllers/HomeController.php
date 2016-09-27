@@ -48,6 +48,7 @@ class HomeController extends Controller
     public function contact(){
         return view('front.contact');
     }
+
     
     public function contactPost(Request $request){
         $validator = $this->Contactvalidator($request->all());
@@ -81,6 +82,14 @@ class HomeController extends Controller
         });
         $answer = "El mensaje se ha enviado satisfactoriamente, pronto nos contactaremos contigo";
          */
+    }
+
+    public function documents(){
+        return view('front.documents');
+    }
+    
+    public function terms(){
+        return view('front.terms');
     }
 
     private function Contactvalidator($inputs)

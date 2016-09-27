@@ -40,10 +40,6 @@ Route::get('testimonios', [
     'uses' => 'HomeController@testimony'
 ]);
 
-Route::get('contacto', [
-    'as' => 'contact',
-    'uses' => 'HomeController@contact'
-]);
 
 Route::get('contacto', [
     'uses' => 'HomeController@contact',
@@ -53,4 +49,14 @@ Route::get('contacto', [
 Route::post('contacto', [
     'uses' => 'HomeController@contactPost',
     'as' => 'contactPost'
+]);
+
+Route::get('documentacion', [
+    'uses' => 'HomeController@documents',
+    'as' => 'documents'
+]);
+
+Route::get('terminos', [
+    'uses' => 'HomeController@terms',
+    'as' => 'terms'
 ]);
