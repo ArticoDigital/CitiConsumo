@@ -1384,7 +1384,6 @@ body.getReset #resetpassword label {
   min-height: 100vh;
   display: -ms-flexbox;
   display: flex;
-  overflow: hidden;
   -ms-flex-direction: column;
   flex-direction: column;
   -ms-flex-pack: justify;
