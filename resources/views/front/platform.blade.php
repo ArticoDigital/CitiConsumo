@@ -61,7 +61,7 @@
         </nav>
     </div>
 </header>
-<div class="Platform-product">
+<div class="Platform-product col-4 medium-4">
     <figure class="Platform-Logo">
         <a href="{{url('/')}}">
             <svg width="150px" viewBox="0 0 566 331" xmlns="http://www.w3.org/2000/svg">
@@ -144,10 +144,10 @@
                          data-lng="{{$service->lng}}"
                          data-service="{{$service}}"
                          style="align-items: stretch">
-                    <figure class="col-3">
+                    <figure class="col-3 medium-3">
                         <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
                     </figure>
-                    <div class="Platform-productInfo col-9">
+                    <div class="Platform-productInfo col-9 medium-9" >
                         <h3>{{$service->name}}</h3>
                         <b>${{$service->price}}</b>
                     </div>
@@ -161,9 +161,9 @@
 <aside class="InfoServices row middle center">
     <div class="InfoServices-content row">
         <div class="InfoServices-close">x</div>
-        <figure id="imageService" class="col-6">
-        </figure>
-        <div class="col-6 InfoServices-info">
+        <div class="col-6 medium-6 small-12"><figure id="imageService" class="col-6 medium-6 small-12">
+        </figure></div>
+        <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
             <h3 id="availableService">5 platos disponibles</h3>
             <div class="InfoServices-stars row ">

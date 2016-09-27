@@ -72,7 +72,7 @@
                                 @endif
                                 <li><a href="{{route('whoweare')}}">QUIENES SOMOS?</a></li>
                                 <li><a href="{{route('faq')}}">PREGUNTAS FRECUENTES </a></li>
-                                <li><a href="{{route('contact')}}">AYUDANOS A MEJORAR</a></li>
+                                <!--<li><a href="{{route('contact')}}">AYUDANOS A MEJORAR</a></li>-->
                                 <li><a href="{{route('contact')}}">CONTACTANOS</a></li>
                                 <li><a href="{{route('testimony')}}">TESTIMONIOS</a></li>
                             </ul>
@@ -112,25 +112,25 @@
     <section class="row col-7 medium-7 small-7 middle">
         <nav class="col-10 small-8  medium-10">
             <ul class="no-padding Menu row menu-item-out-movile" style="font-size: .77rem;">
-                <li><a href="#">DOCUMENTACIÓN</a></li>
-                <li><a href="#">TERMINOS Y CONDICIONES</a></li>
-                <li><a href="#">COPYRIGHT</a></li>
+                <li><a href="{{route('documents')}}">DOCUMENTACIÓN</a></li>
+                <li><a href="{{route('terms')}}">TERMINOS Y CONDICIONES</a></li>
+                <li>COPYRIGHT</li>
             </ul>
         </nav>
         <nav class="col-2 small-2 end">
             <ul class="Socials">
                 <li class="icon">
-                    <a href="#">
+                    <a href="https://www.instagram.com/cityconsumo/" target="_blank">
                         <img src="{{asset('img/instagram.svg')}}" alt="instagram">
                     </a>
                 </li>
                 <li class="icon">
-                    <a href="https://www.facebook.com/City-Consumo-1269145086448897/">
+                    <a href="https://www.facebook.com/City-Consumo-1269145086448897/" target="_blank">
                         <img src="{{asset('img/facebook.svg')}}" alt="facebook">
                     </a>
                 </li>
                 <li class="icon">
-                    <a href="#">
+                    <a href="mailto:info@cityconsumo.com">
                         <img src="{{asset('img/letter.svg')}}">
                     </a>
                 </li>
