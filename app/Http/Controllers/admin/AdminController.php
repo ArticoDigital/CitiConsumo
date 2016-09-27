@@ -7,6 +7,7 @@ use City\Entities\FoodType;
 use City\Entities\GeneralType;
 use City\Entities\ServiceFile;
 use City\Entities\PetSize;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
@@ -35,8 +36,11 @@ class AdminController extends Controller
         $sizes = PetSize::all();
         $generalTypes = GeneralType::all();
 
-        if(isset($user->provider) && $user->provider->isActive)
-            return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
+        if(isset($user->provider)){
+            if($user->provider->isActive)
+                return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
+            return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus productos.']);
+        }
         return redirect()->route('uploadFiles');
     }
 
