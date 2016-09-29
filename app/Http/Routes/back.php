@@ -1,20 +1,10 @@
 <?php
 
-Route::get('/', [
-    'uses' => function () {
-        return view('back.dashboard');
-    },
-]);
+// GENERAL ROUTES
 
-Route::get('mi-perfil', [
+Route::get('/', [
     'as' => 'myProfile',
     'uses' => 'AdminController@myProfile',
-]);
-
-Route::get('desembolso', [
-    'uses' => 'BuyController@outlayList',
-    'as' => 'outlayList',
-    //'roles' => 3
 ]);
 
 Route::get('checkout', function () {
@@ -25,41 +15,9 @@ Route::get('confirmar-compra', function () {
     return view('back.shopConfirm');
 });
 
-Route::get('postular-servicio', [
-    'as' => 'addService',
-    'uses' => 'AdminController@addService',
-    //'roles' => [1, 2]
-]);
-
-Route::post('postular-servicio', [
-    'as' => 'newService',
-    'uses' => 'AdminController@newService',
-    //'roles' => [1, 2]
-]);
-
-
-Route::get('subir-archivos', [
-    'as' => 'uploadFiles',
-    'uses' => 'AdminController@uploadFiles',
-    //'roles' => 1
-]);
-
 Route::post('uploadFile', [
     'uses' => 'AdminController@uploadFile',
     'as' => 'uploadFile'
-]);
-
-Route::get('perfil/{id}', [
-    'as' => 'profile',
-    'uses' => 'AdminController@profile',
-  //  'roles' => 3
-]);
-
-
-Route::post('updateStateService', [
-    'uses' => 'AdminController@updateStateService',
-    'as' => 'updateStateService',
-//    'roles' => 2
 ]);
 
 Route::post('updateUser', [
@@ -72,27 +30,35 @@ Route::post('uploadUserFileFields', [
     'as' => 'uploadUserFileFields'
 ]);
 
-Route::get('usuarios-clientes', [
-    'uses' => 'UserController@showClient',
-    'as' => 'showClient',
-    //'roles' => 3
+Route::post('deleteService', [
+    'uses' => 'ServiceController@deleteService',
+    'as' => 'deleteProduct'
 ]);
 
-Route::get('usuarios-proveedor', [
-    'uses' => 'UserController@showProvider',
-    'as' => 'showProvider',
-    //'roles' => 3
+Route::get('editar-servicio/{id}', [
+    'uses' => 'ServiceController@editService',
+    'as' => 'editProduct'
 ]);
 
-Route::get('usuarios-proveedor-activar', [
-    'uses' => 'UserController@showProviderActive',
-    'as' => 'showProviderActive',
-    //'roles' => 3
+Route::post('editar-servicio/{id}', [
+    'uses' => 'ServiceController@editServicePost',
+    'as' => 'editServicePost'
 ]);
-Route::get('usuarios-proveedor-eliminados', [
-    'uses' => 'UserController@showProviderDelete',
-    'as' => 'showProviderDelete',
-    //'roles' => 3
+
+
+Route::post('insertOutlay', [
+    'uses' => 'BuyController@insertOutlay',
+    'as' => 'insertOutlay'
+]);
+
+Route::post('buyAction', [
+    'uses' => 'BuyController@buyAction',
+    'as' => 'buyAction'
+]);
+
+Route::post('updateOutlateState/{id}', [
+    'uses' => 'BuyController@updateOutlateState',
+    'as' => 'updateOutlateState'
 ]);
 
 Route::post('usuarios-proveedor-activar', [
@@ -135,34 +101,66 @@ Route::post('uploadTempFiles', [
     'uses' => 'AdminController@uploadTempFiles'
 ]);
 
-/************* ProductController **************/
+// ADMIN ROUTES
 
-Route::post('deleteService', [
-    'uses' => 'ServiceController@deleteService',
-    'as' => 'deleteProduct'
+Route::get('desembolso', [
+    'uses' => 'BuyController@outlayList',
+    'as' => 'outlayList',
+    'roles' => 3
 ]);
 
-Route::get('editar-servicio/{id}', [
-    'uses' => 'ServiceController@editService',
-    'as' => 'editProduct'
+Route::get('perfil/{id}', [
+    'as' => 'profile',
+    'uses' => 'AdminController@profile',
+    'roles' => 3
 ]);
 
-Route::post('editar-servicio/{id}', [
-    'uses' => 'ServiceController@editServicePost',
-    'as' => 'editServicePost'
+Route::get('usuarios-clientes', [
+    'uses' => 'UserController@showClient',
+    'as' => 'showClient',
+    'roles' => 3
 ]);
 
-
-Route::post('insertOutlay', [
-    'uses' => 'BuyController@insertOutlay',
-    'as' => 'insertOutlay'
-]);
-Route::post('buyAction', [
-    'uses' => 'BuyController@buyAction',
-    'as' => 'buyAction'
+Route::get('usuarios-proveedor', [
+    'uses' => 'UserController@showProvider',
+    'as' => 'showProvider',
+    'roles' => 3
 ]);
 
-Route::post('updateOutlateState/{id}', [
-    'uses' => 'BuyController@updateOutlateState',
-    'as' => 'updateOutlateState'
+Route::get('usuarios-proveedor-activar', [
+    'uses' => 'UserController@showProviderActive',
+    'as' => 'showProviderActive',
+    'roles' => 3
+]);
+
+Route::get('usuarios-proveedor-eliminados', [
+    'uses' => 'UserController@showProviderDelete',
+    'as' => 'showProviderDelete',
+    'roles' => 3
+]);
+
+// USERS ROUTES
+
+Route::get('postular-servicio', [
+    'as' => 'addService',
+    'uses' => 'AdminController@addService',
+    'roles' => [1, 2]
+]);
+
+Route::post('postular-servicio', [
+    'as' => 'newService',
+    'uses' => 'AdminController@newService',
+    'roles' => [1, 2]
+]);
+
+Route::post('updateStateService', [
+    'uses' => 'AdminController@updateStateService',
+    'as' => 'updateStateService',
+    'roles' => 2
+]);
+
+Route::get('subir-archivos', [
+    'as' => 'uploadFiles',
+    'uses' => 'AdminController@uploadFiles',
+    'roles' => 1
 ]);

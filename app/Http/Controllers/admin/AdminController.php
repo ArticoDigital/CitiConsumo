@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
 use City\Http\Requests;
+use City\Http\Requests\RoleRequest;
 use City\Http\Controllers\Controller;
 use City\Entities\Service;
 use Illuminate\Support\Facades\Auth;
@@ -29,8 +30,11 @@ use Gate;
 
 class AdminController extends Controller
 {
-    public function addService()
+    public function addService(RoleRequest $request)
     {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+        
         $user = auth()->user();
         $foodTypes = FoodType::all();
         $sizes = PetSize::all();
@@ -41,11 +45,14 @@ class AdminController extends Controller
                 return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
             return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus productos.']);
         }
-        return redirect()->route('uploadFiles');
+        return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Registrate como proveedor!', 'alertText' => 'Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servicios.']);
     }
 
-    public function newService(Request $request)
+    public function newService(RoleRequest $request)
     {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+        
         $user = Auth::user();
         $inputs = $request->all();
 
@@ -96,8 +103,8 @@ class AdminController extends Controller
         return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
     }
 
-    public function uploadTempFiles(Request $request){
-        if($request->ajax()) {
+    public function uploadTempFiles(RoleRequest $request){
+        if($request->ajax() && $request->isNotAuthorized()) {
             $tempFiles = [];
             foreach ($request->file() as $file) {
                 $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
@@ -135,8 +142,11 @@ class AdminController extends Controller
         }
 
         */
-    public function myProfile()
-    {
+    public function myProfile(RoleRequest $request){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $userprofile = auth()->user();
         $services = '';
         $buysNotPayed['value'] = 0;
@@ -161,8 +171,10 @@ class AdminController extends Controller
         return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
     }
 
-    public function uploadFiles()
-    {
+    public function uploadFiles(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
 
         $id = auth()->user()->id;
         if ($this->isProvider($id)) {
@@ -176,15 +188,21 @@ class AdminController extends Controller
         }
     }
 
-    public function profile($id)
-    {
+    public function profile(RoleRequest $request, $id) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $userprofile = User::find($id);
         return view('back.profile', compact('userprofile'));
     }
 
 
-    function updateUser(Request $request)
+    function updateUser(RoleRequest $request)
     {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $validator = $this->validatorUser($request->all());
 
         if ($validator->fails()) {
@@ -281,8 +299,11 @@ class AdminController extends Controller
     }
 
 
-    public function uploadFile(Request $request)
-    {       
+    public function uploadFile(RoleRequest $request)
+    {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $validator = $this->validatorFile($request->all());
         
         if ($validator->fails()) {
@@ -312,8 +333,11 @@ class AdminController extends Controller
 
     }
 
-    function uploadProviderFiles(Request $request)
+    function uploadProviderFiles(RoleRequest $request)
     {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $validator = $this->validatorFiles($request->all());
 
         if ($validator->fails()) {
@@ -327,8 +351,11 @@ class AdminController extends Controller
     }
 
 
-    function uploadUserFileFields(Request $request)
+    function uploadUserFileFields(RoleRequest $request)
     {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $inputs = $request->all();
         $validator = $this->validatorFiles($inputs);
 
@@ -518,8 +545,11 @@ class AdminController extends Controller
     }
 
 
-    public function updateStateService(Request $request)
+    public function updateStateService(RoleRequest $request)
     {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $service = Service::find($request->input('idService'));
         $service->isActive = $request->input('valor');
         $return = "";

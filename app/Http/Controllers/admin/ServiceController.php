@@ -8,13 +8,17 @@ use City\Entities\PetSize;
 use City\Entities\Service;
 use City\Entities\ServiceFile;
 use Illuminate\Http\Request;
-use City\Http\Requests;
+use City\Http\Requests\RoleRequest;
 use City\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 
 class ServiceController extends Controller
 {
-    public function deleteService(Request $request){
+    public function deleteService(RoleRequest $request){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $service = Service::find($request->id);
         $service->update(['isValidate' => 2]);
 
@@ -24,7 +28,11 @@ class ServiceController extends Controller
             return ['message' => 'El producto ha sido eliminado'];
     }
 
-    public function editService($id){
+    public function editService(RoleRequest $request, $id){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $provider = auth()->user()->provider;
         $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->whereRaw("id = {$id} and provider_id = {$provider->id}")->firstOrFail()->toArray();
         $foodTypes = FoodType::all();
@@ -35,7 +43,11 @@ class ServiceController extends Controller
         return redirect()->back();
     }
 
-    public function editServicePost(Request $request, $id){
+    public function editServicePost(RoleRequest $request, $id){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $inputs = $request->all();
         $service = Service::find($id);
         $service->update([

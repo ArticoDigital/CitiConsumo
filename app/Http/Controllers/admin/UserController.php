@@ -9,40 +9,61 @@ use City\Entities\ProviderFiles;
 use City\User;
 use Illuminate\Http\Request;
 
-use City\Http\Requests;
+use City\Http\Requests\RoleRequest;
 use City\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function showClient()
-    {
+    public function showClient(RoleRequest $request){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $users = User::where('role_id', '1')->paginate(20);
         return view('back.usersClient', compact('users'));
     }
 
-    public function showProvider()
-    {
+    public function showProvider(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $providers = Provider::with('user')->where("isActive",1)->get();
         return view('back.usersProvider', compact('providers'));
     }
 
-    public function showProviderActive()
-    {
+    public function showProviderActive(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $providers = Provider::with(['user','providerFiles.fileType'])->whereRaw('isActive = 0')->get();
         return view('back.usersProviderActive', compact('providers'));
     }
-    public function showProviderDelete()
-    {
+
+    public function showProviderDelete(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $providers = Provider::with('user')->whereRaw('isActive = 2')->get();
         return view('back.usersProviderDelete', compact('providers'));
     }
 
-    public function showProductsInactived(){
+    public function showProductsInactived(RoleRequest $request){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $services = Service::where('isValidate', 0)->paginate(20);
         return view('back.produtsCheckout', compact('services'));
     }
 
-    public function deleteProductProvider(Request $request, $id){
+    public function deleteProductProvider(RoleRequest $request, $id){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $service = Service::find($id);
         $services = Service::where('isValidate', 0);
 
@@ -58,23 +79,33 @@ class UserController extends Controller
             return ['message' => $message, 'services' => $services];
     }
 
-    public function enabledProvider(Request $request)
-    {
+    public function enabledProvider(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $provider = Provider::find($request->input('idUser'));
         $provider->isActive = 1;
         $provider->save();
         return json_encode(['success' => true]);
     }
 
-    public function disabledProvider(Request $request)
-    {
+    public function disabledProvider(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $provider = Provider::find($request->input('idUser'));
         $provider->isActive = 0;
         $provider->save();
         return json_encode(['success' => true]);
     }
-    public function deleteProvider(Request $request)
-    {
+
+    public function deleteProvider(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $provider = Provider::find($request->input('idUser'));
         $user = $provider->user;
         $user->role_id = 1;
@@ -84,8 +115,12 @@ class UserController extends Controller
         $provider->save();
         return json_encode(['success' => true]);
     }
-    public function reenableProvider(Request $request)
-    {
+
+    public function reenableProvider(RoleRequest $request) {
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
         $provider = Provider::find($request->input('idUser'));
         $user = $provider->user;
         $user->role_id = 2;
