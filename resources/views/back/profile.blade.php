@@ -1,13 +1,13 @@
 @extends('layoutBack')
 
 @section('content')
-   
 
      @if(Session::has('success'))
         <div class="success">
             <p>¡El usuario se ha actualizado!</p>
         </div>
      @endif
+
     <form action="{{route('updateUser')}}" method="post" enctype="multipart/form-data">
       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" id="token">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
@@ -28,7 +28,6 @@
                             </g>
                         </svg>
                     @endif
-
                     {!!  $errors->first('profile_image', '<p class="error">:message</p>')  !!}
                   </div>
                   <output class="result"></output>
@@ -50,23 +49,33 @@
                       <label for="name" class="row middle">
                         {!!  $errors->first('name', ':message')  !!}
                         <span class="col-5 small-5">Nombre(*)</span>
-                        <input class="col-7 small-7" name="name" id="name" value="{{$userprofile->name}}" type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="name" id="name" value="{{old('name')}}" type="text">
+                        @else
+                            <input class="col-7 small-7" name="name" id="name" value="{{$userprofile->name}}" type="text">
+                        @endif
                     </label>
                   </div>
                   <div class="profile-item">
                       <label for="last_name" class="row middle">
                         {!!  $errors->first('last_name', ':message')  !!}
                         <span class="col-5 small-5">Apellido(*)</span>
-                        <input class="col-7 small-7" name="last_name" value="{{ $userprofile->last_name}}" id="last_name"
-                               type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="last_name" value="{{ old('last_name')}}" id="last_name" type="text">
+                        @else
+                            <input class="col-7 small-7" name="last_name" value="{{ $userprofile->last_name}}" id="last_name" type="text">
+                        @endif
                     </label>
                   </div>
                   <div class="profile-item">
                       <label for="user_identification" class="row middle">
                         {!!  $errors->first('user_identification', ':message')  !!}
                         <span class="col-5 small-5">Número de identificación(*)</span>
-                        <input class="col-7 small-7" name="user_identification" value="{{ $userprofile->user_identification}}" id="last_name"
-                               type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="user_identification" value="{{ old('user_identification') }}" type="text">
+                        @else
+                            <input class="col-7 small-7" name="user_identification" value="{{ $userprofile->user_identification}}" type="text">
+                        @endif
                     </label>
                   </div>
 
@@ -74,8 +83,11 @@
                       <label for="email" class="row middle">
                         {!!  $errors->first('email', ':message')  !!}
                         <span class="col-5 small-5">Correo(*)</span>
-                        <input class="col-7 small-7" name="email" value="{{ $userprofile->email}}" id="email"
-                               type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="email" value="{{ old('email') }}" id="email" type="text">
+                        @else
+                            <input class="col-7 small-7" name="email" value="{{ $userprofile->email}}" id="email" type="text">
+                        @endif
                     </label>
                   </div>
                   
@@ -83,10 +95,11 @@
                       <label for="birthday" class="row middle">
                         {!!  $errors->first('created_at', ':message')  !!}
                         <span class="col-5 small-5">Fecha de nacimiento</span>
-                        
-
-                        <input class="col-7 small-7" name="birthday" alt="calendar" value="{{$userprofile->birthday}}" readonly="true" id="birthday"
-                               type="text" >
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="birthday" alt="calendar" value="{{old('birthday')}}" readonly="true" id="birthday" type="text" >
+                        @else
+                            <input class="col-7 small-7" name="birthday" alt="calendar" value="{{$userprofile->birthday}}" readonly="true" id="birthday" type="text" >
+                        @endif
                     </label>
 
                     </div>
@@ -94,8 +107,11 @@
                       <label for="place" class="row middle">
                         {!!  $errors->first('location', ':message')  !!}
                         <span class="col-5 small-5">Ciudad</span>
-
-                          <input class="col-7 small-7" id="autocomplete" name="place" value="{{ $userprofile->location}}" type="text" placeholder="Lugar" >
+                          @if(count($errors))
+                              <input class="col-7 small-7" id="autocomplete" name="location" value="{{ old('location')}}" type="text" placeholder="Lugar" >
+                          @else
+                              <input class="col-7 small-7" id="autocomplete" name="location" value="{{ $userprofile->location}}" type="text" placeholder="Lugar" >
+                          @endif
                           <input class="field" id="lat" name="lat" type="hidden">
                           <input class="field" id="lng" name="lng" type="hidden">
                       </label>
@@ -105,8 +121,11 @@
                       <label for="address" class="row middle">
                         {!!  $errors->first('address',':message')  !!}
                         <span class="col-5 small-5">Dirección</span>
-                        <input  class="col-7 small-7" name="address" value="{{ $userprofile->address}}" id="address"
-                               type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="address" value="{{ old('address') }}" id="address" type="text">
+                        @else
+                            <input class="col-7 small-7" name="address" value="{{ $userprofile->address}}" id="address" type="text">
+                        @endif
                     </label>
                   </div>
 
@@ -114,8 +133,11 @@
                       <label for="cellphone" class="row middle">
                         {!!  $errors->first('cellphone', ':message')  !!}
                         <span class="col-5 small-5">Celular</span>
-                        <input class="col-7 small-7" name="cellphone" value="{{ $userprofile->cellphone}}" id="cellphone"
-                               type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="cellphone" value="{{ old('cellphone')}}" id="cellphone" type="text">
+                        @else
+                            <input class="col-7 small-7" name="cellphone" value="{{ $userprofile->cellphone}}" id="cellphone" type="text">
+                        @endif
                     </label>
                   </div>
 
@@ -123,8 +145,12 @@
                       <label for="phone" class="row middle">
                         {!!  $errors->first('phone', ':message')  !!}
                         <span class="col-5 small-5">Teléfono</span>
-                        <input class="col-7 small-7" name="phone" value="{{ $userprofile->phone}}" id="phone"
-                               type="text">
+                        @if(count($errors))
+                            <input class="col-7 small-7" name="phone" value="{{ old('phone') }}" id="phone" type="text">
+                        @else
+                            <input class="col-7 small-7" name="phone" value="{{ $userprofile->phone}}" id="phone" type="text">
+                        @endif
+
                     </label>
                   </div>
 
@@ -139,16 +165,14 @@
                         <label for="password" class="row middle">
                           {!!  $errors->first('password', ':message')  !!}
                           <span class="col-5 small-5">Nueva Contraseña</span>
-                          <input class="col-7 small-7" name="password" value="" id="password"
-                                 type="password">
+                          <input class="col-7 small-7" name="password" value="" id="password" type="password">
                       </label>
                     </div>
                     <div class="profile-item">
                         <label for="password_confirmation" class="row middle">
                           {!!  $errors->first('password_confirmation', ':message')  !!}
                           <span class="col-5 small-5">Repita la Contraseña</span>
-                          <input class="col-7 small-7" name="password_confirmation" value="" id="password_confirmation"
-                                 type="password">
+                          <input class="col-7 small-7" name="password_confirmation" value="" id="password_confirmation" type="password">
                       </label>
                     </div>
                   </div>
@@ -160,8 +184,11 @@
                         <label for="bank_account_number" class="row middle">
                           {!!  $errors->first('bank_account_number', ':message')  !!}
                           <span class="col-5 small-5">Número de la cuenta</span>
-                          <input class="col-7 small-7" name="bank_account_number" value="{{ $userprofile->bank_account_number}}" id="bank_account_number"
-                                 type="text">
+                          @if(count($errors))
+                            <input class="col-7 small-7" name="bank_account_number" value="{{ old('bank_account_number') }}" id="bank_account_number" type="text">
+                          @else
+                            <input class="col-7 small-7" name="bank_account_number" value="{{ $userprofile->bank_account_number}}" id="bank_account_number" type="text">
+                          @endif
                       </label>
                     </div>
                     <div class="profile-item">
@@ -169,8 +196,8 @@
                           {!!  $errors->first('bank_type_account', ':message')  !!}
                           <span class="col-5 small-5">Tipo de cuenta</span>
                             <select class="col-7 small-7" id="bank_type_account" name="bank_type_account">
-                                    <option value="Ahorros" {{ ($userprofile->bank_type_account=="Ahorros") ? 'selected' : '' }}>Ahorros</option>
-                                    <option value="Corriente"  {{ ($userprofile->bank_type_account=="Corriente") ? 'selected' : '' }} >Corriente</option>
+                                <option value="Ahorros" {{ ($userprofile->bank_type_account == "Ahorros") ? 'selected' : '' }}>Ahorros</option>
+                                <option value="Corriente"  {{ ($userprofile->bank_type_account == "Corriente") ? 'selected' : '' }} >Corriente</option>
                             </select>
                       </label>
                     </div>
@@ -178,8 +205,11 @@
                         <label for="bank_name" class="row middle">
                           {!!  $errors->first('bank_name', ':message')  !!}
                           <span class="col-5 small-5">Banco</span>
-                          <input class="col-7 small-7" name="bank_name" value="{{ $userprofile->bank_name}}" id="bank_name"
-                                 type="text">
+                          @if(count($errors))
+                            <input class="col-7 small-7" name="bank_name" value="{{ old('bank_name') }}" id="bank_name" type="text">
+                          @else
+                            <input class="col-7 small-7" name="bank_name" value="{{ $userprofile->bank_name}}" id="bank_name" type="text">
+                          @endif
                       </label>
                     </div>
                   </div>

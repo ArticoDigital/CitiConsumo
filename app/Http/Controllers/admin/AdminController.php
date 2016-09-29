@@ -146,7 +146,7 @@ class AdminController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
-
+        
         $userprofile = auth()->user();
         $services = '';
         $buysNotPayed['value'] = 0;
@@ -168,6 +168,7 @@ class AdminController extends Controller
             }
             $services = Service::whereRaw("provider_id = {$provider} and isValidate <> 2")->get();
         }
+
         return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
     }
 
@@ -203,13 +204,11 @@ class AdminController extends Controller
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        $validator = $this->validatorUser($request->all());
+        $inputs = $request->all();
+        $validator = $this->validatorUser($inputs);
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput();
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
         $this->updateUserSave($request);
 
         return redirect()->back()->with('success', true);
@@ -218,40 +217,18 @@ class AdminController extends Controller
     private function updateUserSave($request)
     {
         $data = $request->all();
-
         $user = User::find($data['user_id']);
-        //$client = $user->client;
-
-        $user->name = $data['name'];
-        $user['last_name'] = $data['last_name'];
-        $user->birthday = $data['birthday'];
-        $user->address = $data['address'];
-        $user->cellphone = $data['cellphone'];
-        $user->phone = $data['phone'];
-        $user->location = $data['place'];
-        $user->user_identification = $data['user_identification'];
-        
-
-        $user->bank_account_number=$data['bank_account_number'];
-        $user->bank_type_account=$data['bank_type_account'];
-        $user->bank_name=$data['bank_name'];
-
-        if(empty($data->password)){
-            $user->password = bcrypt($data['password']);
-
-        }
 
         if ($request->hasFile('profile_image')) {
             $imageName = str_random(10) . '-&&-' . $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
-
-            $user['profile_image'] = $imageName;
-
+            $data['profile_image'] = $imageName;
         }
-        $user->email = $data['email'];
 
-        $user->save();
+        if(!$data['password'])
+            unset($data['password']);
 
+        $user->update($data);
     }
 /*
  protected function validator(array $data)
