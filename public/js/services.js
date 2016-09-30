@@ -25,9 +25,7 @@ $('.Provider-updateStateService').on('click', function () {
         
         var send = $(this).data('action');
         $.post(send, data, function (e) {
-            if(e.success){
-                alert("Ha actualizado exitosamente");
-            }else{
+            if(!(e.success)){
                 if(valornuevochk==0){
                    $('#'+identifier).prop('checked', true);
                 }
@@ -35,9 +33,6 @@ $('.Provider-updateStateService').on('click', function () {
                     $('#'+identifier).prop('checked', false);
                 }
                 alert("Se presentó un error, inténtalo nuevamente");
-
             }
-
         });
-    
 });

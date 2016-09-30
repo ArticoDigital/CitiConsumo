@@ -15,8 +15,8 @@
      data-image="{{asset('img/' . $icon)}}"
      data-imagesservice="{{asset('uploads/products/')}}"
 ></div>
-<input type="hidden" value="{{$dataMap['lng']}}" id="lat">
-<input type="hidden" value="{{$dataMap['lat']}}" id="lng">
+<input type="hidden" value="{{$dataMap['lng']}}" id="lng">
+<input type="hidden" value="{{$dataMap['lat']}}" id="lat">
 
 <header class="Header">
     <div class="BarNav row middle between">
