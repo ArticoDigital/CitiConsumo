@@ -35,7 +35,7 @@ return [
     'digits'               => 'The :attribute must be :digits digits.',
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => 'El campo :attribute debe ser un email valido.',
+    'email'                => '<p>El campo <b>:attribute</b> debe ser un email valido.</p>',
     'exists'               => 'The selected :attribute is invalid.',
     'filled'               => 'The :attribute field is required.',
     'image'                => 'The :attribute must be an image.',

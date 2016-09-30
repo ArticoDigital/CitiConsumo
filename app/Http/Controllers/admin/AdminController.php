@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers\admin;
 
+use Illuminate\Support\Facades\Hash;
 use City\Entities\Buy;
 use City\Entities\FoodType;
 use City\Entities\GeneralType;
@@ -227,6 +228,8 @@ class AdminController extends Controller
 
         if(!$data['password'])
             unset($data['password']);
+        else
+            $data['password'] = Hash::make($data['password']);
 
         $user->update($data);
     }
@@ -250,15 +253,14 @@ class AdminController extends Controller
     }
 */
 
-    protected function validatorUser(array $data)
-    {
+    protected function validatorUser(array $data){
 
         $v = Validator::make($data, [
                 'name' => 'required|max:255',
                 'last_name' => 'required|max:255',
-                'email' => 'unique:users,email,' . $data['user_id'],
+                'email' => 'required|email|unique:users,email,' . $data['user_id'],
                 'address' => 'required|max:255',
-                'birthday' => 'date',
+                'birthday' => 'required|date',
                 'cellphone' => 'required|max:255',
                 'user_identification' => 'required|max:255',
             ]
@@ -266,6 +268,7 @@ class AdminController extends Controller
         $v->sometimes('profile_image', 'mimes:jpeg,jpg,png,gif|max:20000', function ($data) {
             return !empty($data['profile_image']);
         });
+
         $v->sometimes('password', 'min:6|required|confirmed', function($data) {
             return !empty($data->password);
         });
@@ -285,10 +288,6 @@ class AdminController extends Controller
         
         if ($validator->fails()) {
              $return = ['name' => "Archivo no permitido", 'url' => url('/uploads/provider/'), 'identifier' => $request->identifier, 'success' => false];
-            
-            /*$this->throwValidationException(
-                $request, $validator
-            );*/
         }else{
         $fileName = str_random(10) . '-&&-' . $request->file('file')->getClientOriginalName();
         $request->file('file')->move(base_path() . '/public/uploads/provider/', $fileName);

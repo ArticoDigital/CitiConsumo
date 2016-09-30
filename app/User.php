@@ -18,7 +18,7 @@ class   User extends Authenticatable
                             'profile_image', 'address', 'birthday',
                             'phone', 'cellphone', 'bank_account_number',
                             'bank_type_account', 'bank_name', 'user_identification',
-                            'email', 'password', 'role_id', 'birthday'
+                            'email', 'role_id', 'birthday', 'password'
                           ];
 
     /**
