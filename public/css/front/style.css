@@ -1842,7 +1842,10 @@ div.profile-photo-light {
     background-color: #10549F;
     margin: 10px;
     padding: 20px;
-    min-height: 270px; }
+    min-height: 377px; }
+    @media (min-width: 45rem) {
+      .owl-carousel .carrousel-item {
+        min-height: 388px; } }
     .owl-carousel .carrousel-item p {
       font-size: 14px;
       line-height: 15px;
