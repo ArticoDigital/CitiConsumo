@@ -26,8 +26,8 @@ styleMap = [{
 }, {"featureType": "road", "elementType": "geometry", "stylers": [{"lightness": 57}]}]
 
 function succesfull(pos) {
-    var lng = $('#lat').val(),
-        lat = $('#lng').val();
+    var lng = $('#lng').val(),
+        lat = $('#lat').val();
 
     if (!lng || !lat) {
         lat = pos.lat;

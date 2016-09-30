@@ -227,9 +227,9 @@
                             </select>
                         </label>
 
-                        <label class="col-6 medium-6 small-12" for="pets-quantity">
+                        <label class="col-6 medium-6 small-12" for="pets_quantity">
                             <span class="text">Número de animales</span><br>
-                            <input type="number" id="pets-quantity" fakeName="pets-quantity" value="{{$service['pets-quantity']}}" autocomplete="off">
+                            <input type="number" id="pets_quantity" name="pets_quantity" value="{{$service['pet']['pets_quantity']}}" autocomplete="off">
                         </label>
 
                         <label class="col-6 medium-6 small-12" for="price">
@@ -352,6 +352,7 @@
                         $('.preload').removeClass("hidden");
                     },
                     success: function (data) {
+                        console.log(data.temp);
                         $('.preload').addClass("hidden");
                         var result = $("#result");
                         var images = data.temp;

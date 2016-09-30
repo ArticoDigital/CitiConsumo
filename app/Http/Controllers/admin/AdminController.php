@@ -78,7 +78,8 @@ class AdminController extends Controller
                 'date_start' => date_create($date[0]),
                 'date_end' => date_create($date[1]),
                 'service_id' => $service->id,
-                'pet_sizes' => $inputs['size']
+                'pet_sizes' => $inputs['size'],
+                'pets_quantity' => $inputs['pets-quantity'],
             ]);
         }
         elseif($inputs['service'] == 3) {
@@ -104,8 +105,8 @@ class AdminController extends Controller
         return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
     }
 
-    public function uploadTempFiles(RoleRequest $request){
-        if($request->ajax() && $request->isNotAuthorized()) {
+    public function uploadTempFiles(Request $request){
+        if($request->ajax()) {
             $tempFiles = [];
             foreach ($request->file() as $file) {
                 $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
@@ -147,30 +148,34 @@ class AdminController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
-        
-        $userprofile = auth()->user();
-        $services = '';
-        $buysNotPayed['value'] = 0;
-        $buysNotPayed['buys'] = '';
 
-        if (isset($userprofile->provider)){
-            $services = Service::where('provider_id', $provider = auth()->user()->provider->id)
+        $services = [];
+        $userprofile = auth()->user();
+        $buysNotPayed = $this->getBuysNotPayed($userprofile);
+        if(isset($userprofile->provider))
+            $services = Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get();
+        return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
+    }
+
+    private function getBuysNotPayed($user){
+        $buysNotPayed = ['value' => 0, 'buys' => ''];
+
+        if(isset($user->provider)){
+            $services = Service::where('provider_id', $user->provider->id)
                         ->with(['buys' => function ($buys) {
                             $buys->where('state_id', 1)->get();
-                        }])->get()->toArray();
+                        }])->get();
+
             foreach ($services as $service){
-                if(count($service['buys'])){
-                    foreach($service['buys'] as $buy){
-                        if(isset($buy['value']))
-                            $buysNotPayed['value'] += $buy['value'] * $buy['products_quantity'];
-                            $buysNotPayed['buys'] .= $buy['id'] . ',';
-                    }
+                foreach($service->buys as $buy) {
+                    if(isset($buy['value']))
+                        $buysNotPayed['value'] += $buy['value'] * $buy['products_quantity'];
+                    $buysNotPayed['buys'] .= $buy['id'] . ',';
                 }
             }
-            $services = Service::whereRaw("provider_id = {$provider} and isValidate <> 2")->get();
         }
 
-        return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
+        return $buysNotPayed;
     }
 
     public function uploadFiles(RoleRequest $request) {

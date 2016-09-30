@@ -153,8 +153,6 @@
                     </label>
                   </div>
 
-
-
                   <p class="profile-title">Seguridad</p>
                   <div class="row profile-item border-bottom">
                       <div class="col-12">Cambiar contraseña <img id="password-option" class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
@@ -215,7 +213,8 @@
 
                   <button class="button menu-item-out">Actualizar perfil</button>
               </div>
-          @if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value'])
+
+          @if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value'] > 0)
               <div class=" col-3 medium-12 small-12">
                   <div class="Image-money row center" style="margin-top:10px">
                       <div class="circle-money">
@@ -312,7 +311,8 @@
             <a href="" class="close" id="accept">Aceptar</a>
         </article>
     </section>
-    @if($buysNotPayed['value'])
+
+     @if($buysNotPayed['value'])
      <!--*********** Formulario de desembolso *****************-->
      <form method="POST" action="{{'insertOutlay'}}">
          <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -376,8 +376,6 @@
             $('#account-option-box').removeClass("hidden");
 
         });
-        
-
       });
 
 

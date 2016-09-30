@@ -53,7 +53,7 @@ class ServiceController extends Controller
         $service->update([
             'name' => $inputs['name'],
             'description' => $inputs['description'],
-            'price' => $inputs['price'],
+            'price' => str_replace('.', '', $inputs['price']),
             'location' => $inputs['address'],
             'lat' => $inputs['lat'],
             'lng' => $inputs['lng'],
@@ -69,6 +69,7 @@ class ServiceController extends Controller
             $date = explode('-', $inputs['date']);
             $service->pet->update([
                 'pet_sizes' => $inputs['size'],
+                'pets_quantity' => $inputs['pets_quantity'],
                 'date_start' => date_create($date[0]),
                 'date_end' => date_create($date[1]),
             ]);
