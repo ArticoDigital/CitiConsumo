@@ -47,7 +47,7 @@ return [
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
         'file'    => '<p> El archivo del campo <b> :attribute </b> no puede ser mayor a :max kb.</p>',
-        'string'  => 'The :attribute may not be greater than :max characters.',
+        'string'  => '<p>El campo <b> :attribute </b> debe tener menos de :max caracteres.</p>',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
     'mimes'                => '<p>Este tipo de archivo no es admitido.</p>',//'The :attribute must be a file of type: :values.',

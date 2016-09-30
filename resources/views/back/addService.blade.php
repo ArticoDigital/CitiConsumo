@@ -150,9 +150,9 @@
         <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
             <article id="Step1" class="Step row">
-                <input type="radio" value="1" id="foods" name="service">
-                <input type="radio" value="2" id="pets" name="service">
-                <input type="radio" value="3" id="service" name="service">
+                <input type="radio" value="1" id="foods" name="service" @if(count($errors) && old('service') == 1) checked @endif >
+                <input type="radio" value="2" id="pets" name="service" @if(count($errors) && old('service') == 2) checked @endif >
+                <input type="radio" value="3" id="service" name="service" @if(count($errors) && old('service') == 3) checked @endif >
                 <label for="foods" class="col-4 medium-4 small-4" style="max-width:340px">
                     <figure>
                         <img src="{{asset('img/comidas.svg')}}" alt="comidas">

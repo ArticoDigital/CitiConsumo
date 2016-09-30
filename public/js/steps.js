@@ -70,8 +70,15 @@ function nextStep(element, step){
     $("html, body").animate({ scrollTop: $('main').position().top }, 500);
 }
 
+if($('[name="service"]').is(':checked')){
+    getServiceChecked();
+}
 
 $('[name="service"]').on('change', function(){
+    getServiceChecked();
+});
+
+function getServiceChecked(){
     var element;
     $('#toStep2, .gray2').removeClass('disabled');
     $('.changeInputs label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
@@ -92,7 +99,8 @@ $('[name="service"]').on('change', function(){
             fakeName = input.attr('fakeName');
         input.attr('name', fakeName).attr('id', fakeName);
     }
-});
+}
+
 
 $('.datetimepicker_mask, [id*="address"]').on('click keydown', function(){
     $("html, body").animate({ scrollTop: $(document).height() }, 500);

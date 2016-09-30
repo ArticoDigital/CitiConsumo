@@ -37,6 +37,6 @@ function setCharsLength(){
     var nChars = $('#nChars');
 
     nChars.children('span').text(size);
-    if(size < 800) nChars.css('color', 'red');
+    if(size > 800) nChars.css('color', 'red');
     else nChars.css('color', 'green');
 }

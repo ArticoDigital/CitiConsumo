@@ -59,7 +59,7 @@ class AdminController extends Controller
 
         $validate = $this->validator($inputs);
         if ($validate->fails())
-            return redirect()->back()->withInput()->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
+            return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
 
         $inputs['provider_id'] = $user->provider->id;
         $inputs['location'] = $inputs['address'];
@@ -126,7 +126,7 @@ class AdminController extends Controller
             'lng' => 'required',
             'address' => 'required',
             'name' => 'required',
-            'description' => 'required|min:800',
+            'description' => 'required|max:800',
             'date' => 'required',
             'price' => 'required|numeric',
         ];
