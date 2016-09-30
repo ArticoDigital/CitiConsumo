@@ -3,24 +3,24 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-        <h1>Provedores Eliminados</h1>
-    <table class="rwd-table" id="tableUsers" >
+    <h1>Provedores Eliminados</h1>
+
+    <table class="rwd-table" id="tableUsers" style="text-align: center">
         <tr class="header-table">
             <th>Editar</th>
-            <th width="100px">Foto</th>
+            <th>Foto</th>
             <th>Usuario</th>
             <th>email</th>
             <th>Celular</th>
             <th>Re-Activar</th>
         </tr>
         @foreach($providers as $provider)
-
-
             <tr>
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
                 </td>
-                <td data-th="Service">
+
+                <td data-th="Service" style="width: 100px">
                     <article class="row top Profile-productSection " style="align-items: stretch">
                         <figure >
                             @if($provider->user->profile_image)
@@ -52,21 +52,24 @@
                 <td>
                     {{$provider->user->email}}
                 </td>
-                <td  class="center">{{$provider->user->cellphone}}</td>
-                <td data-th="Price" class="center">
-                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('reenableProvider')}}" class="Admin-updateStateProvider">Re Activar</a>
+
+                <td>
+                    {{$provider->user->cellphone}}
                 </td>
 
+                <td data-th="Price">
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('reenableProvider')}}" class="Admin-updateStateProvider">Re Activar</a>
+                </td>
             </tr>
-
-
         @endforeach
     </table>
+
     <div class="preload hidden" id="loader-wrapper">
-                        <div id="loader"></div>
-         </div>
+        <div id="loader"></div>
+    </div>
+
+    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @endsection
-<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @section('scripts')
     <script src="{{asset('js/users.js')}}"></script>
 @endsection

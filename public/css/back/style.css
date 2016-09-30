@@ -1502,7 +1502,6 @@ div.profile-photo-light {
 
 #loader-wrapper {
   background-color: rgba(0, 0, 0, 0.76);
-  z-index: 100000;
   position: fixed;
   top: 0;
   left: 0;
@@ -1533,8 +1532,7 @@ div.profile-photo-light {
   border-radius: 50%;
   border: 3px solid transparent;
   border-top-color: #e74c3c;
-  -webkit-animation: spin 3s linear infinite;
-    -webkit-animation-animation: spin 3s linear infinite; }
+  animation: spin 3s linear infinite; }
 
 #loader:after {
   content: "";
@@ -1546,8 +1544,7 @@ div.profile-photo-light {
   border-radius: 50%;
   border: 3px solid transparent;
   border-top-color: #f9c922;
-  -webkit-animation: spin 1.5s linear infinite;
-    -webkit-animation-animation: spin 1.5s linear infinite; }
+  animation: spin 1.5s linear infinite; }
 
 @keyframes spin {
   0% {
