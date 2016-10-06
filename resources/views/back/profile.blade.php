@@ -119,7 +119,7 @@
 
                   <div class="profile-item">
                       <label for="address" class="row middle">
-                        <span class="col-5 small-5">Dirección</span>
+                        <span class="col-5 small-5">Dirección(*)</span>
                         @if(count($errors))
                             <input class="col-7 small-7" name="address" value="{{ old('address') }}" id="address" type="text">
                         @else
@@ -131,7 +131,7 @@
 
                    <div class="profile-item">
                       <label for="cellphone" class="row middle">
-                        <span class="col-5 small-5">Celular</span>
+                        <span class="col-5 small-5">Celular(*)</span>
                         @if(count($errors))
                             <input class="col-7 small-7" name="cellphone" value="{{ old('cellphone')}}" id="cellphone" type="text">
                         @else
@@ -424,4 +424,18 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
+    <style>
+    .daterangepicker .calendar th, .daterangepicker .calendar td {
+        white-space: nowrap;
+        text-align: center;
+        min-width: 23px;
+    }
+    .daterangepicker select.monthselect {
+        margin-right: 6%;
+        width: 45%;
+    }
+    .daterangepicker select.yearselect {
+        width: 45%;
+    }
+    </style>
 @endsection

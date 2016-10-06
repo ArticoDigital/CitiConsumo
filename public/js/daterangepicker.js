@@ -1684,9 +1684,11 @@ function getConfig(type){
     if(type == 'multiple') {
         data['autoApply'] = true;
         data['endDate'] = getToday();
+        data['drops'] = "up";
     }
     else{
         data['singleDatePicker'] = true;
+        data['drops'] = "up";
     }
 
     return data;

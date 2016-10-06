@@ -45,10 +45,7 @@
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
             <input class="field" id="typeService" name="typeService" type="hidden" value="pet">
         </label>
-        <label for="date" class="col-3 medium-3 small-12 Form-Control">
-            <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value="{{old('date')}}">
-        </label>
+        
         <label for="size" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
             <select class="js-example-basic-single" id="size" name="size">
@@ -66,6 +63,10 @@
                     <option value="{{$breed->id}}">{{$breed->name}}</option>
                 @endforeach
             </select>
+        </label>
+        <label for="date" class="col-3 medium-3 small-12 Form-Control">
+            <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value="{{old('date')}}">
         </label>
         <button class="Button yellow">Buscar</button>
     </form>
