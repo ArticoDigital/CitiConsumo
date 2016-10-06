@@ -95,7 +95,6 @@
         $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');
-        alert(getConfig('single'));
         $date.daterangepicker(getConfig('single'));
         $date.on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
