@@ -38,7 +38,7 @@ Route::get('facebook/authorize', [
 
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
-        dd($user->email);dd($user);
+        dd($details);
         if (!$user->exists) {
             $user->email = $details->email;
             $user->name = $details->full_name;
