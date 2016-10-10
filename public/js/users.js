@@ -36,7 +36,7 @@ $('.viewFiles').on('click', function () {
         var nameType = $(this).data('type');
 
 
-        $filesContent.append("<a class='Button-table' style='display: block; margin: 1rem 0' href='" + route + '/' + nameFile  + "' target='_blank'> " + nameFile + " </a>");
+        $filesContent.append("<a class='Button-table' style='display: block; margin: 1rem 0' href='" + route + '/' + nameFile  + "' target='_blank'> " + nameType + " </a>");
 
 
     });

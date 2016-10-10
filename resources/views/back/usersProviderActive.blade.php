@@ -55,7 +55,7 @@
                 <td class="center">
                     <a href="#" data-id="{{$provider->id}}" data-name="{{$provider->user->name}}" class="Button-table viewFiles">Ver</a>
                     @foreach($provider->providerFiles as $key => $files)
-                        <input type="hidden" data-type="Archivo {{((int)$key) + 1}}"
+                        <input type="hidden" data-type=" {{$files->providerFiles->fileType->name}}"
                                class="files-{{$provider->id}}" value="{{$files->name}}">
                         @endforeach
                 </td>
