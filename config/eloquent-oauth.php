@@ -7,8 +7,8 @@ return [
     'table' => 'oauth_identities',
     'providers' => [
         'facebook' => [
-            'client_id' => '316017122087656',
-            'client_secret' => '643432decbcbfb5a98e971634d251503',
+            'client_id' => '706814422713940',
+            'client_secret' => '63c665eb7f5a117fede882be74fd1cdf',
             'redirect_uri' => 'http://citi.cityconsumo.com/auth',
             'scope' => [],
         ],
