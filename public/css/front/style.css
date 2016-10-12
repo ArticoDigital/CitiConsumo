@@ -1076,6 +1076,9 @@ figure figcaption {
       .Video div.Video-child .play img, .Video div.Video-child .stop img {
         width: 4.375rem; }
 
+svg.blue g {
+  fill: #05347a; }
+
 #Flex {
   display: -ms-flexbox !important;
   display: flex !important; }
