@@ -2,6 +2,7 @@
 
 @section('Video')
     <source src="{{url('videos/servicios-generales.mov')}}">
+    <source src="{{url('videos/servicios-generales.mp4')}}" type="video/mp4">
 @endsection
 
 @section('Services')
