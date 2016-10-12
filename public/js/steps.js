@@ -1,16 +1,10 @@
 /* REMOVER CLASE "DISABLED" */
 
 nextStep($('#toStep1'), 1);
+enableNext();
 
 $("#Step2").on('keyup', 'input, textarea', function(){
-    var $StepItems = $('#Step2 input');
-    var flag = true;
-    for(var i = 0; i < $StepItems.length; i++){
-        var $StepItem = $StepItems.eq(i);
-        if(!$StepItem.val() && $StepItem.parent().hasClass('required'))
-            flag = false;
-    }
-    if(flag) $('#toStep3, .gray3').removeClass('disabled');
+    enableNext();
 });
 
 $("#Step3 #files").on('change', function(){
@@ -39,6 +33,7 @@ $('#Steps').on('click', '[class*="gray"]', function(){
         nextStep($(this), 1);
     }
     else if($(this).hasClass('gray2')){
+        enableNext();
         nextStep($(this), 2);
     }
     else if($(this).hasClass('gray3')){
@@ -70,9 +65,10 @@ function nextStep(element, step){
     $("html, body").animate({ scrollTop: $('main').position().top }, 500);
 }
 
-if($('[name="service"]').is(':checked')){
-    getServiceChecked($(this));
-}
+$('[name="service"]').each(function () {
+    if(this.checked)
+        getServiceChecked($('#' +  this.id));
+});
 
 $('[name="service"]').on('change', function(){
     getServiceChecked($(this));
@@ -81,7 +77,7 @@ $('[name="service"]').on('change', function(){
 function getServiceChecked($this){
     var element;
     $('#toStep2, .gray2').removeClass('disabled');
-    $('.changeInputs label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
+    $('.changeInputs label').removeClass('required').hide().children('input').removeAttr('name').removeAttr('id');
     $('#toStep3, .gray3').addClass('disabled');
 
     if($this.attr('id') == 'foods')
@@ -105,3 +101,14 @@ function getServiceChecked($this){
 $('.datetimepicker_mask, [id*="address"]').on('click keydown', function(){
     $("html, body").animate({ scrollTop: $(document).height() }, 500);
 });
+
+function enableNext(){
+    var $StepItems = $('#Step2 input');
+    var flag = true;
+    for(var i = 0; i < $StepItems.length; i++){
+        var $StepItem = $StepItems.eq(i);
+        if(!$StepItem.val() && $StepItem.parent().hasClass('required'))
+            flag = false;
+    }
+    if(flag) $('#toStep3, .gray3').removeClass('disabled');
+}

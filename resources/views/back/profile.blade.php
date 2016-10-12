@@ -214,7 +214,7 @@
                   <button class="button menu-item-out">Actualizar perfil</button>
               </div>
 
-          @if(isset($userprofile->provider) && $userprofile->provider->isActive)
+          @if(isset($userprofile->provider) && $userprofile->provider->isActive && isset($buysNotPayed))
               <div class=" col-3 medium-12 small-12">
                   <div class="Image-money row center" style="margin-top:10px">
                       <div class="circle-money">
@@ -235,7 +235,7 @@
       </div>
 
     </form>
-        @if($userprofile->role_id != 3)
+        @if($userprofile->role_id == 2)
             <div class="row border-bottom" style="margin-bottom: 30px">
                 <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive) Servicios ({{count($services)}}) @endif </div>
             </div>
@@ -314,7 +314,7 @@
         </article>
     </section>
 
-     @if($buysNotPayed['value'])
+     @if(isset($buysNotPayed['value']))
      <!--*********** Formulario de desembolso *****************-->
      <form method="POST" action="{{'insertOutlay'}}">
          <input type="hidden" name="_token" value="{{ csrf_token() }}">
