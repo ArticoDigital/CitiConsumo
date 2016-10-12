@@ -34,7 +34,7 @@
                 </g>
             </svg>
     </div>
-    <header class="Header Header_auth">
+    <header class="Header_auth">
         <div class="BarNav row middle between">
             <nav class="row col-10 small-10 offset-2 end">
                 <ul class="Menu row between">

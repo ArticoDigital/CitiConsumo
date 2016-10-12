@@ -1423,7 +1423,43 @@ body.getReset #resetpassword label {
   background-size: cover; }
 
 .Header_auth {
-  min-height: auto !important; }
+  margin: auto;
+  min-height: auto !important;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .Header_auth a, .Header_auth q {
+    color: #fff; }
+  .Header_auth q:before,
+  .Header_auth q:after {
+    visibility: hidden; }
+  .Header_auth .BarNav {
+    min-height: 6.25rem; }
+  .Header_auth .icon {
+    margin: 0;
+    padding-right: 1.25rem; }
+    .Header_auth .icon img {
+      height: 100%; }
+  .Header_auth .Services {
+    padding-bottom: 2.375rem;
+    color: #fff; }
+    .Header_auth .Services .Images, .Header_auth .Services .Leyend {
+      text-align: center;
+      padding: 3.125rem; }
+    .Header_auth .Services .Leyend {
+      font-size: 1.5rem; }
+    .Header_auth .Services .Service-image {
+      text-align: center;
+      width: 9.375rem; }
+    .Header_auth .Services .Arrow {
+      transform: rotate(90deg);
+      width: 1.5625rem;
+      height: 1.5625rem;
+      font-weight: 800;
+      margin: auto; }
 
 .backgroundVideo {
   overflow: hidden;

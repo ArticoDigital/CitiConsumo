@@ -46,7 +46,49 @@
   background-size: cover
 
 .Header_auth
-   min-height: auto !important;
+  margin: auto
+  min-height: auto !important
+  display: flex
+  //overflow: hidden
+  flex-direction: column
+  justify-content: space-between
+  a, q
+    color: $white
+  q:before,
+  q:after
+    visibility: hidden
+
+  .BarNav
+    min-height: rem(100)
+
+  .icon
+    margin: 0
+    padding-right: rem(20)
+    img
+      height: 100%
+
+  .Services
+    padding-bottom: rem(38)
+    color: $white
+
+    .Images, .Leyend
+      text-align: center
+      padding: rem(50)
+
+    .Leyend
+      font-size: 1.5rem
+
+    .Service-image
+      text-align: center
+      width: rem(150)
+
+    .Arrow
+      transform: rotate(90deg)
+      width: rem(25)
+      height: rem(25)
+      font-weight: 800
+      margin: auto
+   
 
 .backgroundVideo
   overflow: hidden
