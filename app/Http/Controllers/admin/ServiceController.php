@@ -25,7 +25,7 @@ class ServiceController extends Controller
         /********** Notificar que el producto fue rechazado por mail **********/
         
         if($request->ajax())
-            return ['message' => 'El producto ha sido eliminado'];
+            return ['message' => 'El servicio ha sido eliminado'];
     }
 
     public function editService(RoleRequest $request, $id){
@@ -96,6 +96,6 @@ class ServiceController extends Controller
             }
         }
 
-        return redirect()->route('myProfile')->with(['alertTitle' => '¡Producto actualizado!', 'alertText' => 'El producto ha sido actualizado con éxito.']);
+        return redirect()->route('myProfile')->with(['alertTitle' => '¡Servicio actualizado!', 'alertText' => 'El servicio ha sido actualizado con éxito.']);
     }
 }
