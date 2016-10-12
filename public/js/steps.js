@@ -71,22 +71,22 @@ function nextStep(element, step){
 }
 
 if($('[name="service"]').is(':checked')){
-    getServiceChecked();
+    getServiceChecked($(this));
 }
 
 $('[name="service"]').on('change', function(){
-    getServiceChecked();
+    getServiceChecked($(this));
 });
 
-function getServiceChecked(){
+function getServiceChecked($this){
     var element;
     $('#toStep2, .gray2').removeClass('disabled');
     $('.changeInputs label').removeClass('required').hide().children('input').val('').removeAttr('name').removeAttr('id');
     $('#toStep3, .gray3').addClass('disabled');
 
-    if($(this).attr('id') == 'foods')
+    if($this.attr('id') == 'foods')
         element = 'foodsInputs';
-    else if($(this).attr('id') == 'pets')
+    else if($this.attr('id') == 'pets')
         element = 'petsInputs';
     else
         element = 'servicesInputs';

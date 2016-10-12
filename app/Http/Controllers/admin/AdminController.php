@@ -358,7 +358,7 @@ class AdminController extends Controller
             //En este punto se debe notificar al administrador para la aprobacion del proveedor
         }
 
-        return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus productos.']);
+        return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podras postular tus servicios! recibiras un correo de confirmacion!']);
     }
 
     public function isProvider($user_id)
