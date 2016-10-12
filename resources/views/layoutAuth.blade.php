@@ -35,7 +35,7 @@
             </svg>
         </figure>
     </div>
-    <header class="Header" style="min-height: auto">
+    <header class="Header" style="min-height: auto !important;">
         <div class="BarNav row middle between">
             <nav class="row col-10 small-10 offset-2 end">
                 <ul class="Menu row between">
