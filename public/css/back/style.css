@@ -400,6 +400,11 @@ textarea {
     flex-basis: 100%;
     max-width: 100%; } }
 
+.from-small,
+.from-medium,
+.from-large {
+  display: none; }
+
 .offset-small-1 {
   margin-left: 8.3333333333%; }
 
@@ -436,7 +441,17 @@ textarea {
 .offset-small-12 {
   margin-left: 100%; }
 
+@media (min-width: 36rem) {
+  .to-small {
+    display: none; }
+  .from-small {
+    display: inherit; } }
+
 @media (min-width: 45rem) {
+  .to-medium {
+    display: none; }
+  .from-medium {
+    display: inherit; }
   .offset-medium-1 {
     margin-left: 8.3333333333%; }
   .offset-medium-2 {
@@ -463,6 +478,10 @@ textarea {
     margin-left: 100%; } }
 
 @media (min-width: 65rem) {
+  .to-large {
+    display: none; }
+  .from-large {
+    display: inherit; }
   .offset-1 {
     margin-left: 8.3333333333%; }
   .offset-2 {
