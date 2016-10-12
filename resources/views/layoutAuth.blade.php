@@ -37,9 +37,9 @@
     </div>
     <header class="Header" style="min-height: auto">
         <div class="BarNav row middle between">
-            <nav class="row col-10 offset-2 end">
+            <nav class="row col-10 small-10 offset-2 end">
                 <ul class="Menu row between">
-                    <li><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                     @if(!Auth::check())
                         @yield('action')
                     @else
