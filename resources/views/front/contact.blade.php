@@ -7,10 +7,10 @@
 
     <section class="section-content row between">
         <h1 class="center">Contacto</h1>
-        <div style="text-align:center; width:100%"><p>Llamanos, escribenos o por que no, utiliza nuestras redes sociales! te responderemos con la solucion, no con excusas!</p></div>
+        <div style="text-align:center; width:100%"><p>Llámanos, escríbenos o por qué no, utiliza nuestras redes sociales. ¡Te responderemos con la solución, no con excusas!</p></div>
         @if(count($errors) > 0)
             <div class="row middle center error-message">
-               <p>Debes llenar todos los campos para el envio del mensaje.</p>
+               <p>Debes llenar todos los campos para el envío del mensaje.</p>
             </div>
         @elseif(isset($success))
             <div class="row middle center success-message">

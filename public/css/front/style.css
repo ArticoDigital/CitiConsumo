@@ -2096,8 +2096,11 @@ body.faq, body.documents, body.terms {
       font-size: 2.5rem; } }
 
 .contact .contact-cols, .contactPost .contact-cols {
-  width: 100%;
-  margin-top: 3.5rem; }
+  margin-top: 0.5rem;
+  width: 100%; }
+  @media (min-width: 45rem) {
+    .contact .contact-cols, .contactPost .contact-cols {
+      margin-top: 3.5rem; } }
   .contact .contact-cols img, .contactPost .contact-cols img {
     width: 40px !important; }
   .contact .contact-cols span, .contactPost .contact-cols span {
@@ -2120,12 +2123,16 @@ body.faq, body.documents, body.terms {
   height: 99vh; }
 
 .contact h1, .contactPost h1 {
+  margin-top: 6rem;
   text-align: center;
   font-size: 2.5rem;
   color: white;
   font-weight: 400;
-  width: 100%;
-  margin-top: 8rem; }
+  width: 100%; }
+  @media (min-width: 45rem) {
+    .contact h1, .contactPost h1 {
+      text-align: center;
+      margin-top: 8rem; } }
 
 .contact p, .contactPost p {
   font-size: 1.1rem;
