@@ -1120,7 +1120,7 @@ body {
     width: 90%;
     max-width: 300px; }
   #preloader.hide {
-    top: -100%; }
+    top: -120%; }
   #preloader #signal-1,
   #preloader #signal-2,
   #preloader #signal-3 {
