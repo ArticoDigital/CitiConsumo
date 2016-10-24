@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers;
 
+use Agrosellers\Services\ZonaPagos;
 use City\Entities\FoodType;
 use City\Entities\PetSize;
 use Illuminate\Http\Request;
@@ -92,6 +93,11 @@ class HomeController extends Controller
     
     public function terms(){
         return view('front.terms');
+    }
+
+    public function finalPay(Request $request){
+        $zp = ZonaPagos::create();
+        $zp->insertPayResult($request->all());
     }
 
     private function Contactvalidator($inputs)
