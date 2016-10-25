@@ -12,7 +12,7 @@
       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" id="token">
       <input type="hidden" name="user_id" value="{{ $userprofile->id }}">
       <div class="row" style="padding: 30px 0px;">
-          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value']) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
+          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-4 @endif medium-6 small-12 row" style="flex-direction: column; align-items: center; padding: 0px 10px;">
               <div style="position:relative">
                   <div class="image-cropper row middle center">
                     @if($userprofile->profile_image)
@@ -43,7 +43,7 @@
                  <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
                  <button class="button menu-item-out-movile">Actualizar perfil</button>
               </div>
-          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value']) col-5 @endif medium-6 small-12">
+          <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-5 @endif medium-6 small-12">
                   <p class="profile-title" style="position: relative;">Datos personales<!--<img class="small-icon-2" src="{{url('img/lapiz-edicion.svg')}}" alt="">--></p>
                   <div class="profile-item">
                       <label for="name" class="row middle">
@@ -214,16 +214,18 @@
                   <button class="button menu-item-out">Actualizar perfil</button>
               </div>
 
-          @if(isset($userprofile->provider) && $userprofile->provider->isActive && $buysNotPayed['value'] > 0)
+          @if(isset($userprofile->provider) && $userprofile->provider->isActive && isset($buysNotPayed))
               <div class=" col-3 medium-12 small-12">
                   <div class="Image-money row center" style="margin-top:10px">
                       <div class="circle-money">
                           <div class="front">
                               <img src="{{asset('img/blue.svg')}}" alt="azul">
                               <div id="inner-text" class="row center" style="flex-direction: column; align-items: center;">
-                                  <span class="txt-value">Valor recaudado</span>
-                                  <span class="profile-value">${{number_format($buysNotPayed['value'], 0, '.', '.')}}</span>
-                                  <a href="#" id="insertOutlay" class="btn-charge">Cobrar</a>
+                                      <span class="txt-value">Valor recaudado</span>
+                                      <span class="profile-value">${{number_format($buysNotPayed['value'], 0, '.', '.')}}</span>
+                                  @if($buysNotPayed['value'] > 0)
+                                      <a href="#" id="insertOutlay" class="btn-charge">Cobrar</a>
+                                  @endif
                               </div>
                           </div>
                       </div>
@@ -233,7 +235,7 @@
       </div>
 
     </form>
-        @if($userprofile->role_id != 3)
+        @if($userprofile->role_id == 2)
             <div class="row border-bottom" style="margin-bottom: 30px">
                 <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive) Servicios ({{count($services)}}) @endif </div>
             </div>
@@ -312,7 +314,7 @@
         </article>
     </section>
 
-     @if($buysNotPayed['value'])
+     @if(isset($buysNotPayed['value']))
      <!--*********** Formulario de desembolso *****************-->
      <form method="POST" action="{{'insertOutlay'}}">
          <input type="hidden" name="_token" value="{{ csrf_token() }}">

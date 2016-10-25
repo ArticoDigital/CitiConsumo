@@ -44,7 +44,7 @@ class AdminController extends Controller
         if(isset($user->provider)){
             if($user->provider->isActive)
                 return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
-            return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus productos.']);
+            return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus servicios.']);
         }
         return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Registrate como proveedor!', 'alertText' => 'Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servicios.']);
     }
@@ -60,7 +60,9 @@ class AdminController extends Controller
         $validate = $this->validator($inputs);
         if ($validate->fails())
             return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
-
+        if(!array_key_exists('file3', $inputs))
+            return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => 'Debes suber mínimo 3 imágenes']);
+        
         $inputs['provider_id'] = $user->provider->id;
         $inputs['location'] = $inputs['address'];
         $service = Service::create($inputs);
@@ -102,7 +104,7 @@ class AdminController extends Controller
             }
         }
 
-        return redirect()->route('addService')->with(['alertTitle' => '¡Producto creado!', 'alertText' => 'El producto se ha creado satisfactoriamente']);
+        return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
     }
 
     public function uploadTempFiles(Request $request){
@@ -358,7 +360,7 @@ class AdminController extends Controller
             //En este punto se debe notificar al administrador para la aprobacion del proveedor
         }
 
-        return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus productos.']);
+        return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podras postular tus servicios! recibiras un correo de confirmacion!']);
     }
 
     public function isProvider($user_id)

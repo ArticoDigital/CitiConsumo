@@ -40,3 +40,21 @@ function setCharsLength(){
     if(size > 800) nChars.css('color', 'red');
     else nChars.css('color', 'green');
 }
+
+$('#PlaceIcon').on('click', function(){
+    if (navigator.geolocation && $(this).hasClass('blue')) {
+        $(this).children('svg').toggleClass('blue');
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            $('#lat').val(position.coords.latitude);
+            $('#lng').val(position.coords.longitude);
+            $('#autocomplete').val('Posición actual');
+
+        }, function(error) {
+            console.log(error);
+        });
+    }
+    else{
+        alert('No es posible obtener su ubicación actual');
+    }
+});

@@ -197,15 +197,15 @@
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-4 medium-12 small-12" for="date">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['food']['food_time']}}">
+                            <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['food']['food_time']}}">
                         </label>
                         <label class="col-4 medium-12 small-12" for="price">
                             <span class="text">Valor del plato</span><br>
-                            <input type="number" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
+                            <input type="number" id="price" fakeName="price" name="price" value="{{$service['price']}}" autocomplete="off">
                         </label>
                         <label for="food_type" class="col-4 medium-12 small-12">
                             <span class="text">Tipo de comida</span><br>
-                            <select class="js-example-basic-single" id="food_type" name="food_type">
+                            <select class="js-example-basic-single" id="food_type" fakeName="food_type" name="food_type">
                                 @foreach($foodTypes as $foodType)
                                     <option value="{{$foodType->id}}" @if($service['food']['food_type_id'] == $foodType->id) selected @endif >{{$foodType->name}}</option>
                                 @endforeach
@@ -216,11 +216,12 @@
                     <div id="petsInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-6 medium-6 small-12" for="date">
                             <span class="text">Fechas</span><br>
-                            <input class="datetimepicker_mask dateRange" id="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['pet']['date_start'] . ' - ' . $service['pet']['date_end']}}">
+                            <input class="datetimepicker_mask dateRange" fakeName="date" id="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['pet']['date_start'] . ' - ' . $service['pet']['date_end']}}">
                         </label>
+
                         <label for="size" class="col-6 medium-6 small-12">
                             <span class="text">Tamaños</span><br>
-                            <select class="js-example-basic-single" id="size" name="size">
+                            <select class="js-example-basic-single" id="size" fakeName="size" name="size">
                                 @foreach($sizes as $size)
                                     <option value="{{$size->id}}" @if($service['pet']['pet_sizes'] == $size->id) selected @endif>{{$size->name}}</option>
                                 @endforeach
@@ -229,23 +230,23 @@
 
                         <label class="col-6 medium-6 small-12" for="pets_quantity">
                             <span class="text">Número de animales</span><br>
-                            <input type="number" id="pets_quantity" name="pets_quantity" value="{{$service['pet']['pets_quantity']}}" autocomplete="off">
+                            <input type="number" id="pets_quantity" name="pets_quantity" fakeName="pets_quantity" value="{{$service['pet']['pets_quantity']}}" autocomplete="off">
                         </label>
 
                         <label class="col-6 medium-6 small-12" for="price">
                             <span class="text">Precio por mascota</span><br>
-                            <input type="number" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
+                            <input type="number" id="price" fakeName="price" name="price" value="{{$service['price']}}" autocomplete="off">
                         </label>
                     </div>
                     @elseif($service['general'])
                     <div id="servicesInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-4 medium-12 small-12" for="dateRange">
                             <span class="text">Fecha</span><br>
-                            <input class="datetimepicker_mask dateSingle" id="dateRange" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['general']['date']}}">
+                            <input class="datetimepicker_mask dateSingle" id="dateRange" fakeName="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['general']['date']}}">
                         </label>
                         <label for="general_type" class="col-4 medium-12 small-12">
                             <span class="text">Tipo de servicio</span><br>
-                            <select class="js-example-basic-single" id="general_type" name="general_type">
+                            <select class="js-example-basic-single" id="general_type" name="general_type" fakeName="general_type">
                                 @foreach($generalTypes as $generalType)
                                     <option value="{{$generalType->id}}" @if($service['general']['general_type_id'] == $generalType->id) selected @endif>{{$generalType->name}}</option>
                                 @endforeach
@@ -253,7 +254,7 @@
                         </label>
                         <label class="col-4 medium-12 small-12" for="price">
                             <span class="text">Precio por hora</span><br>
-                            <input type="number" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
+                            <input type="number" id="price" name="price" fakeName="price" value="{{$service['price']}}" autocomplete="off">
                         </label>
                     </div>
                     @endif
@@ -372,41 +373,6 @@
                 alert('Solo puedes subir 5 imágenes');
             }
         });
-
-        /*filesInput.on("change", function(e) {
-
-            var fileInput = document.getElementById('files');
-            var arrayFiles = fileInput.files;
-            var files = new FormData();
-
-            for(var i = 0; i < arrayFiles.length; i++){
-                files.append('file' + i, arrayFiles[i]);
-            }
-
-            files.append('_token', $('#token').val());
-
-            $.ajax({
-                url : '{{route("uploadTempFiles")}}',
-                type: 'POST',
-                contentType: false,
-                data: files,
-                processData: false,
-                cache : false,
-                success: function(data){
-                    var result = $("#result");
-                    var images = data.temp;
-                    var position = result.children().length;
-                    for(var i = 0; i < images.length; i++){
-                        position += 1;
-                        result.append("<article class='File'><input type='hidden' name='file" + position +"' value='" +  images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
-                    }
-                },
-                error: function(error){
-                    console.log(error);
-                    alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
-                }
-            });
-        });*/
 
         $('form').on('submit', function(){
             var $file = $('#result .File'), positions = '';

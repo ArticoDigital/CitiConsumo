@@ -67,17 +67,35 @@
       flex-basis: ($i / $columns) * 100%
       max-width: ($i / $columns) * 100%
 
+.from-small,
+.from-medium,
+.from-large
+  display: none
 
 @for $i from 1 through $columns
   .offset-small-#{$i}
     margin-left: ($totalContainer / $columns) * $i
 
+@include respond-to(small)
+  .to-small
+    display: none
+  .from-small
+    display: inherit
+
 @include respond-to(medium)
+  .to-medium
+    display: none
+  .from-medium
+    display: inherit
   @for $i from 1 through $columns
     .offset-medium-#{$i}
       margin-left: ($totalContainer / $columns) * $i
 
 @include respond-to(large)
+  .to-large
+    display: none
+  .from-large
+    display: inherit
   @for $i from 1 through $columns
     .offset-#{$i}
       margin-left: ($totalContainer / $columns) * $i

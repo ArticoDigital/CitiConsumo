@@ -3,6 +3,7 @@
 namespace City\Http\Controllers;
 
 use City\Entities\FoodType;
+use City\Entities\PetSize;
 use Illuminate\Http\Request;
 use City\Entities\PetBreed;
 use City\Entities\GeneralType;
@@ -20,17 +21,18 @@ class HomeController extends Controller
 
     public function petsIndex(){
         $breeds = PetBreed::all();
-        return view('front.pets', ['breeds' => $breeds]);
+        $sizes = PetSize::all();
+        return view('front.pets', compact('breeds', 'sizes'));
     }
 
     public function servicesIndex(){
         $services = GeneralType::all();
-        return view('front.generalServices', ['services' => $services]);
+        return view('front.generalServices', compact('services'));
     }
 
     public function foodsIndex(){
         $foods = FoodType::all();
-        return view('front.foods', ['foods' => $foods]);
+        return view('front.foods', compact('foods'));
     }
 
     public function whoweare(){
