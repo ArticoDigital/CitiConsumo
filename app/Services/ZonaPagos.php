@@ -1,8 +1,8 @@
 <?php
 
-namespace Agrosellers\Services;
+namespace City\Services;
 use GuzzleHttp\Client;
-use Agrosellers\Entities\Order;
+use City\Entities\Buy;
 
 class ZonaPagos {
 
