@@ -1132,7 +1132,8 @@ svg#Steps .disabled {
     padding: 0.9375rem 0; }
   .Steps .Step {
     width: 25%;
-    height: 100%;
+    height: 0;
+    overflow: hidden;
     float: left;
     margin-top: 1.875rem; }
   .Steps #Step1 {
@@ -1166,6 +1167,9 @@ svg#Steps .disabled {
   -ms-flex-align: center;
   align-items: center;
   height: 100px; }
+
+.Step.isActive {
+  height: auto !important; }
 
 .TextOver {
   position: relative;

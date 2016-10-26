@@ -387,11 +387,6 @@
             $('[name="positions"]').val(positions);
         });
 
-        $(document).keydown(function(e) {
-            if (e.keyCode == 9) //Tab press
-                e.preventDefault();
-        });
-
         setCharsLength();
         $('#description').on('change keyup paste', function() {
             $.ajax({beforeSend: function(){setCharsLength();}});

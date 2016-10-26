@@ -47,22 +47,17 @@ $('#Steps').on('click', '[class*="gray"]', function(){
 /* EJECUTAR PASO A PASO */
 function nextStep(element, step){
     var $all = $('[class*="gray"]'),
-        $form = $('.StepsForm'),
-        height = $('#Step' + step).height();
+        $form = $('.StepsForm');
 
     if(!element.hasClass('disabled')){
         $all.removeClass('active');
         $form.css('left', -(step * 100 - 100) + '%');
-/*             .parent().css('height', (60 + $('#Steps').height() + height) + 'px');
-        if(step == 3)
-            $form.parent().css('height', 'auto');*/
+        $form.children('.Step').removeClass('isActive').eq(step - 1).addClass('isActive');
 
         for(var i = 2; i <= step; i++){
             $('.gray' + i).addClass('active');
         }
     }
-
-    $("html, body").animate({ scrollTop: $('main').position().top }, 500);
 }
 
 $('[name="service"]').each(function () {
@@ -87,9 +82,15 @@ function getServiceChecked($this){
     else
         element = 'servicesInputs';
 
-    element = $('#' + element + ' label').addClass('required').show();
+    element = $('#' + element + ' label');
+    element.addClass('required').show();
 
     var inputs = element.children('input');
+    inputs.last().keydown(function(e) {
+        if (e.keyCode == 9) //Tab press
+            e.preventDefault();
+    });
+
     for(var i = 0; i < inputs.length; i++){
         var input = inputs.eq(i),
             fakeName = input.attr('fakeName');
@@ -98,7 +99,7 @@ function getServiceChecked($this){
 }
 
 
-$('.datetimepicker_mask, [id*="address"]').on('click keydown', function(){
+$('.datetimepicker_mask').on('click keydown', function(){
     $("html, body").animate({ scrollTop: $(document).height() }, 500);
 });
 

@@ -29,7 +29,8 @@ svg#Steps .disabled
 
   .Step
     width: 25%
-    height: 100%
+    height: 0
+    overflow: hidden
     float: left
     margin-top: rem(30)
 
@@ -59,3 +60,6 @@ svg#Steps .disabled
   justify-content: center
   align-items: center
   height: 100px
+
+.Step.isActive
+  height: auto !important
