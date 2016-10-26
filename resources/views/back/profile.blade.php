@@ -274,7 +274,7 @@
                                                 </div>
                                             </article>
                                         </td>
-                                        <td data-th="Price" class="center"><b>${{number_format($service->price, 0, '.', '.')}}</b></td>
+                                        <td data-th="Price" class="center"><b>${{$service->price}}</b></td>
                                         <td data-th="Enable">
                                             @if($service->isValidate)
                                             <div class="switch">

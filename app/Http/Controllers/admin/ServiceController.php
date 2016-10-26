@@ -53,7 +53,7 @@ class ServiceController extends Controller
         $service->update([
             'name' => $inputs['name'],
             'description' => $inputs['description'],
-            'price' => str_replace('.', '', $inputs['price']),
+            'price' => $inputs['price'] = str_replace(['.', ','], '', $inputs['price']),
             'location' => $inputs['address'],
             'lat' => $inputs['lat'],
             'lng' => $inputs['lng'],

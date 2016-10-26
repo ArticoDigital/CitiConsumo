@@ -62,9 +62,10 @@ class AdminController extends Controller
             return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
         if(!array_key_exists('file3', $inputs))
             return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => 'Debes suber mínimo 3 imágenes']);
-        
+
         $inputs['provider_id'] = $user->provider->id;
         $inputs['location'] = $inputs['address'];
+        $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
         $service = Service::create($inputs);
 
         if($inputs['service'] == 1){
