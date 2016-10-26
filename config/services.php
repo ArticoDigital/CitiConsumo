@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'cityconsumo.com',
+        'secret' => 'key-f5113f1e1d9bf869acdb0204e124935c',
     ],
 
     'ses' => [
