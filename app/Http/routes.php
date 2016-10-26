@@ -7,7 +7,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'admin', 'middleware' => ['aut
 require __DIR__ . '/Routes/front.php';
 require __DIR__ . '/Routes/auth.php';
 
-Rourte::get('mail',function(){
+Route::get('mail',function(){
 
     Mail::send('emails.test', ['user' => 'juan'], function ($m)  {
         $m->from('no-reply@cityconsumo.com ', 'Citiconsumo');
