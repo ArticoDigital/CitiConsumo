@@ -104,17 +104,13 @@ function showInfoProduct(data) {
     elements.$valueServiceInput.val(data.price);
     elements.$idServiceInput.val(data.id);
 
-
-    console.log(typeService)
-    console.log(data)
-    $('.InfoServices').addClass('show')
+    $('.InfoServices').addClass('show');
 }
 
 function initMap() {
-
     if (navigator.geolocation) {
+        getIpCoords();
         navigator.geolocation.getCurrentPosition(function (position) {
-
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -122,13 +118,11 @@ function initMap() {
 
             succesfull(pos);
         }, function (error) {
-            getIpCoords();
             if (error.code == error.PERMISSION_DENIED)
                 console.log(error);
         });
 
     } else {
-        // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
