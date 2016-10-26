@@ -71,7 +71,8 @@ class AdminController extends Controller
             Food::create([
                 'food_time' => date_create($inputs['date']),
                 'service_id' => $service->id,
-                'food_type_id' => $inputs['food_type']
+                'food_type_id' => $inputs['food_type'],
+                'foods-quantity' => $inputs['foods-quantity'],
             ]);
         }
         elseif($inputs['service'] == 2) {
@@ -133,6 +134,8 @@ class AdminController extends Controller
             'price' => 'required|numeric',
         ];
 
+        if ($inputs['service'] == 1)
+            $rules['foods-quantity'] = 'required|numeric';
         if ($inputs['service'] == 2)
             $rules['pets-quantity'] = 'required|numeric';
 

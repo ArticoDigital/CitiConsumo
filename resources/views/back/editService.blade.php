@@ -195,21 +195,25 @@
                 <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
                     @if($service['food'])
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-12 small-12" for="date">
+                        <label class="col-3 medium-12 small-12" for="date">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['food']['food_time']}}">
                         </label>
-                        <label class="col-4 medium-12 small-12" for="price">
+                        <label class="col-3 medium-12 small-12" for="price">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" fakeName="price" name="price" value="{{$service['price']}}" autocomplete="off">
                         </label>
-                        <label for="food_type" class="col-4 medium-12 small-12">
+                        <label for="food_type" class="col-3 medium-12 small-12">
                             <span class="text">Tipo de comida</span><br>
                             <select class="js-example-basic-single" id="food_type" fakeName="food_type" name="food_type">
                                 @foreach($foodTypes as $foodType)
                                     <option value="{{$foodType->id}}" @if($service['food']['food_type_id'] == $foodType->id) selected @endif >{{$foodType->name}}</option>
                                 @endforeach
                             </select>
+                        </label>
+                        <label class="col-3 medium-12 small-12" for="price" style="display:none">
+                            <span class="text">Platos disponibles</span><br>
+                            <input type="number" id="foods-quantity" fakeName="foods-quantity" value="{{$service['food']['foods-quantity']}}" autocomplete="off">
                         </label>
                     </div>
                     @elseif($service['pet'])

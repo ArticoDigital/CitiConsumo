@@ -62,7 +62,8 @@ class ServiceController extends Controller
         if($inputs['service'] == 1) {
             $service->food->update([
                 'food_time' => date_create($inputs['date']),
-                'food_type_id' => $inputs['food_type']
+                'food_type_id' => $inputs['food_type'],
+                'foods-quantity' => $inputs['foods-quantity']
             ]);
         }
         elseif($inputs['service'] == 2) {

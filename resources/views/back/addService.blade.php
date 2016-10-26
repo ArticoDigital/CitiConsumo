@@ -196,21 +196,25 @@
                 </label>
                 <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
-                        <label class="col-4 medium-12 small-12" for="date" style="display:none">
+                        <label class="col-3 medium-12 small-12" for="date" style="display:none">
                             <span class="text">Fecha</span><br>
                             <input class="datetimepicker_mask dateSingle" readonly="true" id="date" fakeName="date" type="text" autocomplete="off" value="{{old('date')}}">
                         </label>
-                        <label class="col-4 medium-12 small-12" for="price" style="display:none">
+                        <label class="col-3 medium-12 small-12" for="price" style="display:none">
                             <span class="text">Valor del plato</span><br>
                             <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
                         </label>
-                        <label for="food_type" class="col-4 medium-12 small-12" style="display:none">
+                        <label for="food_type" class="col-3 medium-12 small-12" style="display:none">
                             <span class="text">Tipo de comida</span><br>
                             <select class="js-example-basic-single" id="food_type" name="food_type">
                                 @foreach($foodTypes as $foodType)
                                     <option value="{{$foodType->id}}">{{$foodType->name}}</option>
                                 @endforeach
                             </select>
+                        </label>
+                        <label class="col-3 medium-12 small-12" for="price" style="display:none">
+                            <span class="text">Platos disponibles</span><br>
+                            <input type="number" id="foods-quantity" fakeName="foods-quantity" value="{{old('foods-quantity')}}" autocomplete="off">
                         </label>
                     </div>
                     <div id="petsInputs" class="changeInputs col-12 medium-12 small-12 row">
