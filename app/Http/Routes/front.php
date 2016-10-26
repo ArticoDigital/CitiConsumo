@@ -60,3 +60,8 @@ Route::get('terminos', [
     'uses' => 'HomeController@terms',
     'as' => 'terms'
 ]);
+
+Route::get('zonapagos', [
+    'uses' => 'HomeController@finalPay',
+    'as' => 'finalPay'
+]);
