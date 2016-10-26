@@ -104,6 +104,7 @@ function showInfoProduct(data) {
     elements.$valueServiceInput.val(data.price);
     elements.$idServiceInput.val(data.id);
 
+    $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description +'">');
     $('.InfoServices').addClass('show');
 }
 

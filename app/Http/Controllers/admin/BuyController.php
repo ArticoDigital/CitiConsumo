@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers\admin;
 
+use City\Services\ZonaPagos;
 use Illuminate\Http\Request;
 
 use City\Http\Requests\RoleRequest;
@@ -60,19 +61,25 @@ class BuyController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
+
+        $inputs = $request->all();
+        $inputs["id_pay"] = date('YmdHis') . rand(100, 999);
+        $zp = ZonaPagos::create();
+        $id = $zp->invoiceRequest($inputs);
+
+        return redirect()->to("https://www.zonapagos.com/" . env('ZP_ROUTE_CODE') . "/pago.asp?estado_pago=iniciar_pago&identificador=" . $id);
+
+/*        Buy::create([
+            'service_id' => $inputs['idService'],
+            'products_quantity' => $inputs['quantity'],
+            /* para el registro del desembolso */
+    /*        'state_id' => 1,
+            'value' => $inputs['value'],
+            'user_id' => Auth::user()->id
+        ]);*/
         
-        $data = [''];
-        $data['service_id'] =  $request->input('idService');
-        $data['products_quantity'] =  $request->input('quantity');
-        /* para el registro del desembolso */
-        $data['state_id'] =  1;
-        $data['value'] =  $request->input('value');
-        $data['user_id'] =  Auth::user()->id;
 
-        Buy::create($data);
-
-        return redirect()->to('admin')->with(['alertTitle' => 'Compra exitosa', 'alertText' => 'Felicitaciones su compra se ha realizado con éxito']);
-
+        /*return redirect()->to('admin')->with(['alertTitle' => 'Compra exitosa', 'alertText' => 'Felicitaciones su compra se ha realizado con éxito']);*/
     }
 
 }

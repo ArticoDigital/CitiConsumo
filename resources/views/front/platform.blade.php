@@ -161,8 +161,9 @@
 <aside class="InfoServices row middle center">
     <div class="InfoServices-content row">
         <div class="InfoServices-close">x</div>
-        <div class="col-6 medium-6 small-12"><figure id="imageService" class="col-6 medium-6 small-12">
-        </figure></div>
+        <div class="col-6 medium-6 small-12">
+            <figure id="imageService" class="col-6 medium-6 small-12"></figure>
+        </div>
         <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
             <h3 id="availableService">5 platos disponibles</h3>
@@ -206,9 +207,62 @@
                     @endif
                     <val id="valueService">$12.000</val>
                 </div>
+                <div id="PayForm">
+                    <span class="close">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="auto" viewBox="0 0 49.685 82.689" enable-background="new 0 0 49.685 82.689" xml:space="preserve">
+                            <path fill="#fff" d="M19.654,41.344l28.089-28.089c2.484-2.485,2.6-6.399,0.256-8.742l-2.828-2.829 c-2.343-2.343-6.257-2.228-8.742,0.256L1.937,36.433c-1.37,1.37-2.015,3.175-1.929,4.911c-0.086,1.736,0.56,3.541,1.929,4.911 l34.492,34.492c2.485,2.484,6.399,2.6,8.742,0.256l2.828-2.828c2.344-2.343,2.229-6.257-0.256-8.742L19.654,41.344z"/>
+                        </svg>
+                    </span>
+                    <section>
+                        <h2 id="NameService">Formulario de pago</h2>
+                        <h3 id="availableService">Llene los campos para finalizar su compra</h3>
+                        <article class="row" style="margin-top:30px">
+                            <div class="profile-item col-12">
+                                <label for="dni_type" class="row middle">
+                                    <span class="col-6 small-6">Tipo de documento(*)</span>
+                                    <select name="dni_type" id="dni_type" class="col-6 small-6">
+                                        <option value="1">CC Cedula de Ciudadanía</option>
+                                        <option value="2">CE Cedula de Extranjería</option>
+                                        <option value="3">NIT</option>
+                                        <option value="6">PP Pasaporte</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="profile-item col-12">
+                                <label for="dni" class="row middle">
+                                    <span class="col-6 small-6">Número de documento(*)</span>
+                                    <input class="col-6 small-6" name="dni" id="dni" type="text" value="">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="profile-item col-12">
+                                <label for="name" class="row middle">
+                                    <span class="col-6 small-6">Nombres(*)</span>
+                                    <input class="col-6 small-6" name="name" id="name" type="text" value="">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="profile-item col-12">
+                                <label for="last_name" class="row middle">
+                                    <span class="col-6 small-6">Apellidos(*)</span>
+                                    <input class="col-6 small-6" name="last_name" id="last_name" type="text" value="">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="profile-item col-12">
+                                <label for="phone" class="row middle">
+                                    <span class="col-6 small-6">Celular(*)</span>
+                                    <input class="col-6 small-6" name="phone" id="phone" type="text" value="">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <button id="buyAction" class="btn" style="width:100%; margin-left: 0; margin-right: 0">Finalizar compra</button>
+                        </article>
+                    </section>
+                </div>
                 @if( Auth::user() && Auth::user()->role_id !=3 )
                     <div class="row center">
-                        <button id="buyAction"> Comprar</button>
+                        <a id="showBuyForm" href="#" class="btn"> Comprar</a>
                     </div>
                 @else
                     <p class="Message-register">Para poder realizar compras debes <a href="{{url('login')}}">iniciar</a>
@@ -222,9 +276,17 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+<script>
+    $('#showBuyForm').on('click', function(){
+        $('#PayForm').addClass('show');
+    });
+
+    $('#PayForm .close').on('click', function(){
+        $('#PayForm').removeClass('show');
+    });
+</script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/maps.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap"
-        async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async defer></script>
 </body>
 </html>

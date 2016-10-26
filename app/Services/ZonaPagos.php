@@ -43,8 +43,7 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
-        $iva = $inputs['total_con_iva'] * $this->iva / 100;
-        $total = $inputs['total_con_iva'] + ($inputs['total_con_iva'] * $this->transact / 100);
+        $total = $inputs['value'] * $inputs['quantity'];
 
         $data = [
             'body' => [
@@ -52,16 +51,16 @@ class ZonaPagos {
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
                 "total_con_iva"  => $total,
-                "valor_iva" => $iva,
+                "valor_iva" => 0,
                 "email" => auth()->user()->email,
-                "id_pago" => $inputs["id_pago"],
-                "id_cliente" => $inputs["id_cliente"],
-                "tipo_id" => $inputs["tipo_id"],
-                "nombre_cliente" => $inputs["nombre_cliente"],
-                "apellido_cliente" => $inputs["apellido_cliente"],
-                "descripcion_pago" => $inputs["descripcion_pago"],
-                "telefono_cliente" => $inputs["telefono_cliente"],
-                "info_opcional1" => $inputs["info_opcional1"],
+                "id_pago" => $inputs["id_pay"],
+                "id_cliente" => $inputs["dni"],
+                "tipo_id" => $inputs["dni_type"],
+                "nombre_cliente" => $inputs["name"],
+                "apellido_cliente" => $inputs["last_name"],
+                "descripcion_pago" => $inputs["description"],
+                "telefono_cliente" => $inputs["phone"],
+                "info_opcional1" => ".",
                 "info_opcional2" => ".",
                 "info_opcional3" => ".",
                 "lista_codigos_servicio_multicredito" => "",
