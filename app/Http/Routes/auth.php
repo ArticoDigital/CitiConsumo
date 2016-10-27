@@ -38,9 +38,8 @@ Route::get('facebook/authorize', [
 
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
-        $emailT = $user->email;
-        var_dump($details);
-        dd($details->email);
+        $emailT = $details->email;
+
         $userEmail = \City\User::where('email', $emailT)->get();
 
         if ($userEmail->isEmpty()) {
