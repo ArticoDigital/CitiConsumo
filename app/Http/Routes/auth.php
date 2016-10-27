@@ -38,8 +38,8 @@ Route::get('facebook/authorize', [
 
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
-        $emailT = $details->email;
-        print_r($user);
+        $emailT = $user->email;
+        print_r($emailT);
         dd($details);
         $userEmail = \City\User::where('email', $emailT)->get();
 
