@@ -40,7 +40,7 @@ Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
         $emailT = $user->email;
         var_dump($details);
-        dd($details);
+        dd($details->email);
         $userEmail = \City\User::where('email', $emailT)->get();
 
         if ($userEmail->isEmpty()) {
