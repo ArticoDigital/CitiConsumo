@@ -39,20 +39,21 @@ Route::get('facebook/authorize', [
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
         $emailT = $details->email;
-        dd('idiota');
+
         $userEmail = \City\User::where('email', $emailT)->get();
 
-       /* if (false) {
+       if (false) {
             $user->email = $details->email;
             $user->name = $details->full_name;
 
             $user->role_id = 1;
             $user->save();
-        }*/
+        }
+        Auth::user();
+        return Redirect::intended();
     });
 
-    Auth::user();
-    return Redirect::intended();
+
 });
 
 // Password reset link request routes...
