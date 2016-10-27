@@ -50,6 +50,7 @@ Route::get('auth', function () {
             $user->save();
         }*/
     });
+    dd('idiota');
     Auth::user();
     return Redirect::intended();
 });
