@@ -39,7 +39,7 @@ Route::get('facebook/authorize', [
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
         $emailT = $details->email;
-
+        dd('idiota');
         $userEmail = \City\User::where('email', $emailT)->get();
 
        /* if (false) {
@@ -50,7 +50,7 @@ Route::get('auth', function () {
             $user->save();
         }*/
     });
-    dd('idiota');
+
     Auth::user();
     return Redirect::intended();
 });
