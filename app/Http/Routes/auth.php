@@ -47,7 +47,7 @@ Route::get('auth', function () {
             $user->name = $details->full_name;
 
             $user->role_id = 1;
-            $user->save();
+
         }
         Auth::user();
         return Redirect::intended();
