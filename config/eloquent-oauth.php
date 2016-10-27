@@ -9,7 +9,7 @@ return [
         'facebook' => [
             'client_id' => '706814422713940',
             'client_secret' => '63c665eb7f5a117fede882be74fd1cdf',
-            'redirect_uri' => 'http://cityconsumo.com/auth',
+            'redirect_uri' => 'https://www.cityconsumo.com/auth',
             'scope' => [],
         ],
         'google' => [
