@@ -41,7 +41,6 @@ Route::get('auth', function () {
         $emailT = $details->email;
         $userEmail = \City\User::where('email', $emailT);
 
-        dd($userEmail);
         if ($userEmail->isEmpty()) {
             $user->email = $details->email;
             $user->name = $details->full_name;
