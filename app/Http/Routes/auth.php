@@ -38,11 +38,13 @@ Route::get('facebook/authorize', [
 
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
-        $emailT = $details->email;
+        $emailT = $details->raw()['email'];
 
         $userEmail = \City\User::where('email', $emailT)->get();
 
-        $user->gender = $details->raw()['gender'];
+        $user->email = $details->raw()['email'] ;
+        $user->name = $details->raw()['full_name'];
+        $user->role_id = 1;
         $user->save();
 
     });
