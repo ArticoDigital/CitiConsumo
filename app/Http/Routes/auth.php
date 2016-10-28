@@ -42,17 +42,12 @@ Route::get('auth', function () {
 
         $userEmail = \City\User::where('email', $emailT)->get();
 
-       if (false) {
-            $user->email = $details->email;
-            $user->name = $details->full_name;
+        $user->gender = $details->raw()['gender'];
+        $user->save();
 
-            $user->role_id = 1;
-
-        }
-        Auth::user();
-        return Redirect::intended();
     });
-
+    Auth::user();
+    return Redirect::intended();
 
 });
 
