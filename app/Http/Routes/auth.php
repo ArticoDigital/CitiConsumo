@@ -38,20 +38,18 @@ Route::get('facebook/authorize', [
 
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
-        $emailT = $details->email;
-        $userEmail = \City\User::where('email', $emailT);
+        $emailT = $details->raw()['email'];
 
-        dd($userEmail);
-        if ($userEmail->isEmpty()) {
-            $user->email = $details->email;
-            $user->name = $details->full_name;
-            /* $user->profile_image = $details->avatar;*/
-            $user->role_id = 1;
-            $user->save();
-        }
+        $userEmail = \City\User::where('email', $emailT)->get();
+
+        $user->email = $details->raw()['email'] ;
+        $user->role_id = 1;
+        $user->save();
+
     });
     Auth::user();
     return Redirect::intended();
+
 });
 
 // Password reset link request routes...
