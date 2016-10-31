@@ -58,7 +58,7 @@
                     {{$provider->user->email}}
                 </td>
                 <td class="center">{{$provider->user->cellphone}}</td>
-                <td class="center"><a href="">VER</a></td>
+                <td class="center"><a href="{{route('servicesUser', ['id' => $provider->id] )}}" class="idProduct"  >VER</a></td>
                 <td class="center">
                     <a href="#" data-user="{{$provider->id}}" data-action="{{route('disableProvider')}}"
                        class="Admin-updateStateProvider">Desactivar</a>
@@ -73,6 +73,8 @@
          </div>
     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @endsection
+
 @section('scripts')
+    <script src="{{asset('js/products.js')}}"></script>
     <script src="{{asset('js/users.js')}}"></script>
 @endsection

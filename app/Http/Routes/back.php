@@ -164,3 +164,14 @@ Route::get('subir-archivos', [
     'uses' => 'AdminController@uploadFiles',
     'roles' => 1
 ]);
+Route::get('servicios-usuario/{id}', [
+    'as' => 'servicesUser',
+    'uses' => 'ServicesController@servicesUser',
+    'roles' => [3]
+]);
+
+Route::get('servicio/{id}', [
+    'as' => 'serviceDetail',
+    'uses' => 'ServicesController@serviceDetail',
+    'roles' => [3]
+]);

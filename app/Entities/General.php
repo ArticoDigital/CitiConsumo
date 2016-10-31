@@ -11,4 +11,7 @@ class General extends Model
     public function getDateAttribute($value){
         return date_format(date_create($value), 'm/d/Y');
     }
+    public function generalType(){
+        return $this->belongsTo(GeneralType::class);
+    }
 }
