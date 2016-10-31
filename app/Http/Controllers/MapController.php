@@ -110,7 +110,6 @@ class MapController extends Controller
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                'breed' => 'required',
                 'size' => 'required'
             ];
         } else if ($service == 'comidas') {
