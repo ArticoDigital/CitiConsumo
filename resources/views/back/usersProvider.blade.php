@@ -11,7 +11,7 @@
             <th>Usuario</th>
             <th>Email</th>
             <th>Celular</th>
-            <th>Serv. Activos</th>
+            <th># Servicios</th>
         </tr>
         @foreach($providers as $provider)
             <tr>
