@@ -380,6 +380,7 @@ class AdminController extends Controller
             'isActive' => false,
             'user_id' => $user_id,
         ]);
+        
         $provider->save();
 
         return $provider->id;

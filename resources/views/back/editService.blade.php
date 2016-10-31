@@ -288,7 +288,7 @@
                 <span style="display:block; margin-top: 20px">Puedes subir un máximo de 5 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
                 <section class="FilesPreview" id="result">
                     @foreach($service['service_files'] as $key => $file)
-                        <article class="File"><input type="hidden" name="file{{($key + 1)}}" value="{{$file['name']}}"><input type="hidden" class="imagePosition" value="{{($key + 1)}}"><img class="thumbnail" src="{{asset( 'uploads/products/'. $file['name'])}}"></article>
+                        <article class="File"><span class="delete">X</span><input type="hidden" name="file{{($key + 1)}}" value="{{$file['name']}}"><input type="hidden" class="imagePosition" value="{{($key + 1)}}"><img class="thumbnail" src="{{asset( 'uploads/products/'. $file['name'])}}"></article>
                     @endforeach
                 </section>
                 <input type="hidden" name="positions">
@@ -314,6 +314,10 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
+        $('.File .delete').on('click', function(){
+            $(this).parent().remove();
+        });
+
         $(".js-example-basic-single").select2({width:'100%'});
         $('#result').sortable();
 
@@ -364,7 +368,7 @@
                         var position = result.children().length;
                         for (var i = 0; i < images.length; i++) {
                             position += 1;
-                            result.append("<article class='File'><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
                         }
                     },
                     error: function (error) {
