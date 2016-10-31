@@ -64,7 +64,7 @@
         <label for="breed" class="col-3 medium-3 small-6 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/footprint.svg')}}" alt="footprint"></span>
             <select class="js-example-basic-single" id="breed" name="breed">
-                <option value="" selected>Raza</option>
+                <option value="" selected>Todas las razas</option>
                 @foreach($breeds as $breed)
                     <option value="{{$breed->id}}">{{$breed->name}}</option>
                 @endforeach
