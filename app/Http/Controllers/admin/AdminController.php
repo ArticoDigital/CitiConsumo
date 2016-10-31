@@ -206,8 +206,11 @@ class AdminController extends Controller
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
+        $services = [];
         $userprofile = User::find($id);
-        return view('back.profile', compact('userprofile'));
+        if(isset($userprofile->provider))
+            $services = Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get();
+        return view('back.profile', compact('userprofile', 'services'));
     }
 
 

@@ -32,16 +32,14 @@ class ServiceController extends Controller
 
     public function editService(RoleRequest $request, $id)
     {
-
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        $provider = auth()->user()->provider;
-        $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->whereRaw("id = {$id} and provider_id = {$provider->id}")->firstOrFail()->toArray();
+        $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->where('id', $id)->firstOrFail()->toArray();
         $foodTypes = FoodType::all();
         $sizes = PetSize::all();
         $generalTypes = GeneralType::all();
-        if ($service)
+        if($service)
             return view('back.editService', compact('service', 'foodTypes', 'sizes', 'generalTypes'));
         return redirect()->back();
     }

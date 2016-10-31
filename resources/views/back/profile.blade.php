@@ -1,7 +1,6 @@
 @extends('layoutBack')
 
 @section('content')
-
      @if(Session::has('success'))
         <div class="success">
             <p>¡El usuario se ha actualizado!</p>
@@ -233,7 +232,6 @@
               </div>
           @endif
       </div>
-
     </form>
         @if($userprofile->role_id == 2)
             <div class="row border-bottom" style="margin-bottom: 30px">

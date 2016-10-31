@@ -16,6 +16,26 @@ $('.Admin-updateStateProvider').on('click', function () {
     }
 });
 
+$('.deactivateProvider').on('click', function () {
+    var r = confirm("¿Está seguro de desactivar este proveedor?");
+    if (r) {
+        var data = {
+            idUser: $(this).data('user'),
+            _token: $('#token').val()
+        };
+        $('.preload').removeClass("hidden");
+        var $tr = $(this).parents('tr');
+        var send = $(this).data('action');
+        $.post(send, data, function (e) {
+            $('.preload').addClass("hidden");
+            $('.messages-success').show();
+            $tr.remove();
+        });
+    }
+});
+
+
+
 $('.close').on('click', function () {
     console.log('ss');
     $('.Files-container').removeClass('showFiles');
