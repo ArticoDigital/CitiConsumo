@@ -8,6 +8,7 @@
     <table class="rwd-table" id="reload">
         <tr class="header-table">
             <th>Editar</th>
+            <th>usuario</th>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Detalles</th>
@@ -18,10 +19,13 @@
                 <td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
                 </td>
+
+                <td class="center">{{$service->provider->user->name}}</td>
                 <td class="center">{{$service->name}}</td>
-                <td class="center">${{number_format($service->price, 0, '.', '.')}}</td>
+
+                <td class="center">${{$service->price}}</td>
                 <td class="center">
-                    <a href="#">VER</a>
+                    <a target="_blank"  href="{{route('serviceDetail',['id' => $service->id])}}">VER</a>
                 </td>
                 <td class="center">
                     <a href="#" data-value="0" data-action="{{route('deleteProductProvider', $service->id)}}" class="Admin-updateStateProvider" id="activeProduct">Activar</a>

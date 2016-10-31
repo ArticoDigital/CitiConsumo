@@ -15,4 +15,7 @@ class Pet extends Model
     public function getDateEndAttribute($value){
         return date_format(date_create($value), 'm/d/Y');
     }
+    public function petSizes(){
+        return $this->belongsTo(PetSize::class, 'pet_sizes');
+    }
 }
