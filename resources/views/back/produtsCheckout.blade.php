@@ -20,7 +20,7 @@
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
                 </td>
 
-                <td class="center">{{$service->provider->user->name}}</td>
+                <td class="center"><a href="{{route('profile', $service->provider->user->id)}}">{{$service->provider->user->name}}</a></td>
                 <td class="center">{{$service->name}}</td>
 
                 <td class="center">${{$service->price}}</td>
