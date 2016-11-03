@@ -52,7 +52,7 @@
             <input class="field" id="typeService" name="typeService" type="hidden" value="pet">
         </label>
         
-        <label for="size" class="col-3 medium-3 small-6 Form-Control">
+        <label for="size" class="col-3 medium-3 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
             <select class="js-example-basic-single" id="size" name="size">
                 <option value="" selected>Tamaño</option>
@@ -61,7 +61,7 @@
                 @endforeach
             </select>
         </label>
-        <label for="breed" class="col-3 medium-3 small-6 Form-Control">
+        <label for="breed" class="col-3 medium-3 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/footprint.svg')}}" alt="footprint"></span>
             <select class="js-example-basic-single" id="breed" name="breed">
                 <option value="" selected>Todas las razas</option>

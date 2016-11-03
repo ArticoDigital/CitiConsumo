@@ -61,6 +61,11 @@ Route::get('terminos', [
     'as' => 'terms'
 ]);
 
+Route::get('nosoportado', [
+    'uses' => 'HomeController@notsupported',
+    'as' => 'notsupported'
+]);
+
 Route::get('zonapagos', [
     'uses' => 'HomeController@finalPay',
     'as' => 'finalPay'
