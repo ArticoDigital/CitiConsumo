@@ -314,7 +314,7 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
-        $('.File .delete').on('click', function(){
+        $('.FilesPreview').on('click', '.File .delete', function(){
             $(this).parent().remove();
         });
 

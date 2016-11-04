@@ -149,10 +149,11 @@
         </svg>
         <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="StepsForm Form2" enctype="multipart/form-data">
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+
             <article id="Step1" class="Step row">
-                <input type="radio" value="1" id="foods" name="service" @if(count($errors) && old('service') == 1) checked @endif >
-                <input type="radio" value="2" id="pets" name="service" @if(count($errors) && old('service') == 2) checked @endif >
-                <input type="radio" value="3" id="service" name="service" @if(count($errors) && old('service') == 3) checked @endif >
+                <input type="radio" value="1" id="foods" name="service" @if(old('service') == 1) checked="checked" @endif >
+                <input type="radio" value="2" id="pets" name="service" @if(old('service') == 2) checked="checked" @endif >
+                <input type="radio" value="3" id="service" name="service" @if(old('service') == 3) checked="checked" @endif >
                 <label for="foods" class="col-4 medium-4 small-4" style="max-width:340px">
                     <figure>
                         <img src="{{asset('img/comidas.svg')}}" alt="comidas">
@@ -172,7 +173,7 @@
                     </figure>
                 </label>
                 <div class="col-12 medium-12 small-12">
-                    <div id="toStep2" class="Button small right disabled" style="margin: 40px 15px 0 20px;">Siguiente</div>
+                    <div id="toStep2" class="Button small right @if(!old('service')) disabled @endif" style="margin: 40px 15px 40px 20px;">Siguiente</div>
                 </div>
              </article>
 
@@ -259,7 +260,7 @@
                     </div>
                 </div>
                 <div class="col-12 medium-12 small-12">
-                    <div id="toStep3" class="Button small right disabled" style="margin: 40px 15px 0 20px;">Siguiente</div>
+                    <div id="toStep3" class="Button small right" style="margin: 40px 15px 40px 20px;">Siguiente</div>
                 </div>
             </article>
             <article id="Step3" class="Step">
@@ -284,7 +285,7 @@
                 <section class="FilesPreview" id="result"></section>
                 <input type="hidden" name="positions">
                 <div class="col-12 medium-12 small-12">
-                    <div id="toStep4" class="Button small right disabled" style="margin: 40px 15px 0 20px;" >Siguiente</div>
+                    <div id="toStep4" class="Button small right" style="margin: 40px 15px 40px 20px;" >Siguiente</div>
                 </div>
             </article>
             <article id="Step4" class="Step">
@@ -306,7 +307,8 @@
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
-        $('.File .delete').on('click', function(){
+
+        $('.FilesPreview').on('click', '.File .delete', function(){
             $(this).parent().remove();
         });
 
