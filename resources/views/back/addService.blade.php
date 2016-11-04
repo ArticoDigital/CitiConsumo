@@ -80,7 +80,7 @@
                                     <tspan x="0.5737" y="185.5391">1. Escoge la categoría</tspan>
                                 </text>
                             </g>
-                            <g style="filter: url(#filter)" class="gray2 disabled">
+                            <g style="filter: url(#filter)" class="gray2 @if(!old('service')) disabled @endif">
                                 <g transform="translate(174.000000, 63.000000)" stroke="#F3AF1A" stroke-width="2">
                                     <path d="M0.092,30.001 C0.092,30.001 1.865,30.502 4.934,31.229" />
                                     <path d="M14.607,33.276 C37.651,37.611 81.339,42.041 94.387,16.949 C112.386,-17.662 17.89,4.837 59.888,51.334 C96.038,91.357 153.127,59.812 168.723,38.942" stroke-dasharray="9.8878,9.8878" />
@@ -107,7 +107,7 @@
                                     <tspan x="318.6128" y="185.5391">2. Añade la información</tspan>
                                 </text>
                             </g>
-                            <g style="filter: url(#filter)" class="gray3 disabled">
+                            <g style="filter: url(#filter)" class="gray3 @if(!old('service')) disabled @endif">
                                 <path d="M496.282,99.732 C496.282,99.732 558.822,8.81 682.596,47.808" stroke="#F3AF1A" stroke-width="2" stroke-dasharray="10,5" />
                                 <circle fill="#05529B" cx="735.392" cy="84.958" r="74.62" d="m 810.01203,84.958 c 0,41.21149 -33.40851,74.62 -74.62,74.62 -41.21149,0 -74.62,-33.40851 -74.62,-74.62 0,-41.211489 33.40851,-74.620003 74.62,-74.620003 41.21149,0 74.62,33.408514 74.62,74.620003 z" />
                                 <g transform="translate(682.000000, 45.000000)">
@@ -122,7 +122,7 @@
                                     <tspan x="639.6523" y="185.5391">3. Añade las fotografías</tspan>
                                 </text>
                             </g>
-                            <g style="filter: url(#filter)" class="gray4 disabled">
+                            <g style="filter: url(#filter)" class="gray4 @if(!old('service')) disabled @endif">
                                 <path d="M793.428,131.857 C793.428,131.857 962.239,43.524 905.219,21.339 C866.281,6.19 868.156,106.394 952.252,98.365" stroke="#F3AF1A" stroke-width="2" stroke-dasharray="10,5" />
                                 <path d="M1023.163,149.704 C1064.37449,149.704 1097.783,116.295488 1097.783,75.084 C1097.783,33.872512 1064.37449,0.464 1023.163,0.464 C981.951512,0.464 948.543,33.872512 948.543,75.084 C948.543,116.295488 981.951512,149.704 1023.163,149.704 Z" fill="#05529B" />
                                 <rect fill="#51B792" x="987.457" y="30.329" width="73.824" height="93.861" />
@@ -282,7 +282,18 @@
                     </label>
                 </section>
                 <span style="display:block; margin-top: 20px">Puedes subir un máximo de 5 imágenes y puedes organizarlas como quieras, la primera imagen será la destacada.</span>
-                <section class="FilesPreview" id="result"></section>
+                <section class="FilesPreview" id="result">
+                    @if(session('Files'))
+                    @foreach(session('Files') as $key => $File)
+                        <article class="File">
+                            <span class="delete">X</span>
+                            <input type="hidden" name="file{{$key}}" value="{{$File}}">
+                            <input type="hidden" class="imagePosition" value="{{$key}}">
+                            <img class="thumbnail" src="{{$File}}">
+                        </article>
+                    @endforeach
+                    @endif
+                </section>
                 <input type="hidden" name="positions">
                 <div class="col-12 medium-12 small-12">
                     <div id="toStep4" class="Button small right" style="margin: 40px 15px 40px 20px;" >Siguiente</div>

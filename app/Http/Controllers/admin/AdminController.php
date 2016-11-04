@@ -55,13 +55,10 @@ class AdminController extends Controller
             return redirect()->route('myProfile');
         
         $user = Auth::user();
-        $inputs = $request->all();
-
+        $inputs = $this->setFiles($request->all());
         $validate = $this->validator($inputs);
-        if ($validate->fails())
-            return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
-        if(!array_key_exists('file3', $inputs))
-            return redirect()->back()->withInput()->withErrors($validate)->with(['alertTitle' => '¡Hubo un error!', 'alertText' => 'Debes suber mínimo 3 imágenes']);
+        if($validate->fails())
+            return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
 
         $inputs['provider_id'] = $user->provider->id;
         $inputs['location'] = $inputs['address'];
@@ -102,7 +99,6 @@ class AdminController extends Controller
                     'name' => $fileName,
                     'service_id' => $service->id
                 ]);
-                //prueba
             }
         }
 
@@ -121,6 +117,19 @@ class AdminController extends Controller
             return ['temp' => $tempFiles];
         }
     }
+
+    private function setFiles($inputs){
+        $inputs['Files'] = [];
+        $inputs['countFiles'] = 0;
+        foreach ($inputs as $key => $input) {
+            if(strpos($key, 'file') !== false){
+                $inputs['countFiles']++;
+                array_push($inputs['Files'], $inputs[$key]);
+            }
+        }
+
+        return $inputs;
+    }
     
     private function validator($inputs)
     {
@@ -133,6 +142,7 @@ class AdminController extends Controller
             'description' => 'required|max:800',
             'date' => 'required',
             'price' => 'required|numeric',
+            'countFiles' => 'in:3'
         ];
 
         if ($inputs['service'] == 1)
@@ -143,13 +153,6 @@ class AdminController extends Controller
         return Validator::make($inputs, $rules);
     }
 
-    /*
-
-        public function uploadFiles(){
-            return view('back.uploadFiles');
-        }
-
-        */
     public function myProfile(RoleRequest $request){
 
         if($request->isNotAuthorized())

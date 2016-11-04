@@ -122,6 +122,9 @@ return [
         'PoliciaFileName' => [
             'required' => '<p>Debe adjuntar sus antecedentes judiciales.</p>',
         ],
+        'countFiles' => [
+            'in' => '<p>Debes subir mínimo 3 imágenes</p>'
+        ]
     ],
 
     /*
