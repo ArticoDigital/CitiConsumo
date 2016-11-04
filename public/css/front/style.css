@@ -1580,6 +1580,8 @@ body.getReset #resetpassword label {
   -o-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s; }
+  .InfoServices .owl-carousel {
+    width: 100% !important; }
   .InfoServices h2 {
     color: #004f8f;
     font-weight: 400;
