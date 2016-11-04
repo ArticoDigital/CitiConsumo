@@ -51,6 +51,10 @@ class HomeController extends Controller
     public function contact(){
         return view('front.contact');
     }
+    public function notsupported(){
+        return view('front.notsupported');
+    }
+    
 
     
     public function contactPost(Request $request){
