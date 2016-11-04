@@ -43,10 +43,9 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
-        $total = $inputs['value'] * $inputs['quantity'];
-
+        $total = $inputs['value'];
         $data = [
-            'body' => [
+            'form_params' => [
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
