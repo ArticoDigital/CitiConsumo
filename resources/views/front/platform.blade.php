@@ -7,6 +7,10 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/owl-carousel/owl.carousel.css')}}">
+
+
     @yield('styles')
 </head>
 <body class="Platform">
@@ -23,12 +27,14 @@
 
         <nav class="row col-12 end">
             <ul class="Menu row between">
-                <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu
+                        servicio</a></li>
                 @if(!Auth::check())
                     <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
-                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
+                    <li class=""><a href="{{route('login')}}">Entrar</a></li>
                 @else
-                    <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                    <li class="menu-item-out-movile"><a
+                                href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                     <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
                 @endif
                 <li>
@@ -40,10 +46,11 @@
                         </a>
                         <nav>
                             <ul class="col-4">
-                                    <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
-                                 @if(!Auth::check())
-                                    <li class="menu-item-out"><a href="{{route('register')}}" >REGISTRATE</a></li>
-                                    
+                                <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text">Postula
+                                        tu servicio</a></li>
+                                @if(!Auth::check())
+                                    <li class="menu-item-out"><a href="{{route('register')}}">REGISTRATE</a></li>
+
                                 @else
                                     <li class="menu-item-out"><a href="{{route('myProfile')}}">Mi perfil</a></li>
                                     <li class="menu-item-out"><a href="{{route('logout')}}">Cerrar sesión</a></li>
@@ -147,7 +154,7 @@
                     <figure class="col-3 medium-3">
                         <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
                     </figure>
-                    <div class="Platform-productInfo col-9 medium-9" >
+                    <div class="Platform-productInfo col-9 medium-9">
                         <h3>{{$service->name}}</h3>
                         <b>${{$service->price}}</b>
                     </div>
@@ -161,12 +168,30 @@
 <aside class="InfoServices row middle center">
     <div class="InfoServices-content row">
         <div class="InfoServices-close">x</div>
-        <div class="col-6 medium-6 small-12">
-            <figure id="imageService" class="col-6 medium-6 small-12"></figure>
+        <div class="col-6 medium-6 small-12" style="overflow: hidden">
+            <div class="owl-carousel ">
+                @foreach($service->serviceFiles as $file)
+
+                    <figure class="col-12 small-12 " style="margin: 0;">
+                        <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
+                    </figure>
+                @endforeach
+            </div>
         </div>
         <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
-            <h3 id="availableService">5 platos disponibles</h3>
+            @if($service->food)
+                <h3 id="availableService">{{$service->food['foods-quantity']}} platos disponibles</h3>
+            @endif
+
+            @if($service->general)
+                <ul class="col-12 row">
+
+                    <li class="col-12"><b>Locación:general</b>{{$service->location}}</li>
+                </ul>
+            @endif
+
+
             <div class="InfoServices-stars row ">
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
@@ -192,25 +217,41 @@
                     @if($typeService == "pet")
                         <label for="">
                             <span># de días</span>
+
+                            <?php
+                            //\Carbon\Carbon::$dt = Carbon::create(2012, 1, 31, 0);
+                            print_r($service->pet->date_start);
+                            print_r($service->pet->date_end);
+                            ?>
+
                             <input type="number" name="quantity" placeholder="">
                         </label>
                     @endif
                     @if($typeService == "food")
                         <select name="quantity" id="">
                             <option value="">Selecione el número de platos</option>
+
+                            @for( $i = 1; $i <=  $service->food['foods-quantity'] ; $i++ )
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+
+
                         </select>
                     @endif
                     @if($typeService == "general")
                         <div>
-                            <input type="hidden" name="quantity"  value="1">
+                            <input type="hidden" name="quantity" value="1">
                         </div>
                     @endif
                     <val id="valueService">$12.000</val>
                 </div>
                 <div id="PayForm">
                     <span class="close">
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="auto" viewBox="0 0 49.685 82.689" enable-background="new 0 0 49.685 82.689" xml:space="preserve">
-                            <path fill="#fff" d="M19.654,41.344l28.089-28.089c2.484-2.485,2.6-6.399,0.256-8.742l-2.828-2.829 c-2.343-2.343-6.257-2.228-8.742,0.256L1.937,36.433c-1.37,1.37-2.015,3.175-1.929,4.911c-0.086,1.736,0.56,3.541,1.929,4.911 l34.492,34.492c2.485,2.484,6.399,2.6,8.742,0.256l2.828-2.828c2.344-2.343,2.229-6.257-0.256-8.742L19.654,41.344z"/>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             x="0px" y="0px" width="100%" height="auto" viewBox="0 0 49.685 82.689"
+                             enable-background="new 0 0 49.685 82.689" xml:space="preserve">
+                            <path fill="#fff"
+                                  d="M19.654,41.344l28.089-28.089c2.484-2.485,2.6-6.399,0.256-8.742l-2.828-2.829 c-2.343-2.343-6.257-2.228-8.742,0.256L1.937,36.433c-1.37,1.37-2.015,3.175-1.929,4.911c-0.086,1.736,0.56,3.541,1.929,4.911 l34.492,34.492c2.485,2.484,6.399,2.6,8.742,0.256l2.828-2.828c2.344-2.343,2.229-6.257-0.256-8.742L19.654,41.344z"/>
                         </svg>
                     </span>
                     <section>
@@ -256,7 +297,9 @@
                                     <span></span>
                                 </label>
                             </div>
-                            <button id="buyAction" class="btn" style="width:100%; margin-left: 0; margin-right: 0">Finalizar compra</button>
+                            <button id="buyAction" class="btn" style="width:100%; margin-left: 0; margin-right: 0">
+                                Finalizar compra
+                            </button>
                         </article>
                     </section>
                 </div>
@@ -274,19 +317,35 @@
 
 </aside>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+
+<script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('js/maps.js')}}"></script>
+<script src="{{asset('js/owl-carousel/owl.carousel.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
+        defer></script>
 <script>
-    $('#showBuyForm').on('click', function(){
+
+
+    $(".owl-carousel").owlCarousel({
+
+        navigation: true, // Show next and prev buttons
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true
+
+
+    });
+
+    $('#showBuyForm').on('click', function () {
         $('#PayForm').addClass('show');
     });
 
-    $('#PayForm .close').on('click', function(){
+    $('#PayForm .close').on('click', function () {
         $('#PayForm').removeClass('show');
     });
 </script>
-<script src="{{asset('js/main.js')}}"></script>
-<script src="{{asset('js/maps.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async defer></script>
 </body>
 </html>

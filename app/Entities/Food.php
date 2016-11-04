@@ -9,7 +9,8 @@ class Food extends Model
     protected $fillable = ['food_time', 'service_id', 'food_type_id', 'foods-quantity'];
 
     function foodTypes(){
-        return $this->belongsTo(FoodType::class);
+
+        return $this->belongsTo(FoodType::class, 'food_type_id');
     }
 
     function getFoodTimeAttribute($value){

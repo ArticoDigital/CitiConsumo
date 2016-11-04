@@ -11,6 +11,7 @@
             <th>Usuario</th>
             <th>Email</th>
             <th>Celular</th>
+            <th>Ver productos</th>
             <th># Servicios</th>
         </tr>
         @foreach($providers as $provider)
@@ -52,7 +53,9 @@
                 <td>
                     {{$provider->user->email}}
                 </td>
-                <td class="center">{{$provider->user->cellphone}}</td>
+                <td> {{$provider->user->cellphone}}</td>
+                <td class="center"><a href="{{route('servicesUser', ['id' => $provider->id] )}}" class="idProduct"  >VER</a></td>
+
                 <td class="center">
                     {{count($provider->services)}}
                 </td>
@@ -64,6 +67,8 @@
     </div>
     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 @endsection
+
 @section('scripts')
+    <script src="{{asset('js/products.js')}}"></script>
     <script src="{{asset('js/users.js')}}"></script>
 @endsection
