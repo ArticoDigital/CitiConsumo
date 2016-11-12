@@ -6,9 +6,9 @@
     <h1>Productos de {{$provider->user->name}}</h1>
     <table class="rwd-table">
         <tr class="header-table">
-            <th>nombre</th>
+            <th>Nombre</th>
+            <th>Precio</th>
             <th>Locación</th>
-            <th>Validado</th>
             <th>Activo</th>
             <th>Validado</th>
             <th>Detalle</th>
