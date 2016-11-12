@@ -123,7 +123,7 @@ class ServiceController extends Controller
         if ($inputs['service'] == 1)
             $rules['foods-quantity'] = 'required|numeric';
         if ($inputs['service'] == 2)
-            $rules['pets-quantity'] = 'required|numeric';
+            $rules['pets_quantity'] = 'required|numeric';
 
         return Validator::make($inputs, $rules);
     }
