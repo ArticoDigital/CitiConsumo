@@ -24,6 +24,12 @@ class ZonaPagos {
         $this->client = new Client();
     }
 
+    /** Retorna la instancia de zona pagos **/
+
+    public static function create(){
+        return new ZonaPagos();
+    }
+
     /** Retorna los datos y estado del pago **/
 
     public function checkPay($payId){
@@ -57,7 +63,7 @@ class ZonaPagos {
                 "tipo_id" => $inputs["dni_type"],
                 "nombre_cliente" => $inputs["name"],
                 "apellido_cliente" => $inputs["last_name"],
-                "descripcion_pago" => $inputs["description"],
+                "descripcion_pago" => $this->cut_text($inputs["description"]),
                 "telefono_cliente" => $inputs["phone"],
                 "info_opcional1" => ".",
                 "info_opcional2" => ".",
@@ -86,9 +92,21 @@ class ZonaPagos {
         ]);*/
     }
 
-    /** Retorna la instancia de zona pagos **/
+    /** Recorta el texto **/
 
-    public static function create(){
-        return new ZonaPagos();
+    private function cut_text($text, $limit=65){
+        $text = trim($text);
+        $text = strip_tags($text);
+        $size = strlen($text);
+        $result = '';
+        if($size <= $limit){
+            return $text;
+        }else{
+            $text = substr($text, 0, $limit);
+            $words = explode(' ', $text);
+            $result = implode(' ', $words);
+            $result .= '...';
+        }
+        return $result;
     }
 }
