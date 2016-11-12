@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use City\Http\Requests\RoleRequest;
 use City\Entities\Buy;
+use City\Entities\Service;
 use City\Entities\Outlay;
 use City\Entities\Provider;
 use City\Http\Controllers\Controller;
@@ -80,6 +81,14 @@ class BuyController extends Controller
         
 
         /*return redirect()->to('admin')->with(['alertTitle' => 'Compra exitosa', 'alertText' => 'Felicitaciones su compra se ha realizado con éxito']);*/
+    }
+
+    public function tradeList(){
+        if(auth()->user()->provider){
+            $buys = Buy::where('user_id', auth()->user()->id)->get();
+            $services = Service::with('buys')->where('provider_id', auth()->user()->provider->id)->get();
+            return view('back.tradeList', compact('buys', 'services'));
+        }
     }
 
 }

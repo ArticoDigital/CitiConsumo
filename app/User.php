@@ -2,6 +2,7 @@
 
 namespace City;
 
+use City\Entities\Buy;
 use City\Entities\Provider;
 use City\Entities\Role;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,6 +42,9 @@ class   User extends Authenticatable
     public function getBirthdayAttribute($value){
 
         return ($value == "0000-00-00")?'':$value;
+    }
 
+    public function buys(){
+        return $this->hasMany(Buy::class);
     }
 }

@@ -175,3 +175,8 @@ Route::get('servicio/{id}', [
     'uses' => 'ServicesController@serviceDetail',
     'roles' => [3]
 ]);
+
+Route::get('transacciones', [
+    'as' => 'tradeList',
+    'uses' => 'BuyController@tradeList',
+]);
