@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="es">
-{{dd($services)}}
 <head>
     <meta charset="UTF-8">
     <title>Citiconsumo</title>
@@ -21,7 +20,7 @@
 ></div>
 <input type="hidden" value="{{$dataMap['lng']}}" id="lng">
 <input type="hidden" value="{{$dataMap['lat']}}" id="lat">
-
+{{dd($services)}}
 <header class="Header">
     <div class="BarNav row middle between">
 
