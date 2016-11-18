@@ -110,37 +110,6 @@
             </svg>
         </a>
     </figure>
-    {{dd($services)}}
-    {{--<form action="" class="row center ">
-
-        <div class="col-4">
-            <label for="">
-                <select name="" id="">
-                    <option value="">Selecione una opción</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-            </label>
-        </div>
-        <div class="col-4">
-            <label for="">
-                <select name="" id="">
-                    <option value="">Selecione una opción</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-            </label>
-        </div>
-        <div class="col-4">
-            <label for="">
-                <select name="" id="">
-                    <option value="">Selecione una opción</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-            </label>
-        </div>
-    </form>--}}
 
     <section>
         @if(count($services))
