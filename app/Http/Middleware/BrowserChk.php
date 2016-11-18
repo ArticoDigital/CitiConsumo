@@ -15,7 +15,7 @@ class BrowserChk
      */
     public function handle($request, Closure $next)
     {
-
+/*
         $browser = get_browser(null, true);
         
         if( $request->route()->getPath() != "nosoportado"){
@@ -25,7 +25,7 @@ class BrowserChk
 
         }
         }
-        
+  */
         return $next($request);
     }
 }

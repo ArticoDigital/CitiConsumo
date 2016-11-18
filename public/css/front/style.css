@@ -2537,4 +2537,7 @@ body.faq, body.documents, body.terms {
     color: #002444;
     font-size: 1.125rem; }
 
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: none !important; }
+
 /*# sourceMappingURL=style.css.map */
