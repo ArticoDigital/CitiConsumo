@@ -16,7 +16,7 @@ class MapController extends Controller
 
     public function index($service, Request $request)
     {
-        dd($request->all());
+        dd($service);
         $validate = $this->validator($request->all(), $service);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
