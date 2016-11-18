@@ -20,7 +20,7 @@
 ></div>
 <input type="hidden" value="{{$dataMap['lng']}}" id="lng">
 <input type="hidden" value="{{$dataMap['lat']}}" id="lat">
-{{dd($services)}}
+
 <header class="Header">
     <div class="BarNav row middle between">
 
@@ -110,7 +110,7 @@
             </svg>
         </a>
     </figure>
-
+    {{dd($services)}}
     {{--<form action="" class="row center ">
 
         <div class="col-4">
