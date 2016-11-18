@@ -22,7 +22,6 @@ class MapController extends Controller
         $dataMap = ['lng' => $request->get('lng'), 'lat' => $request->get('lat')];
         $typeService = $request->get('typeService');
         $services = $this->getModelToService($request,$typeService,$dataMap);
-        dd($services);
         $icon =  $this->icon($typeService);
         return view('front.platform', compact('dataMap', 'services', 'icon','typeService'));
     }

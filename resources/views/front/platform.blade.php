@@ -144,6 +144,7 @@
     </form>--}}
 
     <section>
+        @if(count($services))
         @foreach($services as $service)
             <a href="#" onclick="showInfoProduct({{$service}})">
                 <article class="row top Platform-productSection "
@@ -161,7 +162,7 @@
                 </article>
             </a>
         @endforeach
-
+        @endif
     </section>
 </div>
 
