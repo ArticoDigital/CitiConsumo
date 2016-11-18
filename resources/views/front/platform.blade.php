@@ -152,7 +152,7 @@
         </div>
         <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
-            {{dd()}}
+            @foreach($services as $service)
             @if($service->food)
                 <h3 id="availableService">{{$service->food['foods-quantity']}} platos disponibles</h3>
             @endif
@@ -163,7 +163,7 @@
                     <li class="col-12"><b>Locación:general</b>{{$service->location}}</li>
                 </ul>
             @endif
-
+            @endforeach
 
             <div class="InfoServices-stars row ">
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -187,6 +187,7 @@
                 <input type="hidden" name="value" id="valueServiceInput" value="">
                 <input type="hidden" name="idService" id="idServiceInput" value="">
                 <div class="row between middle">
+                    @foreach($services as $service)
                     @if($typeService == "pet")
                         <label for="">
                             <span># de días</span>
@@ -216,6 +217,7 @@
                             <input type="hidden" name="quantity" value="1">
                         </div>
                     @endif
+                    @endforeach
                     <val id="valueService">$12.000</val>
                 </div>
                 <div id="PayForm">
