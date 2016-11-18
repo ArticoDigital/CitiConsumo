@@ -16,13 +16,13 @@ class MapController extends Controller
 
     public function index($service, Request $request)
     {
-        dd($service);
         $validate = $this->validator($request->all(), $service);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
         $dataMap = ['lng' => $request->get('lng'), 'lat' => $request->get('lat')];
         $typeService = $request->get('typeService');
         $services = $this->getModelToService($request,$typeService,$dataMap);
+        dd($services);
         $icon =  $this->icon($typeService);
         return view('front.platform', compact('dataMap', 'services', 'icon','typeService'));
     }
