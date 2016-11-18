@@ -112,6 +112,8 @@
     </figure>
 
     <section>
+
+        {{$services}}
         @if(count($services))
         @foreach($services as $service)
 
