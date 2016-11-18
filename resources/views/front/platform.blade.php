@@ -150,7 +150,7 @@
                 <article class="row top Platform-productSection "
                          data-lat="{{$service->lat}}"
                          data-lng="{{$service->lng}}"
-                         data-service="{{$service}}"
+                         data-service="{$service}}"
                          style="align-items: stretch">
                     <figure class="col-3 medium-3">
                         <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
