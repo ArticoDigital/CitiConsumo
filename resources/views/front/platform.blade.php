@@ -146,6 +146,7 @@
     <section>
         @if(count($services))
         @foreach($services as $service)
+            {{dd($service)}}
             <a href="#" onclick="showInfoProduct({{$service}})">
                 <article class="row top Platform-productSection "
                          data-lat="{{$service->lat}}"
