@@ -110,10 +110,8 @@
             </svg>
         </a>
     </figure>
-
+    {{$services}}
     <section>
-
-        {{$services}}
         @if(count($services))
         @foreach($services as $service)
 
