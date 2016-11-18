@@ -140,17 +140,19 @@
         <div class="InfoServices-close">x</div>
         <div class="col-6 medium-6 small-12" style="overflow: hidden">
             <div class="owl-carousel ">
-                {{dd($services->serviceFiles)}}
-                @foreach($services->serviceFiles as $file)
+                @foreach($services as $service)
+                @foreach($service->serviceFiles as $file)
 
                     <figure class="col-12 small-12 " style="margin: 0;">
                         <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
                     </figure>
                 @endforeach
+                @endforeach
             </div>
         </div>
         <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
+            {{dd()}}
             @if($service->food)
                 <h3 id="availableService">{{$service->food['foods-quantity']}} platos disponibles</h3>
             @endif
