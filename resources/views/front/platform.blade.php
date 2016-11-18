@@ -65,6 +65,7 @@
                 </li>
             </ul>
         </nav>
+        {{$services}}
     </div>
 </header>
 <div class="Platform-product col-4 medium-4">
@@ -110,7 +111,7 @@
             </svg>
         </a>
     </figure>
-    {{$services}}
+
     <section>
         @if(count($services))
         @foreach($services as $service)
