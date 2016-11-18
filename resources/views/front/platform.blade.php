@@ -65,7 +65,6 @@
                 </li>
             </ul>
         </nav>
-        {{$services}}
     </div>
 </header>
 <div class="Platform-product col-4 medium-4">
@@ -113,6 +112,7 @@
     </figure>
 
     <section>
+        {{dd($services)}}
         @if(count($services))
         @foreach($services as $service)
 
