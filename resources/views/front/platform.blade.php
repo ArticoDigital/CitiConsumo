@@ -112,7 +112,6 @@
     </figure>
 
     <section>
-        {{dd($services)}}
         @if(count($services))
         @foreach($services as $service)
 
@@ -141,7 +140,8 @@
         <div class="InfoServices-close">x</div>
         <div class="col-6 medium-6 small-12" style="overflow: hidden">
             <div class="owl-carousel ">
-                @foreach($service->serviceFiles as $file)
+                {{dd($services->serviceFiles)}}
+                @foreach($services->serviceFiles as $file)
 
                     <figure class="col-12 small-12 " style="margin: 0;">
                         <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
