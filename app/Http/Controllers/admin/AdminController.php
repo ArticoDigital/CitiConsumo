@@ -3,14 +3,10 @@
 namespace City\Http\Controllers\admin;
 
 use Illuminate\Support\Facades\Hash;
-use City\Entities\Buy;
 use City\Entities\FoodType;
 use City\Entities\GeneralType;
 use City\Entities\ServiceFile;
 use City\Entities\PetSize;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
-use DebugBar\DataCollector\MessagesCollector;
 use Illuminate\Http\Request;
 use City\Http\Requests;
 use City\Http\Requests\RoleRequest;
@@ -26,8 +22,6 @@ use City\Entities\Pet;
 use City\Entities\Provider;
 use City\Entities\ProviderFiles;
 use Gate;
-
-//use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -248,25 +242,6 @@ class AdminController extends Controller
 
         $user->update($data);
     }
-/*
- protected function validator(array $data)
-    {
-
-        return Validator::make($data,
-            [
-                'name' => 'required',
-                'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|min:6',
-            ],
-            [
-                'name.required' => 'El nombre es requerido',
-                'email.required' => 'El email es obligatorio ',
-                'email.email' => 'El email no es valido ',
-                'email.unique' => 'Este usuario ya esta registrado',
-                'password.required' => 'La contraseña es obligatoria',
-            ]);
-    }
-*/
 
     protected function validatorUser(array $data){
 
@@ -307,25 +282,6 @@ class AdminController extends Controller
             return response()->json('/temp/' . $fileName);
         }
     }
-
-    /*function uploadProviderFiles(RoleRequest $request)
-    {
-        if($request->isNotAuthorized())
-            return redirect()->route('myProfile');
-
-        $validator = $this->validatorFiles($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-        dd($request->all());
-
-        $this->updloadProviderFilesSave($request);
-        return redirect()->back()->with('success', true);
-    }*/
-
 
     function uploadUserFileFields(RoleRequest $request)
     {
@@ -379,6 +335,38 @@ class AdminController extends Controller
         if (Provider::where('user_id', $user_id)->first())
             return true;
         return false;
+    }
+
+    protected function validatorFiles($data)
+    {
+        return Validator::make($data, [
+            'RutFileName' => 'required|max:255',
+            'CCFileName' => 'required|max:255',
+            'BankFileName' => 'required|max:255',
+            'ServicesFileName' => 'required|max:255',
+            'HistoryFileName' => 'required|max:255',
+            'ContraloriaFileName' => 'required|max:255',
+            'PoliciaFileName' => 'required|max:255',
+        ]);
+    }
+
+    public function updateStateService(RoleRequest $request)
+    {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $service = Service::find($request->input('idService'));
+        $service->isActive = $request->input('valor');
+        $return = "";
+        if($service->save()){
+            $return = ['success' => true];
+        }
+        else{
+            $return = ['success' => false];
+        
+        }
+        return response()->json($return);
+
     }
 
     /*private function createProvider($user_id)
@@ -460,37 +448,41 @@ class AdminController extends Controller
         $user->save();
     }*/
 
-
-    protected function validatorFiles($data)
-    {
-        return Validator::make($data, [
-            'RutFileName' => 'required|max:255',
-            'CCFileName' => 'required|max:255',
-            'BankFileName' => 'required|max:255',
-            'ServicesFileName' => 'required|max:255',
-            'HistoryFileName' => 'required|max:255',
-            'ContraloriaFileName' => 'required|max:255',
-            'PoliciaFileName' => 'required|max:255',
-        ]);
-    }
-
-
-    public function updateStateService(RoleRequest $request)
+    /*function uploadProviderFiles(RoleRequest $request)
     {
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        $service = Service::find($request->input('idService'));
-        $service->isActive = $request->input('valor');
-        $return = "";
-        if($service->save()){
-            $return = ['success' => true];
-        }
-        else{
-            $return = ['success' => false];
-        
-        }
-        return response()->json($return);
+        $validator = $this->validatorFiles($request->all());
 
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+        dd($request->all());
+
+        $this->updloadProviderFilesSave($request);
+        return redirect()->back()->with('success', true);
+    }*/
+
+    /*
+ protected function validator(array $data)
+    {
+
+        return Validator::make($data,
+            [
+                'name' => 'required',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|min:6',
+            ],
+            [
+                'name.required' => 'El nombre es requerido',
+                'email.required' => 'El email es obligatorio ',
+                'email.email' => 'El email no es valido ',
+                'email.unique' => 'Este usuario ya esta registrado',
+                'password.required' => 'La contraseña es obligatoria',
+            ]);
     }
+*/
 }
