@@ -12,33 +12,40 @@ $files.on("change", function (event) {
     var CSRF_TOKEN = $('input[name="_token"]').val();
     var fd = new FormData();
     if(this.files[0].type == 'application/pdf' || this.files[0].type == 'image/jpeg' || this.files[0].type == 'image/jpg' || this.files[0].type == 'image/png') {
-        $('.preload').removeClass("hidden");
-        fd.append("file", this.files[0]);
-        fd.append("identifier", identifier);
-        fd.append("_token", CSRF_TOKEN);
+        alert(this.files[0].size);
+        if(this.files[0].size < 25000){
 
-        $.ajax({
-            url: form_url,
-            data: fd,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function (fileName) {
-                $('.preload').addClass("hidden");
-                $('#' + identifier)
-                    .val(fileName)
-                    .siblings('.text_file').text(fileName)
-                    .parent().addClass('active');
-            },
-            error: function () {
-                alert('El archivo es demasiado grande');
-                $('.preload').addClass("hidden");
-            }
-        });
+            $('.preload').removeClass("hidden");
+            fd.append("file", this.files[0]);
+            fd.append("identifier", identifier);
+            fd.append("_token", CSRF_TOKEN);
+
+            $.ajax({
+                url: form_url,
+                data: fd,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (fileName) {
+                    $('.preload').addClass("hidden");
+                    $('#' + identifier)
+                        .val(fileName)
+                        .siblings('.text_file').text(fileName)
+                        .parent().addClass('active');
+                },
+                error: function () {
+                    alert('No se ha podido subir este archivo. Intenta nuevamente');
+                    $('.preload').addClass("hidden");
+                }
+            });
+        }
+        else{
+            alert('Suba un archivo con menos de 25 KiloBytes');
+        }
     }
     else {
-        alert('El archivo debe ser un pdf, imagen jpg o png');
+        alert('El archivo debe ser un pdf, imagen jpg o png.');
     }
 });
 
