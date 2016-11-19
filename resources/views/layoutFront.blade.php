@@ -45,14 +45,21 @@
         </a>
         <nav class="row col-10 small-10 end">
             <ul class="Menu row between">
-                    <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
-                @if(!Auth::check())
-                    <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
-                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
-                @else
+                @if(Auth::check())
+                    @if(Auth::user()->role_id == 3)
+                        <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
+                    @else
+                        <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                    @endif
+
                     <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
                     <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                @else
+                    <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                    <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
+                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
                 @endif
+
                 <li>
                     <div class="Menu-fixed">
                         <a href="#" class="Hamburguer">
@@ -62,13 +69,19 @@
                         </a>
                         <nav>
                             <ul class="col-4">
-                                    <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
-                                 @if(!Auth::check())
-                                    <li class="menu-item-out"><a href="{{route('register')}}" >REGISTRATE</a></li>
-                                    
+                                @if(Auth::check())
+                                    @if(Auth::user()->role_id == 3)
+                                        <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
+                                    @else
+                                        <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                                    @endif
+
+                                    <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
+                                    <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
                                 @else
-                                    <li class="menu-item-out"><a href="{{route('myProfile')}}">Mi perfil</a></li>
-                                    <li class="menu-item-out"><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                                    <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                                    <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
+                                    <li class=""><a href="{{route('login')}}" >Entrar</a></li>
                                 @endif
                                 <li><a href="{{route('whoweare')}}">QUIENES SOMOS?</a></li>
                                 <li><a href="{{route('faq')}}">PREGUNTAS FRECUENTES </a></li>
