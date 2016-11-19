@@ -31,17 +31,17 @@ Route::post('uploadUserFileFields', [
 ]);
 
 Route::post('deleteService', [
-    'uses' => 'ServiceController@deleteService',
+    'uses' => 'ServiceController@delete',
     'as' => 'deleteProduct'
 ]);
 
 Route::get('editar-servicio/{id}', [
-    'uses' => 'ServiceController@editService',
+    'uses' => 'ServiceController@edit',
     'as' => 'editProduct'
 ]);
 
 Route::post('editar-servicio/{id}', [
-    'uses' => 'ServiceController@editServicePost',
+    'uses' => 'ServiceController@update',
     'as' => 'editServicePost'
 ]);
 
@@ -143,13 +143,13 @@ Route::get('usuarios-proveedor-eliminados', [
 
 Route::get('postular-servicio', [
     'as' => 'addService',
-    'uses' => 'AdminController@addService',
+    'uses' => 'ServiceController@add',
     'roles' => [1, 2]
 ]);
 
 Route::post('postular-servicio', [
     'as' => 'newService',
-    'uses' => 'AdminController@newService',
+    'uses' => 'ServiceController@create',
     'roles' => [1, 2]
 ]);
 
@@ -164,6 +164,7 @@ Route::get('subir-archivos', [
     'uses' => 'AdminController@uploadFiles',
     'roles' => 1
 ]);
+
 Route::get('servicios-usuario/{id}', [
     'as' => 'servicesUser',
     'uses' => 'ServicesController@servicesUser',

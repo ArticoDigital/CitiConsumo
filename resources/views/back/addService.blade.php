@@ -336,10 +336,10 @@
 
         filesInput.on("change", function(e) {
 
-            var fileInput = document.getElementById('files');
-            var arrayFiles = fileInput.files;
-            var files = new FormData();
-            var count = $('#result .File').length;
+            var fileInput = document.getElementById('files'),
+                arrayFiles = fileInput.files,
+                files = new FormData(),
+                count = $('#result .File').length;
 
             if(count < 5) {
                 for (var i = 0; i < arrayFiles.length; i++) {
@@ -377,6 +377,7 @@
                     },
                     error: function (error) {
                         console.log(error);
+                        $('.preload').addClass("hidden");
                         alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
                     }
                 });

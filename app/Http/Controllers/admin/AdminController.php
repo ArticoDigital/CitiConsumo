@@ -25,79 +25,6 @@ use Gate;
 
 class AdminController extends Controller
 {
-    public function addService(RoleRequest $request)
-    {
-        if($request->isNotAuthorized())
-            return redirect()->route('myProfile');
-        
-        $user = auth()->user();
-        $foodTypes = FoodType::all();
-        $sizes = PetSize::all();
-        $generalTypes = GeneralType::all();
-
-        if(isset($user->provider)){
-            if($user->provider->isActive)
-                return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
-            return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus servicios.']);
-        }
-        return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Registrate como proveedor!', 'alertText' => 'Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servicios.']);
-    }
-
-    public function newService(RoleRequest $request)
-    {
-        if($request->isNotAuthorized())
-            return redirect()->route('myProfile');
-        
-        $user = Auth::user();
-        $inputs = $this->setFiles($request->all());
-        $validate = $this->validator($inputs);
-        if($validate->fails())
-            return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
-
-        $inputs['provider_id'] = $user->provider->id;
-        $inputs['location'] = $inputs['address'];
-        $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
-        $service = Service::create($inputs);
-
-        if($inputs['service'] == 1){
-            Food::create([
-                'food_time' => date_create($inputs['date']),
-                'service_id' => $service->id,
-                'food_type_id' => $inputs['food_type'],
-                'foods-quantity' => $inputs['foods-quantity'],
-            ]);
-        }
-        elseif($inputs['service'] == 2) {
-            $date = explode('-', $inputs['date']);
-            Pet::create([
-                'date_start' => date_create($date[0]),
-                'date_end' => date_create($date[1]),
-                'service_id' => $service->id,
-                'pet_sizes' => $inputs['size'],
-                'pets_quantity' => $inputs['pets-quantity'],
-            ]);
-        }
-        elseif($inputs['service'] == 3) {
-            General::create([
-                'date' => date_create($inputs['date']),
-                'service_id' => $service->id,
-                'general_type_id' => $inputs['general_type']
-            ]);
-        }
-
-        foreach ($inputs as $key => $file){
-            if(strpos($key, 'file') !== false){
-                $fileName = explode('/temp/', $file)[1];
-                rename(base_path('public' . $file), base_path('public/uploads/products/' . $fileName));
-                ServiceFile::create([
-                    'name' => $fileName,
-                    'service_id' => $service->id
-                ]);
-            }
-        }
-
-        return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
-    }
 
     public function uploadTempFiles(Request $request){
         if($request->ajax()) {
@@ -110,41 +37,6 @@ class AdminController extends Controller
 
             return ['temp' => $tempFiles];
         }
-    }
-
-    private function setFiles($inputs){
-        $inputs['Files'] = [];
-        $inputs['countFiles'] = 0;
-        foreach ($inputs as $key => $input) {
-            if(strpos($key, 'file') !== false){
-                $inputs['countFiles']++;
-                array_push($inputs['Files'], $inputs[$key]);
-            }
-        }
-
-        return $inputs;
-    }
-    
-    private function validator($inputs)
-    {
-        $rules = [
-            'service' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
-            'address' => 'required',
-            'name' => 'required',
-            'description' => 'required|max:800',
-            'date' => 'required',
-            'price' => 'required|numeric',
-            'countFiles' => 'in:3'
-        ];
-
-        if ($inputs['service'] == 1)
-            $rules['foods-quantity'] = 'required|numeric';
-        if ($inputs['service'] == 2)
-            $rules['pets-quantity'] = 'required|numeric';
-
-        return Validator::make($inputs, $rules);
     }
 
     public function myProfile(RoleRequest $request){
@@ -186,13 +78,6 @@ class AdminController extends Controller
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        $id = auth()->user()->id;
-        if ($this->isProvider($id)) {
-            $provider = Provider::where('user_id', $id)->first();
-            $providerfiles = ProviderFiles::where('provider_id', $provider->id)->get();
-            return view('back.uploadFiles', compact('providerfiles'));
-        }
-
         return view('back.uploadFiles');
     }
 
@@ -205,6 +90,7 @@ class AdminController extends Controller
         $userprofile = User::find($id);
         if(isset($userprofile->provider))
             $services = Service::whereRaw("provider_id = {$userprofile->provider->id} and isValidate <> 2")->get();
+
         return view('back.profile', compact('userprofile', 'services'));
     }
 
@@ -235,10 +121,8 @@ class AdminController extends Controller
             $data['profile_image'] = $imageName;
         }
 
-        if(!$data['password'])
-            unset($data['password']);
-        else
-            $data['password'] = Hash::make($data['password']);
+        if(!$data['password']) unset($data['password']);
+        else $data['password'] = Hash::make($data['password']);
 
         $user->update($data);
     }
@@ -331,14 +215,27 @@ class AdminController extends Controller
         return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podras postular tus servicios! recibiras un correo de confirmacion!']);
     }
 
-    public function isProvider($user_id)
+    public function updateStateService(RoleRequest $request)
+    {
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $service = Service::find($request->input('idService'));
+        $service->isActive = $request->input('valor');
+
+        if($service->save())
+            return response()->json(['success' => true]);
+        return response()->json(['success' => false]);
+    }
+
+    /*public function isProvider($user_id)
     {
         if (Provider::where('user_id', $user_id)->first())
             return true;
         return false;
-    }
+    }*/
 
-    protected function validatorFiles($data)
+    /*protected function validatorFiles($data)
     {
         return Validator::make($data, [
             'RutFileName' => 'required|max:255',
@@ -349,26 +246,7 @@ class AdminController extends Controller
             'ContraloriaFileName' => 'required|max:255',
             'PoliciaFileName' => 'required|max:255',
         ]);
-    }
-
-    public function updateStateService(RoleRequest $request)
-    {
-        if($request->isNotAuthorized())
-            return redirect()->route('myProfile');
-
-        $service = Service::find($request->input('idService'));
-        $service->isActive = $request->input('valor');
-        $return = "";
-        if($service->save()){
-            $return = ['success' => true];
-        }
-        else{
-            $return = ['success' => false];
-        
-        }
-        return response()->json($return);
-
-    }
+    }*/
 
     /*private function createProvider($user_id)
     {
