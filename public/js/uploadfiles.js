@@ -7,12 +7,12 @@ $('.DropFiles-inside').on('dragenter click', function(e){
 var $files = $('.drop-files-input');
 
 $files.on("change", function (event) {
-    var form_url = $(this).data("url");
-    var identifier = $(this).siblings('input').attr('name');
-    var CSRF_TOKEN = $('input[name="_token"]').val();
-    var fd = new FormData();
+    var form_url = $(this).data('url'),
+        identifier = $(this).siblings('input').attr('name'),
+        CSRF_TOKEN = $('input[name="_token"]').val(),
+        fd = new FormData();
+
     if(this.files[0].type == 'application/pdf' || this.files[0].type == 'image/jpeg' || this.files[0].type == 'image/jpg' || this.files[0].type == 'image/png') {
-        alert(this.files[0].size);
         if(this.files[0].size < 25000){
 
             $('.preload').removeClass("hidden");
@@ -48,4 +48,3 @@ $files.on("change", function (event) {
         alert('El archivo debe ser un pdf, imagen jpg o png.');
     }
 });
-
