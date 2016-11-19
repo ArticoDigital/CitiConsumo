@@ -49,5 +49,17 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('12345'),
             'role_id' => '3'
         ]);
+
+        User::create([
+            'name' => 'Admin',
+            'second_name' => '',
+            'last_name' => '',
+            'second_last_name' => '',
+            'location' => 'Bogotá',
+            'profile_image' => '',
+            'email' => 'admin@cityconsumo.com',
+            'password' => bcrypt('12345'),
+            'role_id' => '3'
+        ]);
     }
 }
