@@ -8,7 +8,7 @@
     <table class="rwd-table" id="reload">
         <tr class="header-table">
             <th>Editar</th>
-            <th>usuario</th>
+            <th>Usuario</th>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Detalles</th>
@@ -41,35 +41,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $('.Admin-updateStateProvider').on('click', function(){
-
-            var message;
-            var param = {
-                '_token' : $('#token').val(),
-                'action' : $(this).attr('data-action'),
-                'value'  : $(this).attr('data-value')
-            };
-
-            if(param.value == 0)
-                message = true;
-            else
-                message = confirm("¿Esta seguro de eliminar este producto?");
-
-            if(message){
-                $.ajax({
-                    method: 'POST',
-                    url: param.action,
-                    dataType: 'json',
-                    data : param,
-                    success: function(data){
-                        alert(data.message);
-                    },
-                    error: function(){
-                        console.log('Hubo un error en la consulta por ajax');
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="{{asset('js/users.js')}}"></script>
 @endsection
