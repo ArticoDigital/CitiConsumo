@@ -2,7 +2,7 @@
 
 namespace City\Http\Controllers;
 
-use Agrosellers\Services\ZonaPagos;
+use City\Services\ZonaPagos;
 use City\Entities\FoodType;
 use City\Entities\PetSize;
 use Illuminate\Http\Request;
