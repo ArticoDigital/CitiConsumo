@@ -314,11 +314,12 @@ class AdminController extends Controller
                 $data = [
                     'name' => $fileName,
                     'provider_id' => $provider->id,
-                    'file_type_id' => $type,
+                    'file_type_id' => $type
                 ];
 
-                if ($provider->providerFiles) {
-                    $provider->providerFiles->update($data);
+                if (count($provider->providerFiles)) {
+                    $files = ProviderFiles::where('provider_id', $provider->id);
+                    $files->update($data);
                 } else {
                     rename(base_path('public' . $file), base_path('public/uploads/provider/' . $fileName));
                     ProviderFiles::create($data);
