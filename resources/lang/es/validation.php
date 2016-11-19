@@ -101,25 +101,25 @@ return [
         'date' => [
             'required' => '<p>Es necesario que ingrese una <b>fecha</b> o <b>rango de fechas</b> en las que prestará el servicio.</p>'
         ],
-        'CCFileName' => [
+        'type1' => [
             'required' => '<p>Debe adjuntar la copia de su cédula.</p>',
         ],
-        'RutFileName' => [
-            'required' => '<p>Debe adjuntar su RUT.</p>',
-        ],
-        'BankFileName' => [
-            'required' => '<p>Debe adjuntar su certificado de cuenta bancaria.</p>',
-        ],
-        'ServicesFileName' => [
-            'required' => '<p>Debe adjuntar la copia de un recibo de servicio público.</p>',
-        ],
-        'HistoryFileName' => [
+        'type2' => [
             'required' => '<p>Debe adjuntar sus antecedentes de procuraduría.</p>',
         ],
-        'ContraloriaFileName' => [
+        'type3' => [
+            'required' => '<p>Debe adjuntar su RUT.</p>',
+        ],
+        'type4' => [
+            'required' => '<p>Debe adjuntar la copia de un recibo de servicio público.</p>',
+        ],
+        'type5' => [
+            'required' => '<p>Debe adjuntar su certificado de cuenta bancaria.</p>',
+        ],
+        'type6' => [
             'required' => '<p>Debe adjuntar su certificado de contraloría.</p>',
         ],
-        'PoliciaFileName' => [
+        'type7' => [
             'required' => '<p>Debe adjuntar sus antecedentes judiciales.</p>',
         ],
         'countFiles' => [

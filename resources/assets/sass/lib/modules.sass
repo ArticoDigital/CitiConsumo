@@ -294,12 +294,14 @@
       height: 100%
       width: auto
 
-
 .DropFilesSmall
   width: 100%
   display: flex
+  flex-direction: column
   justify-content: center
-  align-items: center
+  padding: 0 10px
+  margin: 15px 0
+
   .DropFiles-inside
     position: relative
     padding: 5px
@@ -308,7 +310,6 @@
     cursor: pointer
     width: 100%
     height: calc(100% - 40px)
-    margin: 15px
     border: dashed 2px gray
     display: flex
     flex-direction: row
@@ -327,11 +328,17 @@
       text-align: center
       border-radius: 5px
       min-height: 70px
+      min-width: 100px
     &.Drag
       color: $light-blue
       border-color: $light-blue
       svg g
         fill: $light-blue
+    &.active
+      border: dashed 2px green
+      .rectangle
+        background-color: green
+
     #files, .drop-files-input 
       cursor: pointer !important
       opacity: 0

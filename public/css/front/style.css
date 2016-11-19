@@ -1148,14 +1148,17 @@ figure figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  padding: 0 10px;
+  margin: 15px 0; }
   .DropFilesSmall .DropFiles-inside {
     position: relative;
     padding: 5px;
@@ -1165,7 +1168,6 @@ figure figcaption {
     width: 100%;
     height: -webkit-calc(100% - 40px);
     height: calc(100% - 40px);
-    margin: 15px;
     border: dashed 2px gray;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1197,12 +1199,17 @@ figure figcaption {
       text-align: center;
       -webkit-border-radius: 5px;
               border-radius: 5px;
-      min-height: 70px; }
+      min-height: 70px;
+      min-width: 100px; }
     .DropFilesSmall .DropFiles-inside.Drag {
       color: #05347a;
       border-color: #05347a; }
       .DropFilesSmall .DropFiles-inside.Drag svg g {
         fill: #05347a; }
+    .DropFilesSmall .DropFiles-inside.active {
+      border: dashed 2px green; }
+      .DropFilesSmall .DropFiles-inside.active .rectangle {
+        background-color: green; }
     .DropFilesSmall .DropFiles-inside #files, .DropFilesSmall .DropFiles-inside .drop-files-input {
       cursor: pointer !important;
       opacity: 0;

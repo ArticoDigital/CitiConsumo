@@ -194,14 +194,12 @@ class AdminController extends Controller
 
         $id = auth()->user()->id;
         if ($this->isProvider($id)) {
-            $provider_id = Provider::where('user_id', $id)->first();
-            //$client = $user->client;
-            $providerfiles = ProviderFiles::where('provider_id', $provider_id->id)->get();
+            $provider = Provider::where('user_id', $id)->first();
+            $providerfiles = ProviderFiles::where('provider_id', $provider->id)->get();
             return view('back.uploadFiles', compact('providerfiles'));
-        } else {
-            return view('back.uploadFiles');
-
         }
+
+        return view('back.uploadFiles');
     }
 
     public function profile(RoleRequest $request, $id) {
@@ -298,35 +296,19 @@ class AdminController extends Controller
 
     public function uploadFile(RoleRequest $request)
     {
-        if($request->isNotAuthorized())
-            return redirect()->route('myProfile');
+        if($request->ajax()){
+            $validator = Validator::make($request->all(), ['file' => 'mimes:jpeg,jpg,png,pdf|max:20000']);
+            if($validator->fails())
+                return ['name' => "El archivo es demasiado grande, vuelva a intentarlo", 'url' => url('/uploads/provider/'), 'identifier' => $request->identifier, 'success' => false];
 
-        $validator = $this->validatorFile($request->all());
-        
-        if ($validator->fails()) {
-             $return = ['name' => "Archivo no permitido", 'url' => url('/uploads/provider/'), 'identifier' => $request->identifier, 'success' => false];
-        }else{
-        $fileName = str_random(10) . '-&&-' . $request->file('file')->getClientOriginalName();
-        $request->file('file')->move(base_path() . '/public/uploads/provider/', $fileName);
-        $return = ['name' => $fileName, 'url' => url('/uploads/provider/' . $fileName), 'identifier' => $request->identifier, 'success' => true];
+            $file = $request->file('file');
+            $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
+            $file->move(base_path() . '/public/temp/', $fileName);
+            return response()->json('/temp/' . $fileName);
         }
-        return response()->json($return);
-    
     }
 
-    protected function validatorFile(array $data)
-    {
-     //   dd($data);
-        $v = Validator::make($data, [
-                'file' => 'mimes:jpeg,jpg,png,pdf|max:20000',
-            ]
-        );
-
-        return $v;
-
-    }
-
-    function uploadProviderFiles(RoleRequest $request)
+    /*function uploadProviderFiles(RoleRequest $request)
     {
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
@@ -338,10 +320,11 @@ class AdminController extends Controller
                 $request, $validator
             );
         }
-        $this->updloadProviderFilesSave($request);
+        dd($request->all());
 
+        $this->updloadProviderFilesSave($request);
         return redirect()->back()->with('success', true);
-    }
+    }*/
 
 
     function uploadUserFileFields(RoleRequest $request)
@@ -350,24 +333,42 @@ class AdminController extends Controller
             return redirect()->route('myProfile');
 
         $inputs = $request->all();
-        $validator = $this->validatorFiles($inputs);
+        $validator = Validator::make($inputs, [
+            'type1' => 'required|max:255',
+            'type2' => 'required|max:255',
+            'type3' => 'required|max:255',
+            'type4' => 'required|max:255',
+            'type5' => 'required|max:255',
+            'type6' => 'required|max:255',
+            'type7' => 'required|max:255',
+        ]);
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
+        if ($validator->fails())
+            $this->throwValidationException($request, $validator);
 
-        $user_id = $inputs['user_id'];
-        $user = User::find($user_id);
-        $user->save();
+        $user = auth()->user();
+        $provider   = $user->provider
+                    ? $user->provider
+                    : Provider::create(['user_id' => $user->id]);
 
-        if ($this->isProvider($user_id)) {
-            $this->updateFilesFields($request, $user_id);
-        } else {
-            $provider_id = $this->createProvider($user_id);
-            $this->createFilesFields($request, $provider_id);
-            //En este punto se debe notificar al administrador para la aprobacion del proveedor
+        foreach ($inputs as $key => $file) {
+            if (strpos($key, 'type') !== false) {
+                $type = explode('type', $key)[1];
+                $fileName = explode('/temp/', $file)[1];
+                $data = [
+                    'name' => $fileName,
+                    'provider_id' => $provider->id,
+                    'file_type_id' => $type,
+                ];
+
+                if ($provider->providerFiles) {
+                    $provider->providerFiles->update($data);
+                } else {
+                    rename(base_path('public' . $file), base_path('public/uploads/provider/' . $fileName));
+                    ProviderFiles::create($data);
+                    //En este punto se debe notificar al administrador para la aprobacion del proveedor
+                }
+            }
         }
 
         return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podras postular tus servicios! recibiras un correo de confirmacion!']);
@@ -380,79 +381,16 @@ class AdminController extends Controller
         return false;
     }
 
-    private function createProvider($user_id)
+    /*private function createProvider($user_id)
     {
         $provider = new Provider([
             'isActive' => false,
             'user_id' => $user_id,
         ]);
-        
+
         $provider->save();
 
         return $provider->id;
-    }
-
-    private function createFilesFields($request, $provider_id)
-    {
-        $data = $request->all();
-
-        //$provider = Provider::where('user_id', $user_id)->first();
-        //$client = $user->client;
-        //$provider_files = ProviderFiles::where('provider_id',$provider_id);
-
-        $file = new ProviderFiles([
-            'name' => $data['RutFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 3,
-        ]);
-        $file->save();
-
-        $file = new ProviderFiles([
-            'name' => $data['CCFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 1,
-        ]);
-        $file->save();
-
-        $file = new ProviderFiles([
-            'name' => $data['BankFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 5,
-        ]);
-        $file->save();
-
-        $file = new ProviderFiles([
-            'name' => $data['ServicesFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 4,
-        ]);
-        $file->save();
-
-        $file = new ProviderFiles([
-            'name' => $data['HistoryFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 2,
-        ]);
-        $file->save();
-
-        $file = new ProviderFiles([
-            'name' => $data['ContraloriaFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 6,
-        ]);
-        $file->save();
-
-        $file = new ProviderFiles([
-            'name' => $data['PoliciaFileName'],
-            'provider_id' => $provider_id,
-            'file_type_id' => 7,
-        ]);
-        $file->save();
-
-        $user = Auth::user();
-        $user1 = User::find($user->id);
-        $user1->role_id = 2;
-        $user1->save();
     }
 
     private function updateFilesFields($request, $user_id)
@@ -520,8 +458,7 @@ class AdminController extends Controller
         $user->role_id = 2;
         //dd($user);
         $user->save();
-*/
-    }
+    }*/
 
 
     protected function validatorFiles($data)
@@ -534,7 +471,6 @@ class AdminController extends Controller
             'HistoryFileName' => 'required|max:255',
             'ContraloriaFileName' => 'required|max:255',
             'PoliciaFileName' => 'required|max:255',
-
         ]);
     }
 
