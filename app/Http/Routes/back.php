@@ -167,13 +167,13 @@ Route::get('subir-archivos', [
 
 Route::get('servicios-usuario/{id}', [
     'as' => 'servicesUser',
-    'uses' => 'ServicesController@servicesUser',
+    'uses' => 'ServiceController@servicesUser',
     'roles' => [3]
 ]);
 
 Route::get('servicio/{id}', [
     'as' => 'serviceDetail',
-    'uses' => 'ServicesController@serviceDetail',
+    'uses' => 'ServiceController@serviceDetail',
     'roles' => [3]
 ]);
 

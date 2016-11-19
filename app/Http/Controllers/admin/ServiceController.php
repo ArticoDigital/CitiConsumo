@@ -10,6 +10,7 @@ use City\Entities\ServiceFile;
 use City\Entities\General;
 use City\Entities\Food;
 use City\Entities\Pet;
+use City\Entities\Provider;
 use Illuminate\Http\Request;
 use City\Http\Requests\RoleRequest;
 use City\Http\Controllers\Controller;
@@ -19,8 +20,17 @@ use Validator;
 class ServiceController extends Controller
 {
 
-    public function add(RoleRequest $request)
-    {
+    public function servicesUser($id) {
+        $provider = Provider::with(['services.pet', 'services.food', 'services.general'])->find($id);
+        return view('back.servicesUser', compact('provider'));
+    }
+
+    public function serviceDetail($id){
+        $service = Service::with('pet','food','general','serviceFiles')->find($id);
+        return view('back.serviceDetail',compact('service'));
+    }
+
+    public function add(RoleRequest $request) {
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
@@ -37,8 +47,8 @@ class ServiceController extends Controller
         return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Registrate como proveedor!', 'alertText' => 'Para ser parte de cityconsumo y puedas ofrecer tus servicios, necesitamos que llenes el siguiente formulario, el cual pasará por un proceso de certificación, si todo está en orden te enviaremos un mensaje para que puedas empezar a publicar tus servicios.']);
     }
 
-    public function create(RoleRequest $request)
-    {
+    public function create(RoleRequest $request) {
+
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
