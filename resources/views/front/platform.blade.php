@@ -209,6 +209,7 @@
                     <val id="valueService">$12.000</val>
                     <input type="hidden" id="valueTotal" name="value" value="">
                 </div>
+                @if( Auth::user() && Auth::user()->role_id !=3 )
                 <div id="PayForm">
                     <span class="close">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -218,6 +219,7 @@
                                   d="M19.654,41.344l28.089-28.089c2.484-2.485,2.6-6.399,0.256-8.742l-2.828-2.829 c-2.343-2.343-6.257-2.228-8.742,0.256L1.937,36.433c-1.37,1.37-2.015,3.175-1.929,4.911c-0.086,1.736,0.56,3.541,1.929,4.911 l34.492,34.492c2.485,2.484,6.399,2.6,8.742,0.256l2.828-2.828c2.344-2.343,2.229-6.257-0.256-8.742L19.654,41.344z"/>
                         </svg>
                     </span>
+
                     <section>
                         <h2 id="NameService">Formulario de pago</h2>
                         <h3 id="availableService">Llene los campos para finalizar su compra</h3>
@@ -267,7 +269,6 @@
                         </article>
                     </section>
                 </div>
-                @if( Auth::user() && Auth::user()->role_id !=3 )
                     <div class="row center">
                         <a id="showBuyForm" href="#" class="btn"> Comprar</a>
                     </div>
