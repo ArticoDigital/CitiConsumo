@@ -49,22 +49,21 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
-        $total = $inputs['value'];
         $data = [
             'form_params' => [
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
-                "total_con_iva"  => $total,
+                "total_con_iva"  => $inputs['value'],
                 "valor_iva" => 0,
                 "email" => auth()->user()->email,
                 "id_pago" => $inputs["id_pay"],
-                "id_cliente" => $inputs["dni"],
+                "id_cliente" => $inputs["user_identification"],
                 "tipo_id" => $inputs["dni_type"],
                 "nombre_cliente" => $inputs["name"],
                 "apellido_cliente" => $inputs["last_name"],
                 "descripcion_pago" => $this->cut_text($inputs["description"]),
-                "telefono_cliente" => $inputs["phone"],
+                "telefono_cliente" => $inputs["cellphone"],
                 "info_opcional1" => ".",
                 "info_opcional2" => ".",
                 "info_opcional3" => ".",

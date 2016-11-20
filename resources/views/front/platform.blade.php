@@ -179,15 +179,15 @@
             <div class="data-services">
 
             </div>
-            <form action="{{route('buyAction')}}" method="POST">
+            <form action="{{route('buyAction')}}" method="POST" target="_blank">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <input type="hidden" name="value" id="valueServiceInput" value="">
+                <input type="hidden" id="valueServiceInput" value="">
                 <input type="hidden" name="idService" id="idServiceInput" value="">
                 <div class="row between middle">
                     @if($typeService == "pet")
                         <label for="">
                             Rango de fechas <br>
-                            <input style="margin: 10px 0;" class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value=""><br>
+                            <input style="margin: 10px 0;" class="datetimepicker_mask" id="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value=""><br>
                             <input type="hidden" id="maxDate" value="">
                             <input type="hidden" id="dateRange" value="{{$_GET['date']}}">
                             <span id="nItems"># de días : {{$nDays}}</span>
@@ -207,7 +207,7 @@
                         </div>
                     @endif
                     <val id="valueService">$12.000</val>
-                    <input type="hidden" id="valueTotal" value="">
+                    <input type="hidden" id="valueTotal" name="value" value="">
                 </div>
                 <div id="PayForm">
                     <span class="close">
@@ -234,30 +234,30 @@
                                 </label>
                             </div>
                             <div class="profile-item col-12">
-                                <label for="dni" class="row middle">
+                                <label for="user_identification" class="row middle">
                                     <span class="col-6 small-6">Número de documento(*)</span>
-                                    <input class="col-6 small-6" name="dni" id="dni" type="text" value="">
+                                    <input class="col-6 small-6" name="user_identification" id="user_identification" type="text" value="{{auth()->user()->user_identification}}">
                                     <span></span>
                                 </label>
                             </div>
                             <div class="profile-item col-12">
                                 <label for="name" class="row middle">
                                     <span class="col-6 small-6">Nombres(*)</span>
-                                    <input class="col-6 small-6" name="name" id="name" type="text" value="">
+                                    <input class="col-6 small-6" name="name" id="name" type="text" value="{{auth()->user()->name}}">
                                     <span></span>
                                 </label>
                             </div>
                             <div class="profile-item col-12">
                                 <label for="last_name" class="row middle">
                                     <span class="col-6 small-6">Apellidos(*)</span>
-                                    <input class="col-6 small-6" name="last_name" id="last_name" type="text" value="">
+                                    <input class="col-6 small-6" name="last_name" id="last_name" type="text" value="{{auth()->user()->last_name}}">
                                     <span></span>
                                 </label>
                             </div>
                             <div class="profile-item col-12">
-                                <label for="phone" class="row middle">
+                                <label for="cellphone" class="row middle">
                                     <span class="col-6 small-6">Celular(*)</span>
-                                    <input class="col-6 small-6" name="phone" id="phone" type="text" value="">
+                                    <input class="col-6 small-6" name="cellphone" id="cellphone" type="text" value="{{auth()->user()->cellphone}}">
                                     <span></span>
                                 </label>
                             </div>

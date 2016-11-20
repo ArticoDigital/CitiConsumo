@@ -64,6 +64,8 @@ class BuyController extends Controller
             return redirect()->route('myProfile');
 
         $inputs = $request->all();
+        $user = auth()->user();
+        $user->update($inputs);
         $inputs["id_pay"] = date('YmdHis') . rand(100, 999);
         $zp = ZonaPagos::create();
         $id = $zp->invoiceRequest($inputs);
