@@ -1658,16 +1658,16 @@ function getMonths(){
 }
 
 function getToday(){
-    var date = new Date(), today = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-    return today;
+    var date = new Date();
+    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
 }
 
 function getTomorrow(){
-    var date = new Date(), tomorrow = (date.getMonth() + 1) + '/' + (date.getDate() + 1) + '/' + date.getFullYear();
-    return tomorrow;
+    var date = new Date();
+    return (date.getMonth() + 1) + '/' + (date.getDate() + 1) + '/' + date.getFullYear();
 }
 
-function getConfig(type){
+function getConfig(type, maxDate){
     var data = {
         'autoUpdateInput' : false,
         'timePicker': false,
@@ -1690,6 +1690,9 @@ function getConfig(type){
         data['singleDatePicker'] = true;
         //data['drops'] = "up";
     }
+
+    if(maxDate !== undefined)
+        data['maxDate'] = maxDate;
 
     return data;
 }

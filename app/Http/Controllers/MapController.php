@@ -16,6 +16,7 @@ class MapController extends Controller
 
     public function index($service, Request $request)
     {
+
         $validate = $this->validator($request->all(), $service);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
@@ -23,7 +24,18 @@ class MapController extends Controller
         $typeService = $request->get('typeService');
         $services = $this->getModelToService($request,$typeService,$dataMap);
         $icon =  $this->icon($typeService);
-        return view('front.platform', compact('dataMap', 'services', 'icon','typeService'));
+        $nDays = null;
+        if($service == 'mascotas'){
+            $date = explode('-', $request->get('date'));
+            $nDays = $this->getNumberDays($date[0],  $date[1]);
+        }
+        return view('front.platform', compact('dataMap', 'services', 'icon','typeService', 'nDays'));
+    }
+
+    private function getNumberDays($start, $end){
+        $days	= (strtotime($end)-strtotime($start))/86400;
+        $days 	= abs($days);
+        return (int) floor($days);
     }
 
     private function getModelToService($request,$service,$dataMap){

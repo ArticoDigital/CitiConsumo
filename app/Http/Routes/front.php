@@ -66,7 +66,7 @@ Route::get('nosoportado', [
     'as' => 'notsupported'
 ]);
 
-Route::get('zonapagos', [
+Route::post('zonapagos', [
     'uses' => 'HomeController@finalPay',
     'as' => 'finalPay'
 ]);

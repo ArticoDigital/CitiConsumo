@@ -79,6 +79,11 @@ function succesfull(pos) {
 $('.InfoServices-close').on('click', function () {
     $('.InfoServices').removeClass('show')
 });
+
+$('#quantity').on('change', function(){
+    $('#valueService').val($(this).val() * $('#valueServiceInput').val());
+});
+
 function showInfoProduct(data) {
     var
         elements = {
@@ -101,11 +106,39 @@ function showInfoProduct(data) {
     elements.$availableService.html();
     elements.$descriptionService.html(data.description);
     elements.$valueService.html('$' + data.price);
-    elements.$valueServiceInput.val(data.price);
+    elements.$valueServiceInput.val(data.price.replace('.', ''));
     elements.$idServiceInput.val(data.id);
 
     $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description +'">');
     $('.InfoServices').addClass('show');
+
+    if(data.pet.date_end !== undefined)
+        setMaxDate(data.pet.date_end);
+}
+
+function setMaxDate(maxDate){
+    var $date = $('#date'),
+        $dateRange = $('#dateRange').val(),
+        dates = $dateRange.split('-'),
+        changeValues = function(dateStart, dateEnd){
+
+            var dif = dateDiference(dateStart, dateEnd),
+                total = dif * $('#valueServiceInput').val();
+
+            $('#valueService').text('$' + thousand(total));
+            $('#valueTotal').val(total);
+            $('#nItems').text('# de días : ' + dif);
+            return dateStart + ' - ' + dateEnd;
+        };
+
+    $date.val(changeValues(dates[0], dates[1]));
+    $date.daterangepicker(getConfig('multiple', maxDate));
+
+    $date.on('apply.daterangepicker', function(ev, picker) {
+        var start = picker.startDate.format('MM/DD/YYYY'),
+            end = picker.endDate.format('MM/DD/YYYY');
+        $(this).val(changeValues(start, end));
+    });
 }
 
 function initMap() {

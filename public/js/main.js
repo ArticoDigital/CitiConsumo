@@ -58,3 +58,30 @@ $('#PlaceIcon').on('click', function(){
         alert('No es posible obtener su ubicación actual');
     }
 });
+
+function thousand(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function dateDiference(start, end){
+    start = start.split('/');
+    end = end.split('/');
+
+    start = Date.UTC(start[2],start[0],start[1]-1);
+    end = Date.UTC(end[2],end[0],end[1]-1);
+
+    var dif = end - start;
+    return Math.floor(dif / (1000 * 60 * 60 * 24)) + 1;
+}
+
+function getLessDate(a, b){
+    var t1 = a.split('/'),
+        t2 = b.split('/');
+
+    t1 = Date.UTC(t1[2],t1[0],t1[1]-1);
+    t2 = Date.UTC(t2[2],t2[0],t2[1]-1);
+
+    if(t1 <= t2)
+        return a;
+    return b;
+}

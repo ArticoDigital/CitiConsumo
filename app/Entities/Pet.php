@@ -3,6 +3,7 @@
 namespace City\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Pet extends Model
 {
@@ -17,5 +18,11 @@ class Pet extends Model
     }
     public function petSizes(){
         return $this->belongsTo(PetSize::class, 'pet_sizes');
+    }
+
+    public function getNumberDays(){
+        $days	= (strtotime($this->date_end)-strtotime($this->date_start))/86400;
+        $days 	= abs($days);
+        return (int) floor($days);
     }
 }

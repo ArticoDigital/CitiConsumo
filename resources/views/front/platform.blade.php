@@ -114,7 +114,6 @@
     <section>
         @if(count($services))
         @foreach($services as $service)
-
             <a href="#" onclick="showInfoProduct({{$service}})">
                 <article class="row top Platform-productSection "
                          data-lat="{{$service->lat}}"
@@ -141,28 +140,26 @@
         <div class="col-6 medium-6 small-12" style="overflow: hidden">
             <div class="owl-carousel ">
                 @foreach($services as $service)
-                @foreach($service->serviceFiles as $file)
+                    @foreach($service->serviceFiles as $file)
 
-                    <figure class="col-12 small-12 " style="margin: 0;">
-                        <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
-                    </figure>
-                @endforeach
+                        <figure class="col-12 small-12 " style="margin: 0;">
+                            <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
+                        </figure>
+                    @endforeach
                 @endforeach
             </div>
         </div>
         <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
             @foreach($services as $service)
-            @if($service->food)
-                <h3 id="availableService">{{$service->food['foods-quantity']}} platos disponibles</h3>
-            @endif
+                @if($service->food)
+                    <h3 id="availableService">{{$service->food['foods-quantity']}} platos disponibles</h3>
+                @elseif($service->general)
+                    <ul class="col-12 row">
 
-            @if($service->general)
-                <ul class="col-12 row">
-
-                    <li class="col-12"><b>Locación:general</b>{{$service->location}}</li>
-                </ul>
-            @endif
+                        <li class="col-12"><b>Locación:general</b>{{$service->location}}</li>
+                    </ul>
+                @endif
             @endforeach
 
             <div class="InfoServices-stars row ">
@@ -187,29 +184,21 @@
                 <input type="hidden" name="value" id="valueServiceInput" value="">
                 <input type="hidden" name="idService" id="idServiceInput" value="">
                 <div class="row between middle">
-                    @foreach($services as $service)
                     @if($typeService == "pet")
                         <label for="">
-                            <span># de días</span>
-
-                            <?php
-                            //\Carbon\Carbon::$dt = Carbon::create(2012, 1, 31, 0);
-                            print_r($service->pet->date_start);
-                            print_r($service->pet->date_end);
-                            ?>
-
-                            <input type="number" name="quantity" placeholder="">
+                            Rango de fechas <br>
+                            <input style="margin: 10px 0;" class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value=""><br>
+                            <input type="hidden" id="maxDate" value="">
+                            <input type="hidden" id="dateRange" value="{{$_GET['date']}}">
+                            <span id="nItems"># de días : {{$nDays}}</span>
                         </label>
                     @endif
                     @if($typeService == "food")
-                        <select name="quantity" id="">
+                        <select name="quantity" id="quantity">
                             <option value="">Selecione el número de platos</option>
-
                             @for( $i = 1; $i <=  $service->food['foods-quantity'] ; $i++ )
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
-
-
                         </select>
                     @endif
                     @if($typeService == "general")
@@ -217,8 +206,8 @@
                             <input type="hidden" name="quantity" value="1">
                         </div>
                     @endif
-                    @endforeach
                     <val id="valueService">$12.000</val>
+                    <input type="hidden" id="valueTotal" value="">
                 </div>
                 <div id="PayForm">
                     <span class="close">
@@ -289,29 +278,25 @@
             </form>
         </div>
     </div>
-
 </aside>
 
+<link rel="stylesheet" href="{{asset('css/select2.css')}}">
+<link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/maps.js')}}"></script>
 <script src="{{asset('js/owl-carousel/owl.carousel.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
-        defer></script>
+<script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async defer></script>
 <script>
-
-
     $(".owl-carousel").owlCarousel({
 
         navigation: true, // Show next and prev buttons
         slideSpeed: 300,
         paginationSpeed: 400,
         singleItem: true
-
-
     });
 
     $('#showBuyForm').on('click', function () {
