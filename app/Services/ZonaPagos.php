@@ -50,6 +50,7 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
+        $user = auth()->user();
         $data = [
             'form_params' => [
                 "id_tienda" => $this->shop,
@@ -57,7 +58,7 @@ class ZonaPagos {
                 "codigo_servicio_principal" => $this->serviceCode,
                 "total_con_iva"  => $inputs['value'],
                 "valor_iva" => 0,
-                "email" => auth()->user()->email,
+                "email" => $user->email,
                 "id_pago" => $inputs["id_pay"],
                 "id_cliente" => $inputs["user_identification"],
                 "tipo_id" => $inputs["dni_type"],
@@ -67,7 +68,7 @@ class ZonaPagos {
                 "telefono_cliente" => $inputs["cellphone"],
                 "info_opcional1" => $inputs["idService"],
                 "info_opcional2" => $inputs["quantity"],
-                "info_opcional3" => ".",
+                "info_opcional3" => $user->id,
                 "lista_codigos_servicio_multicredito" => "",
                 "lista_nit_codigos_servicio_multicredito" => "",
                 "lista_valores_con_iva" => "",
@@ -81,9 +82,8 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-        $user = User::where('user_identification', $inputs['id_cliente'])->get();
         Buy::create([
-            'user_id' => $user->id,
+            'user_id' => $inputs['campo3'],
             'service_id' => $inputs['campo1'],
             'products_quantity' => $inputs['campo2'],
             'value' => $inputs['valor_pagado'],
