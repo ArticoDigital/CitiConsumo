@@ -81,7 +81,9 @@ $('.InfoServices-close').on('click', function () {
 });
 
 $('#quantity').on('change', function(){
-    $('#valueService').val($(this).val() * $('#valueServiceInput').val());
+    var total = $(this).val() * $('#valueServiceInput').val();
+    $('#valueService').text('$' + thousand(total));
+    $('#valueTotal').val(total);
 });
 
 function showInfoProduct(data) {

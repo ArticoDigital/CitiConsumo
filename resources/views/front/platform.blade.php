@@ -194,8 +194,8 @@
                         </label>
                     @endif
                     @if($typeService == "food")
+                        <span>Seleccione el número de platos</span>
                         <select name="quantity" id="quantity">
-                            <option value="">Selecione el número de platos</option>
                             @for( $i = 1; $i <=  $service->food['foods-quantity'] ; $i++ )
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
