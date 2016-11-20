@@ -129,6 +129,7 @@ function setMaxDate(maxDate){
 
             $('#valueService').text('$' + thousand(total));
             $('#valueTotal').val(total);
+            $('#petQuantity').val(dif);
             $('#nItems').text('# de días : ' + dif);
             return dateStart + ' - ' + dateEnd;
         };

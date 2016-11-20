@@ -49,12 +49,19 @@ class BuyController extends Controller
         
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
-        
+
         $outlay = Outlay::find($id);
+        $idBuys = explode(',', $outlay->buys_id);
+        foreach ($idBuys as $idBuy){
+            if($buy = Buy::find($idBuy))
+                $buy->update(['state_id' => 3]);
+        }
+
         $outlay->update([
             'isPayed' => 2,
             'id_user' => auth()->user()->id
         ]);
+
         return ['message' => 'El desembolso ha sido exitoso.'];
     }
 

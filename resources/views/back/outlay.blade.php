@@ -40,7 +40,7 @@
                     data: param,
                     url : param.url,
                     success : function(data){
-                        alert(data);
+                        alert(data.message);
                         location.reload();
                     },
                     error : function(error){

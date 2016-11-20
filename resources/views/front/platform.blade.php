@@ -190,6 +190,7 @@
                             <input style="margin: 10px 0;" class="datetimepicker_mask" id="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value=""><br>
                             <input type="hidden" id="maxDate" value="">
                             <input type="hidden" id="dateRange" value="{{$_GET['date']}}">
+                            <input type="hidden" name="quantity" id="petQuantity" value="{{$nDays}}">
                             <span id="nItems"># de días : {{$nDays}}</span>
                         </label>
                     @endif
