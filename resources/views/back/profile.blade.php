@@ -246,7 +246,7 @@
                     </div>
                 </div>
 
-                <button class="button menu-item-out">Actualizar perfil</button>
+                <button style="margin:30px auto;" class="button menu-item-out">Actualizar perfil</button>
             </div>
 
             @if(isset($userprofile->provider) && $userprofile->provider->isActive && isset($buysNotPayed))
@@ -368,7 +368,7 @@
 
     @if(isset($buysNotPayed['value']))
             <!--*********** Formulario de desembolso *****************-->
-    <form method="POST" action="{{'insertOutlay'}}">
+    <form method="POST" action="{{route('insertOutlay')}}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="buys_id" value="{{$buysNotPayed['buys']}}">
         <input type="hidden" name="value" value="{{$buysNotPayed['value']}}">

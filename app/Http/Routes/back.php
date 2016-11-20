@@ -45,7 +45,6 @@ Route::post('editar-servicio/{id}', [
     'as' => 'editServicePost'
 ]);
 
-
 Route::post('insertOutlay', [
     'uses' => 'BuyController@insertOutlay',
     'as' => 'insertOutlay'
