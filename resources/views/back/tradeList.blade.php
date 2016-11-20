@@ -72,7 +72,8 @@
         [for="categoryTab"],
         [for="productTab"],
         [for="offerTab"]{
-            color: white
+            color: white;
+            opacity: .8
         }
 
         #tab1:checked ~ [for="tab1"],
@@ -80,7 +81,7 @@
         #categoryTab:checked ~ [for="categoryTab"],
         #productTab:checked ~ [for="productTab"],
         #offerTab:checked ~ [for="offerTab"]{
-            opacity: .8;
+            opacity: 1
         }
 
         #tab1:checked ~ #EditProduct,
