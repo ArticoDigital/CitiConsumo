@@ -7,7 +7,11 @@ use City\User;
 
 class Buy extends Model
 {
-    protected $fillable = ['state_id', 'user_id', 'service_id','products_quantity'];
+    protected $fillable = [
+        'state_id', 'user_id', 'service_id',
+        'products_quantity', 'zp_ticket_id',
+        'zp_form_pay', 'zp_state', 'zp_pay_id'
+    ];
 
     public function service(){
         return $this->belongsTo(Service::class);

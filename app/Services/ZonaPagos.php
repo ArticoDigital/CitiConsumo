@@ -1,6 +1,7 @@
 <?php
 
 namespace City\Services;
+use City\User;
 use GuzzleHttp\Client;
 use City\Entities\Buy;
 
@@ -64,8 +65,8 @@ class ZonaPagos {
                 "apellido_cliente" => $inputs["last_name"],
                 "descripcion_pago" => $this->cut_text($inputs["description"]),
                 "telefono_cliente" => $inputs["cellphone"],
-                "info_opcional1" => ".",
-                "info_opcional2" => ".",
+                "info_opcional1" => $inputs["idService"],
+                "info_opcional2" => $inputs["quantity"],
                 "info_opcional3" => ".",
                 "lista_codigos_servicio_multicredito" => "",
                 "lista_nit_codigos_servicio_multicredito" => "",
@@ -80,7 +81,40 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-        dd($inputs);
+        $user = User::where('user_identification', $inputs['id_cliente'])->get();
+        Buy::create([
+            'user_id' => $user->id,
+            'service_id' => $inputs['campo1'],
+            'products_quantity' => $inputs['campo2'],
+            'value' => $inputs['valor_pagado'],
+            'zp_pay_id' => $inputs['id_pago'],
+            'zp_state' => $inputs['detalle_estado'],
+            'zp_form_pay' => $inputs['id_forma_pago'],
+            'zp_ticket_id' => $inputs['ticketID'],
+        ]);
+        /*
+         * array:17 [▼
+              "id_pago" => "20161119211935352"
+              "estado_pago" => "1"
+              "id_forma_pago" => "4"
+              "valor_pagado" => "102000"
+
+              "ticketID" => "111921193535200007"
+              "id_cliente" => "1031146949"
+              "codigo_servicio" => "2701"
+              "codigo_banco" => "1022"
+              "nombre_banco" => "Banco Union Colombiano"
+              "codigo_transaccion" => "1202927"
+              "ciclo_transaccion" => "1"
+              "campo1" => "."
+              "campo2" => "."
+              "campo3" => "."
+              "idcomercio" => "15452"
+              "detalle_estado" => "Aprobada"
+            ]
+
+         *
+         * */
         /*$order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
         
         $order->update([
