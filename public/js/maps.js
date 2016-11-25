@@ -101,6 +101,7 @@ function showInfoProduct(data) {
             $valueServiceInput : $('#valueServiceInput'),
             $idServiceInput: $('#idServiceInput'),
             $valueTotal: $('#valueTotal'),
+            $quantity: $('#quantity')
         },
         dataMap = $('#Map'),
         routeImageServices = dataMap.data('imagesservice'),
@@ -112,8 +113,8 @@ function showInfoProduct(data) {
     elements.$nameService.html(data.name);
     elements.$availableService.html();
     elements.$descriptionService.html(data.description);
-    elements.$valueService.html('$' + data.price);
     elements.$valueServiceInput.val(data.price.replace('.', ''));
+    elements.$valueService.html('$' + thousand(elements.$valueServiceInput.val()));
     elements.$valueTotal.val(elements.$valueServiceInput.val());
     elements.$idServiceInput.val(data.id);
 
