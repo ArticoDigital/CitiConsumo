@@ -113,9 +113,9 @@ function showInfoProduct(data) {
     elements.$nameService.html(data.name);
     elements.$availableService.html();
     elements.$descriptionService.html(data.description);
-    elements.$valueServiceInput.val(data.price.replace('.', '') * elements.$quantity.val());
-    elements.$valueService.html('$' + thousand(elements.$valueServiceInput.val()));
-    elements.$valueTotal.val(elements.$valueServiceInput.val());
+    elements.$valueServiceInput.val(data.price.replace('.', ''));
+    elements.$valueTotal.val(elements.$valueServiceInput.val() * elements.$quantity.val());
+    elements.$valueService.html('$' + thousand(elements.$valueTotal.val()));
     elements.$idServiceInput.val(data.id);
 
     $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description +'">');
