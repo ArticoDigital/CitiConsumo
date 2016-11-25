@@ -77,7 +77,10 @@ function succesfull(pos) {
     }
 }
 $('.InfoServices-close').on('click', function () {
-    $('.InfoServices').removeClass('show')
+    var payForm = $('#PayForm');
+    payForm.hasClass('show')
+        ? payForm.removeClass('show')
+        : $('.InfoServices').removeClass('show')
 });
 
 $('#quantity').on('change', function(){

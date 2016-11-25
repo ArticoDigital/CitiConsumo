@@ -311,6 +311,8 @@
     $('#PayForm .close').on('click', function () {
         $('#PayForm').removeClass('show');
     });
+
+
 </script>
 </body>
 </html>
