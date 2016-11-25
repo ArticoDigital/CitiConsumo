@@ -179,6 +179,7 @@
             <div class="data-services">
 
             </div>
+
             <form action="{{route('buyAction')}}" method="POST" target="_blank">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <input type="hidden" id="valueServiceInput" value="">
@@ -197,9 +198,11 @@
                     @if($typeService == "food")
                         <span>Seleccione el número de platos</span>
                         <select name="quantity" id="quantity">
-                            @for( $i = 1; $i <=  $service->food['foods-quantity'] ; $i++ )
+                            @foreach($services as $key => $service)
+                                @for( $i = 1; $i <=  $service->food['foods-quantity'] ; $i++ )
                                 <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
+                                @endfor
+                            @endforeach
                         </select>
                     @endif
                     @if($typeService == "general")

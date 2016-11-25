@@ -15,13 +15,13 @@ class BrowserChk
      */
     public function handle($request, Closure $next) {
 
-        $browser = get_browser(null, true);
+        /*$browser = get_browser(null, true);
 
         if( $request->route()->getPath() != "nosoportado"){
             if($browser['browser']=="IE")
                 return redirect('nosoportado');
         }
-
+*/
         return $next($request);
     }
 
