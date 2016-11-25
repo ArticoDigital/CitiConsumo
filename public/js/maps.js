@@ -113,7 +113,7 @@ function showInfoProduct(data) {
     elements.$nameService.html(data.name);
     elements.$availableService.html();
     elements.$descriptionService.html(data.description);
-    elements.$valueServiceInput.val(data.price.replace('.', ''));
+    elements.$valueServiceInput.val(data.price.replace('.', '') * elements.$quantity.val());
     elements.$valueService.html('$' + thousand(elements.$valueServiceInput.val()));
     elements.$valueTotal.val(elements.$valueServiceInput.val());
     elements.$idServiceInput.val(data.id);
