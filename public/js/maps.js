@@ -81,7 +81,8 @@ $('.InfoServices-close').on('click', function () {
 });
 
 $('#quantity').on('change', function(){
-    var total = $(this).val() * $('#valueServiceInput').val();
+    var quantity = $(this).val() ? $(this).val() : 1;
+    var total = quantity * $('#valueServiceInput').val();
     $('#valueService').text('$' + thousand(total));
     $('#valueTotal').val(total);
 });
@@ -96,6 +97,7 @@ function showInfoProduct(data) {
             $valueService : $('#valueService'),
             $valueServiceInput : $('#valueServiceInput'),
             $idServiceInput: $('#idServiceInput'),
+            $valueTotal: $('#valueTotal'),
         },
         dataMap = $('#Map'),
         routeImageServices = dataMap.data('imagesservice'),
@@ -109,6 +111,7 @@ function showInfoProduct(data) {
     elements.$descriptionService.html(data.description);
     elements.$valueService.html('$' + data.price);
     elements.$valueServiceInput.val(data.price.replace('.', ''));
+    elements.$valueTotal.val(elements.$valueServiceInput.val());
     elements.$idServiceInput.val(data.id);
 
     $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description +'">');
