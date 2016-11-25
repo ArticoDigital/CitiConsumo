@@ -19,6 +19,7 @@ use Validator;
 
 class ServiceController extends Controller
 {
+    var $ispressed=false;
 
     public function servicesUser($id) {
         $provider = Provider::with(['services.pet', 'services.food', 'services.general'])->find($id);
@@ -51,46 +52,51 @@ class ServiceController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
+        if(!$ispressed){
+            $ispressed=true;
+                $user = auth()->user();
+                $inputs = $this->setFiles($request->all());
+                $validate = $this->validator($inputs);
+                if($validate->fails()){
+                    $ispressed=false;
+                    return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
+                }
 
-        $user = auth()->user();
-        $inputs = $this->setFiles($request->all());
-        $validate = $this->validator($inputs);
-        if($validate->fails())
-            return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
+                $inputs['provider_id'] = $user->provider->id;
+                $inputs['location'] = $inputs['address'];
+                $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
+                $service = Service::create($inputs);
 
-        $inputs['provider_id'] = $user->provider->id;
-        $inputs['location'] = $inputs['address'];
-        $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
-        $service = Service::create($inputs);
+                if($inputs['service'] == 1){
+                    Food::create([
+                        'food_time' => date_create($inputs['date']),
+                        'service_id' => $service->id,
+                        'food_type_id' => $inputs['food_type'],
+                        'foods-quantity' => $inputs['foods-quantity'],
+                    ]);
+                }
+                elseif($inputs['service'] == 2) {
+                    $date = explode('-', $inputs['date']);
+                    Pet::create([
+                        'date_start' => date_create($date[0]),
+                        'date_end' => date_create($date[1]),
+                        'service_id' => $service->id,
+                        'pet_sizes' => $inputs['size'],
+                        'pets_quantity' => $inputs['pets-quantity'],
+                    ]);
+                }
+                elseif($inputs['service'] == 3) {
+                    General::create([
+                        'date' => date_create($inputs['date']),
+                        'service_id' => $service->id,
+                        'general_type_id' => $inputs['general_type']
+                    ]);
+                }
 
-        if($inputs['service'] == 1){
-            Food::create([
-                'food_time' => date_create($inputs['date']),
-                'service_id' => $service->id,
-                'food_type_id' => $inputs['food_type'],
-                'foods-quantity' => $inputs['foods-quantity'],
-            ]);
-        }
-        elseif($inputs['service'] == 2) {
-            $date = explode('-', $inputs['date']);
-            Pet::create([
-                'date_start' => date_create($date[0]),
-                'date_end' => date_create($date[1]),
-                'service_id' => $service->id,
-                'pet_sizes' => $inputs['size'],
-                'pets_quantity' => $inputs['pets-quantity'],
-            ]);
-        }
-        elseif($inputs['service'] == 3) {
-            General::create([
-                'date' => date_create($inputs['date']),
-                'service_id' => $service->id,
-                'general_type_id' => $inputs['general_type']
-            ]);
-        }
-
-        $this->moveFiles($inputs, $service);
-        return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
+                $this->moveFiles($inputs, $service);
+                $ispressed=false;
+                return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
+            }
     }
 
     public function delete(RoleRequest $request){
