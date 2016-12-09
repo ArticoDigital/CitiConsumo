@@ -30,7 +30,7 @@
                 @if(Auth::user()->role_id == 3)
                     <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
                 @else
-                    <li><a style="color: white" href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
+                    <li><a style="color: white" href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
                     <li><a style="color: white" href="{{route('tradeList')}}" class="orange-text">Mis transacciones</a></li>
                 @endif
 

@@ -3,7 +3,7 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-    <h1>Provedores por aprobar</h1>
+    <h1>Proveedores por aprobar</h1>
     <table class="rwd-table" id="tableUsers" data-route="{{asset('uploads/provider')}}">
         <tr class="header-table">
             <th>Editar</th>

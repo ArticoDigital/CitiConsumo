@@ -8,7 +8,7 @@
 <div class="accordion-container">
     <button class="accordion">¿Cuál es el nivel de seguridad que emplea cityconsumo.com para efectos de pagos electrónicos?</button>
     <div class="panel">
-      <p>Cityconsumo.com contrata los servicio de la pasareal de pagos mas grande de America latina: PAYULATAM. Una vez clockeas en pagar, eres redirigido a los servidores de esta plataforma que garantuza la seguridad en tus pagos electrónicos</p>
+      <p>Cityconsumo.com contrata los servicio de la pasarela de pagos Zona Virtual. Una vez clickeas en pagar, eres redirigido a los servidores de esta plataforma que garantiza la seguridad en tus pagos electrónicos</p>
     </div>
 
     <button class="accordion">¿Cuáles son los filtros de seguridad que emplea cityconsumo.com para los proveedores de servicios que trabajan a través del sitio web?</button>

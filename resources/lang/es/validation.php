@@ -54,7 +54,7 @@ return [
     'min'                  => [
         'numeric' => '<p>El campo <b> :attribute </b> debe tener mínimo <b> :min </b> digitos.</p>',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => '<p>El campo <b> :attribute </b> debe tener mínimo <b> :min </b> caracteres.</p>',
+        'string'  => 'El campo :attribute  debe tener mínimo :min  caracteres.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',

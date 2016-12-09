@@ -1,8 +1,8 @@
 
 <ul class="row middle MenuAdmin center">
     <li><a href="{{route('showClient')}}">Clientes </a></li>
-    <li><a href="{{route('showProvider')}}">Provedores</a></li>
-    <li><a href="{{route('showProviderActive')}}">Provedores por aprobar</a></li>
+    <li><a href="{{route('showProvider')}}">Proveedores</a></li>
+    <li><a href="{{route('showProviderActive')}}">Proveedores por aprobar</a></li>
     <li><a href="{{route('showProviderDelete')}}">Proveedores eliminados</a></li>
     <li><a href="{{route('showProductsInactived')}}">Productos por aprobar</a></li>
     <li><a href="{{route('showProductsInactived')}}">Productos eliminados</a></li>

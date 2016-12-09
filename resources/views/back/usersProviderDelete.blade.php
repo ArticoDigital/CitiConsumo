@@ -3,7 +3,7 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-    <h1>Provedores Eliminados</h1>
+    <h1>Proveedores Eliminados</h1>
 
     <table class="rwd-table" id="tableUsers" style="text-align: center">
         <tr class="header-table">

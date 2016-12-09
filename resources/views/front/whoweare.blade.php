@@ -10,7 +10,7 @@
 @section('Services')
     <section class="section-content row between">
         <h1 class="center">¿Quienes somos?</h1>
-        <p>Cityconsumo.com es un sitio que innova manera en como consumimos todos los días, en lugar de dejar tu dinero en grandes corporaciones, podrías obtener la solución a tus necesidades, generando empleo a las personas de tu comunidad, más económico, fácil y rapido que pedir un domicilio tradicional.</p>
+        <p>Cityconsumo.com es un sitio que innova la manera en como consumimos todos los días, en lugar de dejar tu dinero en grandes corporaciones, podrías obtener la solución a tus necesidades, generando empleo a las personas de tu comunidad, más económico, fácil y rapido que pedir un domicilio tradicional.</p>
     </section>
 @endsection
 
