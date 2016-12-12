@@ -43,7 +43,14 @@ Route::get('auth', function () {
         $userEmail = \City\User::where('email', $emailT)->get();
 
         $user->email = $details->raw()['email'] ;
-        $user->role_id = 1;
+        if(isset($user->role_id)){
+            
+            if($user->role_id<=1){
+                $user->role_id = 1;
+            }
+        }else{
+            $user->role_id = 1;
+        }
         $user->save();
 
     });
