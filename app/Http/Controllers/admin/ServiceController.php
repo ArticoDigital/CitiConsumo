@@ -52,13 +52,13 @@ class ServiceController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
-        if(!$ispressed){
-            $ispressed=true;
+        if(!$this->ispressed){
+            $this->ispressed=true;
                 $user = auth()->user();
                 $inputs = $this->setFiles($request->all());
                 $validate = $this->validator($inputs);
                 if($validate->fails()){
-                    $ispressed=false;
+                    $this->ispressed=false;
                     return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
                 }
 
@@ -94,7 +94,7 @@ class ServiceController extends Controller
                 }
 
                 $this->moveFiles($inputs, $service);
-                $ispressed=false;
+                $this->ispressed=false;
                 return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
             }
     }
