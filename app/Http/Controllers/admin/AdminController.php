@@ -115,11 +115,12 @@ class AdminController extends Controller
         $data = $request->all();
         $user = User::find($data['user_id']);
 
-        if ($request->hasFile('profile_image')) {
+        /*if ($request->hasFile('profile_image')) {
             $imageName = str_random(10) . '-&&-' . $request->file('profile_image')->getClientOriginalName();
             $request->file('profile_image')->move(base_path() . '/public/uploads/profiles/', $imageName);
             $data['profile_image'] = $imageName;
-        }
+        }*/
+        if ($request->hasFile('profile_image')) unset($data['profile_image']);
 
         if(!$data['password']) unset($data['password']);
         else $data['password'] = Hash::make($data['password']);
@@ -150,6 +151,25 @@ class AdminController extends Controller
 
         return $v;
 
+    }
+
+    public function uploadProfileFile(RoleRequest $request)
+    {
+        if($request->ajax()){
+            $validator = Validator::make($request->all(), ['file' => 'mimes:jpeg,jpg,png|max:200000']);
+            if($validator->fails())
+                return ['name' => "El archivo es demasiado grande, vuelva a intentarlo", 'url' => url('/uploads/provider/'), 'identifier' => $request->identifier, 'success' => false];
+
+            $file = $request->file('file');
+            $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
+            $file->move(base_path() . '/public/uploads/profiles/', $fileName);
+
+            
+            $user = User::find($request->user_id);
+            $user->profile_image=$fileName;
+            $user->save();
+            return response()->json($fileName);
+        }
     }
 
 

@@ -20,6 +20,11 @@ Route::post('uploadFile', [
     'as' => 'uploadFile'
 ]);
 
+Route::post('uploadProfileFile', [
+    'uses' => 'AdminController@uploadProfileFile',
+    'as' => 'uploadProfileFile'
+]);
+
 Route::post('updateUser', [
     'uses' => 'AdminController@updateUser',
     'as' => 'updateUser'

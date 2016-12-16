@@ -14,7 +14,7 @@
             <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-4 @endif medium-6 small-12 row"
                  style="flex-direction: column; align-items: center; padding: 0px 10px;">
                 <div style="position:relative">
-                    <div class="image-cropper row middle center">
+                    <div id="image_profile" class="image-cropper row middle center">
                         @if($userprofile->profile_image)
                             <img src="{{asset('uploads/profiles/'. $userprofile->profile_image)}}" class="img-profile"
                                  alt="">
@@ -43,7 +43,7 @@
                         <label for="profile_image">
                             <img class="small-icon" src="{{url('img/lapiz-edicion.svg')}}" alt="">
                         </label>
-                        <input type="file" name="profile_image" class="images" id="profile_image">
+                        <input type="file" name="profile_image" class="images drop-files-input" id="profile_image" id="ServicesFile" data-url="{{route('uploadProfileFile')}}" accept="image/jpeg, image/jpg, image/png">
                     </div>
                 </div>
                 <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
@@ -270,6 +270,10 @@
             @endif
         </div>
     </form>
+
+     <div class="preload hidden" id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
     @if($userprofile->role_id == 2)
         <div class="row border-bottom" style="margin-bottom: 30px">
             <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive)
@@ -463,14 +467,18 @@
             });
         });
 
-        $(".images").change(function () {
-            $(this).parent().find('.text_file').text("Guarda para actualizar");
-        });
+//        $(".images").change(function () {
+  //          $(this).parent().find('.text_file').text("Guarda para actualizar");
+   //     });
 
         $('#insertOutlay').click(function () {
             $('#insertOutlaySubmit').trigger('click');
         });
     </script>
+
+    <script src="{{asset('js/uploadprofilefiles.js')}}"></script>
+
+
 
 @endsection
 
