@@ -13,7 +13,7 @@ $files.on("change", function (event) {
         fd = new FormData();
 
     if(this.files[0].type == 'application/pdf' || this.files[0].type == 'image/jpeg' || this.files[0].type == 'image/jpg' || this.files[0].type == 'image/png') {
-        if(this.files[0].size < 25000){
+        if(this.files[0].size < 30000000){
 
             $('.preload').removeClass("hidden");
             fd.append("file", this.files[0]);
@@ -41,7 +41,7 @@ $files.on("change", function (event) {
             });
         }
         else{
-            alert('Suba un archivo con menos de 25 KiloBytes');
+            alert('Suba un archivo con menos de 30 MegaBytes');
         }
     }
     else {
