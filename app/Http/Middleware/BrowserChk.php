@@ -14,12 +14,13 @@ class BrowserChk
      * @return mixed
      */
     public function handle($request, Closure $next) {
+        if($request->ip() != '127.0.0.1'){
+            $browser = get_browser(null, true);
 
-        $browser = get_browser(null, true);
-
-        if( $request->route()->getPath() != "nosoportado"){
-            if($browser['browser']=="IE")
-                return redirect('nosoportado');
+            if( $request->route()->getPath() != "nosoportado"){
+                if($browser['browser']=="IE")
+                    return redirect('nosoportado');
+            }
         }
 
         return $next($request);

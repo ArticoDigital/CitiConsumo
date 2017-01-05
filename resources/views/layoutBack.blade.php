@@ -31,7 +31,9 @@
                     <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
                 @else
                     <li><a style="color: white" href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
+                    @if(Auth::user()->role_id == 2)
                     <li><a style="color: white" href="{{route('tradeList')}}" class="orange-text">Mis transacciones</a></li>
+                    @endif
                 @endif
 
                 <li class="menu-item-out-movile"><a href="{{route('myProfile')}}" style="color: white">Bienvenid@ {{Auth::user()->name}}</a></li>

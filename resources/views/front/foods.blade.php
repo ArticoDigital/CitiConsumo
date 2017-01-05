@@ -120,6 +120,11 @@
     </script>
     <script src="{{asset('js/address.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
+    <style>
+        span.select2-selection.select2-selection--multiple {
+            height: 42px !important;
+        }
+    </style>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
