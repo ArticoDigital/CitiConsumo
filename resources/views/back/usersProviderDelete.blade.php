@@ -12,6 +12,7 @@
             <th>Usuario</th>
             <th>email</th>
             <th>Celular</th>
+            <th>Ultima actualización</th>
             <th>Re-Activar</th>
         </tr>
         @foreach($providers as $provider)
@@ -55,6 +56,9 @@
 
                 <td>
                     {{$provider->user->cellphone}}
+                </td>
+                <td>
+                    {{$provider->created_at}}
                 </td>
 
                 <td data-th="Price">

@@ -852,7 +852,8 @@ figure figcaption {
           align-items: center; }
 
 .Menu-fixed li {
-  width: 100%; }
+  width: 100%;
+  text-transform: uppercase; }
   .Menu-fixed li a {
     border-bottom: 1px solid white;
     display: block;

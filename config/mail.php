@@ -56,7 +56,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'no-reply@cityconsumo.com', 'name' => 'citiconsumo'],
+    'from' => ['address' => 'no-reply@cityconsumo.com', 'name' => 'Cityconsumo.com'],
 
     /*
     |--------------------------------------------------------------------------

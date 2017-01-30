@@ -9,6 +9,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Locación</th>
+            <th>Fecha registro</th>
             <th>Activo</th>
             <th>Validado</th>
             <th>Detalle</th>
@@ -18,6 +19,7 @@
                 <td>{{$service->name}}</td>
                 <td class="center">{{$service->price}}</td>
                 <td >{{$service->location}}</td>
+                <td >{{$service->created_at}}</td>
                 <td class="center">{{($service->isActive)?"Si":"No"}}</td>
                 <td class="center">{{($service->isValidate)?"Si":"No"}}</td>
                 <td class="center"><a href="{{route('serviceDetail',['id' => $service->id])}}">Ver</a></td>

@@ -11,6 +11,7 @@
             <th>Usuario</th>
             <th>email</th>
             <th>Celular</th>
+            <th>Fecha Solicitud</th>
             <th>Ver Archivos</th>
             <th>Activar/Denegar</th>
         </tr>
@@ -52,6 +53,7 @@
                     {{$provider->user->email}}
                 </td>
                 <td class="center">{{$provider->user->cellphone}}</td>
+                <td class="center">{{$provider->created_at}}</td>
                 <td class="center">
                     <a href="#" data-id="{{$provider->id}}" data-name="{{$provider->user->name}}" class="Button-table viewFiles">Ver</a>
                     @foreach($provider->providerFiles as $key => $files)
@@ -62,7 +64,7 @@
                 <td data-th="Price" class="center">
                     <a href="#" data-user="{{$provider->id}}" data-action="{{route('enabledProvider')}}"
                        class="Admin-updateStateProvider">Activar</a>
-                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('deleteProvider')}}"
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('disableProvider')}}"
                        class="Admin-updateStateProvider">Denegar</a>
                 </td>
             </tr>

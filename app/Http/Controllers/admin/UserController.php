@@ -85,18 +85,22 @@ class UserController extends Controller
             return redirect()->route('myProfile');
 
         $provider = Provider::find($request->input('idUser'));
+        $user = $provider->user;
+        $user->role_id = 2;
+        $user->save();
+
         $provider->isActive = 1;
         $provider->save();
         return json_encode(['success' => true]);
     }
 
-    public function disabledProvider(RoleRequest $request) {
+    public function disabledProvider(RoleRequest $request) { //Funcion llamada cuando un usuario no se habilita como proveedor debe hacerse un correo? debe eliminarse el registro de provider?
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
         $provider = Provider::find($request->input('idUser'));
-        $provider->isActive = 0;
+        $provider->isActive = 0; //0
         $provider->save();
         return json_encode(['success' => true]);
     }

@@ -11,6 +11,8 @@
             <th>Nombre</th>
             <th>email</th>
             <th>Celular</th>
+            <th>Fecha de registro</th>
+            <th>Ultima actualización</th>
             <th>Ver Compras</th>
         </tr>
         @foreach($users as $user)
@@ -53,6 +55,13 @@
                 
                 <td>
                     {{$user->cellphone}}
+                </td>
+
+                <td>
+                    {{$user->created_at}}
+                </td>
+                <td>
+                    {{$user->updated_at}}
                 </td>
 
                 <td>

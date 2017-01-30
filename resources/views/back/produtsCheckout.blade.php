@@ -12,6 +12,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Detalles</th>
+            <th>Fecha resgistro</th>
             <th>Activar/Eliminar</th>
         </tr>
         @foreach($services as $service)
@@ -27,6 +28,7 @@
                 <td class="center">
                     <a target="_blank"  href="{{route('serviceDetail',['id' => $service->id])}}">VER</a>
                 </td>
+                <td class="center">{{$service->created_at}}</td>
                 <td class="center">
                     <a href="#" data-value="0" data-action="{{route('deleteProductProvider', $service->id)}}" class="Admin-updateStateProvider" id="activeProduct">Activar</a>
                     <a href="#" data-value="1" data-action="{{route('deleteProductProvider', $service->id)}}" class="Admin-updateStateProvider" id="deleteProduct">Eliminar</a>

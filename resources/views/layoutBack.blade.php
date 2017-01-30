@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Citiconsumo</title>
+    <title>Cityconsumo.com</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/back/style.css')}}">
     @yield('styles')

@@ -187,7 +187,7 @@
                     <input class="col-12 medium-12 small-12" type="text" id="address" name="address" value="{{old('address')}}" autocomplete="off">
                 </label>
                 <label class="col-12 medium-12 small-12 required" for="name">
-                    <span class="text">Nombre</span>
+                    <span class="text">Nombre del servicio</span>
                     <input class="col-12 medium-12 small-12" type="text" id="name" name="name" value="{{old('name')}}" autocomplete="off">
                 </label>
                 <label class="col-12 medium-12 small-12 required" for="description">

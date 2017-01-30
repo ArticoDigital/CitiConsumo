@@ -11,6 +11,7 @@
             <th>Usuario</th>
             <th>Email</th>
             <th>Celular</th>
+            <th>Fecha de solicitud</th>
             <th>Ver productos</th>
             <th># Servicios</th>
         </tr>
@@ -20,7 +21,7 @@
                     <a href="{{route('profile', $provider->user->id)}}">
                         <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
                     </a>
-                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('disableProvider')}}" class="deactivateProvider">
+                    <a href="#" data-user="{{$provider->id}}" data-action="{{route('deleteProvider')}}" class="deactivateProvider">
                         <img class="small-icon-product" src="{{url('img/x-eliminar-imagen.svg')}}" alt="">
                     </a>
                 </td>
@@ -54,6 +55,7 @@
                     {{$provider->user->email}}
                 </td>
                 <td> {{$provider->user->cellphone}}</td>
+                <td> {{$provider->created_at}}</td>
                 <td class="center"><a href="{{route('servicesUser', ['id' => $provider->id] )}}" class="idProduct"  >VER</a></td>
 
                 <td class="center">
