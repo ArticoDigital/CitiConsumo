@@ -39,10 +39,12 @@ Route::get('facebook/authorize', [
 Route::get('auth', function () {
     SocialAuth::login('facebook', function ($user, $details) {
         $emailT = $details->raw()['email'];
-
+        dd($details);
         $userEmail = \City\User::where('email', $emailT)->get();
 
         $user->email = $details->raw()['email'] ;
+
+        //Aca se deben agregar los nombres y apellidos traidos de facebook
         if(isset($user->role_id)){
             
             if($user->role_id<=1){
