@@ -300,7 +300,7 @@
                 </div>
             </article>
             <article id="Step4" class="Step">
-                <input class="Button" type="submit" value="Crear servicio">
+                <input id="createButton" class="Button" type="submit" value="Crear servicio">
             </article>
         </form>
     </section>
@@ -388,6 +388,7 @@
         });
 
         $('form').on('submit', function(){
+            $('#createButton').attr("disabled", true);
             var $file = $('#result .File'), positions = '';
 
             for(var i = 0; i < $file.length; i++){
