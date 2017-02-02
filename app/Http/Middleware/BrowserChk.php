@@ -15,7 +15,7 @@ class BrowserChk
      */
     public function handle($request, Closure $next) {
         if($request->ip() != '127.0.0.1'){
-            $browser = get_browser(null, true);
+            $browser =  (null, true);
 
             if( $request->route()->getPath() != "nosoportado"){
                 if($browser['browser']=="IE")
