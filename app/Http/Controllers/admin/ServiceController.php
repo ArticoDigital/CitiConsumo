@@ -41,9 +41,13 @@ class ServiceController extends Controller
         $generalTypes = GeneralType::all();
 
         if(isset($user->provider)){
-            if($user->provider->isActive)
+            if($user->provider->isActive==1){
                 return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
-            return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus servicios.']);
+            }else if($user->provider->isActive==2){
+                return redirect()->to('admin')->with(['alertTitle' => '¡No puedes realizar esta acción!', 'alertText' => 'El administrador te ha eliminado como proveedor, debes enviar un mensaje al administrador para reactivarte']);
+            }else{
+                return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus servicios.']);
+            }
         }
         return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Ofrece tus servicios!', 'alertText' => 'Para que puedas ofrecer tus servicios, debes cargar los siguientes documentos, así ofreceremos mayor confianza a la comunidad Cityconsumo! una ve aprobados, recibiras un correo de confirmación y podrás empezar a trabajar con nosotros como proveedor!']);
     }
@@ -94,8 +98,9 @@ class ServiceController extends Controller
                 }
 
                 $this->moveFiles($inputs, $service);
-                $this->ispressed=false;
+                
                 return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
+                $this->ispressed=false;
             }
     }
 

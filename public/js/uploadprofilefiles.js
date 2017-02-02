@@ -14,7 +14,7 @@ $files.on("change", function (event) {
         fd = new FormData();
 
     if(this.files[0].type == 'image/jpeg' || this.files[0].type == 'image/jpg' || this.files[0].type == 'image/png') {
-        if(this.files[0].size < 2500000){
+        if(this.files[0].size < 4500000){
 
             $('.preload').removeClass("hidden");
             fd.append("file", this.files[0]);
@@ -44,7 +44,7 @@ $files.on("change", function (event) {
             });
         }
         else{
-            alert('Suba un archivo con menos de 2.5MB');
+            alert('Suba un archivo con menos de 4.5MB');
         }
     }
     else {

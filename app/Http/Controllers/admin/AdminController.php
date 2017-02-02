@@ -156,7 +156,7 @@ class AdminController extends Controller
     public function uploadProfileFile(RoleRequest $request)
     {
         if($request->ajax()){
-            $validator = Validator::make($request->all(), ['file' => 'mimes:jpeg,jpg,png|max:200000']);
+            $validator = Validator::make($request->all(), ['file' => 'mimes:jpeg,jpg,png|max:4500']);
             if($validator->fails())
                 return ['name' => "El archivo es demasiado grande, vuelva a intentarlo", 'url' => url('/uploads/provider/'), 'identifier' => $request->identifier, 'success' => false];
 

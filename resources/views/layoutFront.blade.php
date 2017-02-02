@@ -76,8 +76,8 @@
                                         <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                                     @endif
 
-                                    <li class="menu-item-out-movile"><a href="{{route('myProfile')}}">Bienvenid@ {{Auth::user()->name}}</a></li>
-                                    <li class="menu-item-out-movile"><a href="{{route('logout')}}">Cerrar sesión</a></li>
+                                    <li class=""><a href="{{route('myProfile')}}">Mi perfil</a></li>
+                                    <li class=""><a href="{{route('logout')}}">Cerrar sesión</a></li>
                                 @else
                                     <li class="menu-item-out-movile"><a href="{{route('addService')}}" class="orange-text">Postula tu servicio</a></li>
                                     <li class="menu-item-out-movile"><a href="{{route('register')}}">Registrate</a></li>
@@ -154,6 +154,17 @@
         </div>
     </section>
 </footer>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '8b9d92dc8f8c613c712fa74e43a0a233714d0c66';
+    window.smartsupp||(function(d) {
+        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+        c.type='text/javascript';c.charset='utf-8';c.async=true;
+        c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
 @yield('scripts')

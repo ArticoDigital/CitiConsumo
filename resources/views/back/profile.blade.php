@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="name-profile">{{$userprofile->name . " " .$userprofile->last_name}}</div>
-                <button class="button menu-item-out-movile">Actualizar perfil</button>
+                
             </div>
             <div class="@if(isset($userprofile->provider) && $userprofile->provider->isActive) col-5 @endif medium-6 small-12">
                 <p class="profile-title" style="position: relative;">Datos personales
@@ -174,10 +174,12 @@
                         <span>{!!  $errors->first('phone', ':message')  !!}</span>
                     </label>
                 </div>
-
+                <div class="row center">
+                    <button style="margin:25px auto 10px; padding: 9px 28px;font-size: 1.1em;" class="button">Guardar cambios</button>
+                </div>
                 <p class="profile-title">Seguridad</p>
                 <div class="row profile-item border-bottom">
-                    <div class="col-12">Cambiar contraseña <img id="password-option" class="small-icon-2"
+                    <div class="col-12 small-12">Cambiar contraseña <img id="password-option" class="small-icon-2"
                                                                 src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
                 </div>
                 <div id="password-option-box" class="hidden">
@@ -198,7 +200,7 @@
                     </div>
                 </div>
                 <div class="row profile-item border-bottom">
-                    <div class="col-12">Información de la cuenta <img id="account-option" class="small-icon-2"
+                    <div class="col-12 small-12">Información de la cuenta <img id="account-option" class="small-icon-2"
                                                                       src="{{url('img/lapiz-edicion.svg')}}" alt="">
                     </div>
                 </div>
@@ -245,8 +247,9 @@
                         </label>
                     </div>
                 </div>
-
-                <button style="margin:30px auto;" class="button menu-item-out">Actualizar perfil</button>
+                <div class="row center">
+                    <button style="margin:25px auto 10px; padding: 9px 28px;font-size: 1.1em;" class="button">Guardar cambios</button>
+                </div>
             </div>
 
             @if(isset($userprofile->provider) && $userprofile->provider->isActive && isset($buysNotPayed))
