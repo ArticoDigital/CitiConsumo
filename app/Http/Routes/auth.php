@@ -45,8 +45,13 @@ Route::get('auth', function () {
         $user->email = $details->raw()['email'] ;
 
         //Aca se deben agregar los nombres y apellidos traidos de facebook
+        if($user->name==""){
+            $user->email = $details->raw()['first_name'] ;
+        }
+        if($user->last_name==""){
+            $user->email = $details->raw()['last_name'] ;
+        }
         if(isset($user->role_id)){
-            
             if($user->role_id<=1){
                 $user->role_id = 1;
             }
