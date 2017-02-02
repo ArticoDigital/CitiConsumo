@@ -179,7 +179,7 @@
                 </div>
                 <p class="profile-title">Seguridad</p>
                 <div class="row profile-item border-bottom">
-                    <div class="col-12">Cambiar contraseña <img id="password-option" class="small-icon-2"
+                    <div class="col-12 small-12">Cambiar contraseña <img id="password-option" class="small-icon-2"
                                                                 src="{{url('img/lapiz-edicion.svg')}}" alt=""></div>
                 </div>
                 <div id="password-option-box" class="hidden">
@@ -200,7 +200,7 @@
                     </div>
                 </div>
                 <div class="row profile-item border-bottom">
-                    <div class="col-12">Información de la cuenta <img id="account-option" class="small-icon-2"
+                    <div class="col-12 small-12">Información de la cuenta <img id="account-option" class="small-icon-2"
                                                                       src="{{url('img/lapiz-edicion.svg')}}" alt="">
                     </div>
                 </div>
