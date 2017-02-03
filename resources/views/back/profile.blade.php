@@ -357,12 +357,13 @@
                     <span>Estamos verificando tus documentos. Pronto prodrás crear tu primer producto.</span>
                 </div>
             @endif
-        @else
-            <div class="div_box_center">
-                <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
-                    servicios!</a>
-            </div>
         @endif
+    @else
+        <div class="div_box_center">
+            <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
+                servicios!</a>
+        </div>
+        
     @endif
     <section id="ConfirmAlert" class="Alert confirm" style="display: none">
         <article class="Message">
