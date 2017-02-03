@@ -181,22 +181,22 @@
                 <input type="hidden" name="lat" id="lat" value="{{$service['lat']}}">
                 <input type="hidden" name="lng" id="lng" value="{{$service['lng']}}">
                 <label class="col-12 medium-12 small-12 required" for="address">
-                    <span class="text">Dirección</span>
+                    <span class="text">Dirección de donde estas ubicado y ofreces los servicios</span>
                     <input class="col-12 medium-12 small-12" type="text" id="address" name="address" value="{{$service['location']}}" autocomplete="off">
                 </label>
                 <label class="col-12 medium-12 small-12 required" for="name">
-                    <span class="text">Nombre del servicio</span>
+                    <span class="text">Nombre del servicio que estas ofreciendo</span>
                     <input class="col-12 medium-12 small-12" type="text" id="name" name="name" value="{{$service['name']}}" autocomplete="off">
                 </label>
                 <label class="col-12 medium-12 small-12 required" for="description">
-                    <span class="text">Descripción</span>
-                    <textarea class="col-12 medium-12 small-12" id="description" name="description">{!! $service['description'] !!}</textarea>
+                    <span class="text">Descripción detallada de tu servicio.</span>
+                    <textarea  placeholder="Ejemplo: Hospedaje de mascota tamaño medio, el valor es por noche, cuidado a su mascota durante los días que este Hospedaje de mascota tamaño medio, el valor es por noche, cuidado a su mascota durante los días que este" class="col-12 medium-12 small-12" id="description" name="description">{!! $service['description'] !!}</textarea>
                 </label>
                 <div class="col-12 medium-12 small-12 row" style="padding-right: 20px; width: 100%">
                     @if($service['food'])
                     <div id="foodsInputs" class="changeInputs col-12 medium-12 small-12 row">
                         <label class="col-3 medium-12 small-12" for="date">
-                            <span class="text">Fecha</span><br>
+                            <span class="text">fecha de vigencia del servicio</span><br>
                             <input class="datetimepicker_mask dateSingle" id="date" fakeName="date" name="date" type="text" autocomplete="off" readonly="true" value="{{$service['food']['food_time']}}">
                         </label>
                         <label class="col-3 medium-12 small-12" for="price">

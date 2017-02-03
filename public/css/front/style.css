@@ -1480,8 +1480,8 @@ body.login, body.getEmail, body.getReset {
       outline: 0; }
 
 .register .Register-social, .login .Register-social {
-  margin: 1.5rem 3rem;
-  display: block; }
+  margin: 1.5rem 2.5rem;
+  /*display: block*/ }
   .register .Register-social path, .login .Register-social path {
     fill: #004f8f; }
 

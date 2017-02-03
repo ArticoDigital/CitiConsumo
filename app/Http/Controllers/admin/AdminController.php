@@ -232,7 +232,7 @@ class AdminController extends Controller
             }
         }
 
-        return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podras postular tus servicios! recibiras un correo de confirmacion!']);
+        return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podrás postular tus servicios! recibirás un correo de confirmación!']);
     }
 
     public function updateStateService(RoleRequest $request)

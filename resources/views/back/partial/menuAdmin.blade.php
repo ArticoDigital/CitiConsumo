@@ -4,8 +4,8 @@
     <li><a href="{{route('showProvider')}}">Proveedores</a></li>
     <li><a href="{{route('showProviderActive')}}">Proveedores por aprobar</a></li>
     <li><a href="{{route('showProviderDelete')}}">Proveedores eliminados</a></li>
-    <li><a href="{{route('showProductsInactived')}}">Productos por aprobar</a></li>
-    <li><a href="{{route('showProductsInactived')}}">Productos eliminados</a></li>
+    <li><a href="{{route('showProductsInactived')}}">Servicios por aprobar</a></li>
+    <li><a href="{{route('showProductsInactived')}}">Servicios eliminados</a></li>
     <li><a href="{{route('outlayList')}}">Desembolsos</a></li>
 </ul>
 <div class="messages-success">

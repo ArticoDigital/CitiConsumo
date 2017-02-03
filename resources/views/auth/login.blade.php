@@ -16,16 +16,20 @@
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h3>Inicia sesión</h3>
-        <span class="Register-social">
-            <a href="{{route('facebook')}}" style="display:block; width:32px; margin:auto">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     width="32px" height="100%" viewBox="0 0 16 16">
-                    <path fill="#444"
-                          d="M14.5 0h-13c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h6.5v-7h-2v-2h2v-1c0-1.653 1.347-3 3-3h2v2h-2c-0.55 0-1 0.45-1 1v1h3l-0.5 2h-2.5v7h4.5c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5z"></path>
-                </svg>
-            </a>
-        </span>
-
+        <div class="Register-social row middle">
+            <div class="col-4 small-4">
+                <a href="{{route('facebook')}}" style="width:32px; margin:auto">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="32px" height="100%" viewBox="0 0 16 16">
+                        <path fill="#444"
+                              d="M14.5 0h-13c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h6.5v-7h-2v-2h2v-1c0-1.653 1.347-3 3-3h2v2h-2c-0.55 0-1 0.45-1 1v1h3l-0.5 2h-2.5v7h4.5c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-8 small-8" style="color: #777;display: block;font-size: 0.75rem;">Inicia con facebook</div>
+            <span class="col-12 small-12" style="margin: 10px 0px;color: black;text-align: center;">ó</span>
+        </div>
+        
         <div class="Register-label">
             <label for="email"> Tu Correo </label>
             <input type="text" id="email" value="{{ old('email') }}" name="email">
@@ -49,10 +53,10 @@
         </div>
         <div class="row end">
                 <a style="color: #67b9e5; font-size: 14px" class="login-restartPassword" href="{{route('getEmail')}}">
-                    Olvido su contraseña?
+                   ¿Olvidaste tu contraseña?
                 </a>
             </div>
-        <button>INICO SESIÓN</button>
+        <button>INICIA SESIÓN</button>
     </form>
 @endsection
 

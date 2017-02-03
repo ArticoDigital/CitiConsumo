@@ -49,7 +49,7 @@ class ServiceController extends Controller
                 return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus servicios.']);
             }
         }
-        return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Ofrece tus servicios!', 'alertText' => 'Para que puedas ofrecer tus servicios, debes cargar los siguientes documentos, así ofreceremos mayor confianza a la comunidad Cityconsumo! una ve aprobados, recibiras un correo de confirmación y podrás empezar a trabajar con nosotros como proveedor!']);
+        return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Ofrece tus servicios!', 'alertText' => 'Para que puedas ofrecer tus servicios, debes cargar los siguientes documentos, así ofreceremos mayor confianza a la comunidad Cityconsumo! una vez aprobados, recibirás un correo de confirmación y podrás empezar a trabajar con nosotros como proveedor!']);
     }
 
     public function create(RoleRequest $request) {

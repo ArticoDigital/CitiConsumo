@@ -3,7 +3,7 @@
 @section('content')
 
     @include('back.partial.menuAdmin')
-    <h1>Productos por aprobar</h1>
+    <h1>Servicios por aprobar</h1>
     <input type="hidden" value="{{ csrf_token() }}" name="_token" id="token">
     <table class="rwd-table" id="reload">
         <tr class="header-table">

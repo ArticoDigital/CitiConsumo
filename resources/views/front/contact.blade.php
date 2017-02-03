@@ -7,7 +7,7 @@
 
     <section class="section-content row between">
         <h1 class="center">Contacto</h1>
-        <div style="text-align:center; width:100%"><p>Llámanos, escríbenos o por qué no, utiliza nuestras redes sociales. ¡Te responderemos con la solución, no con excusas!</p></div>
+        <div style="text-align:center; width:100%"><p>Llámanos, escríbenos y por qué no, utiliza nuestras redes sociales. ¡Te responderemos con la solución, no con excusas!</p></div>
         @if(count($errors) > 0)
             <div class="row middle center error-message">
                <p>Debes llenar todos los campos para el envío del mensaje.</p>
@@ -34,7 +34,7 @@
         </div>
         <div class="col-4 medium-5 small-12 message">
                <h2>Ayudanos a Mejorar</h2>
-                    <p>Queremos mejorar continuamente, por eso lo mejor es saber lo que piensas acerca de nuestro modelo de negocio y plataforma web, coloca lo que quieras, hasta un buen vainazo te recibimos!</p>
+                    <p>Queremos mejorar continuamente y nos gustaría conocer ¿qué piensas sobre nuestro modelo de negocio y sitio web? ¡Escribe lo que quieras, hasta un buen "vainazo" te recibimos!</p>
         </div>
 
             
