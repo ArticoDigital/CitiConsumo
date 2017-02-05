@@ -113,23 +113,23 @@
 
     <section>
         @if(count($services))
-        @foreach($services as $service)
-            <a href="#" onclick="showInfoProduct({{$service}})">
-                <article class="row top Platform-productSection "
-                         data-lat="{{$service->lat}}"
-                         data-lng="{{$service->lng}}"
-                         data-service="{{$service}}"
-                         style="align-items: stretch">
-                    <figure class="col-3 medium-3">
-                        <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
-                    </figure>
-                    <div class="Platform-productInfo col-9 medium-9">
-                        <h3>{{$service->name}}</h3>
-                        <b>${{$service->price}}</b>
-                    </div>
-                </article>
-            </a>
-        @endforeach
+            @foreach($services as $service)
+                <a href="#" onclick="showInfoProduct({{$service}})">
+                    <article class="row top Platform-productSection "
+                             data-lat="{{$service->lat}}"
+                             data-lng="{{$service->lng}}"
+                             data-service="{{$service}}"
+                             style="align-items: stretch">
+                        <figure class="col-3 medium-3">
+                            <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
+                        </figure>
+                        <div class="Platform-productInfo col-9 medium-9">
+                            <h3>{{$service->name}}</h3>
+                            <b>${{$service->price}}</b>
+                        </div>
+                    </article>
+                </a>
+            @endforeach
         @endif
     </section>
 </div>
@@ -152,28 +152,23 @@
         <div class="col-6 medium-6 small-12 InfoServices-info">
             <h2 id="NameService">Ensalada de frutas frescas</h2>
             @foreach($services as $service)
-                @if($service->food)
-                    <h3 id="availableService">{{$service->food['foods-quantity']}} platos disponibles</h3>
-                @elseif($service->general)
-                    <ul class="col-12 row">
 
-                        <li class="col-12"><b>Locación:general</b>{{$service->location}}</li>
-                    </ul>
+                @if($service->food)
+                    <span class="col-12 row" id="availableService">{{$service->food['foods-quantity']}} platos disponibles</span>
+                @elseif($service->general)
+                    <span class="col-12 row"><b>Locación:general</b>{{$service->location}} </span>
+                @else
+                    @if($service->pet)
+                        <span class="col-12 row">{{$service->pet->pets_quantity}} mascotas a cuidar</span>
+                    @endif
                 @endif
             @endforeach
 
             <div class="InfoServices-stars row ">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+
             </div>
             <p id="descriptionService">
-                {{-- Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un
-                 sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o
-                 menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido
-                 aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y
-                 editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de "Lorem
-                 Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de
-                 desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras
-                 veces a propósito (por ejemplo insertándole humor y cosas por el estilo).   --}}
+
             </p>
             {{--<a href="">Ver perfil del autor</a>--}}
             <div class="data-services">
@@ -188,7 +183,8 @@
                     @if($typeService == "pet")
                         <label for="">
                             Rango de fechas <br>
-                            <input style="margin: 10px 0;" class="datetimepicker_mask" id="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value=""><br>
+                            <input style="margin: 10px 0;" class="datetimepicker_mask" id="date" type="text"
+                                   placeholder="Fecha" autocomplete="off" readonly="true" value=""><br>
                             <input type="hidden" id="maxDate" value="">
                             <input type="hidden" id="dateRange" value="{{$_GET['date']}}">
                             <input type="hidden" name="quantity" id="petQuantity" value="{{$nDays}}">
@@ -200,7 +196,7 @@
                         <select name="quantity" id="quantity">
                             @foreach($services as $key => $service)
                                 @for( $i = 1; $i <=  $service->food['foods-quantity'] ; $i++ )
-                                <option value="{{ $i }}">{{ $i }}</option>
+                                    <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             @endforeach
                         </select>
@@ -214,7 +210,7 @@
                     <input type="hidden" id="valueTotal" name="value" value="">
                 </div>
                 @if( Auth::user() && Auth::user()->role_id !=3 )
-                <div id="PayForm">
+                    <div id="PayForm">
                     <span class="close">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              x="0px" y="0px" width="100%" height="auto" viewBox="0 0 49.685 82.689"
@@ -224,55 +220,59 @@
                         </svg>
                     </span>
 
-                    <section>
-                        <h2 id="NameService">Formulario de pago</h2>
-                        <h3 id="availableService">Llene los campos para finalizar su compra</h3>
-                        <article class="row" style="margin-top:30px">
-                            <div class="profile-item col-12">
-                                <label for="dni_type" class="row middle">
-                                    <span class="col-6 small-6">Tipo de documento(*)</span>
-                                    <select name="dni_type" id="dni_type" class="col-6 small-6">
-                                        <option value="1">CC Cedula de Ciudadanía</option>
-                                        <option value="2">CE Cedula de Extranjería</option>
-                                        <option value="3">NIT</option>
-                                        <option value="6">PP Pasaporte</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="profile-item col-12">
-                                <label for="user_identification" class="row middle">
-                                    <span class="col-6 small-6">Número de documento(*)</span>
-                                    <input class="col-6 small-6" name="user_identification" id="user_identification" type="text" value="{{auth()->user()->user_identification}}">
-                                    <span></span>
-                                </label>
-                            </div>
-                            <div class="profile-item col-12">
-                                <label for="name" class="row middle">
-                                    <span class="col-6 small-6">Nombres(*)</span>
-                                    <input class="col-6 small-6" name="name" id="name" type="text" value="{{auth()->user()->name}}">
-                                    <span></span>
-                                </label>
-                            </div>
-                            <div class="profile-item col-12">
-                                <label for="last_name" class="row middle">
-                                    <span class="col-6 small-6">Apellidos(*)</span>
-                                    <input class="col-6 small-6" name="last_name" id="last_name" type="text" value="{{auth()->user()->last_name}}">
-                                    <span></span>
-                                </label>
-                            </div>
-                            <div class="profile-item col-12">
-                                <label for="cellphone" class="row middle">
-                                    <span class="col-6 small-6">Celular(*)</span>
-                                    <input class="col-6 small-6" name="cellphone" id="cellphone" type="text" value="{{auth()->user()->cellphone}}">
-                                    <span></span>
-                                </label>
-                            </div>
-                            <button id="buyAction" class="btn" style="width:100%; margin-left: 0; margin-right: 0">
-                                Finalizar compra
-                            </button>
-                        </article>
-                    </section>
-                </div>
+                        <section>
+                            <h2 id="NameService">Formulario de pago</h2>
+                            <h3 id="availableService">Llene los campos para finalizar su compra</h3>
+                            <article class="row" style="margin-top:30px">
+                                <div class="profile-item col-12">
+                                    <label for="dni_type" class="row middle">
+                                        <span class="col-6 small-6">Tipo de documento(*)</span>
+                                        <select name="dni_type" id="dni_type" class="col-6 small-6">
+                                            <option value="1">CC Cedula de Ciudadanía</option>
+                                            <option value="2">CE Cedula de Extranjería</option>
+                                            <option value="3">NIT</option>
+                                            <option value="6">PP Pasaporte</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="profile-item col-12">
+                                    <label for="user_identification" class="row middle">
+                                        <span class="col-6 small-6">Número de documento(*)</span>
+                                        <input class="col-6 small-6" name="user_identification" id="user_identification"
+                                               type="text" value="{{auth()->user()->user_identification}}">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="profile-item col-12">
+                                    <label for="name" class="row middle">
+                                        <span class="col-6 small-6">Nombres(*)</span>
+                                        <input class="col-6 small-6" name="name" id="name" type="text"
+                                               value="{{auth()->user()->name}}">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="profile-item col-12">
+                                    <label for="last_name" class="row middle">
+                                        <span class="col-6 small-6">Apellidos(*)</span>
+                                        <input class="col-6 small-6" name="last_name" id="last_name" type="text"
+                                               value="{{auth()->user()->last_name}}">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="profile-item col-12">
+                                    <label for="cellphone" class="row middle">
+                                        <span class="col-6 small-6">Celular(*)</span>
+                                        <input class="col-6 small-6" name="cellphone" id="cellphone" type="text"
+                                               value="{{auth()->user()->cellphone}}">
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <button id="buyAction" class="btn" style="width:100%; margin-left: 0; margin-right: 0">
+                                    Finalizar compra
+                                </button>
+                            </article>
+                        </section>
+                    </div>
                     <div class="row center">
                         <a id="showBuyForm" href="#" class="btn"> Comprar</a>
                     </div>
@@ -286,7 +286,7 @@
 </aside>
 
 <link rel="stylesheet" href="{{asset('css/select2.css')}}">
-<link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
+<link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
@@ -294,14 +294,16 @@
 <script src="{{asset('js/owl-carousel/owl.carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
+        defer></script>
 <script>
     $(".owl-carousel").owlCarousel({
 
         navigation: true, // Show next and prev buttons
         slideSpeed: 300,
         paginationSpeed: 400,
-        singleItem: true
+        singleItem: true,
+        navigationText: ["<",">"]
     });
 
     $('#showBuyForm').on('click', function () {
@@ -318,11 +320,18 @@
 <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
     _smartsupp.key = '8b9d92dc8f8c613c712fa74e43a0a233714d0c66';
-    window.smartsupp||(function(d) {
-        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-        c.type='text/javascript';c.charset='utf-8';c.async=true;
-        c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    window.smartsupp || (function (d) {
+        var s, c, o = smartsupp = function () {
+            o._.push(arguments)
+        };
+        o._ = [];
+        s = d.getElementsByTagName('script')[0];
+        c = d.createElement('script');
+        c.type = 'text/javascript';
+        c.charset = 'utf-8';
+        c.async = true;
+        c.src = '//www.smartsuppchat.com/loader.js?';
+        s.parentNode.insertBefore(c, s);
     })(document);
 </script>
 </body>

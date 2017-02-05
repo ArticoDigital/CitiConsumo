@@ -1593,8 +1593,12 @@ body.getReset #resetpassword label {
     width: 100% !important; }
   .InfoServices h2 {
     color: #004f8f;
-    font-weight: 400;
-    margin-bottom: 0.1875rem; }
+    font-weight: 600;
+    margin-bottom: 0.1875rem;
+    text-transform: uppercase;
+    font-size: 1.375rem; }
+  .InfoServices span {
+    font-weight: 600; }
   .InfoServices h3 {
     margin: 0;
     font-weight: 400;
@@ -1614,7 +1618,7 @@ body.getReset #resetpassword label {
 
 .InfoServices-info {
   position: relative;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 0 1.25rem;
   overflow: hidden;
   text-align: left; }
   .InfoServices-info #PayForm {
@@ -1649,24 +1653,51 @@ body.getReset #resetpassword label {
   position: relative;
   max-width: 56.25rem;
   width: 100%;
-  height: 31.25rem;
   background: white; }
+  .InfoServices-content img {
+    vertical-align: top;
+    display: block; }
+  .InfoServices-content .owl-buttons {
+    position: absolute;
+    top: -webkit-calc(50% - 16px);
+    top: calc(50% - 16px);
+    width: 100%;
+    text-align: left;
+    padding: 0 10px; }
+    .InfoServices-content .owl-buttons div {
+      font-weight: 600;
+      font-size: 1.25rem;
+      background: #ffffff;
+      width: 1.625rem;
+      text-align: center;
+      height: 1.75rem;
+      line-height: 1.625rem;
+      color: #ccc;
+      border: 0.0625rem solid #ccc; }
+  .InfoServices-content .owl-next {
+    position: absolute;
+    right: 0.625rem;
+    top: 0; }
   .InfoServices-content figure {
     margin: 0;
     background-size: cover;
     background-position: center; }
   .InfoServices-content p {
     margin: 1rem 0;
-    font-size: 0.9375rem;
     line-height: 1.125rem;
     text-align: justify;
-    height: 8.125rem;
-    overflow: hidden; }
+    overflow: hidden;
+    font-weight: 500; }
   .InfoServices-content val {
     font-size: 1.5rem; }
-  .InfoServices-content select {
-    height: 2.125rem;
-    background: white; }
+  .InfoServices-content select, .InfoServices-content input {
+    margin: 0.625rem 0;
+    background: #eee;
+    border: 0.0625rem solid gray;
+    color: gray;
+    padding: 0.3125rem 0.625rem;
+    -webkit-border-radius: 0.1875rem;
+            border-radius: 0.1875rem; }
   .InfoServices-content .btn {
     background: #004f8f;
     color: white;

@@ -80,8 +80,12 @@
 
   h2
     color: #004f8f
-    font-weight: 400
+    font-weight: 600
     margin-bottom: rem(3)
+    text-transform: uppercase
+    font-size: rem(22)
+  span
+    font-weight: 600
   h3
     margin: 0
     font-weight: 400
@@ -96,7 +100,7 @@
   opacity: 1
 .InfoServices-info
   position: relative
-  padding: rem(20)
+  padding: rem(20) rem(20) 0 rem(20)
   overflow: hidden
   text-align: left
   #PayForm
@@ -128,24 +132,52 @@
   position: relative
   max-width: rem(900)
   width: 100%
-  height: rem(500)
   background: white
+  img
+    vertical-align: top
+    display: block
+  .owl-buttons
+    position: absolute
+    top: calc(50% - 16px)
+    width: 100%
+    text-align: left
+    padding: 0 10px
+    div
+      font-weight: 600
+      font-size: 1.25rem
+      background: #ffffff
+      width: rem(26)
+      text-align: center
+      height: rem(28)
+      line-height: rem(26)
+      color: #ccc
+      border: rem(1) solid #ccc;
+  .owl-next
+    position: absolute
+    right: rem(10)
+    top: 0
+
+
+
   figure
     margin: 0
     background-size: cover
     background-position: center
   p
     margin: rem(16) 0
-    font-size: rem(15)
     line-height: rem(18)
     text-align: justify
-    height: rem(130)
     overflow: hidden
+    font-weight: 500
   val
     font-size: rem(24)
-  select
-    height: rem(34)
-    background: white
+  select, input
+    margin: rem(10) 0
+    background: #eee
+    border: rem(1) solid gray
+    color: gray
+    padding: rem(5) rem(10)
+    border-radius: rem(3)
   .btn
     background: #004f8f
     color: white
