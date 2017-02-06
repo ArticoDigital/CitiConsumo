@@ -43,7 +43,8 @@ Route::get('auth', function () {
         $userEmail = \City\User::where('email', $emailT)->get();
 
         $user->email = $details->raw()['email'] ;
-
+        //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
+        //graph.facebook.com/v2.8/10154016435262864/picture?width=400
         //Aca se deben agregar los nombres y apellidos traidos de facebook
         if($user->name==""){
             $user->name = $details->raw()['first_name'] ;

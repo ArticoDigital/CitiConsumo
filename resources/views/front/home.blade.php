@@ -2,6 +2,7 @@
 
 @section('Services')
     <section class="Images row between">
+        <div class="small-12 col-12 medium-12" style="text-align: center;margin: 20px;font-size: 2.3em;">Necesito...</div>
         <a href="{{url('mascotas')}}" class="small-6 col-4 medium-4">
             <figure class="Service-image"  style="margin: 0 auto;">
                 <div class="circle">
@@ -13,7 +14,7 @@
                         <span>Encuentra alguien que cuide de tu mascota!</span>
                     </div>
                 </div>
-                <figcaption>Mascotas</figcaption>
+                <figcaption>Que cuiden a mi mascota</figcaption>
             </figure>
         </a>
         <a href="{{url('servicios-generales')}}" class="small-6 col-4 medium-4">
@@ -27,7 +28,7 @@
                         <span>Encuentra alguien que te ayude con los oficios del hogar!</span>
                     </div>
                 </div>
-                <figcaption>Oficios</figcaption>
+                <figcaption>Ayuda con las tareas del hogar</figcaption>
             </figure>
         </a>
         <a href="{{url('alimentos')}}" class="small-12 col-4 medium-4">
@@ -41,7 +42,7 @@
                         <span>Encuentra alguien que prepare un plato delicioso para ti!</span>
                     </div>
                 </div>
-                <figcaption>Comidas</figcaption>
+                <figcaption>Que preparen comida para mi</figcaption>
             </figure>
         </a>
     </section>
