@@ -1328,6 +1328,9 @@ svg.blue g {
          -o-animation-play-state: running;
             animation-play-state: running; } }
 
+#PayForm {
+  overflow-y: scroll; }
+
 body {
   overflow: hidden; }
 
