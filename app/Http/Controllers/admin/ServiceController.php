@@ -62,6 +62,7 @@ class ServiceController extends Controller
                 $inputs = $this->setFiles($request->all());
                 $validate = $this->validator($inputs);
                 if($validate->fails()){
+                    $validate->errors()->first();
                     $this->ispressed=false;
                     return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
                 }

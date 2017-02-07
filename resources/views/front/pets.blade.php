@@ -55,7 +55,7 @@
         <label for="size" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
             <select class="js-example-basic-single" id="size" name="size">
-                <option value="" selected>Tamaño</option>
+                <option value="" selected>Cualquier tamaño</option>
                 @foreach($sizes as $size)
                     <option value="{{$size->id}}">{{$size->name}}</option>
                 @endforeach

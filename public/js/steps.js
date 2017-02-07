@@ -1,7 +1,6 @@
 /* REMOVER CLASE "DISABLED" */
 
 nextStep($('#toStep1'), 1);
-enableNext();
 
 $("#Step2").on('keyup', 'input, textarea', function(){
     enableNext();
@@ -73,7 +72,7 @@ function getServiceChecked($this){
     var element;
     $('#toStep2, .gray2').removeClass('disabled');
     $('.changeInputs label').removeClass('required').hide().children('input').removeAttr('name').removeAttr('id');
-    $('#toStep3, .gray3').addClass('disabled');
+    //$('#toStep3, .gray3').addClass('disabled');
 
     if($this.attr('id') == 'foods')
         element = 'foodsInputs';

@@ -260,7 +260,7 @@
                     </div>
                 </div>
                 <div class="col-12 medium-12 small-12">
-                    <div id="toStep3" class="Button small right" style="margin: 40px 15px 40px 20px;">Siguiente</div>
+                    <div id="toStep3" class="Button small right @if(!old('service')) disabled @endif" style="margin: 40px 15px 40px 20px;">Siguiente</div>
                 </div>
             </article>
             <article id="Step3" class="Step">
