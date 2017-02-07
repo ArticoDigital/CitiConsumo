@@ -69,7 +69,7 @@ class ServiceController extends Controller
 
                 $inputs['provider_id'] = $user->provider->id;
                 $inputs['location'] = $inputs['address'];
-                $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
+                $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
                 $service = Service::create($inputs);
 
                 if($inputs['service'] == 1){
@@ -147,7 +147,7 @@ class ServiceController extends Controller
 
         $inputs['provider_id'] = $user->provider->id;
         $inputs['location'] = $inputs['address'];
-        $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
+        $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
 
         $service = Service::find($id);
         $service->update([

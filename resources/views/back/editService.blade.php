@@ -201,7 +201,7 @@
                         </label>
                         <label class="col-3 medium-12 small-12" for="price">
                             <span class="text">Valor del plato</span><br>
-                            <input type="text" id="price" fakeName="price" name="price" value="{{$service['price']}}" autocomplete="off">
+                            <input type="text" id="price" fakeName="price" name="price" value="${{$service['price']}}" autocomplete="off">
                         </label>
                         <label for="food_type" class="col-3 medium-12 small-12">
                             <span class="text">Tipo de comida</span><br>
@@ -239,7 +239,7 @@
 
                         <label class="col-6 medium-6 small-12" for="price">
                             <span class="text">Precio por mascota</span><br>
-                            <input type="text" id="price" fakeName="price" name="price" value="{{$service['price']}}" autocomplete="off">
+                            <input type="text" id="price" fakeName="price" name="price" value="${{$service['price']}}" autocomplete="off">
                         </label>
                     </div>
                     @elseif($service['general'])
@@ -258,7 +258,7 @@
                         </label>
                         <label class="col-4 medium-12 small-12" for="price">
                             <span class="text">Precio por hora</span><br>
-                            <input type="text" id="price" name="price" fakeName="price" value="{{$service['price']}}" autocomplete="off">
+                            <input type="text" id="price" name="price" fakeName="price" value="${{$service['price']}}" autocomplete="off">
                         </label>
                     </div>
                     @endif
