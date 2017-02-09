@@ -47,7 +47,7 @@ $('#PlaceIcon').on('click', function(){
         $this.children('svg').toggleClass('blue');
         navigator.geolocation.getCurrentPosition(function(position) {
 
-            if($this.hasClass('blue')){
+            if($this.children('svg').hasClass('blue')){
                 $('#lat').val(position.coords.latitude);
                 $('#lng').val(position.coords.longitude);
                 $('#autocomplete').val('Posición actual');
