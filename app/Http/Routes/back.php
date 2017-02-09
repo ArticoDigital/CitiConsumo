@@ -95,6 +95,11 @@ Route::get('productos-proveedores', [
     'uses' => 'UserController@showProductsInactived'
 ]);
 
+Route::get('productos-eliminados', [
+    'as' => 'showProductsDeleted',
+    'uses' => 'UserController@showProductsDeleted'
+]);
+
 Route::post('product/deleteProduct/{id}', [
     'as' => 'deleteProductProvider',
     'uses' => 'UserController@deleteProductProvider'
