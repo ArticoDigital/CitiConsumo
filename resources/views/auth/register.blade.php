@@ -25,7 +25,7 @@
                     </svg>
                 </a>
             </div>
-            <div class="col-8 small-8" style="color: #777;display: block;font-size: 0.75rem;">Registra con facebook</div>
+            <a href="{{route('facebook')}}" class="col-8 small-8" style="color: #777;display: block;font-size: 0.75rem;">Registra con facebook</a>
             <span class="col-12 small-12" style="margin: 10px 0px;color: black;text-align: center;">ó</span>
         </div>
 

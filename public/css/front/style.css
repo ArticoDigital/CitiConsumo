@@ -877,6 +877,12 @@ figure figcaption {
     .menu-item-out-movile {
       display: block !important; } }
 
+.menu-item-out-tablet {
+  display: none !important; }
+  @media (min-width: 65rem) {
+    .menu-item-out-tablet {
+      display: block !important; } }
+
 .Hamburguer, .Hamburguer2 {
   display: block;
   position: relative;
@@ -1965,11 +1971,27 @@ body.getReset #resetpassword label {
   .arrow.left {
     left: 0; }
 
+#titulohome {
+  text-align: center;
+  margin: -20px auto 10px;
+  font-size: 1.9em; }
+  @media (min-width: 45rem) {
+    #titulohome {
+      text-align: center;
+      margin: 0px auto 20px;
+      font-size: 2.3em; } }
+  @media (min-width: 65rem) {
+    #titulohome {
+      text-align: center;
+      margin: 20px auto;
+      font-size: 2.3em; } }
+
 .Footer {
   background: #002444 url("../../img/footer.jpg") repeat-x center center;
   color: #fff;
   padding: 0 1.875rem;
-  height: 17.8125rem; }
+  height: 17.8125rem;
+  margin-top: 1.875rem; }
   .Footer > section {
     height: 100%; }
   .Footer a {

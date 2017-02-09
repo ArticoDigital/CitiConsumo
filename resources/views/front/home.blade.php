@@ -2,7 +2,7 @@
 
 @section('Services')
     <section class="Images row between">
-        <div class="small-12 col-12 medium-12" style="text-align: center;margin: 20px;font-size: 2.3em;">Necesito...</div>
+        <div class="small-12 col-12 medium-12" id="titulohome">Necesito...</div>
         <a href="{{url('mascotas')}}" class="small-6 col-4 medium-4">
             <figure class="Service-image"  style="margin: 0 auto;">
                 <div class="circle">

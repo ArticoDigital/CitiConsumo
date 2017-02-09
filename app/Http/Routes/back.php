@@ -40,6 +40,11 @@ Route::post('deleteService', [
     'as' => 'deleteProduct'
 ]);
 
+Route::post('deleteServiceByProvider', [
+    'uses' => 'ServiceController@deleteServiceByProvider',
+    'as' => 'deleteProductByProvider'
+]);
+
 Route::get('editar-servicio/{id}', [
     'uses' => 'ServiceController@edit',
     'as' => 'editProduct'

@@ -10,7 +10,7 @@
     <label class="Tab col-6 Button row center middle" for="tab2">Mis Ventas</label>
 
     <article class="TabContainer" id="EditProduct">
-        <table class="rwd-table" style="text-align: center;">
+        <table class="rwd-table" style="text-align: center; margin-top:10px">
             <tr class="header-table">
                 <th>Fecha</th>
                 <th>Servicio</th>
@@ -29,7 +29,7 @@
     </article>
 
     <article class="TabContainer col-12" id="NewProduct">
-        <table class="rwd-table" style="text-align: center;">
+        <table class="rwd-table" style="text-align: center; margin-top:10px">
             <tr class="header-table">
                 <th>Fecha</th>
                 <th>Servicio</th>

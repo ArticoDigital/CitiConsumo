@@ -119,6 +119,18 @@ class ServiceController extends Controller
             return ['message' => 'El servicio ha sido eliminado'];
     }
 
+    public function deleteServiceByProvider(RoleRequest $request){
+
+        if ($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $service = Service::find($request->id);
+        $service->update(['isValidate' => 2]);
+
+        if ($request->ajax())
+            return ['message' => 'El servicio ha sido eliminado'];
+    }
+
     public function edit(RoleRequest $request, $id) {
 
         if ($request->isNotAuthorized())
