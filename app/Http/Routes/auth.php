@@ -62,11 +62,12 @@ Route::get('auth', function () {
         }else{
             $user->role_id = 1;
         }
-        dd('aasdasdasdasd asdas asdasd');
+
         $user->save();
 
     });
     Auth::user();
+    dd('user');
     return Redirect::intended();
 
 });
