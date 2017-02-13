@@ -54,7 +54,7 @@ Route::get('auth', function () {
         if($user->last_name==""){
             $user->last_name = $details->raw()['last_name'] ;
         }
-        dd('aasdasdasdasd asdas asdasd');
+
         if(isset($user->role_id)){
             if($user->role_id<=1){
                 $user->role_id = 1;
@@ -62,6 +62,7 @@ Route::get('auth', function () {
         }else{
             $user->role_id = 1;
         }
+        dd('aasdasdasdasd asdas asdasd');
         $user->save();
 
     });
