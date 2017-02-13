@@ -67,6 +67,7 @@ Route::get('auth', function () {
 
     });
     Auth::user();
+    return redirect()->back();
     return Redirect::intended();
 
 });
