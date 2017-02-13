@@ -101,6 +101,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'countFiles' => [
+            'in' => 'Debe insertar al menos 3 archivos.',
+        ],
     ],
 
     /*
@@ -143,7 +146,7 @@ return [
         'date'                  => 'fecha',
         'time'                  => 'hora',
         'subject'               => 'asunto',
-        'message'               => 'mensaje',
+        'message'               => 'mensaje'
     ],
 
 ];

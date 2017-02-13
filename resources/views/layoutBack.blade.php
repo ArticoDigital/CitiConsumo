@@ -28,11 +28,11 @@
         <nav class="row col-10 end">
             <ul class="Menu row between">
                 @if(Auth::user()->role_id == 3)
-                    <li><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
+                    <li class="menu-item-out-movile"><a style="color: white" href="{{route('showClient')}}" class="orange-text">Usuarios</a></li>
                 @else
-                    <li><a style="color: white" href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
+                    <li class="menu-item-out-tablet"><a style="color: white" href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
                     @if(Auth::user()->role_id == 2)
-                    <li><a style="color: white" href="{{route('tradeList')}}" class="orange-text">Mis transacciones</a></li>
+                    <li class="menu-item-out-tablet"><a style="color: white" href="{{route('tradeList')}}" class="orange-text">Mis transacciones</a></li>
                     @endif
                 @endif
 
@@ -48,10 +48,16 @@
                         <nav>
                             <ul class="col-4">
                                 <li><a href="{{route('myProfile')}}">MI PERFIL</a></li>
+                                 @if(Auth::user()->role_id != 3)
+                                    <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
+                                    @if(Auth::user()->role_id == 2)
+                                    <li><a href="{{route('tradeList')}}" class="orange-text">Mis transacciones</a></li>
+                                    @endif
+                                @endif
                                 <li><a href="{{route('faq')}}">PREGUNTAS FRECUENTES </a></li>
                                 <!--<li><a href="{{route('contact')}}">AYUDANOS A MEJORAR</a></li>-->
                                 <li><a href="{{route('contact')}}">CONTACTANOS</a></li>
-                                <li class="menu-item-out"><a href="{{route('logout')}}" style="color: white">CERRAR SESIÓN</a></li>
+                                <li class="menu-item-out"><a href="{{route('logout')}}">CERRAR SESIÓN</a></li>
                             </ul>
                         </nav>
                     </div>

@@ -122,14 +122,14 @@ class MapController extends Controller
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                'size' => 'required'
+                //'size' => 'required'
             ];
         } else if ($service == 'comidas') {
             $rules = [
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                'food_type' => 'required'
+                //'food_type' => 'required'
             ];
         } else {
             $rules = [

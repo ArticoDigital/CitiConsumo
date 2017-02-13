@@ -42,16 +42,27 @@ function setCharsLength(){
 }
 
 $('#PlaceIcon').on('click', function(){
-    if (navigator.geolocation && $(this).hasClass('blue')) {
-        $(this).children('svg').toggleClass('blue');
+    if (navigator.geolocation) {
+        var $this = $(this);
+        $this.children('svg').toggleClass('blue');
         navigator.geolocation.getCurrentPosition(function(position) {
 
-            $('#lat').val(position.coords.latitude);
-            $('#lng').val(position.coords.longitude);
-            $('#autocomplete').val('Posición actual');
+            if($this.children('svg').hasClass('blue')){
+                $('#lat').val(position.coords.latitude);
+                $('#lng').val(position.coords.longitude);
+                $('#autocomplete').val('Posición actual');
+            } else {
+                $('#lat').val('');
+                $('#lng').val('');
+                $('#autocomplete').val('');
+            }
+
 
         }, function(error) {
-            console.log(error);
+            $this.children('svg').toggleClass('blue');
+            if(error.code == 1){
+                alert('Debes habilitar permisos de Geolocalización para este sitio web.');
+            }
         });
     }
     else{

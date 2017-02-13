@@ -40,6 +40,11 @@ Route::post('deleteService', [
     'as' => 'deleteProduct'
 ]);
 
+Route::post('deleteServiceByProvider', [
+    'uses' => 'ServiceController@deleteServiceByProvider',
+    'as' => 'deleteProductByProvider'
+]);
+
 Route::get('editar-servicio/{id}', [
     'uses' => 'ServiceController@edit',
     'as' => 'editProduct'
@@ -88,6 +93,11 @@ Route::post('usuarios-proveedor-reactivar', [
 Route::get('productos-proveedores', [
     'as' => 'showProductsInactived',
     'uses' => 'UserController@showProductsInactived'
+]);
+
+Route::get('productos-eliminados', [
+    'as' => 'showProductsDeleted',
+    'uses' => 'UserController@showProductsDeleted'
 ]);
 
 Route::post('product/deleteProduct/{id}', [

@@ -39,9 +39,10 @@ function succesfull(pos) {
     var mapOptions = {
         zoom: 13,
         center: myLatlng,
-        disableDefaultUI: true,
+
+        //disableDefaultUI: true,
         //scrollwheel: false,
-        styles: styleMap
+        //styles: styleMap
     };
 
     map = new google.maps.Map(document.getElementById("Map"), mapOptions);

@@ -203,7 +203,7 @@
                         </label>
                         <label class="col-3 medium-12 small-12" for="price" style="display:none">
                             <span class="text">Valor del plato</span><br>
-                            <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
+                            <input type="text" id="price" fakeName="price" value="${{old('price')}}" autocomplete="off">
                         </label>
                         <label for="food_type" class="col-3 medium-12 small-12" style="display:none">
                             <span class="text">Tipo de comida</span><br>
@@ -213,7 +213,7 @@
                                 @endforeach
                             </select>
                         </label>
-                        <label class="col-3 medium-12 small-12" for="price" style="display:none">
+                        <label class="col-3 medium-12 small-12" for="foods-quantity" style="display:none">
                             <span class="text">Platos disponibles</span><br>
                             <input type="number" id="foods-quantity" fakeName="foods-quantity" value="{{old('foods-quantity')}}" autocomplete="off">
                         </label>
@@ -237,7 +237,7 @@
                         </label>
                         <label class="col-6 medium-6 small-12" for="price" style="display:none">
                             <span class="text">Precio por mascota</span><br>
-                            <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
+                            <input type="text" id="price" fakeName="price" value="${{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                     <div id="servicesInputs" class="changeInputs col-12 medium-12 small-12 row">
@@ -255,12 +255,12 @@
                         </label>
                         <label class="col-4 medium-12 small-12" for="price" style="display:none">
                             <span class="text">Precio por hora</span><br>
-                            <input type="number" id="price" fakeName="price" value="{{old('price')}}" autocomplete="off">
+                            <input type="text" id="price" fakeName="price" value="${{old('price')}}" autocomplete="off">
                         </label>
                     </div>
                 </div>
                 <div class="col-12 medium-12 small-12">
-                    <div id="toStep3" class="Button small right" style="margin: 40px 15px 40px 20px;">Siguiente</div>
+                    <div id="toStep3" class="Button small right @if(!old('service')) disabled @endif" style="margin: 40px 15px 40px 20px;">Siguiente</div>
                 </div>
             </article>
             <article id="Step3" class="Step">

@@ -21,7 +21,7 @@
                 <td >{{$service->location}}</td>
                 <td >{{$service->created_at}}</td>
                 <td class="center">{{($service->isActive)?"Si":"No"}}</td>
-                <td class="center">{{($service->isValidate)?"Si":"No"}}</td>
+                <td class="center">{{($service->isValidate==1)?"Si":"No"}}</td>
                 <td class="center"><a href="{{route('serviceDetail',['id' => $service->id])}}">Ver</a></td>
             </tr>
 

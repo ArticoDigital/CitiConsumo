@@ -877,6 +877,12 @@ figure figcaption {
     .menu-item-out-movile {
       display: block !important; } }
 
+.menu-item-out-tablet {
+  display: none !important; }
+  @media (min-width: 65rem) {
+    .menu-item-out-tablet {
+      display: block !important; } }
+
 .Hamburguer, .Hamburguer2 {
   display: block;
   position: relative;
@@ -1328,6 +1334,9 @@ svg.blue g {
          -o-animation-play-state: running;
             animation-play-state: running; } }
 
+#PayForm {
+  overflow-y: scroll; }
+
 .Header {
   width: 100%;
   background: #002444; }
@@ -1458,7 +1467,7 @@ article.File {
         margin-top: -4.0625rem; } }
 
 main.MainBack {
-  padding-left: 1.875rem;
+  /*padding-left: rem(30)*/
   margin-top: 1.875rem; }
 
 .myProfile {
@@ -1771,7 +1780,8 @@ div.profile-photo-light {
   background: #002444 url("../../img/footer.jpg") repeat-x center center;
   color: #fff;
   padding: 0 1.875rem;
-  height: 17.8125rem; }
+  height: 17.8125rem;
+  margin-top: 1.875rem; }
   .Footer > section {
     height: 100%; }
   .Footer a {

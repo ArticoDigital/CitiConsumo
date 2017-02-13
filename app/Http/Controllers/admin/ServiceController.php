@@ -62,13 +62,14 @@ class ServiceController extends Controller
                 $inputs = $this->setFiles($request->all());
                 $validate = $this->validator($inputs);
                 if($validate->fails()){
+                    $validate->errors()->first();
                     $this->ispressed=false;
                     return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
                 }
 
                 $inputs['provider_id'] = $user->provider->id;
                 $inputs['location'] = $inputs['address'];
-                $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
+                $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
                 $service = Service::create($inputs);
 
                 if($inputs['service'] == 1){
@@ -118,6 +119,18 @@ class ServiceController extends Controller
             return ['message' => 'El servicio ha sido eliminado'];
     }
 
+    public function deleteServiceByProvider(RoleRequest $request){
+
+        if ($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $service = Service::find($request->id);
+        $service->update(['isValidate' => 2]);
+
+        if ($request->ajax())
+            return ['message' => 'El servicio ha sido eliminado'];
+    }
+
     public function edit(RoleRequest $request, $id) {
 
         if ($request->isNotAuthorized())
@@ -146,7 +159,7 @@ class ServiceController extends Controller
 
         $inputs['provider_id'] = $user->provider->id;
         $inputs['location'] = $inputs['address'];
-        $inputs['price'] = str_replace(['.', ','], '', $inputs['price']);
+        $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
 
         $service = Service::find($id);
         $service->update([

@@ -458,7 +458,7 @@
                 };
 
                 $.ajax({
-                    url: '{{route('deleteProduct')}}',
+                    url: '{{route('deleteProductByProvider')}}',
                     data: param,
                     type: 'POST',
                     success: function (data) {

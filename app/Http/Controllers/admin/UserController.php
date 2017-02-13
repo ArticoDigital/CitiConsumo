@@ -58,6 +58,14 @@ class UserController extends Controller
         $services = Service::where('isValidate', 0)->paginate(20);
         return view('back.produtsCheckout', compact('services'));
     }
+    public function showProductsDeleted(RoleRequest $request){
+
+        if($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $services = Service::where('isValidate', 2)->paginate(20);
+        return view('back.productsDeleted', compact('services'));
+    }
 
     public function deleteProductProvider(RoleRequest $request, $id){
 

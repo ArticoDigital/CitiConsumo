@@ -38,7 +38,7 @@
     </div>
 
     <form class="Form withAddress row center col-9" method="GET" action="{{route('platform', 'mascotas')}}">
-        <label for="place" class="col-3 medium-3 small-12 Form-Control">
+        <label for="place" class="col-4 medium-4 small-12 Form-Control">
             <span id="PlaceIcon" class="icon" style="cursor:pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 485.211 485.21">
                     <g fill="#AAA">
@@ -52,16 +52,17 @@
             <input class="field" id="typeService" name="typeService" type="hidden" value="pet">
         </label>
         
-        <label for="size" class="col-3 medium-3 small-12 Form-Control">
+        <label for="size" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
             <select class="js-example-basic-single" id="size" name="size">
-                <option value="" selected>Tamaño</option>
+                <option value="" selected>Cualquier tamaño</option>
                 @foreach($sizes as $size)
                     <option value="{{$size->id}}">{{$size->name}}</option>
                 @endforeach
             </select>
         </label>
-        <label for="breed" class="col-3 medium-3 small-12 Form-Control">
+        {{--
+        <label for="breed" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/footprint.svg')}}" alt="footprint"></span>
             <select class="js-example-basic-single" id="breed" name="breed">
                 <option value="" selected>Todas las razas</option>
@@ -69,8 +70,8 @@
                     <option value="{{$breed->id}}">{{$breed->name}}</option>
                 @endforeach
             </select>
-        </label>
-        <label for="date" class="col-3 medium-3 small-12 Form-Control">
+        </label>--}}
+        <label for="date" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
             <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value="{{old('date')}}">
         </label>
