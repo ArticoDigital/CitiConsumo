@@ -64,9 +64,9 @@ Route::get('auth', function () {
         }
 
         $user->save();
-
+        dd('sdsdsd');
     });
-    dd('sdsdsd');
+
     $user = Auth::user();
     dd($user);
     return Redirect::intended();
