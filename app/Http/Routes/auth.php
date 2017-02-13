@@ -39,6 +39,8 @@ Route::get('facebook/authorize', [
 Route::get('auth', function () {
 
     SocialAuth::login('facebook', function ($user, $details) {
+
+        dd('123213123');
         $emailT = $details->raw()['email'];
         $userEmail = \City\User::where('email', $emailT)->get();
 
@@ -61,7 +63,6 @@ Route::get('auth', function () {
         }else{
             $user->role_id = 1;
         }
-        dd('123213123');
         $user->save();
 
     });
