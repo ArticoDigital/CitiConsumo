@@ -44,7 +44,7 @@ Route::get('auth', function () {
         $userEmail = \City\User::where('email', $emailT)->get();
 
         $user->email = $details->raw()['email'] ;
-        dd($details);
+
         //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
         //graph.facebook.com/v2.8/10154016435262864/picture?width=400
         //Aca se deben agregar los nombres y apellidos traidos de facebook
@@ -54,6 +54,7 @@ Route::get('auth', function () {
         if($user->last_name==""){
             $user->last_name = $details->raw()['last_name'] ;
         }
+        dd('aasdasdasdasd asdas asdasd');
         if(isset($user->role_id)){
             if($user->role_id<=1){
                 $user->role_id = 1;
