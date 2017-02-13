@@ -67,7 +67,6 @@ Route::get('auth', function () {
 
     });
     Auth::user();
-    dd('user');
     return Redirect::intended();
 
 });
