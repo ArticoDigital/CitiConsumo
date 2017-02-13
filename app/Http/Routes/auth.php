@@ -37,6 +37,8 @@ Route::get('facebook/authorize', [
 ]);
 
 Route::get('auth', function () {
+
+    dd('dsdsd');
     SocialAuth::login('facebook', function ($user, $details) {
         $emailT = $details->raw()['email'];
         //dd($details);
