@@ -41,10 +41,10 @@ Route::get('auth', function () {
 
     SocialAuth::login('facebook', function ($user, $details) {
         $emailT = $details->raw()['email'];
-        dd($details);
         $userEmail = \City\User::where('email', $emailT)->get();
 
         $user->email = $details->raw()['email'] ;
+        dd($details);
         //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
         //graph.facebook.com/v2.8/10154016435262864/picture?width=400
         //Aca se deben agregar los nombres y apellidos traidos de facebook
