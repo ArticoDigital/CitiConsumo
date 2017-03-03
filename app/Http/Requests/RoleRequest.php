@@ -21,7 +21,7 @@ class RoleRequest extends Request
         $route = Route::getRoutes()->match($this);
         $roles = isset($route->getAction()['roles']) ? $route->getAction()['roles'] : null;
 
-        if($roles){
+        if ($roles) {
             $authorized = is_array($roles) ? in_array($role, $roles) : $role == $roles;
             $this->isNotAuthorized = !$authorized;
         }
@@ -29,9 +29,11 @@ class RoleRequest extends Request
         return true;
     }
 
-    public function isNotAuthorized(){
+    public function isNotAuthorized()
+    {
         return $this->isNotAuthorized;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *

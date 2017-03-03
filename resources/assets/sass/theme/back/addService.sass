@@ -1,0 +1,261 @@
+.addService .Container
+  max-width: 100vw
+  padding: 0
+.addService .Footer
+  margin-top: 0
+.addService main.MainBack
+  max-width: 100vw
+  margin: auto
+  color: #4d4d4d
+
+.AddService-header
+  max-width: rem(900)
+  margin: auto
+  padding: 0 rem(20)
+  @include respond-to(medium)
+    padding: 0
+
+.AddService-h1
+  background: #04508e
+  color: white
+  padding: rem(20)
+  border-radius: rem(20)
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    right: rem(50)
+    top: 100%
+    width: 0
+    height: 0
+    border-top: rem(30) solid #04508e
+    border-left: rem(30) solid transparent
+  span
+    color: #F6B018
+
+.AddService-h2
+  color: #4d4d4d
+
+  font-size: rem(20)
+  font-weight: 400
+  padding: 0
+  text-align: justify
+  @include respond-to(medium)
+    padding: rem(1) rem(80) rem(2) rem(30)
+    text-align: left
+.AddService-h3
+  text-align: center
+  color: #04508e
+  font-size: rem(26)
+
+.AddService-icons
+  padding: 0
+  margin: 0
+  li
+    max-width: 70%
+    margin: rem(40) rem(15) 0
+    padding: rem(10) rem(20)
+    position: relative
+    border-radius: rem(20) rem(20) 0 0
+    @include respond-to(medium)
+      max-width: rem(140)
+    &.active
+      order: 3
+      @include respond-to(medium)
+        order: initial
+      background: rgb(240, 240, 240)
+
+      svg
+        opacity: .5
+      :before
+        content: ''
+      .x
+        display: block
+
+.x
+  display: none
+  position: absolute
+  width: 20px
+  height: 20px
+  background: #f0f0f0
+  left: -20px
+  bottom: 0
+  &.r
+    left: 100%
+    transform: rotate(180deg) scaleY(-1)
+  &:before
+    content: ''
+    background: white
+    position: absolute
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    left: -20px
+    top: -20px
+
+.AddService-form
+  ul
+    padding: 0
+  section
+    padding: rem(10)
+    &:nth-child(odd)
+      background: #f0f0f0
+
+  article
+    max-width: rem(900)
+    margin: rem(30) auto
+  p
+    font-size: rem(15)
+  label
+    font-size: rem(22)
+    color: black
+    font-weight: 600
+
+  .blue
+    color: #04508e
+    margin: rem(15) 0
+    display: block
+
+  select
+    background: white
+    height: rem(34)
+    width: 100%
+    font-size: rem(14)
+    color: #737372
+    @include respond-to(medium)
+      width: rem(180)
+  input[type="text"], textarea, select
+    width: 100%
+    @include respond-to(medium)
+      width: rem(180)
+  input, textarea
+    height: rem(34)
+    border-radius: rem(4)
+    border: rem(1) solid #b2b2b2
+    padding: 0
+    &.Input-large
+      width: rem(480)
+      padding: rem(12)
+  textarea
+    height: rem(324)
+    width: 100%
+  .mult
+    font-size: rem(25)
+    font-weight: 600
+    color: #959595
+    display: block
+    text-align: center
+    width: 100%
+    @include respond-to(medium)
+      width: auto
+
+  .Col-space-2
+    > div:first-child
+      padding-right: 0
+      @include respond-to(medium)
+        padding-right: rem(25)
+    > div:last-child
+      padding-left: 0
+      @include respond-to(medium)
+        padding-left: rem(25)
+  .Data-more
+    margin:  0
+    padding: 0
+    li
+      margin: rem(10) 0
+    input
+      height: initial
+      margin-right: rem(10)
+  .Sizes
+    margin: rem(25)
+    padding: 0
+    input
+      height: rem(14)
+      width: rem(22)
+      margin: rem(12) 0 rem(8)
+    span
+      display: block
+      line-height: rem(17)
+      font-size: 1rem
+    svg
+      display: block
+    li
+      height: rem(94)
+  .Certifications
+    div
+      padding: rem(8) 0
+      @include respond-to(medium)
+        padding: rem(8)
+      &:first-child
+        padding-left: 0
+      &:last-child
+        padding-right: 0
+  .Available
+    select
+      width: rem(150)
+  .Days
+    margin: rem(20) 0
+    div
+      margin-right: rem(10)
+    ul
+      margin:  0
+      padding: 0
+    span
+      color: #04508e
+      display: block
+      font-size: rem(28)
+    li
+      margin: 0 rem(6)
+    input
+      height: initial
+      display: block
+      margin: auto
+  .Answer
+    input
+      height: initial
+      width: rem(30)
+    div
+      margin: rem(10) 0
+    select
+      margin-left: rem(10)
+  .Location
+    label
+      margin: rem(15) 0
+    input
+      max-width: 100%
+      width: 100%
+      margin: rem(15) 0
+    h4
+      margin-bottom: rem(20)
+  .Images
+    label
+      margin-top: 0
+    .info li
+      list-style: initial
+      margin-left: rem(18)
+      font-size: rem(15)
+    .output li
+      padding: 0 rem(6)
+    input[type="file"]
+      width: 100%
+      height: rem(240)
+    a
+      color: #04508e
+      text-decoration: underline
+      font-weight: 700
+    input[type="checkbox"]
+      width: rem(25)
+  button[type="submit"]
+    font-size: rem(34)
+    padding: rem(10) rem(15)
+    width: rem(280)
+    font-weight: 600
+    background: #EEA33B
+    border: none
+    color: white
+    border-radius: rem(12)
+    cursor: pointer
+.AddService-h4
+  margin: 0
+  font-size: rem(26)
+  color: #04508e
