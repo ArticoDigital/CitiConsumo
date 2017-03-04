@@ -179,7 +179,7 @@
                     <option value="">Guarderia1</option>
                     <option value="">Guarderia2</option>
                 </select>
-                <span><svg class="svg-item" viewBox="0 0 100 100"><use xlink:href="#Help"/></svg></span>
+
                 <label for="">Incluye:</label>
 
                 <svg width="18" height="22px">
