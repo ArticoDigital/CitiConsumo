@@ -463,19 +463,19 @@
                     </div>
                     <ul class="row center output">
                         <li class="col-2 small-6"><img
-                                    src="{{url('uploads/profiles/vglawGJhme-&&-14232588_10210329935630252_964108921882403583_n.jpg')}}"
+                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
                                     alt=""></li>
                         <li class="col-2 small-6"><img
-                                    src="{{url('uploads/profiles/vglawGJhme-&&-14232588_10210329935630252_964108921882403583_n.jpg')}}"
+                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
                                     alt=""></li>
                         <li class="col-2 small-6"><img
-                                    src="{{url('uploads/profiles/vglawGJhme-&&-14232588_10210329935630252_964108921882403583_n.jpg')}}"
+                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
                                     alt=""></li>
                         <li class="col-2 small-6"><img
-                                    src="{{url('uploads/profiles/vglawGJhme-&&-14232588_10210329935630252_964108921882403583_n.jpg')}}"
+                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
                                     alt=""></li>
                         <li class="col-2 small-6"><img
-                                    src="{{url('uploads/profiles/vglawGJhme-&&-14232588_10210329935630252_964108921882403583_n.jpg')}}"
+                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
                                     alt=""></li>
                     </ul>
                 </div>
