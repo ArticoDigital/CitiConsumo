@@ -173,12 +173,12 @@
                     cuanto esta el valor del servicio.</p>
             </article>
             <article class="row middle between">
-                <label for="">Servicio:</label>
-                <select name="" id="">
-                    <option value="">Guarderia</option>
-                    <option value="">Guarderia1</option>
-                    <option value="">Guarderia2</option>
-                </select>
+             <label for="">Servicio:</label>
+                            <select class="js-example-basic-single" id="service_type" name="service_type">
+                                @foreach($petTypes as $petType)
+                                    <option value="{{$petType->id}}">{{$petType->name}}</option>
+                                @endforeach
+                            </select>              
 
                 <label for="">Incluye:</label>
 
@@ -193,12 +193,12 @@
                     <label for="">Mi tarifa total es:</label>
                     <input type="text">
                     <span class="mult">X</span>
-                    <select name="" id="">
-                        <option value="">Hora</option>
-                        <option value="">Labor</option>
-                        <option value="">Día</option>
-                        <option value="">Noche</option>
-                    </select>
+                    <select class="js-example-basic-single" id="rate_type" name="rate_type">
+                                @foreach($rateTypes as $rateType)
+                                    <option value="{{$rateType->id}}">{{$rateType->name}}</option>
+                                @endforeach
+                            </select>              
+
                 </div>
             </article>
             <article class="row Col-space-2">
@@ -321,11 +321,11 @@
                     <label class=" blue">
                         ¿Qué tiempo tienes de experiencia ejerciendo este servicio?
                     </label>
-                    <select name="" id="">
-                        <option value="">Entre 1 a 2 años</option>
-                        <option value="">Entre 2 a 3 años</option>
-                        <option value="">Más de 3 años</option>
-                    </select>
+                    <select class="js-example-basic-single" id="experience_type" name="experience_type">
+                                @foreach($experienceTypes as $experienceType)
+                                    <option value="{{$experienceType->id}}">{{$experienceType->name}}</option>
+                                @endforeach
+                            </select>    
                 </div>
 
                 <div class="col-6 small-12">
@@ -420,12 +420,11 @@
                     <div class="row  middle">
                         <input type="radio">
                         <label for="">Respondo en:</label>
-                        <select name="" id="">
-                            <option value="">30 minuntos</option>
-                            <option value="">1 hora</option>
-                            <option value="">1 Día</option>
-                            <option value="">1 semana</option>
-                        </select>
+                        <select class="js-example-basic-single" id="response_type" name="response_type">
+                                @foreach($responseTypes as $responseType)
+                                    <option value="{{$responseType->id}}">{{$responseType->name}}</option>
+                                @endforeach
+                            </select>
                     </div>
 
                 </div>

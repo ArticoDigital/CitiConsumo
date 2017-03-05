@@ -5,6 +5,11 @@ namespace City\Http\Controllers\admin;
 use City\Entities\FoodType;
 use City\Entities\GeneralType;
 use City\Entities\PetSize;
+use City\Entities\Size;
+use City\Entities\ServiceType;
+use City\Entities\RateType;
+use City\Entities\ExperienceType;
+use City\Entities\ResponseType;
 use City\Entities\Service;
 use City\Entities\ServiceFile;
 use City\Entities\General;
@@ -36,13 +41,24 @@ class ServiceController extends Controller
             return redirect()->route('myProfile');
 
         $user = auth()->user();
-        $foodTypes = FoodType::all();
-        $sizes = PetSize::all();
-        $generalTypes = GeneralType::all();
+        
+        //$foodTypes = FoodType::all();
+        //$generalTypes = GeneralType::all();
+        //$sizes = PetSize::all();
+        $foodTypes = ServiceType::where('kind_service_id', '3')->get();
+        $petTypes = ServiceType::where('kind_service_id', '1')->get();
+        $generalTypes = ServiceType::where('kind_service_id', '2')->get();
+
+        $rateTypes = RateType::all();
+        $experienceTypes = ExperienceType::all();
+        $responseTypes = ResponseType::all();
+
+        $sizes = Size::all();
 
         if(isset($user->provider)){
             if($user->provider->isActive==1){
-                return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes'));
+                return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes','petTypes','rateTypes','experienceTypes','responseTypes'));
+                
             }else if($user->provider->isActive==2){
                 return redirect()->to('admin')->with(['alertTitle' => '¡No puedes realizar esta acción!', 'alertText' => 'El administrador te ha eliminado como proveedor, debes enviar un mensaje al administrador para reactivarte']);
             }else{
