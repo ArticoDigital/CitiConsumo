@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Pet extends Model
 {
-    protected $fillable = ['date_start', 'date_end', 'service_id', 'pet_sizes', 'pets_quantity'];
+    protected $fillable = ['service_id', 'pets_quantity','puppy','adult','elderly','smoke_free','home_service'];
 
     public function getDateStartAttribute($value){
         return date_format(date_create($value), 'm/d/Y');
@@ -16,8 +16,12 @@ class Pet extends Model
     public function getDateEndAttribute($value){
         return date_format(date_create($value), 'm/d/Y');
     }
-    public function petSizes(){
+    /*public function petSizes(){
         return $this->belongsTo(PetSize::class, 'pet_sizes');
+    }*/
+    public function sizes()
+    {
+        return $this->belongsToMany(Size::class);
     }
 
     public function getNumberDays(){
