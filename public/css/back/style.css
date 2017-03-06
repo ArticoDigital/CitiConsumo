@@ -1690,10 +1690,10 @@ main.MainBack {
   .AddService-form .Sizes li {
     height: 5.875rem; }
 
-.AddService-form .Available select {
+.AddService-form .Available select, .AddService-form .Available input {
   width: 100%; }
   @media (min-width: 45rem) {
-    .AddService-form .Available select {
+    .AddService-form .Available select, .AddService-form .Available input {
       width: 9.375rem; } }
 
 .AddService-form .Days {

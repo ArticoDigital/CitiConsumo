@@ -458,19 +458,9 @@
                     </label>
                     <div class="row middle between" style="max-width: 600px">
                         <span>Desde</span>
-                        <select name="" id="">
-                            <option value="">Hora</option>
-                            <option value="">Labor</option>
-                            <option value="">Día</option>
-                            <option value="">Noche</option>
-                        </select>
+                        <input class="dateSingle" readonly="true"  type="text" autocomplete="off">
                         <span>hasta</span>
-                        <select name="" id="">
-                            <option value="">Hora</option>
-                            <option value="">Labor</option>
-                            <option value="">Día</option>
-                            <option value="">Noche</option>
-                        </select>
+                        <input class="dateSingle" readonly="true"  type="text" autocomplete="off">
                     </div>
                     <div class="row Days">
                         <div>Los días</div>
@@ -640,6 +630,7 @@
             </g>
         </svg>
     </aside>
+    <p>Date: <input type="text" id="datepicker"></p>
 @endsection
 
 @section('scripts')
@@ -649,6 +640,7 @@
 
     <script src="{{url('js/mapAddService.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
         svg = ''
         $(".Task").select2();
@@ -669,9 +661,11 @@
             $(this).siblings('label').html($('aside').html());
             $(this).hide();
         });
+        $( ".dateSingle" ).datepicker();
     </script>
 @endsection
 @section('styles')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection
 
