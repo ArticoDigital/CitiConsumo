@@ -182,7 +182,7 @@
                 <svg width="18" height="22px">
                     <use xlink:href="#Help"/>
                 </svg>
-                <select class="Task Input-large" multiple="multiple">
+                <select class="Task Input-large" multiple="multiple" id="service_adition" name="service_adition">
                     <option value="">Paseado</option>
                     <option value="">Lavado</option>
                 </select>
@@ -190,7 +190,7 @@
             <article>
                 <div class="row middle between" style="max-width: 600px">
                     <label for="">Mi tarifa total es:</label>
-                    <input type="text">
+                    <input type="text" id="price" value="${{old('price')}}">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single" id="rate_type" name="rate_type">
                         @foreach($rateTypes as $rateType)
@@ -215,7 +215,7 @@
                             </svg>
                         </i>
                     </div>
-                    <textarea name="" id="" placeholder="Descripción del servicio"></textarea>
+                    <textarea  id="description" name="description" placeholder="Descripción del servicio">{!! old('description') !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
                 <div class="col-6 small-12">
@@ -553,7 +553,11 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input type="text" id="autocomplete" onFocus="geolocate()" placeholder="Ej.: Calle 123 #45-67">
+                    <input type="text" name="address" value="{{old('address')}}" id="autocomplete" onFocus="geolocate()" placeholder="Ej.: Calle 123 #45-67">
+
+                    <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
+                    <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
+
                     <label for="">Información adicional</label>
                     <input type="text" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
 
