@@ -162,18 +162,21 @@
             </li>
         </ul>
     </header>
-    <form action="" class="AddService-form">
+    <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form">
+
         <section>
             <article>
                 <h4 class="AddService-h4">1. SERVICIO</h4>
                 <p>Describe adicionalmente que tipos de servicios ofreces complementarios a tu labor y digita desde
                     cuanto esta el valor del servicio.</p>
             </article>
+            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+            <input type="hidden" name="service" id="service" value="1">
             <article class="row middle between">
                 <label for="">Servicio:</label>
                 <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
                     @foreach($petTypes as $petType)
-                        <option value="{{$petType->id}}">{{$petType->name}}</option>
+                        <option value="{{$petType->id}}" {{ (old("service_type_id") == $petType->id ? "selected":"") }}>{{$petType->name}}</option>
                     @endforeach
                 </select>
 
@@ -182,7 +185,7 @@
                 <svg width="18" height="22px">
                     <use xlink:href="#Help"/>
                 </svg>
-                <select class="Task Input-large" multiple="multiple" id="service_adition" name="service_adition">
+                <select class="Task Input-large" multiple="multiple" id="service_addition" name="service_adition">
                     <option value="">Paseado</option>
                     <option value="">Lavado</option>
                 </select>
@@ -190,11 +193,11 @@
             <article>
                 <div class="row middle between" style="max-width: 600px">
                     <label for="">Mi tarifa total es:</label>
-                    <input type="text" id="price" value="{{old('price')}}">
+                    <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single" id="rate_type" name="rate_type_id">
                         @foreach($rateTypes as $rateType)
-                            <option value="{{$rateType->id}}">{{$rateType->name}}</option>
+                            <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
                         @endforeach
                     </select>
 
@@ -235,7 +238,7 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox" name="size[]">
+                                <input type="checkbox" name="size[]" value="1">
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -256,7 +259,7 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox" name="size[]">
+                                <input type="checkbox" name="size[]" value="2">
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -279,7 +282,7 @@
                                 <input type="checkbox">
                                 <ins></ins>
                             </label>
-                            <span class="col-12" name="size[]">
+                            <span class="col-12" name="size[]" value="3">
                                 40-80 lbs <br>
                                 Grande
                             </span>
@@ -296,7 +299,7 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox" name="size[]">
+                                <input type="checkbox" name="size[]" value="4">
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -308,26 +311,36 @@
                     <label for="">Trabajo con estas edades:</label>
                     <ul class="Data-more">
                         <li><label class="Content-check">
-                                <input type="checkbox" name="puppy">
+                                <input type="checkbox" name="puppy" value="1" @if(old('puppy'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>Cachorro (0 a 2 años)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="adult">
+                                <input type="checkbox" name="adult" value="1"  @if(old('adult'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>Adulto (2 a 7 años)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="elderly">
+                                <input type="checkbox" name="elderly" value="1"  @if(old('elderly'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>Adulto Mayor (7 años o más)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="smoke_free">
+                                <input type="checkbox" name="smoke_free" value="1"  @if(old('smoke_free'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label><label for="">Mi hogar es una zona libre de humo</label></li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="home_service">
+                                <input type="checkbox" name="home_service" value="1"  @if(old('home_service'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label><label>Recojo la mascota a domicilio</label></li>
                     </ul>
@@ -350,9 +363,9 @@
                     <label class=" blue">
                         ¿Qué tiempo tienes de experiencia ejerciendo este servicio?
                     </label>
-                    <select class="js-example-basic-single" id="experience_type" name="experience_type">
+                    <select class="js-example-basic-single" id="experience_type" name="experience_type_id">
                         @foreach($experienceTypes as $experienceType)
-                            <option value="{{$experienceType->id}}">{{$experienceType->name}}</option>
+                            <option value="{{$experienceType->id}}" {{ (old("experience_type_id") == $experienceType->id ? "selected":"") }}>{{$experienceType->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -466,32 +479,32 @@
                         <div>Los días</div>
                         <ul class=" row middle">
                             <li><label class="Content-check">
-                                    <input type="checkbox"  name="days[]">
+                                    <input type="checkbox"  name="days[]" value="1">
                                     <ins></ins>
                                 </label>
                                 <span>L</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]">
+                                    <input type="checkbox" name="days[]" value="2">
                                     <ins></ins>
                                 </label><span>M</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]">
+                                    <input type="checkbox" name="days[]" value="3">
                                     <ins></ins>
                                 </label><span>M</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]">
+                                    <input type="checkbox" name="days[]" value="4">
                                     <ins></ins>
                                 </label><span>J</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]">
+                                    <input type="checkbox" name="days[]" value="5">
                                     <ins></ins>
                                 </label><span>V</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]">
+                                    <input type="checkbox" name="days[]" value="6">
                                     <ins></ins>
                                 </label><span>S</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]">
+                                    <input type="checkbox" name="days[]" value="7">
                                     <ins></ins>
                                 </label><span>D</span></li>
                         </ul>
@@ -516,17 +529,23 @@
                 <div class="col-6 small-12 Answer">
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
-                        <input type="radio" name="inmediate_response">
+                        <input type="radio" value="0" name="inmediate_response" 
+                        @if(!old('inmediate_response'))
+                            checked
+                        @endif>
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
-                        <input type="radio" id="answerIn" name="inmediate_response">
+                        <input type="radio" value="1" id="answerIn" name="inmediate_response" 
+                        @if(old('inmediate_response'))
+                            checked
+                        @endif>
                         <label for="">Respondo en:</label>
 
 
                         <select id="answerInSelect" disabled name="response_type_id">
                             @foreach($responseTypes as $responseType)
-                                <option value="{{$responseType->id}}">{{$responseType->name}}</option>
+                                <option value="{{$responseType->id}}" {{ (old("response_type_id") == $responseType->id ? "selected":"") }}>{{$responseType->name}}</option>
                             @endforeach
                         </select>
 
@@ -549,7 +568,7 @@
                     <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
 
                     <label for="">Información adicional</label>
-                    <input type="text" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
+                    <input type="text" name="address_more_info" value="{{old('address_more_info')}}" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
 
                 </div>
                 <div class="col-6  small-12" id="map">
@@ -603,7 +622,12 @@
             </article>
             <article class="row center middle">
                 <label class="Content-check">
-                    <input type="checkbox">
+                    <input type="checkbox" name="terms_conditions" value="1"
+                    
+                        @if(old('terms_conditions'))
+                            checked
+                        @endif
+                        >
                     <ins></ins>
                 </label>
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
@@ -663,7 +687,8 @@
         $( ".dateSingle" ).datepicker({
             minDate: new Date(),
             maxDate: '+2m',
-            format: 'dd.mm.yyyy',
+            //format: 'dd.mm.yyyy',
+            format: 'yyyy.mm.dd',
             autoclose:true,
             language: 'es'
         });

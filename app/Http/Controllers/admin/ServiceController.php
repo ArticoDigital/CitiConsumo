@@ -61,9 +61,10 @@ class ServiceController extends Controller
         //$foodTypes = FoodType::all();
         //$generalTypes = GeneralType::all();
         //$sizes = PetSize::all();
-        $foodTypes = ServiceType::where('kind_service_id', '3')->get();
+        
         $petTypes = ServiceType::where('kind_service_id', '1')->get();
         $generalTypes = ServiceType::where('kind_service_id', '2')->get();
+        $foodTypes = ServiceType::where('kind_service_id', '3')->get();
 
         $rateTypes = RateType::all();
         $experienceTypes = ExperienceType::all();
@@ -103,25 +104,37 @@ class ServiceController extends Controller
             $inputs['provider_id'] = $user->provider->id;
             $inputs['location'] = $inputs['address'];
             $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
+            //print_r($inputs['days']);
+            $inputs['date_start'] = date_create($inputs['date_start']);
+            $inputs['date_end'] = date_create($inputs['date_end']);
+            
+            $comma_separated = implode(",", $inputs['days']);
+            //print_r($comma_separated);
+            $inputs['days']=$comma_separated;
             $service = Service::create($inputs);
 
-            if ($inputs['service'] == 1) {
+            if ($inputs['service'] == 3) {
                 Food::create([
                     'food_time' => date_create($inputs['date']),
                     'service_id' => $service->id,
                     'food_type_id' => $inputs['food_type'],
                     'foods-quantity' => $inputs['foods-quantity'],
                 ]);
-            } elseif ($inputs['service'] == 2) {
-                $date = explode('-', $inputs['date']);
+            } elseif ($inputs['service'] == 1) {
+                //$date = explode('-', $inputs['date']);
                 Pet::create([
                   //  'date_start' => date_create($date[0]),
                   //  'date_end' => date_create($date[1]),
                     'service_id' => $service->id,
-                    'pet_sizes' => $inputs['size'],
-                    'pets_quantity' => $inputs['pets-quantity'],
+                    //'pet_sizes' => $inputs['size'],
+                    //'pets_quantity' => $inputs['pets-quantity'],
+                    'puppy' => isset($inputs['puppy'])?$inputs['puppy']:0,
+                    'adult' => isset($inputs['adult'])?$inputs['adult']:0,
+                    'smoke_free' => isset($inputs['smoke_free'])?$inputs['smoke_free']:0,
+                    'elderly' => isset($inputs['elderly'])?$inputs['elderly']:0,
+                    'home_service' => isset($inputs['home_service'])?$inputs['home_service']:0,
                 ]);
-            } elseif ($inputs['service'] == 3) {
+            } elseif ($inputs['service'] == 2) {
                 General::create([
                     'date' => date_create($inputs['date']),
                     'service_id' => $service->id,
@@ -239,23 +252,24 @@ class ServiceController extends Controller
     {
         $rules = [
             'service' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
+            //'lat' => 'required',
+            //'lng' => 'required',
             'address' => 'required',
-            'name' => 'required',
+            //'name' => 'required',
             'description' => 'required|max:800',
-            'date' => 'required',
+            'date_start' => 'required',
+            'date_end' => 'required',
             'service_type_id' => 'required',
             'rate_type_id' => 'required',
             'price' => 'required|numeric',
-            'countFiles' => 'in:3,4,5',
+            //'countFiles' => 'in:3,4,5',
         ];
 
-        if ($inputs['service'] == 1)
+       /* if ($inputs['service'] == 1)
             $rules['foods-quantity'] = 'required|numeric';
         if ($inputs['service'] == 2)
             $rules['pets-quantity'] = 'required|numeric';
-
+*/
         return Validator::make($inputs, $rules);
     }
 
