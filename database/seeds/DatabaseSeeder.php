@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FoodTypesTableSeeder::class);
         $this->call(PetSizesTableSeeder::class);
         $this->call(PetBreedsTableSeeder::class);
+
         $this->call(TemperamentsTableSeeder::class);
     }
 }

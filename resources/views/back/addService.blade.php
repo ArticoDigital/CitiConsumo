@@ -1,9 +1,6 @@
 @extends('layoutBack')
 
 @section('content')
-
-
-
     <svg width="18px" height="22px" viewBox="0 0 18 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
 
@@ -95,7 +92,7 @@
             </li>
             <li>
                 <a href="">
-                    <svg width="100%"  viewBox="0 0 285 330" version="1.1"
+                    <svg width="100%" viewBox="0 0 285 330" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                     >
                         <defs>
@@ -173,12 +170,12 @@
                     cuanto esta el valor del servicio.</p>
             </article>
             <article class="row middle between">
-             <label for="">Servicio:</label>
-                            <select class="js-example-basic-single" id="service_type" name="service_type">
-                                @foreach($petTypes as $petType)
-                                    <option value="{{$petType->id}}">{{$petType->name}}</option>
-                                @endforeach
-                            </select>              
+                <label for="">Servicio:</label>
+                <select class="js-example-basic-single" id="service_type" name="service_type">
+                    @foreach($petTypes as $petType)
+                        <option value="{{$petType->id}}">{{$petType->name}}</option>
+                    @endforeach
+                </select>
 
                 <label for="">Incluye:</label>
 
@@ -196,10 +193,10 @@
                     <input type="text">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single" id="rate_type" name="rate_type">
-                                @foreach($rateTypes as $rateType)
-                                    <option value="{{$rateType->id}}">{{$rateType->name}}</option>
-                                @endforeach
-                            </select>              
+                        @foreach($rateTypes as $rateType)
+                            <option value="{{$rateType->id}}">{{$rateType->name}}</option>
+                        @endforeach
+                    </select>
 
                 </div>
             </article>
@@ -313,15 +310,18 @@
                         <li><label class="Content-check">
                                 <input type="checkbox">
                                 <ins></ins>
-                            </label>Cachorro (0 a 2 años)</li>
+                            </label>Cachorro (0 a 2 años)
+                        </li>
                         <li><label class="Content-check">
                                 <input type="checkbox">
                                 <ins></ins>
-                            </label>Adulto (2 a 7 años)</li>
+                            </label>Adulto (2 a 7 años)
+                        </li>
                         <li><label class="Content-check">
                                 <input type="checkbox">
                                 <ins></ins>
-                            </label>Adulto Mayor (7 años o más)</li>
+                            </label>Adulto Mayor (7 años o más)
+                        </li>
                         <li><label class="Content-check">
                                 <input type="checkbox">
                                 <ins></ins>
@@ -351,10 +351,10 @@
                         ¿Qué tiempo tienes de experiencia ejerciendo este servicio?
                     </label>
                     <select class="js-example-basic-single" id="experience_type" name="experience_type">
-                                @foreach($experienceTypes as $experienceType)
-                                    <option value="{{$experienceType->id}}">{{$experienceType->name}}</option>
-                                @endforeach
-                            </select>    
+                        @foreach($experienceTypes as $experienceType)
+                            <option value="{{$experienceType->id}}">{{$experienceType->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="col-6 small-12">
@@ -366,33 +366,41 @@
                     <div class="row between Certifications">
 
 
-
-
                         <div class="row col-4 File">
-                            <label for="file1" class="col-12" >
+                            <label for="file1" class="col-12">
 
-                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
-                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
-                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
-                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                       transform="translate(371.000000, 886.000000)">
+                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z"
+                                              id="Rectangle-2" fill="#04518E"></path>
+                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z"
+                                              id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2"
+                                              height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
                             </label><input id="file1" type="file" class="col-12">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File">
-                            <label for="file2" class="col-12" >
+                            <label for="file2" class="col-12">
 
-                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
                                     <desc>Created with Sketch.</desc>
                                     <defs></defs>
-                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
-                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
-                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
-                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                       transform="translate(371.000000, 886.000000)">
+                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z"
+                                              id="Rectangle-2" fill="#04518E"></path>
+                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z"
+                                              id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2"
+                                              height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
                             </label>
@@ -400,16 +408,21 @@
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File">
-                            <label for="file3" class="col-12" >
+                            <label for="file3" class="col-12">
 
-                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
                                     <desc>Created with Sketch.</desc>
                                     <defs></defs>
-                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
-                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
-                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
-                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                       transform="translate(371.000000, 886.000000)">
+                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z"
+                                              id="Rectangle-2" fill="#04518E"></path>
+                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z"
+                                              id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2"
+                                              height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
 
@@ -462,32 +475,32 @@
                     <div class="row Days">
                         <div>Los días</div>
                         <ul class=" row middle">
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label>
                                 <span>L</span></li>
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label><span>M</span></li>
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label><span>M</span></li>
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label><span>J</span></li>
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label><span>V</span></li>
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label><span>S</span></li>
-                            <li> <label class="Content-check">
+                            <li><label class="Content-check">
                                     <input type="checkbox">
                                     <ins></ins>
                                 </label><span>D</span></li>
@@ -496,10 +509,8 @@
                     <div class="row middle between" style="max-width: 600px">
                         <span>En horario de</span>
                         <select name="" id="">
-                            <option value="">Hora</option>
-                            <option value="">Labor</option>
-                            <option value="">Día</option>
-                            <option value="">Noche</option>
+
+
                         </select>
                         <span>a</span>
                         <select name="" id="">
@@ -519,22 +530,22 @@
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
-                        <input type="radio" id="answerIn"  name="answer">
+                        <input type="radio" id="answerIn" name="answer">
                         <label for="">Respondo en:</label>
-<<<<<<< HEAD
+                        <<<<<<< HEAD
                         <select name="" id="answerInSelect" disabled>
                             <option value="">30 minuntos</option>
                             <option value="">1 hora</option>
                             <option value="">1 Día</option>
                             <option value="">1 semana</option>
                         </select>
-=======
+                        =======
                         <select class="js-example-basic-single" id="response_type" name="response_type">
-                                @foreach($responseTypes as $responseType)
-                                    <option value="{{$responseType->id}}">{{$responseType->name}}</option>
-                                @endforeach
-                            </select>
->>>>>>> 59b36d1cfd9b226095a8faf4788e7373d285035e
+                            @foreach($responseTypes as $responseType)
+                                <option value="{{$responseType->id}}">{{$responseType->name}}</option>
+                            @endforeach
+                        </select>
+                        >>>>>>> 59b36d1cfd9b226095a8faf4788e7373d285035e
                     </div>
 
                 </div>
@@ -548,7 +559,7 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input type="text" id="autocomplete"  onFocus="geolocate()" placeholder="Ej.: Calle 123 #45-67">
+                    <input type="text" id="autocomplete" onFocus="geolocate()" placeholder="Ej.: Calle 123 #45-67">
                     <label for="">Información adicional</label>
                     <input type="text" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
 
@@ -617,12 +628,17 @@
 
     </form>
     <aside style="display: none">
-        <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
 
-            <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
-                <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
-                <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
-                <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+            <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+               transform="translate(371.000000, 886.000000)">
+                <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z"
+                      id="Rectangle-2" fill="#04518E"></path>
+                <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z"
+                      id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878"
+                      rx="0.6"></rect>
             </g>
         </svg>
     </aside>
@@ -641,15 +657,15 @@
         $('input[name="answer"]').on('change', function () {
             if ($('#answerIn').is(':checked')) {
                 $('#answerInSelect').prop("disabled", false);
-            }else{
+            } else {
                 $('#answerInSelect').prop("disabled", true);
             }
         })
 
-        $('.File input').on('change',function(){
+        $('.File input').on('change', function () {
             $(this).siblings('label').text($(this).val()).siblings('span').show()
         });
-        $('.File .close').on('click',function(){
+        $('.File .close').on('click', function () {
             var $input = $(this).siblings('input');
             $input.val('');
             $(this).siblings('label').html($('aside').html());
