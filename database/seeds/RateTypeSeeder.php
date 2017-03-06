@@ -14,7 +14,7 @@ class RateTypeSeeder extends Seeder
     {
         //
         RateType::create([
-            'name' => 'Horas',
+            'name' => 'Hora',
             'description' => 'Cobro por hora'
         ]);
         RateType::create([
