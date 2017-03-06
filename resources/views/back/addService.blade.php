@@ -572,8 +572,7 @@
 
                 </div>
                 <div class="col-6  small-12" id="map"></div>
-                <input type="hidden" id="lat">
-                <input type="hidden" id="lng">
+                
             </article>
 
         </section>
