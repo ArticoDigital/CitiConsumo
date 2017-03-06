@@ -246,7 +246,7 @@ class ServiceController extends Controller
             'description' => 'required|max:800',
             'date' => 'required',
             'service_type_id' => 'required',
-            'rate_type_id'
+            'rate_type_id' => 'required',
             'price' => 'required|numeric',
             'countFiles' => 'in:3,4,5',
         ];
