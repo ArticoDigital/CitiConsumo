@@ -165,6 +165,7 @@
     <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form">
 
         <section>
+            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
             <article>
                 <h4 class="AddService-h4">1. SERVICIO</h4>
                 <p>Describe adicionalmente que tipos de servicios ofreces complementarios a tu labor y digita desde
@@ -584,26 +585,45 @@
             </article>
             <article class="row  Col-space-2">
                 <div class="col-6 small-12 row center">
-                    <div class="col-10 small-12">
-                        <input type="file">
-                    </div>
-                    <ul class="row center output">
-                        <li class="col-2 small-6"><img
-                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
-                                    alt=""></li>
-                        <li class="col-2 small-6"><img
-                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
-                                    alt=""></li>
-                        <li class="col-2 small-6"><img
-                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
-                                    alt=""></li>
-                        <li class="col-2 small-6"><img
-                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
-                                    alt=""></li>
-                        <li class="col-2 small-6"><img
-                                    src="https://www.cityconsumo.com/uploads/profiles/rK5FoAQHNB-&&-_MG_3053_0984.jpg"
-                                    alt=""></li>
-                    </ul>
+
+
+                    <aside class="DropFiles">
+                        <label class="DropFiles-inside" for="files">
+                            <figure class="icon" style="width: 40px">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 36 32">
+                                    <g fill="gray">
+                                        <path d="M34 4h-2v-2c0-1.1-0.9-2-2-2h-28c-1.1 0-2 0.9-2 2v24c0 1.1 0.9 2 2 2h2v2c0 1.1 0.9 2 2 2h28c1.1 0 2-0.9 2-2v-24c0-1.1-0.9-2-2-2zM4 6v20h-1.996c-0.001-0.001-0.003-0.002-0.004-0.004v-23.993c0.001-0.001 0.002-0.003 0.004-0.004h27.993c0.001 0.001 0.003 0.002 0.004 0.004v1.996h-24c-1.1 0-2 0.9-2 2v0zM34 29.996c-0.001 0.001-0.002 0.003-0.004 0.004h-27.993c-0.001-0.001-0.003-0.002-0.004-0.004v-23.993c0.001-0.001 0.002-0.003 0.004-0.004h27.993c0.001 0.001 0.003 0.002 0.004 0.004v23.993z"></path>
+                                        <path d="M30 11c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"></path>
+                                        <path d="M32 28h-24v-4l7-12 8 10h2l7-6z"></path>
+                                    </g>
+                                </svg>
+                            </figure>
+                            <span>Arrastra aquí los archivos <br> o <br></span>
+                            <span class="rectangle">Selecciona un archivo</span><br>
+                            <span style="font-size: .8rem;">Tamaño máximo de archivo 2 MB.</span>
+                            <input type="file" id="files" multiple accept="image/jpeg, image/jpg, image/png, image/gif">
+                        </label>
+                    </aside>
+
+                    <aside class="FilesPreview" id="result">
+                        @if(session('Files'))
+                            @foreach(session('Files') as $key => $File)
+                                <article class="File">
+                                    <span class="delete">X</span>
+                                    <input type="hidden" name="file{{$key}}" value="{{$File}}">
+                                    <input type="hidden" class="imagePosition" value="{{$key}}">
+                                    <img class="thumbnail" src="{{$File}}">
+                                </article>
+                            @endforeach
+                        @endif
+                    </aside>
+
+
+
+
+
+
+
                 </div>
                 <div class="col-6 small-12 info">
                     <label for="" class="blue"> Debes Incluir Fotos que cumplan con los siguientes parámetros:</label>
@@ -690,6 +710,74 @@
             format: 'yyyy.mm.dd',
             autoclose:true,
             language: 'es'
+        });
+
+
+        $('.FilesPreview').on('click', '.File .delete', function(){
+            $(this).parent().remove();
+        });
+
+        $('#result').sortable();
+
+        var filesInput = $("#files");
+
+        $('.DropFiles-inside').on('dragenter click', function(e){
+            $(this).addClass('Drag');
+        }).on('dragleave dragend mouseout drop', function(e){
+            $(this).removeClass('Drag');
+        });
+
+        filesInput.on("change", function(e) {
+
+            var fileInput = document.getElementById('files'),
+                arrayFiles = fileInput.files,
+                files = new FormData(),
+                count = $('#result .File').length;
+
+            if(count < 5) {
+                for (var i = 0; i < arrayFiles.length; i++) {
+                    if (arrayFiles[i].size < 2210720) {
+                        if(count == 5) break;
+                        count += 1;
+                        files.append('file' + i, arrayFiles[i]);
+                    }
+                    else {
+                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                    }
+                }
+
+                files.append('_token', $('#token').val());
+
+                $.ajax({
+                    url: '{{route("uploadTempFiles")}}',
+                    type: 'POST',
+                    contentType: false,
+                    data: files,
+                    processData: false,
+                    cache: false,
+                    beforeSend: function () {
+                        $('.preload').removeClass("hidden");
+                    },
+                    success: function (data) {
+                        $('.preload').addClass("hidden");
+                        var result = $("#result");
+                        var images = data.temp;
+                        var position = result.children().length;
+                        for (var i = 0; i < images.length; i++) {
+                            position += 1;
+                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        $('.preload').addClass("hidden");
+                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
+                    }
+                });
+            }
+            else {
+                alert('solo puede subir 5 imágenes');
+            }
         });
 
     </script>
