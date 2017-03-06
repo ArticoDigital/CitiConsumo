@@ -521,20 +521,12 @@
                     <div class="row  middle">
                         <input type="radio" id="answerIn"  name="answer">
                         <label for="">Respondo en:</label>
-<<<<<<< HEAD
-                        <select name="" id="answerInSelect" disabled>
-                            <option value="">30 minuntos</option>
-                            <option value="">1 hora</option>
-                            <option value="">1 Día</option>
-                            <option value="">1 semana</option>
-                        </select>
-=======
-                        <select class="js-example-basic-single" id="response_type" name="response_type">
+
+                        <select  id="answerInSelect" disabled name="response_type_id">
                                 @foreach($responseTypes as $responseType)
                                     <option value="{{$responseType->id}}">{{$responseType->name}}</option>
                                 @endforeach
                             </select>
->>>>>>> 59b36d1cfd9b226095a8faf4788e7373d285035e
                     </div>
 
                 </div>
