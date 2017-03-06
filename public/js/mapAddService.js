@@ -46,6 +46,11 @@ function initMap() {
 
     }
 
+    google.maps.event.addDomListener(document.getElementById('autocomplete'), 'keydown', function(e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+    });
 
 }
 
