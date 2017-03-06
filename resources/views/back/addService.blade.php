@@ -660,8 +660,17 @@
             $(this).siblings('label').html($('aside').html());
             $(this).hide();
         });
-        $( ".dateSingle" ).datepicker();
+        $( ".dateSingle" ).datepicker({
+            minDate: new Date(),
+            maxDate: '+2m',
+            format: 'dd.mm.yyyy',
+            autoclose:true,
+            language: 'es'
+        });
+
     </script>
+
+    <script src="{{url('js/dataPickerEs.js')}}"></script>
 @endsection
 @section('styles')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
