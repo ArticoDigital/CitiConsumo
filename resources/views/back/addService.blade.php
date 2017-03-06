@@ -171,7 +171,7 @@
             </article>
             <article class="row middle between">
                 <label for="">Servicio:</label>
-                <select class="js-example-basic-single" id="service_type" name="service_type">
+                <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
                     @foreach($petTypes as $petType)
                         <option value="{{$petType->id}}">{{$petType->name}}</option>
                     @endforeach
@@ -190,9 +190,9 @@
             <article>
                 <div class="row middle between" style="max-width: 600px">
                     <label for="">Mi tarifa total es:</label>
-                    <input type="text" id="price" value="${{old('price')}}">
+                    <input type="text" id="price" value="{{old('price')}}">
                     <span class="mult">X</span>
-                    <select class="js-example-basic-single" id="rate_type" name="rate_type">
+                    <select class="js-example-basic-single" id="rate_type" name="rate_type_id">
                         @foreach($rateTypes as $rateType)
                             <option value="{{$rateType->id}}">{{$rateType->name}}</option>
                         @endforeach
@@ -458,55 +458,55 @@
                     </label>
                     <div class="row middle between" style="max-width: 600px">
                         <span>Desde</span>
-                        <input class="dateSingle" readonly="true"  type="text" autocomplete="off">
+                        <input class="dateSingle" name="date_start" readonly="true"  type="text" autocomplete="off">
                         <span>hasta</span>
-                        <input class="dateSingle" readonly="true"  type="text" autocomplete="off">
+                        <input class="dateSingle" name="date_end" readonly="true"  type="text" autocomplete="off">
                     </div>
                     <div class="row Days">
                         <div>Los días</div>
                         <ul class=" row middle">
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox"  name="days[]">
                                     <ins></ins>
                                 </label>
                                 <span>L</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="days[]">
                                     <ins></ins>
                                 </label><span>M</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="days[]">
                                     <ins></ins>
                                 </label><span>M</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="days[]">
                                     <ins></ins>
                                 </label><span>J</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="days[]">
                                     <ins></ins>
                                 </label><span>V</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="days[]">
                                     <ins></ins>
                                 </label><span>S</span></li>
                             <li><label class="Content-check">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="days[]">
                                     <ins></ins>
                                 </label><span>D</span></li>
                         </ul>
                     </div>
                     <div class="row middle between" style="max-width: 600px">
                         <span>En horario de</span>
-                        <select name="" id="">
+                        <select name="hour1" id="">
                             @foreach($hours as $hour)
                                 <option value="{{$hour }}">{{$hour}}</option>
                             @endforeach
                         </select>
                         <span>a</span>
-                        <select name="" id="">
+                        <select name="hour2" id="">
                             @foreach($hours as $hour)
-                                <option value="{{$hour }}">{{$hour}}</option>
+                                <option value="{{$hour}}">{{$hour}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -516,11 +516,11 @@
                 <div class="col-6 small-12 Answer">
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
-                        <input type="radio" name="answer">
+                        <input type="radio" name="inmediate_response">
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
-                        <input type="radio" id="answerIn" name="answer">
+                        <input type="radio" id="answerIn" name="inmediate_response">
                         <label for="">Respondo en:</label>
 
 
@@ -643,7 +643,7 @@
     <script type="text/javascript">
         svg = ''
         $(".Task").select2();
-        $('input[name="answer"]').on('change', function () {
+        $('input[name="inmediate_response"]').on('change', function () {
             if ($('#answerIn').is(':checked')) {
                 $('#answerInSelect').prop("disabled", false);
             } else {

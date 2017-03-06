@@ -115,8 +115,8 @@ class ServiceController extends Controller
             } elseif ($inputs['service'] == 2) {
                 $date = explode('-', $inputs['date']);
                 Pet::create([
-                    'date_start' => date_create($date[0]),
-                    'date_end' => date_create($date[1]),
+                  //  'date_start' => date_create($date[0]),
+                  //  'date_end' => date_create($date[1]),
                     'service_id' => $service->id,
                     'pet_sizes' => $inputs['size'],
                     'pets_quantity' => $inputs['pets-quantity'],
@@ -245,6 +245,8 @@ class ServiceController extends Controller
             'name' => 'required',
             'description' => 'required|max:800',
             'date' => 'required',
+            'service_type_id' => 'required',
+            'rate_type_id'
             'price' => 'required|numeric',
             'countFiles' => 'in:3,4,5',
         ];
