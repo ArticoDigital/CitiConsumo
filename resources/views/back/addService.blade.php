@@ -366,8 +366,8 @@
                     <div class="row between Certifications">
 
 
-                        <div class="row col-4 File">
-                            <label for="file1" class="col-12">
+                        <div class="row col-4 File small-12">
+                            <label for="file1" class="col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -385,8 +385,8 @@
                             </label><input id="file1" type="file" class="col-12">
                             <span class="close">X</span>
                         </div>
-                        <div class="row col-4 File">
-                            <label for="file2" class="col-12">
+                        <div class="row col-4 File small-12">
+                            <label for="file2" class="col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -407,8 +407,8 @@
                             <input id="file2" type="file" class="col-12">
                             <span class="close">X</span>
                         </div>
-                        <div class="row col-4 File">
-                            <label for="file3" class="col-12">
+                        <div class="row col-4 File small-12">
+                            <label for="file3" class="col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -543,7 +543,7 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input type="text" name="address" value="{{old('address')}}" id="autocomplete" onFocus="geolocate()" placeholder="Ej.: Calle 123 #45-67">
+                    <input type="text" name="address" value="{{old('address')}}" id="autocomplete" placeholder="Ej.: Calle 123 #45-67">
 
                     <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
                     <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
@@ -552,9 +552,9 @@
                     <input type="text" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
 
                 </div>
-                <div class="col-6  small-12" id="map">
-
-                </div>
+                <div class="col-6  small-12" id="map"></div>
+                <input type="hidden" id="lat">
+                <input type="hidden" id="lng">
             </article>
 
         </section>

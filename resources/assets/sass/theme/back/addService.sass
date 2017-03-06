@@ -313,6 +313,9 @@
     transform: translate3d(0,-.5em,0) rotate(45deg)
 .File
   position: relative
+  margin: rem(6) 0
+  @include respond-to(medium)
+    margin: 0
   span
     position: absolute
     top: rem(8)
@@ -323,8 +326,10 @@
     display: none
   svg
     top: rem(6)
-    right: rem(22)
+    right: 0
     position: absolute
+    @include respond-to(medium)
+      right: rem(22)
   label
     height: 2.125rem
     -webkit-border-radius: 0.25rem
