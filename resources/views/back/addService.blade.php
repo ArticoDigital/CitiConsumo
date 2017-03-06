@@ -235,7 +235,7 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="size[]">
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -256,7 +256,7 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="size[]">
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -279,7 +279,7 @@
                                 <input type="checkbox">
                                 <ins></ins>
                             </label>
-                            <span class="col-12">
+                            <span class="col-12" name="size[]">
                                 40-80 lbs <br>
                                 Grande
                             </span>
@@ -296,7 +296,7 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="size[]">
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -308,26 +308,26 @@
                     <label for="">Trabajo con estas edades:</label>
                     <ul class="Data-more">
                         <li><label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="puppy">
                                 <ins></ins>
                             </label>Cachorro (0 a 2 años)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="adult">
                                 <ins></ins>
                             </label>Adulto (2 a 7 años)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="elderly">
                                 <ins></ins>
                             </label>Adulto Mayor (7 años o más)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="smoke_free">
                                 <ins></ins>
                             </label><label for="">Mi hogar es una zona libre de humo</label></li>
                         <li><label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox" name="home_service">
                                 <ins></ins>
                             </label><label>Recojo la mascota a domicilio</label></li>
                     </ul>
