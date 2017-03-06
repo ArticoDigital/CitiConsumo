@@ -532,6 +532,7 @@
                     <div class="row  middle">
                         <input type="radio" id="answerIn" name="answer">
                         <label for="">Respondo en:</label>
+<<<<<<< HEAD
                         <<<<<<< HEAD
                         <select name="" id="answerInSelect" disabled>
                             <option value="">30 minuntos</option>
@@ -546,6 +547,14 @@
                             @endforeach
                         </select>
                         >>>>>>> 59b36d1cfd9b226095a8faf4788e7373d285035e
+=======
+
+                        <select  id="answerInSelect" disabled name="response_type_id">
+                                @foreach($responseTypes as $responseType)
+                                    <option value="{{$responseType->id}}">{{$responseType->name}}</option>
+                                @endforeach
+                            </select>
+>>>>>>> 473384117a943ebc35bc79003aa227ae84e74900
                     </div>
 
                 </div>
