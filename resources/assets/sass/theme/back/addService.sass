@@ -117,6 +117,7 @@
     display: block
 
   select
+
     background: white
     height: rem(34)
     width: 100%
@@ -132,10 +133,11 @@
     height: rem(34)
     border-radius: rem(4)
     border: rem(1) solid #b2b2b2
-    padding: 0
+
+    padding-left: rem(12)
     &.Input-large
       width: rem(480)
-      padding: rem(12)
+
   textarea
     height: rem(324)
     width: 100%
@@ -181,24 +183,18 @@
       display: block
     li
       height: rem(94)
-  .Certifications
-    div
-      padding: rem(8) 0
-      @include respond-to(medium)
-        padding: rem(8)
-      &:first-child
-        padding-left: 0
-      &:last-child
-        padding-right: 0
+
   .Available
     select
-      width: rem(150)
+      width: 100%
+      @include respond-to(medium)
+        width: rem(150)
   .Days
     margin: rem(20) 0
     div
       margin-right: rem(10)
     ul
-      margin:  0
+      margin: rem(-8) 0
       padding: 0
     span
       color: #04508e
@@ -206,9 +202,11 @@
       font-size: rem(28)
     li
       margin: 0 rem(6)
+      width: 1rem
+      ins
+
     input
       height: initial
-      display: block
       margin: auto
   .Answer
     input
@@ -255,7 +253,101 @@
     color: white
     border-radius: rem(12)
     cursor: pointer
+  ins
+    width: 1em
+    height: 1em
+    border: 2px solid #9E9E9E
+    border-radius: 2px
+    cursor: pointer
+    transition: all 250ms cubic-bezier(.4,.0,.23,1)
+    position: absolute
+    top: rem(7)
+    left: rem(-2)
+    background: #fbffff
+  input[type='checkbox']:checked + ins
+    &:before
+      border-color: red
+      content: ""
+      position: absolute
+      top: rem(7)
+      left: rem(1)
+      border-right: 3px solid transparent
+      border-bottom: 3px solid transparent
+      transform: rotate(45deg)
+      transform-origin: 0% 100%
+      animation: checkbox-check 50ms 125ms  cubic-bezier(.4,.0,.23,1) forwards
 .AddService-h4
   margin: 0
   font-size: rem(26)
   color: #04508e
+#map
+  height: rem(216)
+  width: 100%
+.select2-container
+  width: rem(480) !important
+.select2-container--default.select2-container--focus .select2-selection--multiple
+  border: rem(1) solid #b2b2b2 !important
+.select2-selection__rendered
+  height: rem(28)
+.select2-container--default .select2-selection--multiple .select2-selection__choice
+  font-size: rem(13)
+  margin-top: rem(10) !important
+.Content-check
+  position: relative
+@keyframes checkbox-check
+  0%
+    width: 0
+    height:
+    border-color: #38b433
+    transform: translate3d(0,0,0) rotate(45deg)
+
+  33%
+    width: .2em
+    height: 0
+    transform: translate3d(0,0,0) rotate(45deg)
+
+  100%
+    width: .2em
+    height: .5em
+    border-color: #38b433
+    transform: translate3d(0,-.5em,0) rotate(45deg)
+.File
+  position: relative
+  span
+    position: absolute
+    top: rem(8)
+    right: rem(20)
+    font-size: rem(18)
+    color: #04508e
+    font-weight: 400
+    display: none
+  svg
+    top: rem(6)
+    right: rem(22)
+    position: absolute
+  label
+    height: 2.125rem
+    -webkit-border-radius: 0.25rem
+    border-radius: 0.25rem
+    border: 0.0625rem solid #b2b2b2
+
+    max-width: 90%
+    cursor: pointer
+
+    color: #464646
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+    padding: rem(9) rem(15) rem(9) rem(6)
+    font-size: rem(14)
+    font-weight: 400
+
+  input
+    opacity: 0
+    visibility: hidden
+    display: none
+  .close
+    cursor: pointer
+#answerInSelect:disabled
+  background: #8c8c8c
+  color: #464646

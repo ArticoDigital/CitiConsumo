@@ -30,7 +30,7 @@
         <ul class=" AddService-icons row center ">
             <li>
                 <a href="">
-                    <svg width="100%" height="auto" viewBox="0 0 285 330" version="1.1"
+                    <svg width="100%" viewBox="0 0 285 330" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -95,9 +95,9 @@
             </li>
             <li>
                 <a href="">
-                    <svg width="100%" height="auto" viewBox="0 0 285 330" version="1.1"
+                    <svg width="100%"  viewBox="0 0 285 330" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink">
+                    >
                         <defs>
                             <path d="M100.197001,72.2725942 C95.840001,75.7705942 89.502001,75.0855942 86.015001,70.6905942 C82.533001,66.3035942 83.267001,59.9235942 87.646001,56.4505942 C92.029001,52.9735942 98.400001,53.7155942 101.883001,58.1045942 C105.367001,62.4955942 104.580001,68.7955942 100.197001,72.2725942 M102.474001,30.0925942 L100.045001,42.5965942 C100.045001,42.5965942 72.648001,35.8625942 68.328001,63.9325942 L55.843001,61.3915942 C55.843001,61.3915942 57.696001,19.3005942 102.474001,30.0925942 M210.572001,17.8815942 C177.652001,-0.434405814 140.548001,-4.21740581 106.687001,4.41959419 L104.467001,16.2575942 C104.467001,16.2575942 89.551001,12.5715942 74.207001,17.1065942 C66.756001,21.1315942 59.642001,25.8445942 52.962001,31.2065942 C47.965001,37.5305942 44.080001,46.1865942 42.290001,57.9985942 L29.345001,55.3705942 C25.177001,60.8165942 21.347001,66.6275942 17.919001,72.8035942 C-20.145999,141.223594 4.422001,227.402594 72.783001,265.579594 C111.994001,287.239594 157.086001,288.459594 195.642001,272.645594 L235.996001,318.735594 C235.996001,318.735594 227.396001,288.704594 218.685001,260.737594 C237.476001,248.534594 253.797001,231.654594 265.584001,210.469594 C303.619001,142.346594 279.101001,55.8955942 210.572001,17.8815942"
                                   id="path-1"></path>
@@ -185,8 +185,10 @@
                 <svg width="18" height="22px">
                     <use xlink:href="#Help"/>
                 </svg>
-
-                <input type="text" class="Input-large">
+                <select class="Task Input-large" multiple="multiple">
+                    <option value="">Paseado</option>
+                    <option value="">Lavado</option>
+                </select>
             </article>
             <article>
                 <div class="row middle between" style="max-width: 600px">
@@ -216,7 +218,7 @@
                             </svg>
                         </i>
                     </div>
-                    <textarea name="" id=""  placeholder="Descripción del servicio"></textarea>
+                    <textarea name="" id="" placeholder="Descripción del servicio"></textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
                 <div class="col-6 small-12">
@@ -226,7 +228,7 @@
                     <ul class="row between middle Sizes center baseline">
                         <li class="cols-6">
                             <svg width="50px" height="27px" viewBox="454 587 50 27" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="mascotas-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
                                    transform="translate(454.000000, 587.000000)">
                                     <g id="Capa_1" fill="#6BBCC0">
@@ -235,7 +237,10 @@
                                     </g>
                                 </g>
                             </svg>
-                            <input type="checkbox">
+                            <label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>
                             <span class="col-12">
                                 1-20 lbs <br>
                                 Pequeño
@@ -253,7 +258,10 @@
                                     </g>
                                 </g>
                             </svg>
-                            <input type="checkbox">
+                            <label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>
                             <span class="col-12">
                                 20-40 lbs <br>
                                 Mediano
@@ -270,7 +278,10 @@
                                     </g>
                                 </g>
                             </svg>
-                            <input type="checkbox">
+                            <label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>
                             <span class="col-12">
                                 40-80 lbs <br>
                                 Grande
@@ -287,7 +298,10 @@
                                     </g>
                                 </g>
                             </svg>
-                            <input type="checkbox">
+                            <label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>
                             <span class="col-12">
                                 80+ lbs <br>
                                 Muy grande
@@ -296,11 +310,26 @@
                     </ul>
                     <label for="">Trabajo con estas edades:</label>
                     <ul class="Data-more">
-                        <li><input type="checkbox">Cachorro (0 a 2 años)</li>
-                        <li><input type="checkbox">Adulto (2 a 7 años)</li>
-                        <li><input type="checkbox">Adulto Mayor (7 años o más)</li>
-                        <li><input type="checkbox"><label for="">Mi hogar es una zona libre de humo</label></li>
-                        <li><input type="checkbox"><label>Recojo la mascota a domicilio</label></li>
+                        <li><label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>Cachorro (0 a 2 años)</li>
+                        <li><label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>Adulto (2 a 7 años)</li>
+                        <li><label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label>Adulto Mayor (7 años o más)</li>
+                        <li><label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label><label for="">Mi hogar es una zona libre de humo</label></li>
+                        <li><label class="Content-check">
+                                <input type="checkbox">
+                                <ins></ins>
+                            </label><label>Recojo la mascota a domicilio</label></li>
                     </ul>
                 </div>
             </article>
@@ -335,9 +364,59 @@
                     <p> Sube aquí diplomas o certificados que te acrediten.
                         Hasta 3 certificaciones en .pdf o .jpg</p>
                     <div class="row between Certifications">
-                        <div class="col-4"><input type="file" class="col-12"></div>
-                        <div class="col-4"><input type="file" class="col-12"></div>
-                        <div class="col-4"><input type="file" class="col-12"></div>
+
+
+
+
+                        <div class="row col-4 File">
+                            <label for="file1" class="col-12" >
+
+                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
+                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
+                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+                                    </g>
+                                </svg>
+                            </label><input id="file1" type="file" class="col-12">
+                            <span class="close">X</span>
+                        </div>
+                        <div class="row col-4 File">
+                            <label for="file2" class="col-12" >
+
+                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+                                    <desc>Created with Sketch.</desc>
+                                    <defs></defs>
+                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
+                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
+                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+                                    </g>
+                                </svg>
+                            </label>
+                            <input id="file2" type="file" class="col-12">
+                            <span class="close">X</span>
+                        </div>
+                        <div class="row col-4 File">
+                            <label for="file3" class="col-12" >
+
+                                <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+                                    <desc>Created with Sketch.</desc>
+                                    <defs></defs>
+                                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
+                                        <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
+                                        <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                                        <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+                                    </g>
+                                </svg>
+
+                            </label><input id="file3" type="file" class="col-12">
+                            <span class="close">X</span>
+
+                        </div>
                     </div>
 
                 </div>
@@ -383,13 +462,35 @@
                     <div class="row Days">
                         <div>Los días</div>
                         <ul class=" row middle">
-                            <li><input type="checkbox"><span>L</span></li>
-                            <li><input type="checkbox"><span>M</span></li>
-                            <li><input type="checkbox"><span>M</span></li>
-                            <li><input type="checkbox"><span>J</span></li>
-                            <li><input type="checkbox"><span>V</span></li>
-                            <li><input type="checkbox"><span>S</span></li>
-                            <li><input type="checkbox"><span>D</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label>
+                                <span>L</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label><span>M</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label><span>M</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label><span>J</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label><span>V</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label><span>S</span></li>
+                            <li> <label class="Content-check">
+                                    <input type="checkbox">
+                                    <ins></ins>
+                                </label><span>D</span></li>
                         </ul>
                     </div>
                     <div class="row middle between" style="max-width: 600px">
@@ -414,13 +515,13 @@
                 <div class="col-6 small-12 Answer">
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
-                        <input type="radio">
+                        <input type="radio" name="answer">
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
-                        <input type="radio">
+                        <input type="radio" id="answerIn"  name="answer">
                         <label for="">Respondo en:</label>
-                        <select name="" id="">
+                        <select name="" id="answerInSelect" disabled>
                             <option value="">30 minuntos</option>
                             <option value="">1 hora</option>
                             <option value="">1 Día</option>
@@ -439,13 +540,13 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input type="text" placeholder="Ej.: Calle 123 #45-67">
+                    <input type="text" id="autocomplete"  onFocus="geolocate()" placeholder="Ej.: Calle 123 #45-67">
                     <label for="">Información adicional</label>
                     <input type="text" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
 
                 </div>
-                <div class="col-6  small-12">
-                    mapa
+                <div class="col-6  small-12" id="map">
+
                 </div>
             </article>
 
@@ -494,7 +595,10 @@
                 </div>
             </article>
             <article class="row center middle">
-                <input type="checkbox">
+                <label class="Content-check">
+                    <input type="checkbox">
+                    <ins></ins>
+                </label>
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
             </article>
             <article class="row center ">
@@ -504,12 +608,48 @@
         </section>
 
     </form>
+    <aside style="display: none">
+        <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+            <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(371.000000, 886.000000)">
+                <path d="M1.19457014,12.2604957 L1.19457014,15.4328889 C1.19457014,17.9712054 3.23688957,20.0274399 5.75621828,20.0274399 L18.2437817,20.0274399 C20.7626007,20.0274399 22.8054299,17.9703225 22.8054299,15.4327397 L22.8054299,12.2604957 C22.3710407,12.2604957 2.28054299,12.2604957 1.19457014,12.2604957 Z M0,12.2604957 C0,11.8801995 0.325791855,11.7135279 0.65158371,11.7135279 C0.977375566,11.7135279 1.19457014,11.932315 1.19457014,12.2604957 C4.01809955,12.2604957 16.0723982,12.2604957 22.8054299,12.2604957 C22.8054299,11.932315 23.0226244,11.7135279 23.4570136,11.7135279 C23.7828054,11.7135279 24,11.932315 24,12.2604957 L24,15.4327397 C24,18.6347697 21.4224759,21.2307692 18.2437817,21.2307692 L5.75621828,21.2307692 C2.57693138,21.2307692 0,18.6355691 0,15.4328889 L0,12.2604957 Z" id="Rectangle-2" fill="#04518E"></path>
+                <path d="M12.0006855,0 C18.683988,7.14820943 18.5704728,6.93902783 18.5704728,6.93902783 C18.7532008,7.11624074 18.7572014,7.10826687 18.5777543,6.9194776 L12.0006855,0 L5.42361662,6.9194776 C5.24491005,7.10748781 5.24762743,7.11134972 5.43037729,6.9269149 C5.43037729,6.9269149 9.77291795,2.56888776 12.0006855,0 Z" id="Triangle" stroke="#04518E" stroke-width="1.17647059"></path>
+                <rect id="Rectangle" fill="#04518E" x="11.28" y="2.92838196" width="1.2" height="14.397878" rx="0.6"></rect>
+            </g>
+        </svg>
+    </aside>
 @endsection
 
 @section('scripts')
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX5fzq-PCqkaBxMrEt3z7jiSO3YwK85rY&libraries=places&callback=initMap">
+    </script>
+
+    <script src="{{url('js/mapAddService.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript">
+        svg = ''
+        $(".Task").select2();
+        $('input[name="answer"]').on('change', function () {
+            if ($('#answerIn').is(':checked')) {
+                $('#answerInSelect').prop("disabled", false);
+            }else{
+                $('#answerInSelect').prop("disabled", true);
+            }
+        })
+
+        $('.File input').on('change',function(){
+            $(this).siblings('label').text($(this).val()).siblings('span').show()
+        });
+        $('.File .close').on('click',function(){
+            var $input = $(this).siblings('input');
+            $input.val('');
+            $(this).siblings('label').html($('aside').html());
+            $(this).hide();
+        });
+    </script>
 @endsection
-
 @section('styles')
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
 @endsection
 
