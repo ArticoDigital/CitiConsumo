@@ -630,7 +630,6 @@
             </g>
         </svg>
     </aside>
-    <p>Date: <input type="text" id="datepicker"></p>
 @endsection
 
 @section('scripts')
