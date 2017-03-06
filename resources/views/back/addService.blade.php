@@ -509,15 +509,15 @@
                     <div class="row middle between" style="max-width: 600px">
                         <span>En horario de</span>
                         <select name="" id="">
-
-
+                            @foreach($hours as $hour)
+                                <option value="{{$hour }}">{{$hour}}</option>
+                            @endforeach
                         </select>
                         <span>a</span>
                         <select name="" id="">
-                            <option value="">Hora</option>
-                            <option value="">Labor</option>
-                            <option value="">Día</option>
-                            <option value="">Noche</option>
+                            @foreach($hours as $hour)
+                                <option value="{{$hour }}">{{$hour}}</option>
+                            @endforeach
                         </select>
                     </div>
 
