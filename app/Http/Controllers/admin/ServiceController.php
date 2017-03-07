@@ -40,6 +40,7 @@ class ServiceController extends Controller
 
     public function add(RoleRequest $request)
     {
+        
         $hours = [];
         $suf = 'am';
         for ($i = 0; $i < 24; $i++) {
@@ -87,6 +88,12 @@ class ServiceController extends Controller
 
     public function create(RoleRequest $request)
     {
+        /*if ($request->file('file1')) {
+                $imageName = str_random(10) . '-&&-' . $request->file('file1')->getClientOriginalName();
+                $request->file('file1')->move(base_path() . '/public/uploads/profiles/', $imageName);
+                $inputs['file1'] = $imageName;
+                dd($request);
+            }*/
 
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
@@ -94,24 +101,42 @@ class ServiceController extends Controller
             $this->ispressed = true;
             $user = auth()->user();
             $inputs = $this->setFiles($request->all());
+
             $validate = $this->validator($inputs);
             if ($validate->fails()) {
                 $validate->errors()->first();
                 $this->ispressed = false;
                 return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
             }
+            
 
             $inputs['provider_id'] = $user->provider->id;
             $inputs['location'] = $inputs['address'];
             $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
             //print_r($inputs['days']);
-            $inputs['date_start'] = date_create($inputs['date_start']);
-            $inputs['date_end'] = date_create($inputs['date_end']);
+            $inputs['date_start']  = date_format(date_create_from_format('d/m/Y', $inputs['date_start']), 'Y/m/d');
+            $inputs['date_end']  = date_format(date_create_from_format('d/m/Y', $inputs['date_end']), 'Y/m/d');
+           // $inputs['date_start'] = date_create($inputs['date_start']);
+            //$inputs['date_end'] = date_create($inputs['date_end']);
             
-            $comma_separated = implode(",", $inputs['days']);
+            $days_comma_separated = implode(",", $inputs['days']);
+            if(isset($inputs['service_addition'])) {
+                $inputs['service_addition'] = implode(",", $inputs['service_addition']);
+            }
             //print_r($comma_separated);
-            $inputs['days']=$comma_separated;
+            $inputs['days']=$days_comma_separated;
             $service = Service::create($inputs);
+            //dd($inputs);
+            $array_sizes=[];
+            if (isset($inputs['size1']))$array_sizes[]=$inputs['size1'];
+            if (isset($inputs['size2']))$array_sizes[]=$inputs['size2'];
+            if (isset($inputs['size3']))$array_sizes[]=$inputs['size3'];
+            if (isset($inputs['size4']))$array_sizes[]=$inputs['size4'];
+            
+
+
+
+           
 
             if ($inputs['service'] == 3) {
                 Food::create([
@@ -122,7 +147,7 @@ class ServiceController extends Controller
                 ]);
             } elseif ($inputs['service'] == 1) {
                 //$date = explode('-', $inputs['date']);
-                Pet::create([
+                $pet = Pet::create([
                   //  'date_start' => date_create($date[0]),
                   //  'date_end' => date_create($date[1]),
                     'service_id' => $service->id,
@@ -134,6 +159,8 @@ class ServiceController extends Controller
                     'elderly' => isset($inputs['elderly'])?$inputs['elderly']:0,
                     'home_service' => isset($inputs['home_service'])?$inputs['home_service']:0,
                 ]);
+                $pet->sizes()->attach($array_sizes);
+
             } elseif ($inputs['service'] == 2) {
                 General::create([
                     'date' => date_create($inputs['date']),
@@ -251,23 +278,30 @@ class ServiceController extends Controller
     private function validator($inputs)
     {
         $rules = [
+            'terms_conditions' => 'required',
             'service' => 'required',
-            //'lat' => 'required',
-            //'lng' => 'required',
-            'address' => 'required',
-            //'name' => 'required',
-            'description' => 'required|max:800',
-            'date_start' => 'required',
-            'date_end' => 'required',
             'service_type_id' => 'required',
             'rate_type_id' => 'required',
             'price' => 'required|numeric',
-            //'countFiles' => 'in:3,4,5',
+            'description' => 'required|max:800',
+            'date_start' => 'required',
+            'date_end' => 'required',
+            'days'=> 'required', 
+            'lat' => 'required',
+            'lng' => 'required',
+            'address' => 'required',
+            //'name' => 'required',
+            
+            
+            
+            'countFiles' => 'in:3,4,5',
         ];
 
-       /* if ($inputs['service'] == 1)
+        if ($inputs['service'] == 3)
             $rules['foods-quantity'] = 'required|numeric';
         if ($inputs['service'] == 2)
+            $rules['pets-quantity'] = 'required|numeric';
+        /*if ($inputs['service'] == 1)
             $rules['pets-quantity'] = 'required|numeric';
 */
         return Validator::make($inputs, $rules);
@@ -303,7 +337,8 @@ class ServiceController extends Controller
 
                 ServiceFile::create([
                     'name' => $fileName,
-                    'service_id' => $service->id
+                    'service_id' => $service->id,
+                    'kind_file' => "imagen" //certificado
                 ]);
             }
         }

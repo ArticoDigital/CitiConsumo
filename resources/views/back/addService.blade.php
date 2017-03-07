@@ -186,9 +186,9 @@
                 <svg width="18" height="22px">
                     <use xlink:href="#Help"/>
                 </svg>
-                <select class="Task Input-large" multiple="multiple" id="service_addition" name="service_adition">
-                    <option value="">Paseado</option>
-                    <option value="">Lavado</option>
+                <select class="Task Input-large" multiple="multiple" id="service_addition" name="service_addition[]">
+                    <option value="Paseado">Paseado</option>
+                    <option value="Lavado">Lavado</option>
                 </select>
             </article>
             <article>
@@ -239,7 +239,9 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox" name="size[]" value="1">
+                                <input type="checkbox" name="size1" value="1" @if(old('size1'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -260,7 +262,9 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox" name="size[]" value="2">
+                                <input type="checkbox" name="size2" value="2" @if(old('size2'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -280,10 +284,12 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox">
+                                <input type="checkbox"  name="size3" value="3" @if(old('size3'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>
-                            <span class="col-12" name="size[]" value="3">
+                            <span class="col-12">
                                 40-80 lbs <br>
                                 Grande
                             </span>
@@ -300,7 +306,9 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox" name="size[]" value="4">
+                                <input type="checkbox" name="size4" value="4" @if(old('size4'))
+                                  checked
+                                 @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -381,7 +389,7 @@
 
 
                         <div class="row col-4 File small-12">
-                            <label for="file1" class="col-12 small-12">
+                            <label for="file1" class="col-12 small-12">{{old('file1')}}
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -396,7 +404,7 @@
                                               height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
-                            </label><input id="file1" type="file" class="col-12">
+                            </label><input id="file1" type="file" name="file1" value="{{old('file1')}}"  class="col-12">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
@@ -418,7 +426,7 @@
                                     </g>
                                 </svg>
                             </label>
-                            <input id="file2" type="file" class="col-12">
+                            <input id="file2" type="file" class="col-12"  value="{{old('file2')}}" name="file2">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
@@ -440,7 +448,7 @@
                                     </g>
                                 </svg>
 
-                            </label><input id="file3" type="file" class="col-12">
+                            </label><input id="file3" type="file" class="col-12"  value="{{old('file3')}}" name="file3">
                             <span class="close">X</span>
 
                         </div>
@@ -472,55 +480,48 @@
                     </label>
                     <div class="row middle between" style="max-width: 600px">
                         <span>Desde</span>
-                        <input class="dateSingle" name="date_start" readonly="true"  type="text" autocomplete="off">
+                        <input class="dateSingle" name="date_start" readonly="true"  type="text" autocomplete="off" value="{{old('date_start')}}">
                         <span>hasta</span>
-                        <input class="dateSingle" name="date_end" readonly="true"  type="text" autocomplete="off">
+                        <input class="dateSingle" name="date_end" readonly="true"  type="text" autocomplete="off" value="{{old('date_end')}}">
                     </div>
+
+
+                    <ul class="optional-features-list">
+  
+
+
                     <div class="row Days">
                         <div>Los días</div>
                         <ul class=" row middle">
-                            <li><label class="Content-check">
-                                    <input type="checkbox"  name="days[]" value="1">
-                                    <ins></ins>
-                                </label>
-                                <span>L</span></li>
-                            <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]" value="2">
-                                    <ins></ins>
-                                </label><span>M</span></li>
-                            <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]" value="3">
-                                    <ins></ins>
-                                </label><span>M</span></li>
-                            <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]" value="4">
-                                    <ins></ins>
-                                </label><span>J</span></li>
-                            <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]" value="5">
-                                    <ins></ins>
-                                </label><span>V</span></li>
-                            <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]" value="6">
-                                    <ins></ins>
-                                </label><span>S</span></li>
-                            <li><label class="Content-check">
-                                    <input type="checkbox" name="days[]" value="7">
-                                    <ins></ins>
-                                </label><span>D</span></li>
-                        </ul>
+                          @php 
+                            $daysweek = array('1'=>'L','2'=>'M','3'=>'M','4'=>'J','5'=>'V','6'=>'S','7'=>'D');
+                          @endphp
+                          @foreach ($daysweek as $key => $dayw)
+                            
+                          
+                                    <li><label class="Content-check">
+                                        <input id="days" name="days[]" value="{{$key}}" type="checkbox" 
+                                        {{ ( is_array(old('days')) && in_array($key, old('days')) ) ? 'checked ' : '' }} >
+                                        <ins></ins>
+                                        </label>
+                                    <span>{{$dayw}}</span></li>
+                           
+          
+                          @endforeach
+                      </ul>
+     
                     </div>
                     <div class="row middle between" style="max-width: 600px">
                         <span>En horario de</span>
                         <select name="hour1" id="">
                             @foreach($hours as $hour)
-                                <option value="{{$hour }}">{{$hour}}</option>
+                                <option value="{{$hour}}" {{ (old("hour1") == $hour ? "selected":"") }}>{{$hour}}</option>
                             @endforeach
                         </select>
                         <span>a</span>
                         <select name="hour2" id="">
                             @foreach($hours as $hour)
-                                <option value="{{$hour}}">{{$hour}}</option>
+                                <option value="{{$hour}}" {{ (old("hour2") == $hour ? "selected":"") }}>{{$hour}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -543,7 +544,7 @@
                         @endif>
                         <label for="">Respondo en:</label>
 
-
+                        <input type="hidden" value="1" id="hiddenresponse" name="response_type_id">
                         <select id="answerInSelect" disabled name="response_type_id">
                             @foreach($responseTypes as $responseType)
                                 <option value="{{$responseType->id}}" {{ (old("response_type_id") == $responseType->id ? "selected":"") }}>{{$responseType->name}}</option>
@@ -706,8 +707,8 @@
         $( ".dateSingle" ).datepicker({
             minDate: new Date(),
             maxDate: '+2m',
-            //format: 'dd.mm.yyyy',
-            format: 'yyyy.mm.dd',
+            format: 'dd.mm.yyyy',
+            //format: 'yyyy.mm.dd',
             autoclose:true,
             language: 'es'
         });
