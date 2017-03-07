@@ -87,14 +87,10 @@ class ServiceController extends Controller
     }
 
     public function create(RoleRequest $request)
-    {
-        /*if ($request->file('file1')) {
-                $imageName = str_random(10) . '-&&-' . $request->file('file1')->getClientOriginalName();
-                $request->file('file1')->move(base_path() . '/public/uploads/profiles/', $imageName);
-                $inputs['file1'] = $imageName;
-                dd($request);
-            }*/
+    { 
+       
 
+                
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
         if (!$this->ispressed) {
@@ -126,14 +122,49 @@ class ServiceController extends Controller
             //print_r($comma_separated);
             $inputs['days']=$days_comma_separated;
             $service = Service::create($inputs);
-            //dd($inputs);
+            
             $array_sizes=[];
             if (isset($inputs['size1']))$array_sizes[]=$inputs['size1'];
             if (isset($inputs['size2']))$array_sizes[]=$inputs['size2'];
             if (isset($inputs['size3']))$array_sizes[]=$inputs['size3'];
             if (isset($inputs['size4']))$array_sizes[]=$inputs['size4'];
             
+            if ($request->file('certificate1')) {
+                    $imageName = str_random(10) . '-&&-' . $request->file('certificate1')->getClientOriginalName();
+                    $request->file('certificate1')->move(base_path() . '/public/uploads/products/', $imageName);
+                    //$inputs['certificate1'] = $imageName;
 
+
+                    ServiceFile::create([
+                    'name' => $imageName,
+                    'service_id' => $service->id,
+                    'kind_file' => "certificado" //certificado
+                ]);
+                }
+            if ($request->file('certificate2')) {
+                    $imageName = str_random(10) . '-&&-' . $request->file('certificate2')->getClientOriginalName();
+                    $request->file('certificate2')->move(base_path() . '/public/uploads/products/', $imageName);
+                    //$inputs['certificate2'] = $imageName;
+
+
+                    ServiceFile::create([
+                    'name' => $imageName,
+                    'service_id' => $service->id,
+                    'kind_file' => "certificado" //certificado
+                ]);
+                }
+                if ($request->file('certificate3')) {
+                    $imageName = str_random(10) . '-&&-' . $request->file('certificate3')->getClientOriginalName();
+                    $request->file('certificate3')->move(base_path() . '/public/uploads/products/', $imageName);
+                    //$inputs['certificate3'] = $imageName;
+
+
+                    ServiceFile::create([
+                    'name' => $imageName,
+                    'service_id' => $service->id,
+                    'kind_file' => "certificado" //certificado
+                ]);
+                }
 
 
            
@@ -320,7 +351,7 @@ class ServiceController extends Controller
                 array_push($inputs['Files'], $inputs[$key]);
             }
         }
-
+        //dd($inputs);
         return $inputs;
     }
 
