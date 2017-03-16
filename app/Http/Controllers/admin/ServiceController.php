@@ -93,11 +93,7 @@ class ServiceController extends Controller
     { 
        
 
-<<<<<<< HEAD
-
-=======
                 
->>>>>>> 3d8027c8e35f405e60d7f37e27d4bd5488781877
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
         if (!$this->ispressed) {
