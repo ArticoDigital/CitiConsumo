@@ -162,7 +162,7 @@
             </li>
         </ul>
     </header>
-    <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form">
+    <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form" enctype="multipart/form-data">
 
         <section>
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
@@ -176,8 +176,8 @@
             <article class="row middle between">
                 <label for="">Servicio:</label>
                 <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
-                    @foreach($petTypes as $petType)
-                        <option value="{{$petType->id}}" {{ (old("service_type_id") == $petType->id ? "selected":"") }}>{{$petType->name}}</option>
+                    @foreach($serviceTypes as $serviceType)
+                        <option value="{{$serviceType->id}}" {{ (old("service_type_id") == $serviceType->id ? "selected":"") }}>{{$serviceType->name}}</option>
                     @endforeach
                 </select>
 
@@ -196,7 +196,7 @@
                     <label for="">Mi tarifa total es:</label>
                     <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
-                    <select class="js-example-basic-single" id="rate_type" name="rate_type_id">
+                    <select class="js-example-basic-single" id="rate_type" name="rate_types">
                         @foreach($rateTypes as $rateType)
                             <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
                         @endforeach
@@ -389,7 +389,7 @@
 
 
                         <div class="row col-4 File small-12">
-                            <label for="file1" class="col-12 small-12">{{old('file1')}}
+                            <label for="certificate1" class="col-12 small-12">{{old('certificate1')}}
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -404,11 +404,11 @@
                                               height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
-                            </label><input id="file1" type="file" name="file1" value="{{old('file1')}}"  class="col-12">
+                            </label><input id="certificate1" type="file" name="certificate1" value="{{old('certificate1')}}"  class="col-12">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="file2" class="col-12 small-12">
+                            <label for="certificate2" class="col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -426,11 +426,11 @@
                                     </g>
                                 </svg>
                             </label>
-                            <input id="file2" type="file" class="col-12"  value="{{old('file2')}}" name="file2">
+                            <input id="certificate2" type="file" class="col-12"  value="{{old('certificate2')}}" name="certificate2">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="file3" class="col-12 small-12">
+                            <label for="certificate3" class="col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -448,7 +448,7 @@
                                     </g>
                                 </svg>
 
-                            </label><input id="file3" type="file" class="col-12"  value="{{old('file3')}}" name="file3">
+                            </label><input id="certificate3" type="file" class="col-12"  value="{{old('certificate3')}}" name="certificate3">
                             <span class="close">X</span>
 
                         </div>
