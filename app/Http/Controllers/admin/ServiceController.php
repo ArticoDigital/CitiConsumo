@@ -95,6 +95,7 @@ class ServiceController extends Controller
                 dd($request);
             }*/
 
+
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
         if (!$this->ispressed) {
