@@ -176,8 +176,8 @@
             <article class="row middle between">
                 <label for="">Servicio:</label>
                 <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
-                    @foreach($petTypes as $petType)
-                        <option value="{{$petType->id}}" {{ (old("service_type_id") == $petType->id ? "selected":"") }}>{{$petType->name}}</option>
+                    @foreach($serviceTypes as $serviceType)
+                        <option value="{{$serviceType->id}}" {{ (old("service_type_id") == $serviceType->id ? "selected":"") }}>{{$serviceType->name}}</option>
                     @endforeach
                 </select>
 
