@@ -196,7 +196,7 @@
                     <label for="">Mi tarifa total es:</label>
                     <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
-                    <select class="js-example-basic-single" id="rate_type" name="rate_type_id">
+                    <select class="js-example-basic-single" id="rate_type" name="rate_types">
                         @foreach($rateTypes as $rateType)
                             <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
                         @endforeach

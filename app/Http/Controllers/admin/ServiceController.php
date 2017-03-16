@@ -7,8 +7,9 @@ use City\Entities\GeneralType;
 use City\Entities\PetSize;
 use City\Entities\Size;
 use City\Entities\ServiceType;
-use City\Entities\RateType;
+//use City\Entities\RateType;
 use City\Entities\ExperienceType;
+use City\Entities\KindService;
 use City\Entities\ResponseType;
 use City\Entities\Service;
 use City\Entities\ServiceFile;
@@ -62,12 +63,13 @@ class ServiceController extends Controller
         //$foodTypes = FoodType::all();
         //$generalTypes = GeneralType::all();
         //$sizes = PetSize::all();
-        
-        $petTypes = ServiceType::where('kind_service_id', '1')->get();
-        $generalTypes = ServiceType::where('kind_service_id', '2')->get();
-        $foodTypes = ServiceType::where('kind_service_id', '3')->get();
+        $kindServices = KindService::all();
+        //$petTypes = ServiceType::where('kind_service_id', '1')->get();
+        //$generalTypes = ServiceType::where('kind_service_id', '2')->get();
+        //$foodTypes = ServiceType::where('kind_service_id', '3')->get();
+        $serviceTypes=ServiceType::all();
 
-        $rateTypes = RateType::all();
+        //$rateTypes = RateType::all();
         $experienceTypes = ExperienceType::all();
         $responseTypes = ResponseType::all();
 
@@ -75,7 +77,8 @@ class ServiceController extends Controller
 
         if (isset($user->provider)) {
             if ($user->provider->isActive == 1) {
-                return view('back.addService', compact('foodTypes', 'sizes', 'generalTypes', 'petTypes', 'rateTypes', 'experienceTypes', 'responseTypes', 'hours'));
+                //return view('back.addService', compact('kindServices','foodTypes', 'sizes', 'generalTypes', 'petTypes', 'experienceTypes', 'responseTypes', 'hours'));
+                return view('back.addService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
 
             } else if ($user->provider->isActive == 2) {
                 return redirect()->to('admin')->with(['alertTitle' => '¡No puedes realizar esta acción!', 'alertText' => 'El administrador te ha eliminado como proveedor, debes enviar un mensaje al administrador para reactivarte']);
@@ -153,7 +156,7 @@ class ServiceController extends Controller
                     'kind_file' => "certificado" //certificado
                 ]);
                 }
-                if ($request->file('certificate3')) {
+            if ($request->file('certificate3')) {
                     $imageName = str_random(10) . '-&&-' . $request->file('certificate3')->getClientOriginalName();
                     $request->file('certificate3')->move(base_path() . '/public/uploads/products/', $imageName);
                     //$inputs['certificate3'] = $imageName;
