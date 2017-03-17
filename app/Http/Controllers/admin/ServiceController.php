@@ -315,7 +315,7 @@ class ServiceController extends Controller
             'terms_conditions' => 'required',
             'service' => 'required',
             'service_type_id' => 'required',
-            'rate_type_id' => 'required',
+            'rate_type' => 'required',
             'price' => 'required|numeric',
             'description' => 'required|max:800',
             'date_start' => 'required',

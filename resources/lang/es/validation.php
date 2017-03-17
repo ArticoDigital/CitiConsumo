@@ -146,7 +146,19 @@ return [
         'date'                  => 'fecha',
         'time'                  => 'hora',
         'subject'               => 'asunto',
-        'message'               => 'mensaje'
+        'message'               => 'mensaje',
+        'terms_conditions'      => 'términos y condiciones',
+        'service'               => 'Servicio',
+        'service_type_id'       => 'Servicio',
+        'rate_type'             => 'Tipo de tarifa',
+        'price'                 => 'Tarifa o precio',
+        'description'           => 'Descripción del servicio',
+        'date_start'            => 'Disponibilidad desde',
+        'date_end'              => 'Disponibilidad hasta',
+        'days'                  => 'Disponibilidad los días', 
+        'lat'                   => 'ubicación',
+        'lng'                   => 'ubicación',
+        'address'               => 'dirección',
     ],
 
 ];
