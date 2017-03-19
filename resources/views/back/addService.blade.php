@@ -19,7 +19,7 @@
     </svg>
 
     <header class="AddService-header">
-        <h1 class="AddService-h1">¡HOLA <span>KATY</span>! ES UN GUSTO SABER QUE AHORA SERÁS PARTE DE ESTA GRAN CITY
+        <h1 class="AddService-h1" style="text-transform: uppercase">¡HOLA <span>{{auth()->user()->name}}</span>! ES UN GUSTO SABER QUE AHORA SERÁS PARTE DE ESTA GRAN CITY
             FAMILIA.</h1>
         <h2 class="AddService-h2">¡Te invitamos a diligenciar el formulario y que nos cuentes claramente acerca de lo
             que sabes hacer y por qué eres un Gran Experto!</h2>
@@ -705,7 +705,6 @@
         var servicesType = JSON.parse($('#servicesType').val()),
             idService;
 
-        console.log(servicesType)
         function findService(services) {
             return services.id == idService;
         }
