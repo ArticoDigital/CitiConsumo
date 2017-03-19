@@ -67,8 +67,7 @@ class ServiceController extends Controller
         //$petTypes = ServiceType::where('kind_service_id', '1')->get();
         //$generalTypes = ServiceType::where('kind_service_id', '2')->get();
         //$foodTypes = ServiceType::where('kind_service_id', '3')->get();
-        $serviceTypes=ServiceType::all();
-
+        $serviceTypes=ServiceType::with('kindServices')->get();
         //$rateTypes = RateType::all();
         $experienceTypes = ExperienceType::all();
         $responseTypes = ResponseType::all();

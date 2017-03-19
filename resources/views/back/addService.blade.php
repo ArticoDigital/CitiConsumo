@@ -162,7 +162,8 @@
             </li>
         </ul>
     </header>
-    <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form" enctype="multipart/form-data">
+    <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form"
+          enctype="multipart/form-data">
 
         <section>
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
@@ -176,7 +177,8 @@
             <article class="row middle between">
                 <label for="">Servicio:</label>
                 <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
-                    @foreach($serviceTypes as $serviceType)
+                    <option value="">Selecciona un servicio</option>
+                    @foreach($serviceTypes->where('kind_service_id', 1) as $serviceType)
                         <option value="{{$serviceType->id}}" {{ (old("service_type_id") == $serviceType->id ? "selected":"") }}>{{$serviceType->name}}</option>
                     @endforeach
                 </select>
@@ -186,9 +188,8 @@
                 <svg width="18" height="22px">
                     <use xlink:href="#Help"/>
                 </svg>
+
                 <select class="Task Input-large" multiple="multiple" id="service_addition" name="service_addition[]">
-                    <option value="Paseado">Paseado</option>
-                    <option value="Lavado">Lavado</option>
                 </select>
             </article>
             <article>
@@ -197,9 +198,9 @@
                     <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single" id="rate_type" name="rate_types">
-                        @foreach($rateTypes as $rateType)
-                            <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
-                        @endforeach
+                        {{-- @foreach($rateTypes as $rateType)
+                             <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
+                         @endforeach--}}
                     </select>
 
                 </div>
@@ -219,7 +220,8 @@
                             </svg>
                         </i>
                     </div>
-                    <textarea  id="description" name="description" placeholder="Descripción del servicio">{!! old('description') !!}</textarea>
+                    <textarea id="description" name="description"
+                              placeholder="Descripción del servicio">{!! old('description') !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
                 <div class="col-6 small-12">
@@ -240,8 +242,8 @@
                             </svg>
                             <label class="Content-check">
                                 <input type="checkbox" name="size1" value="1" @if(old('size1'))
-                                  checked
-                                 @endif>
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -263,8 +265,8 @@
                             </svg>
                             <label class="Content-check">
                                 <input type="checkbox" name="size2" value="2" @if(old('size2'))
-                                  checked
-                                 @endif>
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -284,9 +286,9 @@
                                 </g>
                             </svg>
                             <label class="Content-check">
-                                <input type="checkbox"  name="size3" value="3" @if(old('size3'))
-                                  checked
-                                 @endif>
+                                <input type="checkbox" name="size3" value="3" @if(old('size3'))
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -307,8 +309,8 @@
                             </svg>
                             <label class="Content-check">
                                 <input type="checkbox" name="size4" value="4" @if(old('size4'))
-                                  checked
-                                 @endif>
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>
                             <span class="col-12">
@@ -321,35 +323,35 @@
                     <ul class="Data-more">
                         <li><label class="Content-check">
                                 <input type="checkbox" name="puppy" value="1" @if(old('puppy'))
-                                  checked
-                                 @endif>
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>Cachorro (0 a 2 años)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="adult" value="1"  @if(old('adult'))
-                                  checked
-                                 @endif>
+                                <input type="checkbox" name="adult" value="1" @if(old('adult'))
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>Adulto (2 a 7 años)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="elderly" value="1"  @if(old('elderly'))
-                                  checked
-                                 @endif>
+                                <input type="checkbox" name="elderly" value="1" @if(old('elderly'))
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label>Adulto Mayor (7 años o más)
                         </li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="smoke_free" value="1"  @if(old('smoke_free'))
-                                  checked
-                                 @endif>
+                                <input type="checkbox" name="smoke_free" value="1" @if(old('smoke_free'))
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label><label for="">Mi hogar es una zona libre de humo</label></li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="home_service" value="1"  @if(old('home_service'))
-                                  checked
-                                 @endif>
+                                <input type="checkbox" name="home_service" value="1" @if(old('home_service'))
+                                checked
+                                        @endif>
                                 <ins></ins>
                             </label><label>Recojo la mascota a domicilio</label></li>
                     </ul>
@@ -404,7 +406,8 @@
                                               height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
-                            </label><input id="certificate1" type="file" name="certificate1" value="{{old('certificate1')}}"  class="col-12">
+                            </label><input id="certificate1" type="file" name="certificate1"
+                                           value="{{old('certificate1')}}" class="col-12">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
@@ -426,7 +429,8 @@
                                     </g>
                                 </svg>
                             </label>
-                            <input id="certificate2" type="file" class="col-12"  value="{{old('certificate2')}}" name="certificate2">
+                            <input id="certificate2" type="file" class="col-12" value="{{old('certificate2')}}"
+                                   name="certificate2">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
@@ -448,7 +452,8 @@
                                     </g>
                                 </svg>
 
-                            </label><input id="certificate3" type="file" class="col-12"  value="{{old('certificate3')}}" name="certificate3">
+                            </label><input id="certificate3" type="file" class="col-12" value="{{old('certificate3')}}"
+                                           name="certificate3">
                             <span class="close">X</span>
 
                         </div>
@@ -480,68 +485,69 @@
                     </label>
                     <div class="row middle between" style="max-width: 600px">
                         <span>Desde</span>
-                        <input class="dateSingle" name="date_start" readonly="true"  type="text" autocomplete="off" value="{{old('date_start')}}">
+                        <input class="dateSingle" name="date_start" readonly="true" type="text" autocomplete="off"
+                               value="{{old('date_start')}}">
                         <span>hasta</span>
-                        <input class="dateSingle" name="date_end" readonly="true"  type="text" autocomplete="off" value="{{old('date_end')}}">
+                        <input class="dateSingle" name="date_end" readonly="true" type="text" autocomplete="off"
+                               value="{{old('date_end')}}">
                     </div>
 
 
                     <ul class="optional-features-list">
-  
 
 
-                    <div class="row Days">
-                        <div>Los días</div>
-                        <ul class=" row middle">
-                          @php 
-                            $daysweek = array('1'=>'L','2'=>'M','3'=>'M','4'=>'J','5'=>'V','6'=>'S','7'=>'D');
-                          @endphp
-                          @foreach ($daysweek as $key => $dayw)
-                            
-                          
+                        <div class="row Days">
+                            <div>Los días</div>
+                            <ul class=" row middle">
+                                @php
+                                    $daysweek = array('1'=>'L','2'=>'M','3'=>'M','4'=>'J','5'=>'V','6'=>'S','7'=>'D');
+                                @endphp
+                                @foreach ($daysweek as $key => $dayw)
+
+
                                     <li><label class="Content-check">
-                                        <input id="days" name="days[]" value="{{$key}}" type="checkbox" 
-                                        {{ ( is_array(old('days')) && in_array($key, old('days')) ) ? 'checked ' : '' }} >
-                                        <ins></ins>
+                                            <input id="days" name="days[]" value="{{$key}}" type="checkbox"
+                                                    {{ ( is_array(old('days')) && in_array($key, old('days')) ) ? 'checked ' : '' }} >
+                                            <ins></ins>
                                         </label>
-                                    <span>{{$dayw}}</span></li>
-                           
-          
-                          @endforeach
-                      </ul>
-     
-                    </div>
-                    <div class="row middle between" style="max-width: 600px">
-                        <span>En horario de</span>
-                        <select name="hour1" id="">
-                            @foreach($hours as $hour)
-                                <option value="{{$hour}}" {{ (old("hour1") == $hour ? "selected":"") }}>{{$hour}}</option>
-                            @endforeach
-                        </select>
-                        <span>a</span>
-                        <select name="hour2" id="">
-                            @foreach($hours as $hour)
-                                <option value="{{$hour}}" {{ (old("hour2") == $hour ? "selected":"") }}>{{$hour}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                                        <span>{{$dayw}}</span></li>
+
+
+                                @endforeach
+                            </ul>
+
+                        </div>
+                        <div class="row middle between" style="max-width: 600px">
+                            <span>En horario de</span>
+                            <select name="hour1" id="">
+                                @foreach($hours as $hour)
+                                    <option value="{{$hour}}" {{ (old("hour1") == $hour ? "selected":"") }}>{{$hour}}</option>
+                                @endforeach
+                            </select>
+                            <span>a</span>
+                            <select name="hour2" id="">
+                                @foreach($hours as $hour)
+                                    <option value="{{$hour}}" {{ (old("hour2") == $hour ? "selected":"") }}>{{$hour}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                 </div>
 
                 <div class="col-6 small-12 Answer">
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
-                        <input type="radio" value="0" name="inmediate_response" 
-                        @if(!old('inmediate_response'))
-                            checked
-                        @endif>
+                        <input type="radio" value="0" name="inmediate_response"
+                               @if(!old('inmediate_response'))
+                               checked
+                                @endif>
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
-                        <input type="radio" value="1" id="answerIn" name="inmediate_response" 
-                        @if(old('inmediate_response'))
-                            checked
-                        @endif>
+                        <input type="radio" value="1" id="answerIn" name="inmediate_response"
+                               @if(old('inmediate_response'))
+                               checked
+                                @endif>
                         <label for="">Respondo en:</label>
 
                         <input type="hidden" value="1" id="hiddenresponse" name="response_type_id">
@@ -564,17 +570,19 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input type="text" name="address" value="{{old('address')}}" id="autocomplete" placeholder="Ej.: Calle 123 #45-67">
+                    <input type="text" name="address" value="{{old('address')}}" id="autocomplete"
+                           placeholder="Ej.: Calle 123 #45-67">
 
                     <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
                     <input type="hidden" name="lng" id="lng" value="{{old('lng')}}">
 
                     <label for="">Información adicional</label>
-                    <input type="text" name="address_more_info" value="{{old('address_more_info')}}" placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
+                    <input type="text" name="address_more_info" value="{{old('address_more_info')}}"
+                           placeholder="Ej.: Barrio La Macarena. Frente al Cine Arteaga.">
 
                 </div>
                 <div class="col-6  small-12" id="map"></div>
-                
+
             </article>
 
         </section>
@@ -620,11 +628,6 @@
                     </aside>
 
 
-
-
-
-
-
                 </div>
                 <div class="col-6 small-12 info">
                     <label for="" class="blue"> Debes Incluir Fotos que cumplan con los siguientes parámetros:</label>
@@ -643,11 +646,11 @@
             <article class="row center middle">
                 <label class="Content-check">
                     <input type="checkbox" name="terms_conditions" value="1"
-                    
-                        @if(old('terms_conditions'))
-                            checked
-                        @endif
-                        >
+
+                           @if(old('terms_conditions'))
+                           checked
+                            @endif
+                    >
                     <ins></ins>
                 </label>
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
@@ -674,7 +677,17 @@
             </g>
         </svg>
     </aside>
+    <input id="servicesType" type="hidden" value="{{json_encode($serviceTypes->where('kind_service_id', 1))}}">
 @endsection
+
+{{--@foreach( as $serviceType)
+    @php ($additions = explode(',',$serviceType->service_additions))
+    @foreach($additions as $addition)
+        <option value="" data-type="{{$serviceType->id}}">{{$addition}}</option>
+    @endforeach
+
+@endforeach--}}
+
 
 @section('scripts')
     <script async defer
@@ -685,8 +698,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
-        svg = ''
-        $(".Task").select2();
+
+
+        svg = '';
+
+        var servicesType = JSON.parse($('#servicesType').val()),
+            idService;
+
+        console.log(servicesType)
+        function findService(services) {
+            return services.id == idService;
+        }
+        $task = $(".Task").select2({
+            language: {
+                noResults: function (params) {
+                    return "";
+                }
+            }
+        });
+
+        $("#service_type_id").on("change", function () {
+
+            var $point = $(".Task");
+            var $rateType = $("#rate_type");
+            if (!$(this).val()) {
+                $point.empty();
+                $rateType.empty();
+                return;
+            }
+            idService = $(this).val();
+            $point.empty();
+            $rateType.empty();
+
+            var serviceTypeObject = servicesType.find(findService);
+            var additions =   serviceTypeObject.service_additions.split(","),
+                rateTypes = serviceTypeObject.rate_types.split(","),
+                optionString = '',
+                optionStringRate = '';
+
+            additions.forEach(function (entry) {
+                optionString += '<option value="' + entry + '">' + entry + '</option>'
+            });
+            rateTypes.forEach(function (entry) {
+                optionStringRate += '<option value="' + entry + '">' + entry + '</option>'
+            });
+
+            $rateType.append(optionStringRate);
+            $point.append(optionString);
+            $(".Task").select2({
+                language: {
+                    noResults: function (params) {
+                        return "";
+                    }
+                }
+            });
+
+
+
+
+
+        });
+
         $('input[name="inmediate_response"]').on('change', function () {
             if ($('#answerIn').is(':checked')) {
                 $('#answerInSelect').prop("disabled", false);
@@ -704,17 +776,17 @@
             $(this).siblings('label').html($('aside').html());
             $(this).hide();
         });
-        $( ".dateSingle" ).datepicker({
+        $(".dateSingle").datepicker({
             minDate: new Date(),
             maxDate: '+2m',
             format: 'dd.mm.yyyy',
             //format: 'yyyy.mm.dd',
-            autoclose:true,
+            autoclose: true,
             language: 'es'
         });
 
 
-        $('.FilesPreview').on('click', '.File .delete', function(){
+        $('.FilesPreview').on('click', '.File .delete', function () {
             $(this).parent().remove();
         });
 
@@ -722,23 +794,23 @@
 
         var filesInput = $("#files");
 
-        $('.DropFiles-inside').on('dragenter click', function(e){
+        $('.DropFiles-inside').on('dragenter click', function (e) {
             $(this).addClass('Drag');
-        }).on('dragleave dragend mouseout drop', function(e){
+        }).on('dragleave dragend mouseout drop', function (e) {
             $(this).removeClass('Drag');
         });
 
-        filesInput.on("change", function(e) {
+        filesInput.on("change", function (e) {
 
             var fileInput = document.getElementById('files'),
                 arrayFiles = fileInput.files,
                 files = new FormData(),
                 count = $('#result .File').length;
 
-            if(count < 5) {
+            if (count < 5) {
                 for (var i = 0; i < arrayFiles.length; i++) {
                     if (arrayFiles[i].size < 2210720) {
-                        if(count == 5) break;
+                        if (count == 5) break;
                         count += 1;
                         files.append('file' + i, arrayFiles[i]);
                     }
