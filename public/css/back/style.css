@@ -641,6 +641,11 @@ textarea {
       -ms-flex-item-align: end;
           align-self: flex-end; }
 
+.self-center {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center; }
+
 .columns div:nth-child(even) {
   padding-right: 0.625rem; }
 
@@ -2250,6 +2255,27 @@ div.profile-photo-light {
   .Footer .Menu-footer li {
     padding: 0 15px;
     border-right: 1px solid #fff; }
+
+#imagesPopup {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.9);
+  top: 0;
+  display: none; }
+  #imagesPopup button {
+    border: none;
+    width: 6.25rem;
+    padding: 0.625rem;
+    background: #338ade;
+    color: white;
+    margin-bottom: 1.25rem;
+    cursor: pointer; }
+    #imagesPopup button:first-child {
+      margin-right: 1.25rem; }
+
+#upload-container {
+  max-height: 30rem; }
 
 .MenuAdmin {
   padding: 0;

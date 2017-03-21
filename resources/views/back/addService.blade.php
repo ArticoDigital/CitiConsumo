@@ -19,7 +19,8 @@
     </svg>
 
     <header class="AddService-header">
-        <h1 class="AddService-h1" style="text-transform: uppercase">¡HOLA <span>{{auth()->user()->name}}</span>! ES UN GUSTO SABER QUE AHORA SERÁS PARTE DE ESTA GRAN CITY
+        <h1 class="AddService-h1" style="text-transform: uppercase">¡HOLA <span>{{auth()->user()->name}}</span>! ES UN
+            GUSTO SABER QUE AHORA SERÁS PARTE DE ESTA GRAN CITY
             FAMILIA.</h1>
         <h2 class="AddService-h2">¡Te invitamos a diligenciar el formulario y que nos cuentes claramente acerca de lo
             que sabes hacer y por qué eres un Gran Experto!</h2>
@@ -531,7 +532,7 @@
                                 @endforeach
                             </select>
                         </div>
-
+                    </ul>
                 </div>
 
                 <div class="col-6 small-12 Answer">
@@ -662,6 +663,16 @@
         </section>
 
     </form>
+    <aside id="imagesPopup" class="row center ">
+        <div id="upload-container" class="self-center">
+
+            <div class="row center">
+                <button id="upload-cut">Cortar</button>
+                <button id="upload-cancel">Cancelar</button>
+            </div>
+        </div>
+
+    </aside>
     <aside style="display: none">
         <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -697,6 +708,7 @@
     <script src="{{url('js/mapAddService.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
     <script type="text/javascript">
 
 
@@ -730,7 +742,7 @@
             $rateType.empty();
 
             var serviceTypeObject = servicesType.find(findService);
-            var additions =   serviceTypeObject.service_additions.split(","),
+            var additions = serviceTypeObject.service_additions.split(","),
                 rateTypes = serviceTypeObject.rate_types.split(","),
                 optionString = '',
                 optionStringRate = '';
@@ -751,9 +763,6 @@
                     }
                 }
             });
-
-
-
 
 
         });
@@ -799,7 +808,72 @@
             $(this).removeClass('Drag');
         });
 
-        filesInput.on("change", function (e) {
+        filesInput.on('change', function () {
+            var fileInput = document.getElementById('files'),
+                arrayFiles = fileInput.files,
+                count = $('#result .File').length;
+
+            if (count < 5) {
+                for (var i = 0; i < arrayFiles.length; i++) {
+                    if (arrayFiles[i].size < 2210720) {
+                        if (count == 5) break;
+                        count += 1;
+                    }
+                    else {
+                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                    }
+                }
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagesPopup').css("display", "flex").fadeIn();
+                    rawImg = e.target.result;
+                    $uploadCrop.croppie('bind', {
+                        url: e.target.result
+                    }).then(function () {
+                        console.log('jQuery bind complete');
+                    });
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+            else {
+                alert('solo puede subir 5 imágenes');
+            }
+        });
+        $('#upload-cancel').on('click', function () {
+            $('#imagesPopup').hide();
+        });
+
+
+        $('#upload-cut').on('click', function () {
+            var fileInput = document.getElementById('files'),
+                arrayFiles = fileInput.files,
+                files = new FormData(),
+                count = $('#result .File').length;
+
+
+            $uploadCrop.croppie('result', {
+                type: 'canvas',
+                size: 'viewport'
+            }).then(function (resp) {
+
+                $.ajax({
+                    url: "/ajaxpro.php",
+                    type: "POST",
+                    data: {"image":resp},
+                    success: function (data) {
+                        html = '<img src="' + resp + '" />';
+                        $("#upload-demo-i").html(html);
+                    }
+                });
+            });
+
+
+
+        });
+
+
+        $('').on("change", function (e) {
 
             var fileInput = document.getElementById('files'),
                 arrayFiles = fileInput.files,
@@ -817,9 +891,7 @@
                         alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
                     }
                 }
-
                 files.append('_token', $('#token').val());
-
                 $.ajax({
                     url: '{{route("uploadTempFiles")}}',
                     type: 'POST',
@@ -852,12 +924,29 @@
             }
         });
 
+        var $uploadCrop,
+            rawImg;
+        $uploadCrop = $('#upload-container').croppie({
+            viewport: {
+                width: 440,
+                height: 440,
+                enableZoomboolean: true
+            },
+            boundary: {
+                width: 450,
+                height: 450
+            }
+        });
+
     </script>
+
 
     <script src="{{url('js/dataPickerEs.js')}}"></script>
 @endsection
 @section('styles')
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css">
+
 @endsection
 
