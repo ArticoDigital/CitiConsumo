@@ -115,6 +115,11 @@ Route::post('uploadTempFiles', [
     'uses' => 'AdminController@uploadTempFiles'
 ]);
 
+Route::post('uploadImageFiles', [
+    'as' => 'uploadImageFiles',
+    'uses' => 'ServiceController@uploadImageFiles'
+]);
+
 // ADMIN ROUTES
 
 Route::get('desembolso', [

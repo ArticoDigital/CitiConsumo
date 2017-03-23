@@ -305,6 +305,30 @@ class ServiceController extends Controller
 
         return redirect()->route('myProfile')->with(['alertTitle' => '¡Servicio actualizado!', 'alertText' => 'El servicio ha sido actualizado con éxito.']);
     }
+    public function uploadImageFiles(Request $request){
+        if($request->ajax()) {
+            //$tempFiles = [];
+               if(isset($_POST['image'])){
+                    $data = $_POST['image'];
+
+                    list($type, $data) = explode(';', $data);
+                    list(, $data)      = explode(',', $data);
+                    $data = base64_decode($data);
+                    
+                    $fileName = base_path() . '/public/temp/'.str_random(10).".png";
+                    //$file->move(, $fileName);
+                    //array_push($tempFiles, '/temp/' . $fileName);
+
+                    file_put_contents($fileName, $data);
+                }
+            /*foreach ($request->file() as $file) {
+                $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
+                $file->move(base_path() . '/public/temp/', $fileName);
+                array_push($tempFiles, '/temp/' . $fileName);
+            }*/
+            return ['temp' => true];
+        }
+    }
 
     /************** Validar formularios ***************/
 

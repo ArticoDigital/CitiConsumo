@@ -848,19 +848,18 @@
         $('#upload-cut').on('click', function () {
             var fileInput = document.getElementById('files'),
                 arrayFiles = fileInput.files,
-                files = new FormData(),
                 count = $('#result .File').length;
-
-
             $uploadCrop.croppie('result', {
-                type: 'canvas',
+                type: 'base64',
                 size: 'viewport'
             }).then(function (resp) {
-
                 $.ajax({
-                    url: "/ajaxpro.php",
+                    url: '{{route("uploadImageFiles")}}',
                     type: "POST",
-                    data: {"image":resp},
+                    data: {
+                  "_token": "{{ csrf_token() }}",
+                  "image": resp
+                },
                     success: function (data) {
                         html = '<img src="' + resp + '" />';
                         $("#upload-demo-i").html(html);
@@ -927,6 +926,7 @@
         var $uploadCrop,
             rawImg;
         $uploadCrop = $('#upload-container').croppie({
+          enableExif: true,
             viewport: {
                 width: 440,
                 height: 440,
