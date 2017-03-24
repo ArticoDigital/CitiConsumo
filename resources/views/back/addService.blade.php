@@ -19,11 +19,8 @@
     </svg>
 
     <header class="AddService-header">
-        <h1 class="AddService-h1" style="text-transform: uppercase">¡HOLA <span>{{auth()->user()->name}}</span>! ES UN
-            GUSTO SABER QUE AHORA SERÁS PARTE DE ESTA GRAN CITY
-            FAMILIA.</h1>
-        <h2 class="AddService-h2">¡Te invitamos a diligenciar el formulario y que nos cuentes claramente acerca de lo
-            que sabes hacer y por qué eres un Gran Experto!</h2>
+        <h1 class="AddService-h1">Que gusto verte por acá <span  style="text-transform: uppercase">{{auth()->user()->name}}</span> ¿Qué  servicio ofrecerás?</h1>
+        <h2 class="AddService-h2">Crea un anuncio impactante y atractivo, busca atraer a potenciales clientes y demuéstrarles en que eres bueno</h2>
         <h3 class="AddService-h3">¿A qué categoría pertenece tu servicio?</h3>
         <ul class=" AddService-icons row center ">
             <li>
@@ -176,7 +173,7 @@
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
             <input type="hidden" name="service" id="service" value="1">
             <article class="row middle between">
-                <label for="">Servicio:</label>
+                <label for="">Mi servicio es:</label>
                 <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
                     <option value="">Selecciona un servicio</option>
                     @foreach($serviceTypes->where('kind_service_id', 1) as $serviceType)
@@ -184,7 +181,7 @@
                     @endforeach
                 </select>
 
-                <label for="">Incluye:</label>
+                <label for="">Incluyo:</label>
 
                 <svg width="18" height="22px">
                     <use xlink:href="#Help"/>
@@ -201,7 +198,7 @@
             </article>
             <article>
                 <div class="row middle between" style="max-width: 600px">
-                    <label for="">Mi tarifa total es:</label>
+                    <label for="">Mi tarifa es:</label>
                     <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single" id="rate_type" name="rate_type">
@@ -231,7 +228,7 @@
                         </i>
                     </div>
                     <textarea id="description" name="description"
-                              placeholder="Descripción del servicio">{!! old('description') !!}</textarea>
+                              placeholder="Describe detalles de tu labor">{!! old('description') !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
                 <div class="col-6 small-12">
