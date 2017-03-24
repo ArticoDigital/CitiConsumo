@@ -314,19 +314,19 @@ class ServiceController extends Controller
                     list($type, $data) = explode(';', $data);
                     list(, $data)      = explode(',', $data);
                     $data = base64_decode($data);
-                    
-                    $fileName = base_path() . '/public/temp/'.str_random(10).".png";
+                    $fileName = str_random(20).".png";
+                    $filelocation = base_path() . '/public/temp/'.$fileName;
                     //$file->move(, $fileName);
                     //array_push($tempFiles, '/temp/' . $fileName);
 
-                    file_put_contents($fileName, $data);
+                    file_put_contents($filelocation, $data);
                 }
             /*foreach ($request->file() as $file) {
                 $fileName = str_random(10) . '-&&-' . $file->getClientOriginalName();
                 $file->move(base_path() . '/public/temp/', $fileName);
                 array_push($tempFiles, '/temp/' . $fileName);
             }*/
-            return ['temp' => true];
+            return ['temp' => "/temp/".$fileName];
         }
     }
 

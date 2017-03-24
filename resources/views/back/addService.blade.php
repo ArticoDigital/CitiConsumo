@@ -191,6 +191,12 @@
                 </svg>
 
                 <select class="Task Input-large" multiple="multiple" id="service_addition" name="service_addition[]">
+                    @if(old('service_addition'))
+                     @foreach(old('service_addition') as $servadd)
+                     <option value="{{$servadd}}" selected>{{$servadd}}</option>
+                     @endforeach
+                    @endif>
+                      
                 </select>
             </article>
             <article>
@@ -198,7 +204,10 @@
                     <label for="">Mi tarifa total es:</label>
                     <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
-                    <select class="js-example-basic-single" id="rate_type" name="rate_types">
+                    <select class="js-example-basic-single" id="rate_type" name="rate_type">
+                    @if(old('rate_type'))
+                             <option value="{{old('rate_type')}}" selected>{{old('rate_type')}}</option>
+                                        @endif>
                         {{-- @foreach($rateTypes as $rateType)
                              <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
                          @endforeach--}}
@@ -709,6 +718,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
+    <script src="{{url('js/exif.js')}}"></script>
     <script type="text/javascript">
 
 
@@ -846,9 +856,9 @@
 
 
         $('#upload-cut').on('click', function () {
-            var fileInput = document.getElementById('files'),
-                arrayFiles = fileInput.files,
-                count = $('#result .File').length;
+            //var fileInput = document.getElementById('files'),
+             //   arrayFiles = fileInput.files,
+             //   count = $('#result .File').length;
             $uploadCrop.croppie('result', {
                 type: 'base64',
                 size: 'viewport'
@@ -861,8 +871,17 @@
                   "image": resp
                 },
                     success: function (data) {
-                        html = '<img src="' + resp + '" />';
-                        $("#upload-demo-i").html(html);
+                        //html = '<img src="' + resp + '" />';
+                        //$("#upload-demo-i").html(html);
+                        $('.preload').addClass("hidden");
+                        var result = $("#result");
+                        var image = data.temp;
+                        var position = result.children().length;
+                        //for (var i = 0; i < images.length; i++) {
+                            //position += 1;
+                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
+                            $('#imagesPopup').hide();
+                     //   }
                     }
                 });
             });
