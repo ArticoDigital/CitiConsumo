@@ -214,17 +214,16 @@
             </article>
             <article class="row Col-space-2">
                 <div class="col-6 small-12">
-                    <label for="" class="blue">Cuéntale a tus clientes quién eres, qué haces, cómo te desempeñas en el
-                        servicio y
-                        cuál es la experiencia que recibirán contigo.
+                    <label for="" class="blue">{{auth()->user()->name}}, cuéntale a tus clientes quién eres, qué haces, cómo te desempeñas en el servicio y cuál es la experiencia que recibirán contigo.
 
                     </label>
                     <div class="row">
                         <p>*No incluyas datos de contacto.</p>
                         <i>
-                            <svg width="18" height="22px">
+                            <a href="#" title="no incluyas números de teléfono, direcciónes, si tu publicación contiene información de contacto será rechazada."><svg width="18" height="22px">
                                 <use xlink:href="#Help"/>
                             </svg>
+                            </a>
                         </i>
                     </div>
                     <textarea id="description" name="description"
@@ -953,6 +952,10 @@
                 height: 450
             }
         });
+
+        $( function() {
+          $( document ).tooltip();
+        } );
 
     </script>
 
