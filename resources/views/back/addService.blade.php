@@ -23,8 +23,8 @@
         <h2 class="AddService-h2">Crea un anuncio impactante y atractivo, busca atraer a potenciales clientes y demuéstrarles en que eres bueno</h2>
         <h3 class="AddService-h3">¿A qué categoría pertenece tu servicio?</h3>
         <ul class=" AddService-icons row center ">
-            <li>
-                <a href="">
+            <li data-service="3">
+                <span >
                     <svg width="100%" viewBox="0 0 285 330" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -53,10 +53,10 @@
                     </svg>
                     <div class="x"></div>
                     <div class="x r"></div>
-                </a>
+                </span>
             </li>
-            <li class="active">
-                <a href="">
+            <li data-service="1">
+                <span >
                     <svg width="100%" height="100%" viewBox="0 0 285 331" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -86,10 +86,10 @@
                     </svg>
                     <div class="x"></div>
                     <div class="x r"></div>
-                </a>
+                </span>
             </li>
-            <li>
-                <a href="">
+            <li data-service="2">
+                <span>
                     <svg width="100%" viewBox="0 0 285 330" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                     >
@@ -156,7 +156,7 @@
                     </svg>
                     <div class="x"></div>
                     <div class="x r"></div>
-                </a>
+                </span>
             </li>
         </ul>
     </header>
@@ -213,7 +213,7 @@
                 </div>
             </article>
             <article class="row Col-space-2">
-                <div class="col-6 small-12">
+                <div class="col-6 small-12" id="Describe">
                     <label for="" class="blue">{{auth()->user()->name}}, cuéntale a tus clientes quién eres, qué haces, cómo te desempeñas en el servicio y cuál es la experiencia que recibirán contigo.
 
                     </label>
@@ -230,7 +230,7 @@
                               placeholder="Describe detalles de tu labor">{!! old('description') !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
-                <div class="col-6 small-12">
+                <div class="col-6 small-12 Pets-info">
                     <label for="" class="blue">Marca las casillas que corresponden a las características del
                         servicio.</label>
                     <label>Trabajo con estos tamaños:</label>
@@ -770,7 +770,6 @@
                 }
             });
 
-
         });
 
         $('input[name="inmediate_response"]').on('change', function () {
@@ -956,6 +955,23 @@
         $( function() {
           $( document ).tooltip();
         } );
+
+        $('.AddService-icons li').on('click',function(){
+            var idService = $(this).data('service');
+            $('.AddService-icons li').removeClass('active');
+            $(this).addClass('active');
+            $('#service').val(idService);
+
+            $('.AddService-form').show()
+            if (idService != '1'){
+                $('.Pets-info').hide();
+                $('#Describe').addClass('col-12')
+
+            }else{
+                $('.Pets-info').show();
+                $('#Describe').removeClass('col-12')
+            }
+        })
 
     </script>
 
