@@ -53,15 +53,15 @@
         <label for="food_type" class="col-4 small-12 medium-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
             <span style="height:42px" class="name">Tipo de Comida</span>
-            <select class="js-example-basic-multiple" id="food_type" name="food_type[]" multiple>
+            <select class="js-example-basic-multiple" id="food_type" name="service_type[]" multiple>
                 @foreach($foods as $food)
                     <option value="{{$food->id}}">{{$food->name}}</option>
                 @endforeach
             </select>
         </label>
-        <label for="date" class="col-4 small-12 medium-4 Form-Control small center">
+        <label for="date" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off" readonly="true" value="{{old('date')}}">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value="{{old('date')}}">
         </label>
         <button class="Button">Buscar</button>
     </form>
@@ -101,9 +101,9 @@
         $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');
-        $date.daterangepicker(getConfig('single'));
+        $date.daterangepicker(getConfig('multiple'));
         $date.on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
         });
 
         var video = document.getElementById("videoCorp");

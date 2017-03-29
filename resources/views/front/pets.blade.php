@@ -54,12 +54,13 @@
         
         <label for="size" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/dog.svg')}}" alt="dog"></span>
-            <select class="js-example-basic-single" id="size" name="size">
-                <option value="" selected>Servicio</option>
+            <span style="height:42px" class="name">Servicio</span>
+            <select class="js-example-basic-multiple" id="size" name="service_type[]" multiple>
                 @foreach($pets as $pet)
                     <option value="{{$pet->id}}">{{$pet->name}}</option>
                 @endforeach
             </select>
+        
         </label>
         {{--
         <label for="breed" class="col-4 medium-4 small-12 Form-Control">
@@ -111,6 +112,7 @@
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
         $(".js-example-basic-single").select2({width: '100%'});
+        $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');
         $date.daterangepicker(getConfig('multiple'));
@@ -132,6 +134,11 @@
     </script>
     <script src="{{asset('js/address.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
+    <style>
+        span.select2-selection.select2-selection--multiple {
+            height: 42px !important;
+        }
+    </style>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">

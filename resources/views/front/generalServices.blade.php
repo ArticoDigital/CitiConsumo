@@ -54,16 +54,17 @@
         </label>
         <label for="service" class="col-4 small-12 medium-4 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/service.svg')}}" alt="service"></span>
-            <select class="js-example-basic-single" id="service" name="service">
-                <option value="" selected>Servicio</option>
+            <span style="height:42px" class="name">Servicio</span>
+            <select class="js-example-basic-multiple" id="service" name="service_type[]" multiple>
                 @foreach($services as $service)
                     <option value="{{$service->id}}">{{$service->name}}</option>
                 @endforeach
             </select>
+
         </label>
-        <label for="date" class="col-4 small-12 medium-4 Form-Control">
+         <label for="date" class="col-4 medium-4 small-12 Form-Control">
             <span class="icon"><img src="{{asset('img/icons/calendar.svg')}}" alt="calendar"></span>
-            <input id="date"  readonly="true" name="date" type="text" autocomplete="off" placeholder="Fecha" value="{{old('date')}}">
+            <input class="datetimepicker_mask" id="date" name="date" type="text" placeholder="Fecha" autocomplete="off"  readonly="true" value="{{old('date')}}">
         </label>
         <button class="Button" >Buscar</button>
     </form>
@@ -101,11 +102,12 @@
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
         $(".js-example-basic-single").select2({width: '100%'});
+        $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');
-        $date.daterangepicker(getConfig('single'));
+        $date.daterangepicker(getConfig('multiple'));
         $date.on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
         });
 
         var video = document.getElementById("videoCorp");
@@ -122,6 +124,11 @@
     </script>
     <script src="{{asset('js/address.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
+     <style>
+        span.select2-selection.select2-selection--multiple {
+            height: 42px !important;
+        }
+    </style>
 @endsection
 
 @section('styles')

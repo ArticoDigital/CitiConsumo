@@ -25,20 +25,32 @@
         @if($service->general)
             <ul class="col-12 row">
                 <li class="col-12"><b>Activo:</b> {{$service->isActive}}</li>
+                <li class="col-12"><b>Validado:</b> {{$service->isValidate}}</li>
+                <li class="col-12"><b>Experiencia:</b> {{$service->experienceType->name}}</li>
                 <li class="col-12"><b>Tipo:</b> {{$service->serviceType->name}}</li>
                 <li class="col-12"><b>Fecha de creación:</b> {{$service->created_at}}</li>
+                <li class="col-12"><b>Última actualización:</b> {{$service->updated_at}}</li>
                 <li class="col-12"><b>Rango de atención:</b> Desde:{{$service->date_start}} Hasta: {{$service->date_end}}</li>
                 <li class="col-12"><b>Horario de atención:</b> Desde:{{$service->hour1}} Hasta: {{$service->hour2}}</li>
+                <li class="col-12"><b>Respuesta inmediata:</b> {{$service->inmediate_response}}</li>
+                <li class="col-12"><b>Tiempo de Respuesta:</b> {{$service->responseType->name}}</li>
                 <li class="col-12"><b>Precio:</b> ${{$service->price}} X {{$service->rate_type}}</li>
                 <li class="col-12"><b>Locación: </b>{{$service->location}}</li>
             </ul>
         @endif
         @if($service->food)
             <ul class="col-12 row">
+                <li class="col-12"><b>Activo:</b> {{$service->isActive}}</li>
+                <li class="col-12"><b>Validado:</b> {{$service->isValidate}}</li>
+                <li class="col-12"><b>Experiencia:</b> {{$service->experienceType->name}}</li>
                 <li class="col-12"><b>Tipo:</b> {{$service->serviceType->name}}</li>
-                <li class="col-12"><b>Fecha:</b> {{$service->food->food_time}}</li>
-                <li class="col-12"><b>Precio:</b> ${{$service->price}}</li>
-                <li class="col-12"><b>Platos disponibles:</b> {{$service->food['foods-quantity']}}</li>
+                <li class="col-12"><b>Fecha de creación:</b> {{$service->created_at}}</li>
+                <li class="col-12"><b>Última actualización:</b> {{$service->updated_at}}</li>
+                <li class="col-12"><b>Rango de atención:</b> Desde:{{$service->date_start}} Hasta: {{$service->date_end}}</li>
+                <li class="col-12"><b>Horario de atención:</b> Desde:{{$service->hour1}} Hasta: {{$service->hour2}}</li>
+                <li class="col-12"><b>Respuesta inmediata:</b> {{$service->inmediate_response}}</li>
+                <li class="col-12"><b>Tiempo de Respuesta:</b> {{$service->responseType->name}}</li>
+                <li class="col-12"><b>Precio:</b> ${{$service->price}} X {{$service->rate_type}}</li>
                 <li class="col-12"><b>Locación: </b>{{$service->location}}</li>
             </ul>
         @endif

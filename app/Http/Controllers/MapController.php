@@ -57,7 +57,16 @@ class MapController extends Controller
     private function addSql($request)
     {
         $sql = [];
+            $date = explode('-', $request->get('date'));
+            $typeServices = implode($request->get('service_type'),',');
+            $sql['where'] = " AND (date_start <=  '" . Carbon::parse( $date[0] ) . "' AND date_end >= '" . Carbon::parse( $date[1] ). "')
+            and service_type_id in ($typeServices)";
+           // AND service_type_id = '" . $request->get('service_type') . "' ";
+            
+            //$sql['join'] = "INNER JOIN  `pets` ON `pets`.`service_id` = services.id";
 
+            return $sql;        
+/*
         if ($request->get('typeService') == "pet") {
 
             $date = explode('-', $request->get('date'));
@@ -84,10 +93,35 @@ class MapController extends Controller
             $sql['join'] = "INNER JOIN  `generals` ON `generals`.`service_id` = services.id";
             return $sql;
         }
-
+*/
     }
 
     private function queryBuild($dataMap, $distance, $sql)
+    {
+        $box = $this->getBoundaries($dataMap['lat'], $dataMap['lng'], $distance);
+
+        return DB::select(
+                'SELECT services.id , (6371 * ACOS(
+                                        SIN(RADIANS(lat))
+                                        * SIN(RADIANS(' . $dataMap['lat'] . '))
+                                        + COS(RADIANS(lng - ' . $dataMap['lng'] . '))
+                                        * COS(RADIANS(lat))
+                                        * COS(RADIANS(' . $dataMap['lat'] . '))
+                                        )
+                           ) AS distance
+                FROM services
+                WHERE (lat BETWEEN ' . $box['min_lat'] . ' AND ' . $box['max_lat'] . ')
+                AND (lng BETWEEN ' . $box['min_lng'] . ' AND ' . $box['max_lng'] . ')
+                AND (isValidate = 1)
+                AND (isActive = 1)'
+                . $sql['where'] .'
+
+                HAVING distance < ' . $distance . '
+                ORDER BY distance ASC ;');
+
+    }
+
+  /*      private function queryBuild($dataMap, $distance, $sql)
     {
         $box = $this->getBoundaries($dataMap['lat'], $dataMap['lng'], $distance);
 
@@ -105,7 +139,7 @@ class MapController extends Controller
                 WHERE (lat BETWEEN ' . $box['min_lat'] . ' AND ' . $box['max_lat'] . ')
                 AND (lng BETWEEN ' . $box['min_lng'] . ' AND ' . $box['max_lng'] . ')
                 AND (isValidate = 1)
-    AND (isActive = 1)'
+                AND (isActive = 1)'
                 . $sql['where'] .'
 
                 HAVING distance < ' . $distance . '
@@ -113,6 +147,7 @@ class MapController extends Controller
 
     }
 
+*/
 
     private function validator($inputs, $service)
     {
@@ -136,7 +171,7 @@ class MapController extends Controller
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                'service' => 'required'
+                //'service' => 'required'
             ];
         }
 
