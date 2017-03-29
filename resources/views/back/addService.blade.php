@@ -1,6 +1,8 @@
 @extends('layoutBack')
 
 @section('content')
+
+
     <svg width="18px" height="22px" viewBox="0 0 18 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
 
@@ -19,12 +21,14 @@
     </svg>
 
     <header class="AddService-header">
-        <h1 class="AddService-h1">Que gusto verte por acá <span  style="text-transform: uppercase">{{auth()->user()->name}}</span> ¿Qué  servicio ofrecerás?</h1>
-        <h2 class="AddService-h2">Crea un anuncio impactante y atractivo, busca atraer a potenciales clientes y demuéstrarles en que eres bueno</h2>
+        <h1 class="AddService-h1">Que gusto verte por acá <span
+                    style="text-transform: uppercase">{{auth()->user()->name}}</span> ¿Qué servicio ofrecerás?</h1>
+        <h2 class="AddService-h2">Crea un anuncio impactante y atractivo, busca atraer a potenciales clientes y
+            demuéstrarles en que eres bueno</h2>
         <h3 class="AddService-h3">¿A qué categoría pertenece tu servicio?</h3>
         <ul class=" AddService-icons row center ">
             <li data-service="3">
-                <span >
+                <span>
                     <svg width="100%" viewBox="0 0 285 330" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -56,7 +60,7 @@
                 </span>
             </li>
             <li data-service="1">
-                <span >
+                <span>
                     <svg width="100%" height="100%" viewBox="0 0 285 331" version="1.1"
                          xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -160,9 +164,9 @@
             </li>
         </ul>
     </header>
-    <form method="POST" action="{{route('newService')}}" accept-charset="UTF-8" class="AddService-form"
+    <form method="POST" style="display: {{(count($errors) > 0)?'':'none'}}" action="{{route('newService')}}"
+          accept-charset="UTF-8" class="AddService-form"
           enctype="multipart/form-data">
-
         <section>
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
             <article>
@@ -171,13 +175,19 @@
                     cuanto esta el valor del servicio.</p>
             </article>
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-            <input type="hidden" name="service" id="service" value="1">
+            <input type="hidden" name="service" id="service"
+                   value="{{old("service")}}"
+            >
+
+
             <article class="row middle between">
                 <label for="">Mi servicio es:</label>
                 <select class="js-example-basic-single" id="service_type_id" name="service_type_id">
-                    <option value="">Selecciona un servicio</option>
-                    @foreach($serviceTypes->where('kind_service_id', 1) as $serviceType)
-                        <option value="{{$serviceType->id}}" {{ (old("service_type_id") == $serviceType->id ? "selected":"") }}>{{$serviceType->name}}</option>
+                    <option data-serviceparent="0" value="">Selecciona un servicio</option>
+                    @foreach($serviceTypes as $serviceType)
+                        <option data-serviceparent="{{$serviceType->kind_service_id}}"
+                                value="{{$serviceType->id}}" {{ (old("service_type_id") == $serviceType->id ? "selected":"") }}>{{$serviceType->name}}
+                        </option>
                     @endforeach
                 </select>
 
@@ -189,11 +199,11 @@
 
                 <select class="Task Input-large" multiple="multiple" id="service_addition" name="service_addition[]">
                     @if(old('service_addition'))
-                     @foreach(old('service_addition') as $servadd)
-                     <option value="{{$servadd}}" selected>{{$servadd}}</option>
-                     @endforeach
+                        @foreach(old('service_addition') as $servadd)
+                            <option value="{{$servadd}}" selected>{{$servadd}}</option>
+                        @endforeach
                     @endif>
-                      
+
                 </select>
             </article>
             <article>
@@ -202,9 +212,9 @@
                     <input type="text" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single" id="rate_type" name="rate_type">
-                    @if(old('rate_type'))
-                             <option value="{{old('rate_type')}}" selected>{{old('rate_type')}}</option>
-                                        @endif>
+                        @if(old('rate_type'))
+                            <option value="{{old('rate_type')}}" selected>{{old('rate_type')}}</option>
+                        @endif>
                         {{-- @foreach($rateTypes as $rateType)
                              <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
                          @endforeach--}}
@@ -214,15 +224,18 @@
             </article>
             <article class="row Col-space-2">
                 <div class="col-6 small-12" id="Describe">
-                    <label for="" class="blue">{{auth()->user()->name}}, cuéntale a tus clientes quién eres, qué haces, cómo te desempeñas en el servicio y cuál es la experiencia que recibirán contigo.
+                    <label for="" class="blue">{{auth()->user()->name}}, cuéntale a tus clientes quién eres, qué haces,
+                        cómo te desempeñas en el servicio y cuál es la experiencia que recibirán contigo.
 
                     </label>
                     <div class="row">
                         <p>*No incluyas datos de contacto.</p>
                         <i>
-                            <a href="#" title="no incluyas números de teléfono, direcciónes, si tu publicación contiene información de contacto será rechazada."><svg width="18" height="22px">
-                                <use xlink:href="#Help"/>
-                            </svg>
+                            <a href="#"
+                               title="no incluyas números de teléfono, direcciónes, si tu publicación contiene información de contacto será rechazada.">
+                                <svg width="18" height="22px">
+                                    <use xlink:href="#Help"/>
+                                </svg>
                             </a>
                         </i>
                     </div>
@@ -693,7 +706,7 @@
             </g>
         </svg>
     </aside>
-    <input id="servicesType" type="hidden" value="{{json_encode($serviceTypes->where('kind_service_id', 1))}}">
+    <input id="servicesType" type="hidden" value="{{json_encode($serviceTypes)}}">
 @endsection
 
 {{--@foreach( as $serviceType)
@@ -707,7 +720,7 @@
 
 @section('scripts')
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX5fzq-PCqkaBxMrEt3z7jiSO3YwK85rY&libraries=places&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCX5fzq-PCqkaBxMrEt3z7jiSO3YwK85rY&libraries=places">
     </script>
 
     <script src="{{url('js/mapAddService.js')}}"></script>
@@ -722,8 +735,10 @@
 
         var servicesType = JSON.parse($('#servicesType').val()),
             idService;
+        console.log(servicesType);
 
         function findService(services) {
+            console.log(idService)
             return services.id == idService;
         }
         $task = $(".Task").select2({
@@ -733,6 +748,7 @@
                 }
             }
         });
+
 
         $("#service_type_id").on("change", function () {
 
@@ -744,6 +760,7 @@
                 return;
             }
             idService = $(this).val();
+
             $point.empty();
             $rateType.empty();
 
@@ -852,8 +869,8 @@
 
         $('#upload-cut').on('click', function () {
             //var fileInput = document.getElementById('files'),
-             //   arrayFiles = fileInput.files,
-             //   count = $('#result .File').length;
+            //   arrayFiles = fileInput.files,
+            //   count = $('#result .File').length;
             $uploadCrop.croppie('result', {
                 type: 'base64',
                 size: 'viewport'
@@ -862,9 +879,9 @@
                     url: '{{route("uploadImageFiles")}}',
                     type: "POST",
                     data: {
-                  "_token": "{{ csrf_token() }}",
-                  "image": resp
-                },
+                        "_token": "{{ csrf_token() }}",
+                        "image": resp
+                    },
                     success: function (data) {
                         //html = '<img src="' + resp + '" />';
                         //$("#upload-demo-i").html(html);
@@ -873,14 +890,13 @@
                         var image = data.temp;
                         var position = result.children().length;
                         //for (var i = 0; i < images.length; i++) {
-                            //position += 1;
-                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
-                            $('#imagesPopup').hide();
-                     //   }
+                        //position += 1;
+                        result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
+                        $('#imagesPopup').hide();
+                        //   }
                     }
                 });
             });
-
 
 
         });
@@ -940,7 +956,7 @@
         var $uploadCrop,
             rawImg;
         $uploadCrop = $('#upload-container').croppie({
-          enableExif: true,
+            enableExif: true,
             viewport: {
                 width: 440,
                 height: 440,
@@ -952,26 +968,61 @@
             }
         });
 
-        $( function() {
-          $( document ).tooltip();
-        } );
+        $(function () {
+            $(document).tooltip();
+        });
 
-        $('.AddService-icons li').on('click',function(){
-            var idService = $(this).data('service');
+        $('.AddService-icons li').on('click', function () {
+            initMap();
+            var idService = $(this).data('service'),
+                $service_type_id = $("#service_type_id");
+            $service_type_id.children('option').hide();
+            $service_type_id.children("option[data-serviceparent='0']").show().prop('selected', true);
+            $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
+            $service_type_id.change();
             $('.AddService-icons li').removeClass('active');
             $(this).addClass('active');
             $('#service').val(idService);
 
             $('.AddService-form').show()
-            if (idService != '1'){
+            if (idService != '1') {
                 $('.Pets-info').hide();
                 $('#Describe').addClass('col-12')
 
-            }else{
+            } else {
                 $('.Pets-info').show();
                 $('#Describe').removeClass('col-12')
             }
         })
+
+
+        @if(old("service"))
+                var eq = {{(old("service") == 3) ?'0':old("service")}},
+        oldService_type_id = $("#service_type_id").val();
+
+                    console.log({{old("service")}})
+        var idService = $('.AddService-icons li:eq(' + eq + ')').data('service'),
+            $service_type_id = $("#service_type_id");
+        $service_type_id.children('option').hide();
+        $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
+        $service_type_id.children("option[value='"+ oldService_type_id +"']").prop('selected', true);
+        $service_type_id.change();
+        $('.AddService-icons li:eq(' + eq + ')').addClass('active');
+        $('#service').val(idService);
+
+
+        if (idService != '1') {
+            $('.Pets-info').hide();
+            $('#Describe').addClass('col-12')
+
+        } else {
+            $('.Pets-info').show();
+            $('#Describe').removeClass('col-12')
+        }
+
+
+        @endif
+
 
     </script>
 
@@ -982,6 +1033,6 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection
 
