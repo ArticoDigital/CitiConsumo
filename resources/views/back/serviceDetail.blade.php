@@ -24,22 +24,26 @@
         @endif
         @if($service->general)
             <ul class="col-12 row">
-                <li class="col-12"><b>Tipo:</b> {{$service->general->generalType->name}}</li>
-                <li class="col-12"><b>Fecha de creación:</b> {{$service->general->date}}</li>
-                <li class="col-12"><b>Precio por hora:</b> ${{$service->price}}</li>
+                <li class="col-12"><b>Activo:</b> {{$service->isActive}}</li>
+                <li class="col-12"><b>Tipo:</b> {{$service->serviceType->name}}</li>
+                <li class="col-12"><b>Fecha de creación:</b> {{$service->created_at}}</li>
+                <li class="col-12"><b>Rango de atención:</b> Desde:{{$service->date_start}} Hasta: {{$service->date_end}}</li>
+                <li class="col-12"><b>Horario de atención:</b> Desde:{{$service->hour1}} Hasta: {{$service->hour2}}</li>
+                <li class="col-12"><b>Precio:</b> ${{$service->price}} X {{$service->rate_type}}</li>
                 <li class="col-12"><b>Locación: </b>{{$service->location}}</li>
             </ul>
         @endif
         @if($service->food)
             <ul class="col-12 row">
-                <li class="col-12"><b>Tipo:</b> {{$service->food->foodTypes->name}}</li>
+                <li class="col-12"><b>Tipo:</b> {{$service->serviceType->name}}</li>
                 <li class="col-12"><b>Fecha:</b> {{$service->food->food_time}}</li>
                 <li class="col-12"><b>Precio:</b> ${{$service->price}}</li>
                 <li class="col-12"><b>Platos disponibles:</b> {{$service->food['foods-quantity']}}</li>
                 <li class="col-12"><b>Locación: </b>{{$service->location}}</li>
             </ul>
         @endif
-        <h3 class="col-12 small-12">Descripción </h3>
+        <h3 class="col-12 small-12">Descripción: </h3>
         <p>{{$service->description}}</p>
+        <p>Agrega al servicio: {{$service->service_addition}}</p>
     </section>
 @endsection

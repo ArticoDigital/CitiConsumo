@@ -280,7 +280,7 @@
     @if($userprofile->role_id == 2)
         <div class="row border-bottom" style="margin-bottom: 30px">
             <div class="row profile-servicesquant">@if(isset($userprofile->provider) && $userprofile->provider->isActive)
-                    Servicios ({{count($services)}}) @endif </div>
+                    Servicios ({{count($services)}})  <a href="{{route('addService')}}">  +Agregar servicio</a>@endif </div>
         </div>
         @if(isset($userprofile->provider))
             @if($userprofile->provider->isActive)
@@ -314,16 +314,10 @@
                                             </figure>
                                             <div class="Profile-productInfo col-9 small-9">
                                                 <h3>{{$service->name}}</h3>
-                                                @if($service->pet)
-                                                    <?php $date = explode(' ', $service->pet->date_start)[0] . ' - ' . explode(' ', $service->pet->date_end)[0] ?>
+                                                @if($service)
+                                                    <?php $date = explode(' ', $service->date_start)[0] . ' - ' . explode(' ', $service->date_end)[0] ?>
                                                 @endif
-                                                @if($service->food)
-                                                    <?php $date = explode(' ', $service->food->food_time)[0] ?>
-                                                @endif
-                                                @if($service->general)
-
-                                                    <?php $date = explode(' ', $service->general->date)[0] ?>
-                                                @endif
+                                                
                                                 <b>Fecha: {{$date}}</b>
                                             </div>
                                         </article>

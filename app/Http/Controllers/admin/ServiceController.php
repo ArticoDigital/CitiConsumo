@@ -173,10 +173,10 @@ class ServiceController extends Controller
 
             if ($inputs['service'] == 3) {
                 Food::create([
-                    'food_time' => date_create($inputs['date']),
+                    //'food_time' => date_create($inputs['date']),
                     'service_id' => $service->id,
-                    'food_type_id' => $inputs['food_type'],
-                    'foods-quantity' => $inputs['foods-quantity'],
+                    //'food_type_id' => $inputs['food_type'],
+                    //'foods-quantity' => $inputs['foods-quantity'],
                 ]);
             } elseif ($inputs['service'] == 1) {
                 //$date = explode('-', $inputs['date']);
@@ -196,9 +196,9 @@ class ServiceController extends Controller
 
             } elseif ($inputs['service'] == 2) {
                 General::create([
-                    'date' => date_create($inputs['date']),
+                    //'date' => date_create($inputs['date']),
                     'service_id' => $service->id,
-                    'general_type_id' => $inputs['general_type']
+                    //'general_type_id' => $inputs['general_type']
                 ]);
             }
 
@@ -354,13 +354,13 @@ class ServiceController extends Controller
             'countFiles' => 'in:3,4,5',
         ];
 
-        if ($inputs['service'] == 3)
+      /*  if ($inputs['service'] == 3)
             $rules['foods-quantity'] = 'required|numeric';
         if ($inputs['service'] == 2)
-            $rules['pets-quantity'] = 'required|numeric';
-        /*if ($inputs['service'] == 1)
-            $rules['pets-quantity'] = 'required|numeric';
-*/
+            $rules['pets-quantity'] = 'required|numeric';*/
+        //if ($inputs['service'] == 1)
+            //$rules['pets-quantity'] = 'required|numeric';
+
         return Validator::make($inputs, $rules);
     }
 

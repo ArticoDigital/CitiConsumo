@@ -8,6 +8,7 @@ use City\Entities\PetSize;
 use Illuminate\Http\Request;
 use City\Entities\PetBreed;
 use City\Entities\GeneralType;
+use City\Entities\ServiceType;
 use Illuminate\Support\Facades\Mail;
 use City\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -21,18 +22,21 @@ class HomeController extends Controller
     }
 
     public function petsIndex(){
-        $breeds = PetBreed::all();
+        //$breeds = PetBreed::all();
         $sizes = PetSize::all();
-        return view('front.pets', compact('breeds', 'sizes'));
+        $pets = ServiceType::where('kind_service_id', '1')->get();
+        return view('front.pets', compact('pets', 'sizes'));
     }
 
     public function servicesIndex(){
-        $services = GeneralType::all();
+        //$services = GeneralType::all();
+        $services = ServiceType::where('kind_service_id', '2')->get();
         return view('front.generalServices', compact('services'));
     }
 
     public function foodsIndex(){
-        $foods = FoodType::all();
+        //$foods = FoodType::all();
+        $foods = ServiceType::where('kind_service_id', '3')->get();
         return view('front.foods', compact('foods'));
     }
 
