@@ -244,13 +244,73 @@ class ServiceController extends Controller
             return redirect()->route('myProfile');
 
         $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->where('id', $id)->firstOrFail()->toArray();
-        $foodTypes = FoodType::all();
-        $sizes = PetSize::all();
-        $generalTypes = GeneralType::all();
-        if ($service)
-            return view('back.editService', compact('service', 'foodTypes', 'sizes', 'generalTypes'));
-        return redirect()->back();
+
+        $hours = [];
+        $suf = 'am';
+        for ($i = 0; $i < 24; $i++) {
+            $hour = $i;
+            if ($hour > 12) {
+                $hour = $hour - 12;
+                $suf = 'pm';
+            }
+            $hour = ($hour < 10) ? '0' . $hour : $hour;
+            $suf = ($hour == 12) ? $suf = 'm' : $suf;
+            $hours[] = $hour . ':00' . $suf;
+        }
+
+        if ($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $user = auth()->user();
+
+        //$foodTypes = FoodType::all();
+        //$generalTypes = GeneralType::all();
+        //$sizes = PetSize::all();
+        $kindServices = KindService::all();
+        //$petTypes = ServiceType::where('kind_service_id', '1')->get();
+        //$generalTypes = ServiceType::where('kind_service_id', '2')->get();
+        //$foodTypes = ServiceType::where('kind_service_id', '3')->get();
+        $serviceTypes=ServiceType::with('kindServices')->get();
+        //$rateTypes = RateType::all();
+        $experienceTypes = ExperienceType::all();
+        $responseTypes = ResponseType::all();
+
+        $sizes = Size::all();
+
+        if (isset($user->provider)) {
+            if ($user->provider->isActive == 1) {
+                //return view('back.addService', compact('kindServices','foodTypes', 'sizes', 'generalTypes', 'petTypes', 'experienceTypes', 'responseTypes', 'hours'));
+                if ($service)
+                    return view('back.editService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
+                return redirect()->back();
+                //return view('back.addService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
+
+            } else if ($user->provider->isActive == 2) {
+                return redirect()->to('admin')->with(['alertTitle' => '¡No puedes realizar esta acción!', 'alertText' => 'El administrador te ha eliminado como proveedor, debes enviar un mensaje al administrador para reactivarte']);
+            } else {
+                return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Hemos recibido tu solicitud de registro con éxito. Pronto podrás vender tus servicios.']);
+            }
+        }
+        return redirect()->route('uploadFiles')->with(['alertTitle' => '¡Ofrece tus servicios!', 'alertText' => 'Para que puedas ofrecer tus servicios, debes cargar los siguientes documentos, así ofreceremos mayor confianza a la comunidad Cityconsumo! una vez aprobados, recibirás un correo de confirmación y podrás empezar a trabajar con nosotros como proveedor!']);
+
+
+       
+        
     }
+    /*public function edit(RoleRequest $request, $id)
+    {
+
+        if ($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->where('id', $id)->firstOrFail()->toArray();
+        //$foodTypes = FoodType::all();
+        //$sizes = PetSize::all();
+        //$generalTypes = GeneralType::all();
+        if ($service)
+            return view('back.editService', compact('service'));
+        return redirect()->back();
+    }*/
 
     public function update(RoleRequest $request, $id)
     {

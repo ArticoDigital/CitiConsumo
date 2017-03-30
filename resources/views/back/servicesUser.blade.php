@@ -6,7 +6,7 @@
     <h1>Productos de {{$provider->user->name}}</h1>
     <table class="rwd-table">
         <tr class="header-table">
-            <th>Nombre</th>
+            <th>Tipo de servicio</th>
             <th>Precio</th>
             <th>Locación</th>
             <th>Fecha registro</th>
@@ -16,7 +16,7 @@
         </tr>
         @foreach($provider->services as $service)
             <tr>
-                <td>{{$service->name}}</td>
+                <td>{{$service->serviceType->kindServices->name}} - {{$service->serviceType->name}}</td>
                 <td class="center">{{$service->price}}</td>
                 <td >{{$service->location}}</td>
                 <td >{{$service->created_at}}</td>

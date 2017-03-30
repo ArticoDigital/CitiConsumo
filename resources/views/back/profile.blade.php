@@ -308,12 +308,16 @@
                                         <article class="row top Profile-productSection " style="align-items: stretch">
                                             <figure class="col-3 small-3">
                                             @if($service->serviceFiles->first())
-                                                <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}"
+                                            @php $locationimage = $service->serviceFiles->where("kind_file","imagen")->first()->name;
+                                            @endphp
+                                                <img src="{{asset('uploads/products/' . $locationimage)}}"
                                                      alt="">
                                                 @endif
+                                            </pre>
+
                                             </figure>
                                             <div class="Profile-productInfo col-9 small-9">
-                                                <h3>{{$service->name}}</h3>
+                                                <h3>{{$service->serviceType->name}}</h3>
                                                 @if($service)
                                                     <?php $date = explode(' ', $service->date_start)[0] . ' - ' . explode(' ', $service->date_end)[0] ?>
                                                 @endif

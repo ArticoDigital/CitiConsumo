@@ -9,7 +9,7 @@
         <tr class="header-table">
             <th>Editar</th>
             <th>Usuario</th>
-            <th>Nombre</th>
+            <th>Tipo de servicio</th>
             <th>Precio</th>
             <th>Detalles</th>
             <th>Fecha resgistro</th>
@@ -22,7 +22,7 @@
                 </td>
 
                 <td class="center"><a target="blank" href="{{route('profile', $service->provider->user->id)}}">{{$service->provider->user->email}}</a></td>
-                <td class="center">{{$service->name}}</td>
+                <td class="center">{{$service->serviceType->kindServices->name}} - {{$service->serviceType->name}}</td>
 
                 <td class="center">${{$service->price}}</td>
                 <td class="center">
