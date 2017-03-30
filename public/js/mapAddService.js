@@ -1,22 +1,30 @@
-function initMap() {
+function initMap(lat, lng) {
     var image = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
-    var position = {lat: 4.60667, lng: -74.2363688};
-    if (navigator.geolocation) {
 
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var geolocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            map.setCenter(geolocation);
-            marker.setPosition(geolocation);
-            map.setZoom(16);
 
-        });
+    if(lat == undefined || lng == undefined )
+    {
+
+        if (navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(function (p) {
+                var geolocation = {
+                    lat: p.coords.latitude,
+                    lng: p.coords.longitude
+                };
+                map.setCenter(geolocation);
+                marker.setPosition(geolocation);
+                map.setZoom(16);
+
+            });
+        }
     }
+    lat = (lat == undefined)? 4.60667:lat;
+    lng = (lng == undefined)? -74:lng;
+    var position = {lat: Number(lat), lng: Number(lng)};
 
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 7,
+        zoom: 14,
         center: position,
         scrollwheel: false
     });
@@ -24,7 +32,7 @@ function initMap() {
         map: map,
         icon: image
     });
-
+    marker.setPosition(position);
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
         {types: ['geocode']});

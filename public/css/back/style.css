@@ -1594,6 +1594,9 @@ main.MainBack {
     left: -20px;
     top: -20px; }
 
+.AddService-form .Errors {
+  border-color: #ff312f; }
+
 .AddService-form ul {
   padding: 0; }
 
