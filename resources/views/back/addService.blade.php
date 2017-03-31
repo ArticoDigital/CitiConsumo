@@ -543,14 +543,14 @@
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
                         <input type="radio" value="1" name="inmediate_response"
-                               @if(old('inmediate_response'))
+                               @if(!old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
                         <input type="radio" value="0" id="answerIn" name="inmediate_response"
-                               @if(!old('inmediate_response'))
+                               @if(old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Respondo en:</label>
@@ -661,14 +661,10 @@
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
             </article>
             <article class="row center ">
-                <button  id="createButton" type="submit"> Postular servicio</button>
+                <button type="submit"> Postular servicio</button>
             </article>
 
         </section>
-        <div class="preload hidden" id="loader-wrapper">
-           <div id="loader"></div>
-        </div>
-
 
     </form>
     <aside id="imagesPopup" class="row center ">
@@ -737,17 +733,6 @@
                     return "";
                 }
             }
-        });
-
-
-        $('form').on('submit', function(){
-            $('#createButton').attr("disabled", true);
-            var $file = $('#result .File'), positions = '';
-
-            for(var i = 0; i < $file.length; i++){
-                positions += $file.eq(i).children('.imagePosition').val() + ',';
-            }
-            $('[name="positions"]').val(positions);
         });
 
 
@@ -843,19 +828,17 @@
                         count += 1;
                     }
                     else {
-                        alert('La imagen es demasiado grande. Clic para continuar');
+                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
                     }
                 }
 
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                  $('.preload').removeClass("hidden");
                     $('#imagesPopup').css("display", "flex").fadeIn();
                     rawImg = e.target.result;
                     $uploadCrop.croppie('bind', {
                         url: e.target.result
                     }).then(function () {
-                      $('.preload').addClass("hidden");
                         console.log('jQuery bind complete');
                     });
                 }
@@ -885,11 +868,7 @@
                         "_token": "{{ csrf_token() }}",
                         "image": resp
                     },
-                    beforeSend: function () {
-                        $('.preload').removeClass("hidden");
-                    },
                     success: function (data) {
-                      $('.preload').addClass("hidden");
                         //html = '<img src="' + resp + '" />';
                         //$("#upload-demo-i").html(html);
                         $('.preload').addClass("hidden");
@@ -901,11 +880,6 @@
                         result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
                         $('#imagesPopup').hide();
                         //   }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        $('.preload').addClass("hidden");
-                        alert('Error al generar la imagen. Por favor vuelva a intentarlo.');
                     }
                 });
             });
@@ -914,7 +888,56 @@
         });
 
 
+        $('').on("change", function (e) {
 
+            var fileInput = document.getElementById('files'),
+                arrayFiles = fileInput.files,
+                files = new FormData(),
+                count = $('#result .File').length;
+
+            if (count < 5) {
+                for (var i = 0; i < arrayFiles.length; i++) {
+                    if (arrayFiles[i].size < 2210720) {
+                        if (count == 5) break;
+                        count += 1;
+                        files.append('file' + i, arrayFiles[i]);
+                    }
+                    else {
+                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                    }
+                }
+                files.append('_token', $('#token').val());
+                $.ajax({
+                    url: '{{route("uploadTempFiles")}}',
+                    type: 'POST',
+                    contentType: false,
+                    data: files,
+                    processData: false,
+                    cache: false,
+                    beforeSend: function () {
+                        $('.preload').removeClass("hidden");
+                    },
+                    success: function (data) {
+                        $('.preload').addClass("hidden");
+                        var result = $("#result");
+                        var images = data.temp;
+                        var position = result.children().length;
+                        for (var i = 0; i < images.length; i++) {
+                            position += 1;
+                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        $('.preload').addClass("hidden");
+                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
+                    }
+                });
+            }
+            else {
+                alert('solo puede subir 5 imágenes');
+            }
+        });
 
         var $uploadCrop,
             rawImg;
@@ -937,18 +960,18 @@
 
         $('.AddService-icons li').on('click', function () {
             initMap();
-            var idServiceLocal = $(this).data('service'),
+            var idService = $(this).data('service'),
                 $service_type_id = $("#service_type_id");
             $service_type_id.children('option').hide();
             $service_type_id.children("option[data-serviceparent='0']").show().prop('selected', true);
-            $service_type_id.children("option[data-serviceparent=" + idServiceLocal + "]").show();
+            $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
             $service_type_id.change();
             $('.AddService-icons li').removeClass('active');
             $(this).addClass('active');
-            $('#service').val(idServiceLocal);
+            $('#service').val(idService);
 
             $('.AddService-form').show()
-            if (idServiceLocal != '1') {
+            if (idService != '1') {
                 $('.Pets-info').hide();
                 $('#Describe').addClass('col-12')
 
@@ -965,18 +988,18 @@ initMap($('#lat').val(), $('#lng').val());
         var eq = {{(old("service") == 3) ?'0':old("service")}},
             oldService_type_id = $("#service_type_id").val();
 
-        console.log('Erorr de old' + {{old("service") }} + '---' + eq)
-        var idService = $('.AddService-icons li:eq(' + eq + ')').data('service'),
+        console.log({{old("service")}})
+        var idServiceLocal = $('.AddService-icons li:eq(' + eq + ')').data('service'),
             $service_type_id = $("#service_type_id");
         $service_type_id.children('option').hide();
-        $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
+        $service_type_id.children("option[data-serviceparent=" + idServiceLocal + "]").show();
         $service_type_id.children("option[value='" + oldService_type_id + "']").prop('selected', true);
         $service_type_id.change();
         $('.AddService-icons li:eq(' + eq + ')').addClass('active');
-        $('#service').val(idService);
+        $('#service').val(idServiceLocal);
 
 
-        if (idService != '1') {
+        if (idServiceLocal != '1') {
             $('.Pets-info').hide();
             $('#Describe').addClass('col-12')
 
