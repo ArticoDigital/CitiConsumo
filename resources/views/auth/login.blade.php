@@ -13,7 +13,11 @@
                 @endforeach
             </div>
         @endif
-
+            @if(Session::has('errorFacebook'))
+                <div class="errors">
+                        <div>Este usuario ya se encuentra registrado con email y contraseña</div>
+                </div>
+            @endif
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h3>Inicia sesión</h3>
         <div class="Register-social row middle">
