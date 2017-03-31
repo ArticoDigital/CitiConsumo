@@ -860,7 +860,7 @@
             //   count = $('#result .File').length;
             $uploadCrop.croppie('result', {
                 type: 'base64',
-                size: 'viewport'
+                size: { width: 440, height: 440 }
             }).then(function (resp) {
                 $.ajax({
                     url: '{{route("uploadImageFiles")}}',
@@ -945,13 +945,13 @@
         $uploadCrop = $('#upload-container').croppie({
             enableExif: true,
             viewport: {
-                width: 440,
-                height: 440,
+                width: 300,
+                height: 300,
                 enableZoomboolean: true
             },
             boundary: {
-                width: 450,
-                height: 450
+                width: 330,
+                height: 330
             }
         });
 
@@ -1017,10 +1017,60 @@ initMap($('#lat').val(), $('#lng').val());
             false;
         });
 
+        
+/*   
+
+  
+
+        $(window).resize(function() {
+          var viewportWidth = $(window).width();
+          var viewportHeight = $(window).height();
+          doResize(viewportWidth,viewportHeight);
+        });
+
+        var $el = $(".cr-boundary");
+        var elHeight = $el.outerHeight();
+        var elWidth = $el.outerWidth();
+
+        var $wrapper = $(".addService");
+
+        $wrapper.resizable({
+          resize: doResize
+        });
+
+        function doResize(vpwidth,vpheight) {
+          console.log(vpwidth+" SSS "+vpheight);
+          var scale, origin;
+            
+          scale = Math.min(
+            vpwidth / elWidth,    
+            vpheight / elHeight
+          );
+          if(scale>1){
+            scale=1;
+          }
+          
+          $el.css({
+            //transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
+            transform: "scale(" + scale + ")"
+          });
+          
+        }
+        var viewportWidth = $(window).width();
+        var viewportHeight = $(window).height();
+          doResize(viewportWidth,viewportHeight);
+
+          */
+
+                //doResize(null, starterData);
+
     </script>
 
 
     <script src="{{url('js/dataPickerEs.js')}}"></script>
+    <style type="text/css">
+      
+    </style>
 @endsection
 @section('styles')
 
