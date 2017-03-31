@@ -120,11 +120,14 @@ class UserController extends Controller
 
         $provider = Provider::find($request->input('idUser'));
         $user = $provider->user;
-        $user->role_id = 1;
+        $user->role_id = 1; //deja de tener el rol de proveedor
         $user->save();
         //$provider->delete();
         $provider->isActive=2; //Se le asigna valor 2 para identificar al proveedor deshabilitado
         $provider->save();
+        //$services = Service::whereRaw('isValidate=1 and isActive=1');
+        $affectedRows = Service::whereRaw('isValidate=1 and isActive=1 and provider_id=?',[$provider->id])->update(['isValidate' => 3]);
+
         return json_encode(['success' => true]);
     }
 
@@ -140,6 +143,7 @@ class UserController extends Controller
         //$provider->delete();
         $provider->isActive=1; //Se le asigna valor 2 para identificar al proveedor deshabilitado
         $provider->save();
+        $affectedRows = Service::whereRaw('isValidate=3 and isActive=1 and provider_id=?',[$provider->id])->update(['isValidate' => 1]);
         return json_encode(['success' => true]);
     }
 }
