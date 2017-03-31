@@ -986,18 +986,18 @@
 
         $('.AddService-icons li').on('click', function () {
             initMap();
-            var idService = $(this).data('service'),
+            var idServiceLocal = $(this).data('service'),
                 $service_type_id = $("#service_type_id");
             $service_type_id.children('option').hide();
             $service_type_id.children("option[data-serviceparent='0']").show().prop('selected', true);
-            $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
+            $service_type_id.children("option[data-serviceparent=" + idServiceLocal + "]").show();
             $service_type_id.change();
             $('.AddService-icons li').removeClass('active');
             $(this).addClass('active');
-            $('#service').val(idService);
+            $('#service').val(idServiceLocal);
 
             $('.AddService-form').show()
-            if (idService != '1') {
+            if (idServiceLocal != '1') {
                 $('.Pets-info').hide();
                 $('#Describe').addClass('col-12')
 
