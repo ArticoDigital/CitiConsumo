@@ -556,7 +556,7 @@
                         <label for="">Respondo en:</label>
 
                         <input type="hidden" value="1" id="hiddenresponse" name="response_type_id">
-                        <select id="answerInSelect" disabled name="response_type_id">
+                        <select id="answerInSelect" {{(old('inmediate_response')==1)?'disabled':''}} name="response_type_id">
                             @foreach($responseTypes as $responseType)
                                 <option value="{{$responseType->id}}" {{ (old("response_type_id") == $responseType->id ? "selected":"") }}>{{$responseType->name}}</option>
                             @endforeach
