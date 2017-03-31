@@ -542,14 +542,14 @@
                 <div class="col-6 small-12 Answer">
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
-                        <input type="radio" value="0" name="inmediate_response"
+                        <input type="radio" value="1" name="inmediate_response"
                                @if(!old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
-                        <input type="radio" value="1" id="answerIn" name="inmediate_response"
+                        <input type="radio" value="0" id="answerIn" name="inmediate_response"
                                @if(old('inmediate_response'))
                                checked
                                 @endif>
@@ -669,10 +669,9 @@
     </form>
     <aside id="imagesPopup" class="row center ">
         <div id="upload-container" class="self-center">
-
+            <div style="color: white; margin-bottom:10px;">Ajusta la fotografía</div>
             <div class="row center middle">
                 <button id="upload-cut">Cortar</button>
-                <span style="color: white">Ajusta la fotografía</span>
                 <button id="upload-cancel">Cancelar</button>
             </div>
         </div>
