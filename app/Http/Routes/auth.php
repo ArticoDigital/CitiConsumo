@@ -79,8 +79,11 @@ Route::get('auth', function () {
 }
 
 catch(PDOException $e){
+
+    return redirect()->route('login')->with('errors','asdsada');
+
     dd($e);
-}  
+}
 
 
 /*
