@@ -914,56 +914,7 @@
         });
 
 
-        $('').on("change", function (e) {
 
-            var fileInput = document.getElementById('files'),
-                arrayFiles = fileInput.files,
-                files = new FormData(),
-                count = $('#result .File').length;
-
-            if (count < 5) {
-                for (var i = 0; i < arrayFiles.length; i++) {
-                    if (arrayFiles[i].size < 2210720) {
-                        if (count == 5) break;
-                        count += 1;
-                        files.append('file' + i, arrayFiles[i]);
-                    }
-                    else {
-                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
-                    }
-                }
-                files.append('_token', $('#token').val());
-                $.ajax({
-                    url: '{{route("uploadTempFiles")}}',
-                    type: 'POST',
-                    contentType: false,
-                    data: files,
-                    processData: false,
-                    cache: false,
-                    beforeSend: function () {
-                        $('.preload').removeClass("hidden");
-                    },
-                    success: function (data) {
-                        $('.preload').addClass("hidden");
-                        var result = $("#result");
-                        var images = data.temp;
-                        var position = result.children().length;
-                        for (var i = 0; i < images.length; i++) {
-                            position += 1;
-                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        $('.preload').addClass("hidden");
-                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
-                    }
-                });
-            }
-            else {
-                alert('solo puede subir 5 imágenes');
-            }
-        });
 
         var $uploadCrop,
             rawImg;
@@ -986,18 +937,18 @@
 
         $('.AddService-icons li').on('click', function () {
             initMap();
-            var idService = $(this).data('service'),
+            var idServiceLocal = $(this).data('service'),
                 $service_type_id = $("#service_type_id");
             $service_type_id.children('option').hide();
             $service_type_id.children("option[data-serviceparent='0']").show().prop('selected', true);
-            $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
+            $service_type_id.children("option[data-serviceparent=" + idServiceLocal + "]").show();
             $service_type_id.change();
             $('.AddService-icons li').removeClass('active');
             $(this).addClass('active');
-            $('#service').val(idService);
+            $('#service').val(idServiceLocal);
 
             $('.AddService-form').show()
-            if (idService != '1') {
+            if (idServiceLocal != '1') {
                 $('.Pets-info').hide();
                 $('#Describe').addClass('col-12')
 
@@ -1014,8 +965,8 @@ initMap($('#lat').val(), $('#lng').val());
         var eq = {{(old("service") == 3) ?'0':old("service")}},
             oldService_type_id = $("#service_type_id").val();
 
-        console.log('Erorr de old ' +{{old("service")}})
-        var idService = old("service"),
+        console.log('Erorr de old' + {{old("service") }} + '---' + eq)
+        var idService = $('.AddService-icons li:eq(' + eq + ')').data('service'),
             $service_type_id = $("#service_type_id");
         $service_type_id.children('option').hide();
         $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
