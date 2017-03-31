@@ -1014,8 +1014,8 @@ initMap($('#lat').val(), $('#lng').val());
         var eq = {{(old("service") == 3) ?'0':old("service")}},
             oldService_type_id = $("#service_type_id").val();
 
-        console.log('Erorr de old' +{{old("service")}})
-        var idService = $('.AddService-icons li:eq(' + eq + ')').data('service'),
+        console.log('Erorr de old ' +{{old("service")}})
+        var idService = old("service"),
             $service_type_id = $("#service_type_id");
         $service_type_id.children('option').hide();
         $service_type_id.children("option[data-serviceparent=" + idService + "]").show();
