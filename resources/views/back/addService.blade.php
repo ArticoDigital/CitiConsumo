@@ -914,56 +914,7 @@
         });
 
 
-        $('').on("change", function (e) {
 
-            var fileInput = document.getElementById('files'),
-                arrayFiles = fileInput.files,
-                files = new FormData(),
-                count = $('#result .File').length;
-
-            if (count < 5) {
-                for (var i = 0; i < arrayFiles.length; i++) {
-                    if (arrayFiles[i].size < 2210720) {
-                        if (count == 5) break;
-                        count += 1;
-                        files.append('file' + i, arrayFiles[i]);
-                    }
-                    else {
-                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
-                    }
-                }
-                files.append('_token', $('#token').val());
-                $.ajax({
-                    url: '{{route("uploadTempFiles")}}',
-                    type: 'POST',
-                    contentType: false,
-                    data: files,
-                    processData: false,
-                    cache: false,
-                    beforeSend: function () {
-                        $('.preload').removeClass("hidden");
-                    },
-                    success: function (data) {
-                        $('.preload').addClass("hidden");
-                        var result = $("#result");
-                        var images = data.temp;
-                        var position = result.children().length;
-                        for (var i = 0; i < images.length; i++) {
-                            position += 1;
-                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        $('.preload').addClass("hidden");
-                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
-                    }
-                });
-            }
-            else {
-                alert('solo puede subir 5 imágenes');
-            }
-        });
 
         var $uploadCrop,
             rawImg;
