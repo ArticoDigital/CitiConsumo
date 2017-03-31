@@ -37,88 +37,86 @@ Route::get('facebook/authorize', [
 ]);
 
 Route::get('auth', function () {
-       try {
-       SocialAuth::login('facebook', function ($user, $details) {
-        $emailT = $details->raw()['email'];
-        $userEmail = \City\User::where('email', $emailT)->get();
+    try {
+        SocialAuth::login('facebook', function ($user, $details) {
+            $emailT = $details->raw()['email'];
+            $userEmail = \City\User::where('email', $emailT)->get();
 
-        $user->email = $details->raw()['email'] ;
+            $user->email = $details->raw()['email'];
 
-        //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
-        //graph.facebook.com/v2.8/10154016435262864/picture?width=400
-        //Aca se deben agregar los nombres y apellidos traidos de facebook
-        if($user->name==""){
-            $user->name = $details->raw()['first_name'] ;
-        }
-        if($user->last_name==""){
-            $user->last_name = $details->raw()['last_name'] ;
-        }
+            //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
+            //graph.facebook.com/v2.8/10154016435262864/picture?width=400
+            //Aca se deben agregar los nombres y apellidos traidos de facebook
+            if ($user->name == "") {
+                $user->name = $details->raw()['first_name'];
+            }
+            if ($user->last_name == "") {
+                $user->last_name = $details->raw()['last_name'];
+            }
 
-        if(isset($user->role_id)){
-            if($user->role_id<=1){
+            if (isset($user->role_id)) {
+                if ($user->role_id <= 1) {
+                    $user->role_id = 1;
+                }
+            } else {
                 $user->role_id = 1;
             }
-        }else{
-            $user->role_id = 1;
-        }
-        $user->save();
+            $user->save();
 
-    });
+        });
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    return Redirect::intended();
- 
-} catch (ApplicationRejectedException $e) {
-    dd($e);
+        return Redirect::intended();
+
+    } catch (ApplicationRejectedException $e) {
+        return redirect()->route('login')->with('errorFacebook','errors');
 // User rejected application
-} catch (InvalidAuthorizationCodeException $e) {
-    dd($e);
+    } catch (InvalidAuthorizationCodeException $e) {
+        return redirect()->route('login')->with('errorFacebook', 'errors');
 // Authorization was attempted with invalid
 // code,likely forgery attempt
-}
+    } catch (PDOException $e) {
 
-catch(PDOException $e){
+        return redirect()->route('login')->with('errorFacebook', 'errors');
 
-    return redirect()->route('login')->with('errorFacebook','Paila');
-
-    dd($e);
-}
+        dd($e);
+    }
 
 
-/*
-    SocialAuth::login('facebook', function ($user, $details) {
-        dd($details);
-        $emailT = $details->raw()['email'];
-        $userEmail = \City\User::where('email', $emailT)->get();
+    /*
+        SocialAuth::login('facebook', function ($user, $details) {
+            dd($details);
+            $emailT = $details->raw()['email'];
+            $userEmail = \City\User::where('email', $emailT)->get();
 
-        $user->email = $details->raw()['email'] ;
+            $user->email = $details->raw()['email'] ;
 
-        //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
-        //graph.facebook.com/v2.8/10154016435262864/picture?width=400
-        //Aca se deben agregar los nombres y apellidos traidos de facebook
-        if($user->name==""){
-            $user->name = $details->raw()['first_name'] ;
-        }
-        if($user->last_name==""){
-            $user->last_name = $details->raw()['last_name'] ;
-        }
+            //$user->image ='https://graph.facebook.com/v2.4/'.$details->userId().'/picture';
+            //graph.facebook.com/v2.8/10154016435262864/picture?width=400
+            //Aca se deben agregar los nombres y apellidos traidos de facebook
+            if($user->name==""){
+                $user->name = $details->raw()['first_name'] ;
+            }
+            if($user->last_name==""){
+                $user->last_name = $details->raw()['last_name'] ;
+            }
 
-        if(isset($user->role_id)){
-            if($user->role_id<=1){
+            if(isset($user->role_id)){
+                if($user->role_id<=1){
+                    $user->role_id = 1;
+                }
+            }else{
                 $user->role_id = 1;
             }
-        }else{
-            $user->role_id = 1;
-        }
-        $user->save();
+            $user->save();
 
-    });
+        });
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    return Redirect::intended();
-*/
+        return Redirect::intended();
+    */
 });
 
 // Password reset link request routes...
