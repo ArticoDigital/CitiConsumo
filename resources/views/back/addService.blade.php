@@ -543,14 +543,14 @@
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
                         <input type="radio" value="1" name="inmediate_response"
-                               @if(!old('inmediate_response'))
+                               @if(old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
                         <input type="radio" value="0" id="answerIn" name="inmediate_response"
-                               @if(old('inmediate_response'))
+                               @if(!old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Respondo en:</label>
@@ -661,10 +661,14 @@
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
             </article>
             <article class="row center ">
-                <button type="submit"> Postular servicio</button>
+                <button  id="createButton" type="submit"> Postular servicio</button>
             </article>
 
         </section>
+        <div class="preload hidden" id="loader-wrapper">
+           <div id="loader"></div>
+        </div>
+
 
     </form>
     <aside id="imagesPopup" class="row center ">
@@ -733,6 +737,17 @@
                     return "";
                 }
             }
+        });
+
+
+        $('form').on('submit', function(){
+            $('#createButton').attr("disabled", true);
+            var $file = $('#result .File'), positions = '';
+
+            for(var i = 0; i < $file.length; i++){
+                positions += $file.eq(i).children('.imagePosition').val() + ',';
+            }
+            $('[name="positions"]').val(positions);
         });
 
 
@@ -828,17 +843,19 @@
                         count += 1;
                     }
                     else {
-                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                        alert('La imagen es demasiado grande. Clic para continuar');
                     }
                 }
 
                 var reader = new FileReader();
                 reader.onload = function (e) {
+                  $('.preload').removeClass("hidden");
                     $('#imagesPopup').css("display", "flex").fadeIn();
                     rawImg = e.target.result;
                     $uploadCrop.croppie('bind', {
                         url: e.target.result
                     }).then(function () {
+                      $('.preload').addClass("hidden");
                         console.log('jQuery bind complete');
                     });
                 }
@@ -868,7 +885,11 @@
                         "_token": "{{ csrf_token() }}",
                         "image": resp
                     },
+                    beforeSend: function () {
+                        $('.preload').removeClass("hidden");
+                    },
                     success: function (data) {
+                      $('.preload').addClass("hidden");
                         //html = '<img src="' + resp + '" />';
                         //$("#upload-demo-i").html(html);
                         $('.preload').addClass("hidden");
@@ -880,6 +901,11 @@
                         result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
                         $('#imagesPopup').hide();
                         //   }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        $('.preload').addClass("hidden");
+                        alert('Error al generar la imagen. Por favor vuelva a intentarlo.');
                     }
                 });
             });
