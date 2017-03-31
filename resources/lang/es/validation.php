@@ -102,7 +102,7 @@ return [
             'rule-name' => 'custom-message',
         ],
         'countFiles' => [
-            'in' => 'Debe insertar al menos 3 archivos.',
+            'in' => 'Debes insertar al menos 3 fotografías.',
         ],
     ],
 

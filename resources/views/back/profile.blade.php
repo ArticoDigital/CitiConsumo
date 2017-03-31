@@ -292,6 +292,9 @@
                             <th>Precio</th>
                             <th>Activar</th>
                         </tr>
+                        @php
+                            $today = date("Y-m-d");
+                        @endphp
                         @foreach($services as $service)
                             @if($service->isValidate != 2)
                                 <tr>
@@ -316,7 +319,12 @@
                                             </pre>
 
                                             </figure>
-                                            <div class="Profile-productInfo col-9 small-9">
+                                           
+                                            @if($today > $service->date_end)
+                                                <div class="Profile-productInfo col-9 small-9" style="background-color: #cf6f6f;">
+                                            @else
+                                                <div class="Profile-productInfo col-9 small-9">
+                                            @endif
                                                 <h3>{{$service->serviceType->name}}</h3>
                                                 @if($service)
                                                     <?php $date = explode(' ', $service->date_start)[0] . ' - ' . explode(' ', $service->date_end)[0] ?>

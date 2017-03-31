@@ -179,7 +179,7 @@
 
                 <label for="">Incluyo:</label>
 
-                <svg width="18" height="22px">
+                <svg width="18" height="22px" class="hidden">
                     <use xlink:href="#Help"/>
                 </svg>
 
@@ -194,7 +194,7 @@
             </article>
             <article>
                 <div class="row middle between" style="max-width: 600px">
-                    <label for="">Mi tarifa es:</label>
+                    <label for="">Mi tarifa es:</label> $
                     <input type="text" class="{{($errors->first('price'))?'Errors':''}}" id="price" name="price" value="{{old('price')}}">
                     <span class="mult">X</span>
                     <select  class="js-example-basic-single {{($errors->first('rate_type'))?'Errors':''}}"  id="rate_type" name="rate_type">
@@ -369,7 +369,7 @@
                 <p>Si demuestras que tienes una experiencia 100% certificada, acreditada y demostrable, aumentarás el
                     interés de tus clientes
                     (esta información será compartida a tus clientes cuando ellos adquieran tu servicio).<i>
-                        <svg width="18" height="22px">
+                        <svg width="18" height="22px" class="hidden">
                             <use xlink:href="#Help"/>
                         </svg>
                     </i></p>
@@ -379,7 +379,7 @@
                     <label class=" blue">
                         ¿Qué tiempo tienes de experiencia ejerciendo este servicio?
                     </label>
-                    <select class="js-example-basic-single" id="experience_type" name="experience_type_id">
+                    <select class="js-example-basic-single {{($errors->first('experience_type_id'))?'Errors':''}}" id="experience_type" name="experience_type_id">
                         @foreach($experienceTypes as $experienceType)
                             <option value="{{$experienceType->id}}" {{ (old("experience_type_id") == $experienceType->id ? "selected":"") }}>{{$experienceType->name}}</option>
                         @endforeach
@@ -473,7 +473,7 @@
             <article>
                 <h4 class="AddService-h4">3. DISPONIBILIDAD</h4>
                 <p>Se claro con la disponibilidad que tienes para ofrecer tu servicio.<i>
-                        <svg width="18" height="22px">
+                        <svg width="18" height="22px" class="hidden">
                             <use xlink:href="#Help"/>
                         </svg>
                     </i></p>
@@ -483,7 +483,7 @@
                     <label class=" blue">
                         Estás disponible
                         <i>
-                            <svg width="18" height="22px">
+                            <svg width="18" height="22px" class="hidden">
                                 <use xlink:href="#Help"/>
                             </svg>
                         </i>
@@ -602,7 +602,7 @@
 
 
                     <aside class="DropFiles">
-                        <label class="DropFiles-inside" for="files">
+                        <label class="DropFiles-inside {{($errors->first('countFiles'))?'Errors':''}}" for="files">
                             <figure class="icon" style="width: 40px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 36 32">
                                     <g fill="gray">
@@ -656,7 +656,7 @@
                            checked
                             @endif
                     >
-                    <ins></ins>
+                    <ins class=" {{($errors->first('terms_conditions'))?'Errors':''}}"></ins>
                 </label>
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
             </article>
@@ -670,8 +670,9 @@
     <aside id="imagesPopup" class="row center ">
         <div id="upload-container" class="self-center">
 
-            <div class="row center">
+            <div class="row center middle">
                 <button id="upload-cut">Cortar</button>
+                <span style="color: white">Ajusta la fotografía</span>
                 <button id="upload-cancel">Cancelar</button>
             </div>
         </div>
