@@ -80,7 +80,7 @@ Route::get('auth', function () {
 
 catch(PDOException $e){
 
-    return redirect()->route('login')->with('errors','asdsada');
+    return redirect()->route('login');
 
     dd($e);
 }
