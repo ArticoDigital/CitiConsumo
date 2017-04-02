@@ -1,16 +1,39 @@
 #Map
-  width: 100vw
+  width: 50vw
   height: 100vh
   position: absolute
   top: 0
-  left: 0
+  left: 50vw
   z-index: 0
+.Header-products-center
+  text-align: center
+  font-size: rem(13)
+  p
+    margin: 0
+.Header-products-service
+  h4
+    margin: 0
+    font-size: rem(23)
+  h5
+    font-size: rem(14)
+    color: #004f8f
+    margin: 0
+  figure
+    max-width: rem(50)
+    margin: 0
 .Platform-Logo
-  max-width: rem(200)
-  margin: rem(25) auto rem(12)
+  margin: 0
+  a
+    max-width: rem(100)
+    display: block
+  svg
+    max-width: 100%
 .Platform
   max-height: 100vh
   overflow-y: hidden
+  .Platform-product div.Header-products
+    background: #e4e4e4
+    padding: rem(15) rem(15) rem(12)
   .Hamburguer span, .Hamburguer span:after
     background: $dark-blue
   .orange-text
@@ -23,8 +46,8 @@
   .Platform-product
     position: absolute
     min-height: 100vh
-    width: rem(400)
     background: white
+    width: 50vw
     top: 0
     left: 0
     form
@@ -43,27 +66,120 @@
       font-size: rem(12)
       height: rem(26)
       font-weight: 100
-    article
-      margin: rem(15)
+    article:nth-child(even)
+      background: #f0f0f0
+.Platform-productContent
+
 .Platform-productSection
+  padding: rem(20)
   figure
     margin: 0
-  div
-    background: #e8e8e8
+    max-width: rem(200)
+    position: relative
+    svg
+      position: absolute
+      top: 0
+      left: 0
+      max-width: rem(42)
   img
     display: block
-.Platform-productInfo
-  padding: rem(10) !important
+    border-radius: 50%
+.Platform-price
+  text-align: center
+  background-image: url("../../img/globo-precio.svg")
+  position: absolute
+  background-size: cover
+  height: rem(85)
+  font-size: rem(18)
+  width: rem(85)
+  right: 0
+  top: rem(-13)
+  color: white
+  p
+    font-size: rem(18) !important
+    margin: 0 !important
+  small
+    text-align: center
+    display: block
+    color: white
+    font-size: rem(12)
+.Availability
+  margin-top: rem(10)
+  ul
+    margin: rem(10) 0 0
+    padding: 0
+    font-size: rem(18)
+  li
+    padding: 0 rem(3)
+    font-weight: bold
+    color: #cacaca
+    line-height: rem(18)
+    &.active
+      color: #004f8f
+    &:first-child
+      padding: 0
+      color: #004f8f
+  time
+    font-size: rem(14)
+    font-weight: 700
+    color: #004f8f
+.Availability-additional
+  margin: 0
+  padding: 0
+  em
+    font-size: rem(18)
+  div
+    border: rem(4) solid  #004f8f
+    border-radius: 50%
+    height: rem(50)
+    width: rem(50)
+    margin: 0 auto rem(3)
+    font-size: rem(21)
+    font-weight: 600
+    color: #004f8f
+  li
+    margin: 0 rem(3)
+    max-width: rem(62)
+    text-align: center
+    line-height: rem(9)
+  span
+    font-size: rem(8) !important
+    display: block
 
+.Platform-productInfo
+  padding: 0.625rem 0 0 rem(17) !important
+  position: relative
+  text-align: justify
   h3
     margin: 0
-    font-size: rem(22)
-    color: #004f8f
+    font-size: rem(20)
+    color: #333333
     font-weight: 600
   b
     font-weight: 400
     font-size: rem(24)
-
+  div
+    padding: 0 !important
+  h5
+    padding: 0
+    margin: 0
+    font-size: rem(14)
+    font-weight: 400
+  p
+    font-size: rem(14)
+    line-height: inherit
+    overflow: hidden
+    max-height: rem(48)
+    margin: rem(6) 0 0
+    text-align: justify
+  span
+    color: #004f8f
+    font-size: rem(15)
+    font-weight: 600
+  a
+    font-size: 1rem
+    color: #004f8f
+    font-weight: 700
 .InfoServices
   display: none
   opacity: 0
