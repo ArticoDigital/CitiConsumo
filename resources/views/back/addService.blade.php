@@ -543,14 +543,14 @@
                     <label class=" blue">Que tan rápido puedes responder </label>
                     <div class="row middle">
                         <input type="radio" value="1" name="inmediate_response"
-                               @if(!old('inmediate_response'))
+                               @if(old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Ofrezco atención inmediata</label>
                     </div>
                     <div class="row  middle">
                         <input type="radio" value="0" id="answerIn" name="inmediate_response"
-                               @if(old('inmediate_response'))
+                               @if(!old('inmediate_response'))
                                checked
                                 @endif>
                         <label for="">Respondo en:</label>
