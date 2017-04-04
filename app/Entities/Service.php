@@ -34,9 +34,7 @@ class Service extends Model
     public function serviceType(){
         return $this->belongsTo(ServiceType::class);
     }
-    public function rateType(){
-        return $this->belongsTo(RateType::class);
-    }
+    
     public function experienceType(){
         return $this->belongsTo(ExperienceType::class);
     }

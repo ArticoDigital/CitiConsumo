@@ -201,9 +201,7 @@
                         @if(old('rate_type'))
                             <option value="{{old('rate_type')}}" selected>{{old('rate_type')}}</option>
                         @endif>
-                        {{-- @foreach($rateTypes as $rateType)
-                             <option value="{{$rateType->id}}" {{ (old("rate_type_id") == $rateType->id ? "selected":"") }}>{{$rateType->name}}</option>
-                         @endforeach--}}
+                       
                     </select>
 
                 </div>
@@ -661,12 +659,15 @@
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
             </article>
             <article class="row center ">
-                <button type="submit"> Postular servicio</button>
+                <button  id="createButton"  type="submit"> Postular servicio</button>
             </article>
 
         </section>
 
     </form>
+    <div class="preload hidden" id="loader-wrapper">
+        <div id="loader"></div>
+    </div>
     <aside id="imagesPopup" class="row center ">
         <div id="upload-container" class="self-center">
             <div style="color: white; margin-bottom:10px;">Ajusta la fotografía</div>
@@ -828,7 +829,9 @@
                         count += 1;
                     }
                     else {
-                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
+                        $('.preload').removeClass("hidden");
+                        alert('La imagen es demasiado grande. Clic para continuar');
+
                     }
                 }
 
@@ -840,12 +843,14 @@
                         url: e.target.result
                     }).then(function () {
                         console.log('jQuery bind complete');
+                        $('.preload').addClass("hidden");
                     });
                 }
                 reader.readAsDataURL(this.files[0]);
             }
             else {
                 alert('solo puede subir 5 imágenes');
+                $('.preload').addClass("hidden");
             }
         });
         $('#upload-cancel').on('click', function () {
@@ -868,6 +873,9 @@
                         "_token": "{{ csrf_token() }}",
                         "image": resp
                     },
+                    beforeSend: function () {
+                        $('.preload').removeClass("hidden");
+                    },
                     success: function (data) {
                         //html = '<img src="' + resp + '" />';
                         //$("#upload-demo-i").html(html);
@@ -888,55 +896,14 @@
         });
 
 
-        $('').on("change", function (e) {
+       $('form').on('submit', function(){
+            $('#createButton').attr("disabled", true);
+            var $file = $('#result .File'), positions = '';
 
-            var fileInput = document.getElementById('files'),
-                arrayFiles = fileInput.files,
-                files = new FormData(),
-                count = $('#result .File').length;
-
-            if (count < 5) {
-                for (var i = 0; i < arrayFiles.length; i++) {
-                    if (arrayFiles[i].size < 2210720) {
-                        if (count == 5) break;
-                        count += 1;
-                        files.append('file' + i, arrayFiles[i]);
-                    }
-                    else {
-                        alert('La imagen ' + (i + 1) + ' es demasiado grande. Clic para continuar');
-                    }
-                }
-                files.append('_token', $('#token').val());
-                $.ajax({
-                    url: '{{route("uploadTempFiles")}}',
-                    type: 'POST',
-                    contentType: false,
-                    data: files,
-                    processData: false,
-                    cache: false,
-                    beforeSend: function () {
-                        $('.preload').removeClass("hidden");
-                    },
-                    success: function (data) {
-                        $('.preload').addClass("hidden");
-                        var result = $("#result");
-                        var images = data.temp;
-                        var position = result.children().length;
-                        for (var i = 0; i < images.length; i++) {
-                            position += 1;
-                            result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + images[i] + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + images[i] + "'/></article>");
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        $('.preload').addClass("hidden");
-                        alert('Error al cargar los archivos. Por favor vuelva a intentarlo.');
-                    }
-                });
+            for(var i = 0; i < $file.length; i++){
+                positions += $file.eq(i).children('.imagePosition').val() + ',';
             }
-            else {
-                alert('solo puede subir 5 imágenes');
-            }
+            $('[name="positions"]').val(positions);
         });
 
         var $uploadCrop,

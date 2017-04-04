@@ -243,8 +243,8 @@ class ServiceController extends Controller
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->where('id', $id)->firstOrFail()->toArray();
-
+        $service = Service::with(['food', 'pet', 'general', 'serviceFiles','serviceType','experienceType','responseType','pet.sizes'])->where('id', $id)->firstOrFail()->toArray();
+       // dd($service);
         $hours = [];
         $suf = 'am';
         for ($i = 0; $i < 24; $i++) {
@@ -281,7 +281,7 @@ class ServiceController extends Controller
             if ($user->provider->isActive == 1) {
                 //return view('back.addService', compact('kindServices','foodTypes', 'sizes', 'generalTypes', 'petTypes', 'experienceTypes', 'responseTypes', 'hours'));
                 if ($service)
-                    return view('back.editService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
+                    return view('back.editService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours','service'));
                 return redirect()->back();
                 //return view('back.addService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
 
