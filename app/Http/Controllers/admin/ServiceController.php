@@ -243,8 +243,8 @@ class ServiceController extends Controller
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        $service = Service::with(['food', 'pet', 'general', 'serviceFiles'])->where('id', $id)->firstOrFail()->toArray();
-
+        $service = Service::with(['food', 'pet', 'general', 'serviceFiles','serviceType','experienceType','responseType','pet.sizes'])->where('id', $id)->firstOrFail()->toArray();
+       // dd($service);
         $hours = [];
         $suf = 'am';
         for ($i = 0; $i < 24; $i++) {
@@ -281,7 +281,7 @@ class ServiceController extends Controller
             if ($user->provider->isActive == 1) {
                 //return view('back.addService', compact('kindServices','foodTypes', 'sizes', 'generalTypes', 'petTypes', 'experienceTypes', 'responseTypes', 'hours'));
                 if ($service)
-                    return view('back.editService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
+                    return view('back.editService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours','service'));
                 return redirect()->back();
                 //return view('back.addService', compact('kindServices', 'sizes', 'serviceTypes','experienceTypes', 'responseTypes', 'hours'));
 
@@ -317,53 +317,107 @@ class ServiceController extends Controller
 
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
+        if (!$this->ispressed) {
+            $this->ispressed = true;
+            $user = auth()->user();
+            $inputs = $this->setFiles($request->all());
 
-        $user = auth()->user();
-        $inputs = $this->setFiles($request->all());
-        $validate = $this->validator($inputs);
+            $validate = $this->validator($inputs);
+            if ($validate->fails()) {
+                $validate->errors()->first();
+                $this->ispressed = false;
+                return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
+            }
+            
 
-        if ($validate->fails())
-            return redirect()->back()->withInput()->withErrors($validate)->with(['Files' => $inputs['Files'], 'alertTitle' => '¡Hubo un error!', 'alertText' => $validate->errors()->first()]);
+            $inputs['provider_id'] = $user->provider->id;
+            $inputs['location'] = $inputs['address'];
+            $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
+            //print_r($inputs['days']);
+            $inputs['date_start']  = date_format(date_create_from_format('d/m/Y', $inputs['date_start']), 'Y/m/d');
+            $inputs['date_end']  = date_format(date_create_from_format('d/m/Y', $inputs['date_end']), 'Y/m/d');
+           // $inputs['date_start'] = date_create($inputs['date_start']);
+            //$inputs['date_end'] = date_create($inputs['date_end']);
+            
+            $days_comma_separated = implode(",", $inputs['days']);
+            if(isset($inputs['service_addition'])) {
+                $inputs['service_addition'] = implode(",", $inputs['service_addition']);
+            }
+            //print_r($comma_separated);
+            $inputs['days']=$days_comma_separated;
 
-        $inputs['provider_id'] = $user->provider->id;
-        $inputs['location'] = $inputs['address'];
-        $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
 
-        $service = Service::find($id);
-        $service->update([
-            'name' => $inputs['name'],
-            'description' => $inputs['description'],
-            'price' => $inputs['price'],
-            'location' => $inputs['address'],
-            'lat' => $inputs['lat'],
-            'lng' => $inputs['lng'],
-        ]);
+            //$service = Service::create($inputs);
+            $service = Service::find($id);
+            $service->update($inputs);
+
+            $array_sizes=[];
+            if (isset($inputs['size1']))$array_sizes[]=$inputs['size1'];
+            if (isset($inputs['size2']))$array_sizes[]=$inputs['size2'];
+            if (isset($inputs['size3']))$array_sizes[]=$inputs['size3'];
+            if (isset($inputs['size4']))$array_sizes[]=$inputs['size4'];
+            
+            if ($request->file('certificate1')) {
+                    $imageName = str_random(10) . '-&&-' . $request->file('certificate1')->getClientOriginalName();
+                    $request->file('certificate1')->move(base_path() . '/public/uploads/products/', $imageName);
+                    //$inputs['certificate1'] = $imageName;
+
+
+                    ServiceFile::create([
+                    'name' => $imageName,
+                    'service_id' => $service->id,
+                    'kind_file' => "certificado" //certificado
+                ]);
+                }
+            if ($request->file('certificate2')) {
+                    $imageName = str_random(10) . '-&&-' . $request->file('certificate2')->getClientOriginalName();
+                    $request->file('certificate2')->move(base_path() . '/public/uploads/products/', $imageName);
+                    //$inputs['certificate2'] = $imageName;
+
+
+                    ServiceFile::create([
+                    'name' => $imageName,
+                    'service_id' => $service->id,
+                    'kind_file' => "certificado" //certificado
+                ]);
+                }
+            if ($request->file('certificate3')) {
+                    $imageName = str_random(10) . '-&&-' . $request->file('certificate3')->getClientOriginalName();
+                    $request->file('certificate3')->move(base_path() . '/public/uploads/products/', $imageName);
+                    //$inputs['certificate3'] = $imageName;
+
+
+                    ServiceFile::create([
+                    'name' => $imageName,
+                    'service_id' => $service->id,
+                    'kind_file' => "certificado" //certificado
+                ]);
+                }
+
+
 
         if ($inputs['service'] == 1) {
-            $service->food->update([
-                'food_time' => date_create($inputs['date']),
-                'food_type_id' => $inputs['food_type'],
-                'foods-quantity' => $inputs['foods-quantity']
-            ]);
-        } elseif ($inputs['service'] == 2) {
-            $date = explode('-', $inputs['date']);
             $service->pet->update([
-                'pet_sizes' => $inputs['size'],
-                'pets_quantity' => $inputs['pets_quantity'],
-                'date_start' => date_create($date[0]),
-                'date_end' => date_create($date[1]),
+                    'puppy' => isset($inputs['puppy'])?$inputs['puppy']:0,
+                    'adult' => isset($inputs['adult'])?$inputs['adult']:0,
+                    'smoke_free' => isset($inputs['smoke_free'])?$inputs['smoke_free']:0,
+                    'elderly' => isset($inputs['elderly'])?$inputs['elderly']:0,
+                    'home_service' => isset($inputs['home_service'])?$inputs['home_service']:0,
             ]);
-        } elseif ($inputs['service'] == 3) {
+
+            $service->pet->sizes()->sync($array_sizes);
+        }/* elseif ($inputs['service'] == 3) {
             $service->general->update([
                 'general_type_id' => $inputs['general_type'],
                 'date' => date_create($inputs['date'])
             ]);
-        }
+        }*/
 
         $service->serviceFiles()->delete();
         $this->moveFiles($inputs, $service);
 
         return redirect()->route('myProfile')->with(['alertTitle' => '¡Servicio actualizado!', 'alertText' => 'El servicio ha sido actualizado con éxito.']);
+        }
     }
     public function uploadImageFiles(Request $request){
         if($request->ajax()) {
