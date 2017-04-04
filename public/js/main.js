@@ -71,6 +71,7 @@ $('#PlaceIcon').on('click', function(){
 });
 
 function thousand(n) {
+    return
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 

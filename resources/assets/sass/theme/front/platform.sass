@@ -150,6 +150,7 @@
   padding: 0.625rem 0 0 rem(17) !important
   position: relative
   text-align: justify
+
   h3
     margin: 0
     font-size: rem(20)
@@ -194,18 +195,40 @@
     width: 100% !important
   @include transition(all .5s)
 
+  .Availability-additional
+    .experience
+      font-size: rem(24)
+    div
+      height: 4.125rem
+      width: 4.125rem
+      font-size: rem(30)
+    li
+      margin: rem(10)
+      max-width: rem(96)
+    svg
+      transform: scale(1.3)
+    span
+      color: #004f8f
+      font-size: rem(12) !important
+      line-height: rem(14)
+      font-weight: 500
   h2
-    color: #004f8f
-    font-weight: 600
+    color: #2d2d2d
+    font-weight: 700
     margin-bottom: rem(3)
-    text-transform: uppercase
     font-size: rem(22)
+    margin: 0 rem(8)
+    span
+      display: block
+      font-size: .5em
+      color: #004f8f
   span
     font-weight: 600
   h3
     margin: 0
-    font-weight: 400
-    font-size: rem(16)
+    font-weight: 700
+    font-size: rem(23)
+    text-align: right
   a
     margin: rem(12) 0 rem(16)
     display: block
@@ -214,11 +237,85 @@
 .InfoServices.show
   display: flex !important
   opacity: 1
+.Form-content
+  max-width: rem(220)
+  margin: auto
+  transform: translateX(1rem)
+  select
+    width: rem(60)
+  h6
+    color: #efa43b
+    font-size: rem(14)
+    margin: 0 0 rem(10)
+    font-weight: 500
+    text-align: center
+  input[type="text"]
+    max-width: rem(115)
+    border-radius: rem(5)
+    border: none
+    height: rem(26)
+  button
+    width: rem(150)
+    padding: rem(12) 0 rem(12)
+    margin: auto
+    display: block
+    border: none
+    border-radius: rem(4)
+    background: #efa43b
+    color: white
+    font-weight: 600
+    transform: translateY(1rem)
 .InfoServices-info
   position: relative
-  padding: rem(20) rem(20) 0 rem(20)
-  overflow: hidden
+  padding: rem(20) rem(28) 0 rem(28)
+  overflow: scroll
   text-align: left
+  max-height: rem(450)
+  .pets
+    padding: 0
+    li
+      margin: 0 rem(8)
+    span
+      display: block
+      font-size: rem(12)
+      text-align: center
+      color: #636262
+  .age
+    margin: rem(6) 0
+    font-size: 1rem
+    color: gray
+  h4
+    font-size: rem(20)
+    margin: rem(22) 0
+  p
+    margin: rem(6) 0 1em 0
+    line-height: 1.2
+  form
+    background: #04508e
+    color: white
+    position: relative
+    border-radius: rem(10)
+    margin: rem(25) 0
+    padding-top: rem(18)
+
+    .price
+      position: absolute
+      top: rem(-10)
+      left: rem(-10)
+      width: rem(101)
+      height: rem(118)
+      background-image: url("../../img/price.svg")
+      background-size: cover
+      color: #04508e
+      font-size: rem(22)
+      span
+        display: block
+        font-size: .6em
+  label
+    display: block
+    margin: rem(10) 0
+    text-align: center
+
   #PayForm
     transition: all 1s ease
     background: #fff
@@ -272,19 +369,25 @@
     position: absolute
     right: rem(10)
     top: 0
-
-
-
+.InfoServices-infoInclude
+  span
+    background: #e0e0e0
+    padding: rem(1) rem(9)
+    border-radius: rem(14)
+    font-size: rem(15)
+    font-weight: 500
+    color: #4c4c4c
+    margin: 0 rem(1)
+  em
+    font-weight: bold
+    font-style: initial
   figure
     margin: 0
     background-size: cover
     background-position: center
   p
-    margin: rem(16) 0
-    line-height: rem(18)
-    text-align: justify
-    overflow: hidden
-    font-weight: 500
+    margin: rem(12) 0 rem(9)
+    line-height: rem(20)
   val
     font-size: rem(24)
   select, input
@@ -309,13 +412,35 @@
   margin: rem(12) 0 0
 .InfoServices-close
   position: absolute
-  right: rem(16)
-  top: 0
+  right: rem(-30)
+  top: rem(-30)
   z-index: 5
-  color: #004f8f
+  color: #ffffff
   font-size: rem(44)
   cursor: pointer
+  background: #004f8f
+  width: rem(55)
+  border-radius: 50%
+  line-height: 1.1
+  height: rem(55)
 
 
 
-
+.Info-available
+  margin: 0
+  padding: 0
+  li:nth-child(2), li:nth-child(3)
+    font-size: rem(12)
+    font-weight: 700
+    line-height: rem(13)
+    color: #04508e
+    text-align: center
+  p
+    margin: rem(2) 0
+    color: #04508e
+    font-weight: 600
+  span
+    margin-right: rem(4)
+    color: #CACACD
+    &.active
+      color: #efa43b
