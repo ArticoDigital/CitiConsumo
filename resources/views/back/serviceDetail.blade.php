@@ -43,7 +43,7 @@
                     @if(!$service->inmediate_response)
                     <li class="col-12"><b>Tiempo de Respuesta:</b> {{$service->responseType->name}}</li>
                     @endif
-                    <li class="col-12"><b>Precio:</b> ${{$service->price}} X {{$service->rate_type}}</li>
+                        <li class="col-12"><b>Precio:</b> ${{$service->price}} X {{$service->rate_type}}</li>
                     <li class="col-12"><b>Locación: </b>{{$service->location}}</li>
                     
                     

@@ -1544,7 +1544,7 @@ body.getReset #resetpassword label {
   font-size: 1.4375rem; }
 
 .Header-products-service h5 {
-  font-size: 0.875rem;
+  font-size: 0.625rem;
   color: #004f8f;
   margin: 0; }
 
@@ -1652,8 +1652,7 @@ body.getReset #resetpassword label {
     .Availability li.active {
       color: #004f8f; }
     .Availability li:first-child {
-      padding: 0;
-      color: #004f8f; }
+      padding: 0; }
   .Availability time {
     font-size: 0.875rem;
     font-weight: 700;

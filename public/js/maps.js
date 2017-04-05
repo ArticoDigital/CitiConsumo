@@ -84,7 +84,7 @@ $('.InfoServices-close').on('click', function () {
         : $('.InfoServices').removeClass('show')
 });
 
-$('#quantity').on('change', function(){
+$('#quantity').on('change', function () {
     var quantity = $(this).val() ? $(this).val() : 1;
     var total = quantity * $('#valueServiceInput').val();
     $('#valueService').text('$' + thousand(total));
@@ -98,20 +98,77 @@ function showInfoProduct(data) {
             $nameService: $('#NameService'),
             $availableService: $('#availableService'),
             $descriptionService: $('#descriptionService'),
-            $valueService : $('#valueService'),
-            $valueServiceInput : $('#valueServiceInput'),
+            $valueService: $('#valueService'),
+            $valueServiceInput: $('#valueServiceInput'),
             $idServiceInput: $('#idServiceInput'),
             $valueTotal: $('#valueTotal'),
-            $quantity: $('#quantity')
+            $quantity: $('#quantity'),
+            $LocationService: $('#LocationService'),
+            $InfoServices: $('#InfoServices-infoInclude'),
+            $Price: $('#Price'),
+            $RateType: $('#RateType'),
+            $ResponseType: $('#ResponseType'),
+            $DateI: $('#DateI'),
+            $DateF: $('#DateF'),
+            $hourI: $('#HourI'),
+            $hourF: $('#HourF'),
+            $ModalExperience: $('#ModalExperience'),
+            $ModalExperienceName: $('#ModalExperienceName'),
+            $certifications: $('#certifications'),
+
         },
         dataMap = $('#Map'),
         routeImageServices = dataMap.data('imagesservice'),
         typeService = dataMap.data('typeservice'),
         imageService = routeImageServices + '/' + data.service_files[0].name;
 
-
+    console.log(data.experience_type_id);
     elements.$imageService.css("background-image", "url('" + imageService + "')");
-    elements.$nameService.html(data.name);
+    elements.$nameService.html(data.provider.user.name + ' ' + data.provider.user.last_name);
+    elements.$LocationService.html(data.provider.user.location)
+    elements.$Price.html(data.price)
+    elements.$RateType.html('X ' + data.rate_type)
+    elements.$DateI.html(data.date_start)
+    elements.$DateF.html(data.date_end)
+    elements.$hourI.html(data.hour1)
+    elements.$hourF.html(data.hour2)
+    elements.$ModalExperience.html(data.experience_type.id - 1)
+    elements.$ModalExperienceName.html(data.experience_type.name)
+    var response = (data.inmediate_response) ? 'Inmediata' : data.response_type.name,
+        sizes = data.pet.sizes;
+    elements.$ResponseType.html(response)
+
+    if (data.service_files.length > 0) {
+        elements.$certifications.show();
+    }else{
+        elements.$certifications.hide();
+    }
+
+    var daysArray = data.days.split(',');
+
+    for (var i = 0; i < daysArray.length; i++) {
+        $('#Date').find("span:nth-of-type(" + daysArray[i] + ")").addClass('active')
+    }
+    $('#Pets li').hide();
+    for (var i = 0; i < sizes.length ; i++) {
+        $('#Pets .size-' + sizes[i].id).show();
+        console.log(sizes[i].id)
+    }
+    $('.pets-data').hide()
+    if(data.pet.puppy) $('.puppy').show()
+    if(data.pet.adult) $('.adult').show()
+    if(data.pet.elderly) $('.elderly').show()
+    if(data.pet.smoke_free) $('.smoke_free').show()
+    if(data.pet.home_service) $('.home_service').show()
+
+    console.log(data)
+
+    data.service_addition.split(',').forEach(
+        function myFunction(item, index) {
+            elements.$InfoServices.append('<span>' + item + '</span>');
+        }
+    )
+    console.log()
     elements.$availableService.html();
     elements.$descriptionService.html(data.description);
     elements.$valueServiceInput.val(data.price.replace('.', ''));
@@ -119,18 +176,18 @@ function showInfoProduct(data) {
     elements.$valueService.html('$' + thousand(elements.$valueTotal.val()));
     elements.$idServiceInput.val(data.id);
 
-    $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description +'">');
+    $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description + '">');
     $('.InfoServices').addClass('show');
 
-    if(data.pet.date_end !== undefined)
+    if (data.pet.date_end !== undefined)
         setMaxDate(data.pet.date_end);
 }
 
-function setMaxDate(maxDate){
+function setMaxDate(maxDate) {
     var $date = $('#date'),
         $dateRange = $('#dateRange').val(),
         dates = $dateRange.split('-'),
-        changeValues = function(dateStart, dateEnd){
+        changeValues = function (dateStart, dateEnd) {
 
             var dif = dateDiference(dateStart, dateEnd),
                 total = dif * $('#valueServiceInput').val();
@@ -145,7 +202,7 @@ function setMaxDate(maxDate){
     $date.val(changeValues(dates[0], dates[1]));
     $date.daterangepicker(getConfig('multiple', maxDate));
 
-    $date.on('apply.daterangepicker', function(ev, picker) {
+    $date.on('apply.daterangepicker', function (ev, picker) {
         var start = picker.startDate.format('MM/DD/YYYY'),
             end = picker.endDate.format('MM/DD/YYYY');
         $(this).val(changeValues(start, end));

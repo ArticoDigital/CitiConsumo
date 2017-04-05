@@ -16,7 +16,6 @@ class MapController extends Controller
 
     public function index($service, Request $request)
     {
-
         $validate = $this->validator($request->all(), $service);
         if ($validate->fails())
             return redirect()->back()->withInput()->with(['alertTitle' => 'Búsqueda', 'alertText' => $validate->errors()->first()]);
@@ -29,6 +28,7 @@ class MapController extends Controller
             $date = explode('-', $request->get('date'));
             $nDays = $this->getNumberDays($date[0],  $date[1]);
         }
+       /* dd();*/
         return view('front.platform', compact('dataMap', 'services', 'icon','typeService', 'nDays'));
     }
 
@@ -42,11 +42,11 @@ class MapController extends Controller
 
         $servicesId = $this->queryBuild($dataMap, $this->distance , $this->addSql($request));
         if ($service == "pet")
-            return Service::with(['pet', 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
+            return Service::with(['pet', 'serviceFiles','provider.user','responseType','experienceType','pet.sizes'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
         if ($service == "food")
-            return Service::with(['food', 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
+            return Service::with(['food', 'serviceFiles','provider.user','responseType','experienceType','pet.sizes'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
         if ($service == "general")
-            return Service::with(['general', 'serviceFiles'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
+            return Service::with(['general', 'serviceFiles','provider.user','responseType','experienceType','pet.sizes'])->whereIn('id', array_pluck($servicesId, 'id'))->paginate(5);
 
     }
 
