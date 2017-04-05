@@ -291,15 +291,14 @@
     <div class="InfoServices-content row">
         <div class="InfoServices-close">x</div>
         <div class="col-6 medium-6 small-12" style="overflow: hidden">
-            <div class="owl-carousel ">
-                @foreach($services as $service)
+            <div class="owl-carousel " id="owl-carousel" data-url="{{url('/')}}">
+                {{--@foreach($services as $service)
                     @foreach($service->serviceFiles as $file)
-
                         <figure class="col-12 small-12 " style="margin: 0;">
                             <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
                         </figure>
                     @endforeach
-                @endforeach
+                @endforeach--}}
             </div>
         </div>
         <div class="col-6 medium-6 small-12 InfoServices-info">
@@ -672,14 +671,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
         defer></script>
 <script>
-    $(".owl-carousel").owlCarousel({
 
-        navigation: true, // Show next and prev buttons
-        slideSpeed: 300,
-        paginationSpeed: 400,
-        singleItem: true,
-        navigationText: ["<", ">"]
-    });
 
     $('#showBuyForm').on('click', function () {
         $('#PayForm').addClass('show');

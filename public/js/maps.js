@@ -5,7 +5,8 @@ var arrayMarkers = new Array,
     map,
     marker,
     icon = $('#Map').data('image'),
-    isMultiple = true;
+    isMultiple = true,
+    booleanValue = false;
 
 styleMap = [{
     "featureType": "landscape",
@@ -145,7 +146,7 @@ function showInfoProduct(data) {
     }
 
     var daysArray = data.days.split(',');
-
+    $('#Date span').removeClass('active');
     for (var i = 0; i < daysArray.length; i++) {
         $('#Date').find("span:nth-of-type(" + daysArray[i] + ")").addClass('active')
     }
@@ -162,13 +163,50 @@ function showInfoProduct(data) {
     if(data.pet.home_service) $('.home_service').show()
 
     console.log(data)
-
+    elements.$InfoServices.find('span').remove();
     data.service_addition.split(',').forEach(
         function myFunction(item, index) {
             elements.$InfoServices.append('<span>' + item + '</span>');
         }
     )
-    console.log()
+    $("#owl-carousel").html('');
+    var content = "";
+    data.service_files.forEach(function (item, index) {
+                var img = $("#owl-carousel").data('url') + '/uploads/products/'+item.name;
+                var alt = item.name;
+                content += " <figure class='col-12 small-12 ' style='margin: 0;'>" +
+                     "<img src=\"" +img+ "\" alt=\"" +alt+ "\">" +
+                    "</figure>"
+        console.log('fd')
+    });
+    $("#owl-carousel").html(content);
+
+    $("#owl-carousel").owlCarousel({
+
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        navigationText: ["<", ">"],
+    });
+    var owl = $(".owl-carousel").data('owlCarousel');
+    owl.reinit({
+
+        navigation: true,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        navigationText: ["<", ">"],
+    })
+
+
+    /*foreach($service->serviceFiles as $file)
+    <figure class='col-12 small-12 ' style='margin: 0;'>
+        <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
+        </figure>
+                        @endforeach*/
+
+
     elements.$availableService.html();
     elements.$descriptionService.html(data.description);
     elements.$valueServiceInput.val(data.price.replace('.', ''));
