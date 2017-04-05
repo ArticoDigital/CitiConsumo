@@ -49,7 +49,7 @@
                             <ul class="col-4">
                                 <li><a href="{{route('myProfile')}}">MI PERFIL</a></li>
                                  @if(Auth::user()->role_id != 3)
-                                    <li class="menu-item-out"><a href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
+                                    <li ><a href="{{route('addService')}}" class="orange-text custom-invisible">Postula tu servicio</a></li>
                                     @if(Auth::user()->role_id == 2)
                                     <li><a href="{{route('tradeList')}}" class="orange-text">Mis transacciones</a></li>
                                     @endif

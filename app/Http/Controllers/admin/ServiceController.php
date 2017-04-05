@@ -244,7 +244,7 @@ class ServiceController extends Controller
             return redirect()->route('myProfile');
 
         $service = Service::with(['food', 'pet', 'general', 'serviceFiles','serviceType','experienceType','responseType','pet.sizes'])->where('id', $id)->firstOrFail()->toArray();
-       // dd($service);
+       //dd($service);
         $hours = [];
         $suf = 'am';
         for ($i = 0; $i < 24; $i++) {
@@ -414,6 +414,7 @@ class ServiceController extends Controller
         }*/
 
         $service->serviceFiles()->delete();
+
         $this->moveFiles($inputs, $service);
 
         return redirect()->route('myProfile')->with(['alertTitle' => '¡Servicio actualizado!', 'alertText' => 'El servicio ha sido actualizado con éxito.']);

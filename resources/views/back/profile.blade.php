@@ -303,7 +303,7 @@
                                            data_id="{{$service->id}}"><img class="small-icon-product"
                                                                            src="{{url('img/lapiz-edicion.svg')}}"
                                                                            alt=""></a>
-                                        <a href="#" class="DeleteProduct" data_id="{{$service->id}}"><img
+                                        <a  class="DeleteProduct" data_id="{{$service->id}}"><img
                                                     class="small-icon-product"
                                                     src="{{url('img/x-eliminar-imagen.svg')}}" alt=""></a>
                                     </td>
@@ -470,9 +470,9 @@
                     success: function (data) {
                         console.log(data.message);
                     },
-                    error: function () {
-                        alert('Hubo un error al eliminar el producto.');
-                    }
+                    //error: function () {
+                     //   alert('Hubo un error al eliminar el producto.');
+                    //}
                 });
             });
         });
