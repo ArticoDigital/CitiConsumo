@@ -196,7 +196,7 @@
                                 {{$service->inmediate_response?'Inmediata':$service->responseType->name}}
                             </span>
                             <p>{{$service->description}}</p>
-                            <a href="" id="ViewMore">+Ver más</a>
+                            <a href="" class="ViewMore">+Ver más</a>
                             <div class="Platform-price row center middle">
                                 <p>${{$service->price}}
                                     <small>X {{$service->rate_type}}</small>

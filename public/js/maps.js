@@ -78,7 +78,7 @@ function succesfull(pos) {
 
     }
 }
-$('#ViewMore').on('click',function (e) {
+$('.ViewMore').on('click',function (e) {
     e.preventDefault();
 });
 $('.InfoServices-close').on('click', function () {
