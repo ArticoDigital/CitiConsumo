@@ -78,6 +78,9 @@ function succesfull(pos) {
 
     }
 }
+$('#ViewMore').on('click',function (e) {
+    e.preventDefault();
+});
 $('.InfoServices-close').on('click', function () {
     var payForm = $('#PayForm');
     payForm.hasClass('show')
