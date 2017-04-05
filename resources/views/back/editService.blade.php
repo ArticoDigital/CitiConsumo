@@ -662,13 +662,14 @@
                         
                         @if($service['service_files'])
                             @foreach($service['service_files'] as $key => $file)
-
+                                @if($file['kind_file']=="imagen")
                                 <article class="File">
                                             <span class="delete">X</span>
                                             <input type="hidden" name="file{{($key + 1)}}" value="{{$file['name']}}">
                                             <input type="hidden" class="imagePosition" value="{{($key + 1)}}">
                                             <img class="thumbnail" src="{{asset( 'uploads/products/'. $file['name'])}}">
                                 </article>
+                                @endif
                             @endforeach
                         @endif
                 
@@ -703,7 +704,7 @@
                 <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
             </article>
             <article class="row center ">
-                <button  id="createButton"  type="submit"> Postular servicio</button>
+                <button  id="createButton"  type="submit"> Actualizar servicio</button>
             </article>
 
         </section>
@@ -931,10 +932,12 @@
                         $('.preload').addClass("hidden");
                         var result = $("#result");
                         var image = data.temp;
-                        var position = result.children().length;
+                        var position = result.children().length+1;
                         //for (var i = 0; i < images.length; i++) {
                         //position += 1;
                         result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
+
+
                         $('#imagesPopup').hide();
                         //   }
                     }
