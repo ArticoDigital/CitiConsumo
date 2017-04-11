@@ -364,11 +364,18 @@
                 </div>
             @endif
         @endif
-    @elseif($userprofile->role_id == 1 and !isset($userprofile->provider->isActive)) 
+    @elseif($userprofile->role_id == 1)
+        @if(!isset($userprofile->provider->isActive)) 
         <div class="div_box_center">
             <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
                 servicios!</a>
         </div>
+         @elseif($userprofile->provider->isActive==1)
+         <div class="div_box_center">
+            <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
+                servicios!</a>
+        </div>
+        @endif
         
     @endif
     <section id="ConfirmAlert" class="Alert confirm" style="display: none">
