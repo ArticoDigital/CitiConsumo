@@ -370,7 +370,7 @@
             <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
                 servicios!</a>
         </div>
-         @elseif($userprofile->provider->isActive==1)
+         @elseif($userprofile->provider->isActive==0)
          <div class="div_box_center">
             <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
                 servicios!</a>
