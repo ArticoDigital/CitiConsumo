@@ -283,7 +283,7 @@
                     Servicios ({{count($services)}})  <a href="{{route('addService')}}">  +Agregar servicio</a>@endif </div>
         </div>
         @if(isset($userprofile->provider))
-            @if($userprofile->provider->isActive)
+            @if($userprofile->provider->isActive==1)
                 @if(count($services))
                     <table class="rwd-table" style="margin-bottom: 30px">
                         <tr class="header-table">
