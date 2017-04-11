@@ -753,7 +753,7 @@ Costo_servicio</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>

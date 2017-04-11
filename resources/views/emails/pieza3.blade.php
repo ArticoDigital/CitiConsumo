@@ -612,7 +612,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><a href="mailto:info@cityconsumo.com ?subject=CUENTA%20DESABILITADA%20POR%20ERROR" target="_blank"><span style="font-size:24px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:120%"><span style="color:#555555">Escríbenos si se trata de un error&nbsp;</span></span></span></a></div>
+                            <div style="text-align: center;"><a href="mailto:info@cityconsumo.com ?subject=CUENTA%20DESABILITADA%20POR%20ERROR" target="_blank"><span style="font-size:24px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:120%"><span style="color:#555555">EscrÃ­benos si se trata de un error&nbsp;</span></span></span></a></div>
 
                         </td>
                     </tr>
@@ -663,7 +663,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="color:#006699"><span style="font-size:17px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:120%">(Recuerda revisar nuestras <strong><a href="https://www.cityconsumo.com/terminos" target="_blank"><u>políticas y condiciones)</u></a></strong></span></span></span></div>
+                            <div style="text-align: center;"><span style="color:#006699"><span style="font-size:17px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:120%">(Recuerda revisar nuestras <strong><a href="https://www.cityconsumo.com/terminos" target="_blank"><u>polÃ­ticas y condiciones)</u></a></strong></span></span></span></div>
 
                         </td>
                     </tr>
@@ -801,7 +801,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>

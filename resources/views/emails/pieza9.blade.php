@@ -542,7 +542,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div dir="ltr" style="text-align: center;"><span style="color:#006699"><strong><span style="font-size:42px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">¡Lo sentimos<br>
+                            <div dir="ltr" style="text-align: center;"><span style="color:#006699"><strong><span style="font-size:42px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Â¡Lo sentimos<br>
 &nbsp; {{$name}} {{$last_name}}!&nbsp;</span></span></strong></span></div>
 
                         </td>
@@ -594,7 +594,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:24px"><span style="color:#696969"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">&nbsp;Tu publicación {{$service}} presenta&nbsp;<br>
+                            <div style="text-align: center;"><span style="font-size:24px"><span style="color:#696969"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">&nbsp;Tu publicaciÃ³n {{$service}} presenta&nbsp;<br>
 un inconveniente para ser aprobada.</span></span></span></div>
 
                         </td>
@@ -646,8 +646,8 @@ un inconveniente para ser aprobada.</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">&nbsp;</span><span style="color:#006699"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Nuestro equipo de City Consumo se pondrá eventualmente en<br>
-contacto contigo o&nbsp;si lo prefieres, puedes <u><a href="https://www.cityconsumo.com/contacto" target="_blank"><strong>contactarnos aquí</strong></a></u></span></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">&nbsp;</span><span style="color:#006699"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Nuestro equipo de City Consumo se pondrÃ¡ eventualmente en<br>
+contacto contigo o&nbsp;si lo prefieres, puedes <u><a href="https://www.cityconsumo.com/contacto" target="_blank"><strong>contactarnos aquÃ­</strong></a></u></span></span></span></div>
 
                         </td>
                     </tr>
@@ -785,7 +785,7 @@ contacto contigo o&nbsp;si lo prefieres, puedes <u><a href="https://www.citycons
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>

@@ -542,7 +542,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:150%"><span style="font-size:25px"><span style="color:#555555">Para restablecer tu contraseña<br>
+                            <div style="text-align: center;"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:150%"><span style="font-size:25px"><span style="color:#555555">Para restablecer tu contraseÃ±a<br>
 de City Consumo</span></span></span></div>
 
                         </td>
@@ -594,7 +594,7 @@ de City Consumo</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:40px"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;Haz Clic&nbsp;<a href="https://www.cityconsumo.com/password/email" target="_blank">aquí</a></font></span><strong><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp;</font></span><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;</font></strong></span></div>
+                            <div style="text-align: center;"><span style="font-size:40px"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;Haz Clic&nbsp;<a href="https://www.cityconsumo.com/password/email" target="_blank">aquÃ­</a></font></span><strong><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp;</font></span><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;</font></strong></span></div>
 
                         </td>
                     </tr>
@@ -783,7 +783,7 @@ de City Consumo</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>

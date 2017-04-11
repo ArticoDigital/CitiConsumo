@@ -543,8 +543,8 @@
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div dir="ltr" style="text-align: center;"><span style="color:#006699"><strong><span style="font-size:42px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Felicidades {{$name}} {{$last_name}}</span></span></strong></span><br>
-<span style="font-size:20px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#555555; line-height:120%">Has diligenciado el registro con éxito, estás a un paso&nbsp;<br>
-de convertirte en un grán City Proveedor.</span></span></span></div>
+<span style="font-size:20px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#555555; line-height:120%">Has diligenciado el registro con Ã©xito, estÃ¡s a un paso&nbsp;<br>
+de convertirte en un grÃ¡n City Proveedor.</span></span></span></div>
 
                         </td>
                     </tr>
@@ -579,7 +579,7 @@ de convertirte en un grán City Proveedor.</span></span></span></div>
                         
                             <div dir="ltr" style="text-align: center;"><br>
 <span style="color:#006699"><span style="font-size:15px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="line-height:100%">Nuestro equipo de expertos evaluara tu perfil&nbsp;<br>
-y te notificaremos el estado del registro lo más pronto posible, &nbsp;<br>
+y te notificaremos el estado del registro lo mÃ¡s pronto posible, &nbsp;<br>
 <strong>tiempo estimado de respuesta de 24 a 48 horas.</strong></span></span></span></span></div>
 
                         </td>
@@ -718,7 +718,7 @@ y te notificaremos el estado del registro lo más pronto posible, &nbsp;<br>
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>

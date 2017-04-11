@@ -578,7 +578,7 @@
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div style="text-align: center;"><br>
-<span style="font-size:25px"><span style="color:#555555"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">¡Ya eres un City Proveedor!</span></span></span></div>
+<span style="font-size:25px"><span style="color:#555555"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">Â¡Ya eres un City Proveedor!</span></span></span></div>
 
                         </td>
                     </tr>
@@ -611,7 +611,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;Comienza publicando un servicio,&nbsp;</span></font></span><strong><a href="https://www.cityconsumo.com/registro" target="_blank"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">aquí&nbsp;</span></font></span></a><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="border-color:initial; border-image:initial; border-style:initial; font-size:24px"><img align="center" data-file-id="202803" height="43" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/b61e50d1-919c-4be8-b6ec-036be9a101e3.png" style="border-image: initial; width: 45px; height: 43px; margin: 0px;" width="45"></span><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;</span></font></strong></div>
+                            <div style="text-align: center;"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;Comienza publicando un servicio,&nbsp;</span></font></span><strong><a href="https://www.cityconsumo.com/registro" target="_blank"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">aquÃ­&nbsp;</span></font></span></a><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="border-color:initial; border-image:initial; border-style:initial; font-size:24px"><img align="center" data-file-id="202803" height="43" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/b61e50d1-919c-4be8-b6ec-036be9a101e3.png" style="border-image: initial; width: 45px; height: 43px; margin: 0px;" width="45"></span><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;</span></font></strong></div>
 
                         </td>
                     </tr>
@@ -662,7 +662,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699">Recuerda revisar las </span><a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#006699"><strong>políticas y condiciones.</strong></span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699">Recuerda revisar las </span><a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#006699"><strong>polÃ­ticas y condiciones.</strong></span></a></span></span></div>
 
                         </td>
                     </tr>
@@ -800,7 +800,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>

@@ -562,7 +562,7 @@
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div style="text-align: center;"><span style="font-size:33px"><span style="color:#006699"><strong><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Hola {{$name}} {{$last_name}}, tienes<br>
-&nbsp;un nuevo servicio {{$service}} pendiente de aprobación</span></font></strong></span></span></div>
+&nbsp;un nuevo servicio {{$service}} pendiente de aprobaciÃ³n</span></font></strong></span></span></div>
 
                         </td>
                     </tr>
@@ -614,7 +614,7 @@
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div style="text-align: center;"><span style="font-size:23px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:110%"><span style="color:#555555">&nbsp;El tiempo estimado para que&nbsp;<br>
-nuestro equipo evalúe el registro<br>
+nuestro equipo evalÃºe el registro<br>
 <strong>&nbsp;tarda entre 24 y 48 horas.</strong></span></span></span></div>
 
                         </td>
@@ -666,7 +666,7 @@ nuestro equipo evalúe el registro<br>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="line-height:100%"><font color="#006699"><span style="font-size:25px">¡Estaremos en contacto&nbsp;contigo </span></font><strong style="color: #006699;font-family: source sans pro,helvetica neue,helvetica,arial,sans-serif;font-size: 25px;">muy pronto!</strong></span></font></div>
+                            <div style="text-align: center;"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="line-height:100%"><font color="#006699"><span style="font-size:25px">Â¡Estaremos en contacto&nbsp;contigo </span></font><strong style="color: #006699;font-family: source sans pro,helvetica neue,helvetica,arial,sans-serif;font-size: 25px;">muy pronto!</strong></span></font></div>
 
                         </td>
                     </tr>
@@ -822,7 +822,7 @@ nuestro equipo evalúe el registro<br>
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>
