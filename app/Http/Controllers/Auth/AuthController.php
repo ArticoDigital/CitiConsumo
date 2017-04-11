@@ -7,6 +7,7 @@ use Validator;
 use City\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -82,6 +83,19 @@ class AuthController extends Controller
         ]);
         $user->save();
         auth()->loginUsingId($user->id);
+
+        Mail::send('emails.pieza1',
+        array(
+            'name' => $user->name,
+        ), function($message) use ($user)
+            {
+                $message->from('no-reply@cityconsumo.com');
+                $message->to($user->email, $user->name)->subject('¡Bienvenido, ahora eres parte nuestra familia City Consumo!');
+            });
+
+        
+
+
         return $user;
     }
 

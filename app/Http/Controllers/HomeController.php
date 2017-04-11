@@ -78,8 +78,8 @@ class HomeController extends Controller
             'user_message' => $data['message']
         ), function($message)
     {
-        $message->from('danielrq@gmail.com');
-        $message->to('danielrqo@daasad.com', 'Admin')->subject('Contato de pagina');
+        $message->from('no-reply@cityconsumo.com');
+        $message->to('info@cityconsumo.com', 'Admin')->subject('Contacto de pagina');
     });
 
 
