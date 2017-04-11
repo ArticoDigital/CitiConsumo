@@ -102,7 +102,6 @@
 			max-width:600px;
 		}
 	
-	
 		h1{
 			color:#ffffff !important;
 			font-family:Courier New;
@@ -124,7 +123,7 @@
 			letter-spacing:normal;
 			text-align:justify;
 		}
-
+	
 		h3{
 			color:#404040 !important;
 			font-family:Helvetica;
@@ -147,7 +146,7 @@
 			letter-spacing:normal;
 			text-align:center;
 		}
-
+	
 		#templatePreheader{
 			background-color:#;
 			border-top:0;
@@ -171,7 +170,7 @@
 			font-weight:normal;
 			text-decoration:underline;
 		}
-
+	
 		#templateHeader{
 			background-color:#;
 			border-top:0;
@@ -207,7 +206,7 @@
 			padding-bottom:40px;
 			padding-left:20px;
 		}
-
+	
 		#bodyBackground{
 			background-color:#ffffff;
 			border:0;
@@ -216,7 +215,7 @@
 			padding-top:9px;
 			padding-bottom:9px;
 		}
-
+	
 		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
 			color:#202020;
 			font-family:Georgia;
@@ -224,7 +223,7 @@
 			line-height:125%;
 			text-align:left;
 		}
-
+	
 		.bodyContainer .mcnTextContent a{
 			color:#006699;
 			font-weight:bold;
@@ -246,7 +245,7 @@
 			line-height:125%;
 			text-align:center;
 		}
-
+	
 		.footerContainer .mcnTextContent a{
 			color:#808080;
 			font-weight:normal;
@@ -377,40 +376,42 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	
 		td[id=templatePreheader]{
 			display:block !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	
 		.preheaderContainer .mcnTextContent,.preheaderContainer .mcnTextContent p{
 			font-size:14px !important;
 			line-height:115% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	
 		.headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
 			font-size:18px !important;
 			line-height:125% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	
 		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
 			font-size:18px !important;
 			line-height:125% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-
+	
 		.footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
 			font-size:14px !important;
 			line-height:115% !important;
 		}
 
-}</style></head>
+}</style>
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document,AKSB=AKSB||{};AKSB.q=[],AKSB.mark=function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"405167",ustr:"",originlat:"0",clientrtt:"30",ghostip:"181.49.255.39",ipv6:false,pct:"10",clientip:"181.49.221.206",requestid:"1e21dc11",region:"27382",protocol:"h2",blver:12,akM:"x",akN:"ae",akTT:"O",akTX:"1",akTI:"1e21dc11",ai:"343001",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    </head>
 	<body>
         <center>
             <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
@@ -496,10 +497,10 @@
                 <td valign="top" style="padding:0px" class="mcnImageBlockInner">
                     <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
                         <tbody><tr>
-                            <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0;">
+                            <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
                                     <a href="https://www.cityconsumo.com/" title="" class="" target="_blank">
-                                        <img align="left" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/dfc331b2-e35d-44ab-b184-a0934fe62009.jpg" width="599.9999771118164" style="max-width:1000px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <img align="center" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/f6e76b8b-1bb2-4893-8114-acf331dc8451.png" width="599.9999771118164" style="max-width:1000px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     </a>
                                 
                             </td>
@@ -543,9 +544,74 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div dir="ltr" style="text-align: center;"><span style="color:#006699"><strong><span style="font-size:42px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Bienvenido {{ $name }}</span></span></strong></span><br>
-<span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="font-size:25px"><span style="color:#555555; line-height:120%">a una nueva manera de compartir&nbsp;<br>
-servicios con tus vecinos y cercanos!</span></span></span></div>
+                            <div dir="ltr" style="text-align: center;"><span style="color:#006699"><strong><span style="font-size:42px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Felicidades {{$name}} {{$last_name}}</span></span></strong></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="599" style="width:599px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                            <div style="text-align: center;"><br>
+<span style="font-size:25px"><span style="color:#555555"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">¡Ya eres un City Proveedor!</span></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="599" style="width:599px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                            <div style="text-align: center;"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;Comienza publicando un servicio,&nbsp;</span></font></span><strong><a href="https://www.cityconsumo.com/registro" target="_blank"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">aquí&nbsp;</span></font></span></a><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="border-color:initial; border-image:initial; border-style:initial; font-size:24px"><img align="center" data-file-id="202803" height="43" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/b61e50d1-919c-4be8-b6ec-036be9a101e3.png" style="border-image: initial; width: 45px; height: 43px; margin: 0px;" width="45"></span><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;</span></font></strong></div>
 
                         </td>
                     </tr>
@@ -564,7 +630,7 @@ servicios con tus vecinos y cercanos!</span></span></span></div>
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
     <tbody class="mcnDividerBlockOuter">
         <tr>
-            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 14px 18px;">
+            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 7px 18px;">
                 <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
                     <tbody><tr>
                         <td>
@@ -596,9 +662,7 @@ servicios con tus vecinos y cercanos!</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:38px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699"><strong style="margin-bottom:30px">Â¿Con quÃ©&nbsp;quieres comenzar?</strong></span></span></span><br>
-<br>
-<span style="font-size:38px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699"><strong style="margin-bottom:30px"><a href="https://www.cityconsumo.com/admin/postular-servicio" target="_blank"><img data-file-id="202951" height="54" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/0375976c-49ca-47da-867e-c8af7c55c4d1.png" style="border: 0px  ; width: 220px; height: 54px; margin: 0px;" width="220"></a><a href="https://www.cityconsumo.com/" target="_blank"><img data-file-id="202947" height="55" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/9546e70b-50f0-4246-a5cd-5c1676e60977.png" style="border: 0px  ; width: 220px; height: 55px; margin: 0px;" width="220"></a></strong></span></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699">Recuerda revisar las </span><a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#006699"><strong>políticas y condiciones.</strong></span></a></span></span></div>
 
                         </td>
                     </tr>
@@ -631,24 +695,6 @@ servicios con tus vecinos y cercanos!</span></span></span></div>
 -->
             </td>
         </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
-    <tbody class="mcnImageBlockOuter">
-            <tr>
-                <td valign="top" style="padding:9px" class="mcnImageBlockInner">
-                    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
-                        <tbody><tr>
-                            <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                
-                                    <a href="https://www.cityconsumo.com/#" title="" class="" target="_blank">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/48fbc555-cd2f-4c15-9b4d-f69bbe4b0bd0.png" width="299" style="max-width:299px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-                                    </a>
-                                
-                            </td>
-                        </tr>
-                    </tbody></table>
-                </td>
-            </tr>
     </tbody>
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
     <tbody class="mcnImageBlockOuter">
@@ -754,7 +800,7 @@ servicios con tus vecinos y cercanos!</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 11px; font-style: normal; font-weight: bold; text-align: center;">
                         
-                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">ContÃ¡ctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">Â¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">PolÃ­ticas y Condiciones</span></a></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:19px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><a href="https://www.cityconsumo.com/contacto" target="_blank"><span style="color:#696969">Contáctanos</span></a> // <a href="https://www.cityconsumo.com/preguntas_frecuentes" target="_blank"><span style="color:#696969">¿Dudas ?</span></a><span style="color:#696969"> </span>// <a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#696969">Políticas y Condiciones</span></a></span></span></div>
 
                         </td>
                     </tr>
@@ -775,6 +821,24 @@ servicios con tus vecinos y cercanos!</span></span></span></div>
         <tr>
             <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 6px 18px;">
                 <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;">
+                    <tbody><tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--            
+                <td class="mcnDividerBlockInner" style="padding: 18px;">
+                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
+    <tbody class="mcnDividerBlockOuter">
+        <tr>
+            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 14px 18px;">
+                <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
                     <tbody><tr>
                         <td>
                             <span></span>

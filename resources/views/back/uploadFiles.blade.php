@@ -62,7 +62,7 @@
                 <label class="DropFiles-inside @if(old('type2')) active @endif" for="HistoryFile">
                     <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span>
                     <span class="text_file col-7 medium-7 small-7">@if(old('type2')) {{ old('type2') }} @else Arrastra aquí el antecedente de procuraduría @endif </span>
-                    <a class="ayudaenlace col-2 medium-2 small-2" href="http://siri.procuraduria.gov.co:8086/CertWEB/Certificado.aspx?tpo=2" target="_blank">Obenga el documento</a>
+                    <a class="ayudaenlace col-2 medium-2 small-2" href="http://siri.procuraduria.gov.co:8086/CertWEB/Certificado.aspx?tpo=2" target="_blank">Obtenga el documento</a>
                     <input type="file" id="HistoryFile" data-url="{{route('uploadFile')}}" class="drop-files-input" accept="image/jpeg, image/jpg, image/png, application/pdf">
                     <input type="hidden" name="type2" id="type2" value="{{old('type2')}}">
                 </label>
@@ -75,7 +75,7 @@
                 <label class="DropFiles-inside @if(old('type6')) active @endif" for="ContraloriaFile">
                     <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span>
                     <span class="text_file col-7 medium-7 small-7">@if(old('type6')) {{ old('type6') }} @else Arrastra aquí el certificado de contraloría @endif </span>
-                    <a class="ayudaenlace col-2 medium-2 small-2" href="http://www.contraloria.gov.co/web/guest/certificados-persona-natural" target="_blank">Obenga el documento</a>
+                    <a class="ayudaenlace col-2 medium-2 small-2" href="http://www.contraloria.gov.co/web/guest/certificados-persona-natural" target="_blank">Obtenga el documento</a>
                     <input type="file" id="ContraloriaFile" data-url="{{route('uploadFile')}}" class="drop-files-input" accept="image/jpeg, image/jpg, image/png, application/pdf">
                     <input type="hidden" name="type6" id="type6" value="{{old('type6')}}">
                 </label>
@@ -88,7 +88,7 @@
                 <label class="DropFiles-inside @if(old('type7')) active @endif" for="PoliciaFile">
                     <span class="rectangle col-3 medium-3 small-3">Selecciona el archivo</span>
                     <span class="text_file col-7 medium-7 small-7"> @if(old('type7')) {{ old('type7') }} @else Arrastra aquí el antecedente de la policía Nacional @endif </span>
-                    <a class="ayudaenlace col-2 medium-2 small-2" href="https://antecedentes.policia.gov.co:7005/WebJudicial" target="_blank">Obenga el documento</a>
+                    <a class="ayudaenlace col-2 medium-2 small-2" href="https://antecedentes.policia.gov.co:7005/WebJudicial" target="_blank">Obtenga el documento</a>
                     <input type="file" id="PoliciaFile" data-url="{{route('uploadFile')}}" class="drop-files-input" accept="image/jpeg, image/jpg, image/png, application/pdf">
                     <input type="hidden" name="type7" id="type7" value="{{old('type7')}}">
                 </label>

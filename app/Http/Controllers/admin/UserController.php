@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use City\Http\Requests\RoleRequest;
 use City\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -67,7 +68,7 @@ class UserController extends Controller
         return view('back.productsDeleted', compact('services'));
     }
 
-    public function deleteProductProvider(RoleRequest $request, $id){
+    public function deleteProductProvider(RoleRequest $request, $id){//HAbilita o deshabilita el producto de un usuario.
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
@@ -78,9 +79,31 @@ class UserController extends Controller
         if (!$request->value) {
             $service->update(['isValidate' => 1, 'isActive' => 1]);
             $message = "EL usuario ha sido activado.";
+            $user = $service->provider->user;
+            Mail::send('emails.pieza8',
+            array(
+                'name' => $user->name,
+                'last_name' => $user->last_name,
+                'service' => $service->serviceType->name,
+            ), function($message) use ($user)
+                {
+                    $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                    $message->to($user->email, $user->name)->subject('¡Felicidades ya tus servicios están en activos en CityConsumo!');
+                });
         } else {
             $service->update(['isValidate' => 1]);
             $message = "EL usuario ha sido eliminado.";
+            $user = $service->provider->user;
+            Mail::send('emails.pieza9',
+            array(
+                'name' => $user->name,
+                'last_name' => $user->last_name,
+                'service' => $service->serviceType->name,
+            ), function($message) use ($user)
+                {
+                    $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                    $message->to($user->email, $user->name)->subject('Lo sentimos, tu servicio debe ser corregido');
+                });
         }
 
         if ($request->ajax())
@@ -99,6 +122,17 @@ class UserController extends Controller
 
         $provider->isActive = 1;
         $provider->save();
+
+        Mail::send('emails.pieza5',
+        array(
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+        ), function($message) use ($user)
+            {
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                $message->to($user->email, $user->name)->subject('¡Ya eres un proveedor de Cityconsumo!');
+            });
+
         return json_encode(['success' => true]);
     }
 
@@ -110,6 +144,20 @@ class UserController extends Controller
         $provider = Provider::find($request->input('idUser'));
         $provider->isActive = 0; //0
         $provider->save();
+        $user = $provider->user;
+
+        Mail::send('emails.pieza6',
+        array(
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+        ), function($message) use ($user)
+            {
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                $message->to($user->email, $user->name)->subject('¡Ops tu registro no ha sido aprobado!');
+            });
+
+        
+
         return json_encode(['success' => true]);
     }
 
@@ -127,6 +175,16 @@ class UserController extends Controller
         $provider->save();
         //$services = Service::whereRaw('isValidate=1 and isActive=1');
         $affectedRows = Service::whereRaw('isValidate=1 and isActive=1 and provider_id=?',[$provider->id])->update(['isValidate' => 3]);
+
+        Mail::send('emails.pieza3',
+        array(
+            'name' => $user->name,
+        ), function($message) use ($user)
+            {
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                $message->to($user->email, $user->name)->subject('Lo sentimos la cuenta ha sido deshabilitada');
+            });
+
 
         return json_encode(['success' => true]);
     }

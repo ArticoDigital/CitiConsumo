@@ -89,7 +89,7 @@ class AuthController extends Controller
             'name' => $user->name,
         ), function($message) use ($user)
             {
-                $message->from('no-reply@cityconsumo.com');
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
                 $message->to($user->email, $user->name)->subject('¡Bienvenido, ahora eres parte nuestra familia City Consumo!');
             });
 
