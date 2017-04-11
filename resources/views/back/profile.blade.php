@@ -364,7 +364,7 @@
                 </div>
             @endif
         @endif
-    @elseif($userprofile->role_id == 1 and (!isset($userprofile->provider->isActive))  
+    @elseif($userprofile->role_id == 1 and !isset($userprofile->provider->isActive)) 
         <div class="div_box_center">
             <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
                 servicios!</a>
