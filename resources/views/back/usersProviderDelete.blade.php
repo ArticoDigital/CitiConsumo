@@ -18,7 +18,9 @@
         @foreach($providers as $provider)
             <tr>
                 <td data-th="Actions" class="row">
-                    <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
+                    <a href="{{route('profile', $provider->user->id)}}">
+                        <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
+                    </a>
                 </td>
 
                 <td data-th="Service" style="width: 100px">

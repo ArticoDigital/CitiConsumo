@@ -7,7 +7,7 @@
     <input type="hidden" value="{{ csrf_token() }}" name="_token" id="token">
     <table class="rwd-table" id="reload">
         <tr class="header-table">
-            <th>Editar</th>
+            <!--<th>Editar</th>-->
             <th>Usuario</th>
             <th>Tipo de servicio</th>
             <th>Precio</th>
@@ -17,9 +17,9 @@
         </tr>
         @foreach($services as $service)
             <tr>
-                <td data-th="Actions" class="row">
+                <!--<td data-th="Actions" class="row">
                     <img class="small-icon-product" src="{{url('img/lapiz-edicion.svg')}}" alt="">
-                </td>
+                </td>-->
 
                 <td class="center"><a target="blank" href="{{route('profile', $service->provider->user->id)}}">{{$service->provider->user->email}}</a></td>
                 <td class="center">{{$service->serviceType->kindServices->name}} - {{$service->serviceType->name}}</td>
