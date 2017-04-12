@@ -91,7 +91,7 @@ class UserController extends Controller
                     $message->to($user->email, $user->name)->subject('¡Felicidades ya tus servicios están en activos en CityConsumo!');
                 });
         } else {
-            $service->update(['isValidate' => 1]);
+            $service->update(['isValidate' => 0]);
             $message = "EL usuario ha sido eliminado.";
             $user = $service->provider->user;
             Mail::send('emails.pieza9',
