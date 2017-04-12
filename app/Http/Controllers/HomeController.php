@@ -83,6 +83,15 @@ class HomeController extends Controller
     });
 
 
+        Mail::send('emails.pieza12',
+        array(
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+        ), function($message) use ($data)
+            {
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                $message->to($data['email'],$data['name'])->subject('Recibimos tu solicitud City Consumo');
+            });
         //$answer = "El mensaje se ha enviado satisfactoriamente";
         return view('front.contact', ['success' => true]);
          //return redirect()->back()->with('success', true);
