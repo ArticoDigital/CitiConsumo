@@ -85,8 +85,8 @@ class HomeController extends Controller
 
         Mail::send('emails.pieza12',
         array(
-            'name' => $user->name,
-            'last_name' => $user->last_name,
+            'name' => $data['name'],
+            'email' => $data['email'],
         ), function($message) use ($data)
             {
                 $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
