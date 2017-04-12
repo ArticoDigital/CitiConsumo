@@ -78,14 +78,17 @@ class AdminController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
+
         $user = auth()->user();
-        
-        if($user->provider->isActive==1){
-        return view('back.uploadFiles');
+        if(!isset($user->provider)){
+            return view('back.uploadFiles');
+        }else{
+            if($user->provider->isActive==1){
+                return view('back.uploadFiles');
+            }
+            
         }
-        else{
-            return redirect()->route('myProfile');
-        }
+        return redirect()->route('myProfile');
 
     }
 
