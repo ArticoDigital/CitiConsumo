@@ -30,7 +30,7 @@
                 </td>
                 <td class="center">{{$service->created_at}}</td>
                 <td class="center">
-                    <a href="#" data-value="0" data-action="{{route('deleteProductProvider', $service->id)}}" class="Admin-updateStateProvider" id="activeProduct">Activar</a>
+                    <a href="#" data-value="0" data-action="{{route('enableProductProvider', $service->id)}}" class="Admin-updateStateProvider" id="activeProduct">Activar</a>
                     <a href="#" data-value="1" data-action="{{route('deleteProductProvider', $service->id)}}" class="Admin-updateStateProvider" id="deleteProduct">Eliminar</a>
                 </td>
             </tr>
