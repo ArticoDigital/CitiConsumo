@@ -75,7 +75,7 @@ class UserController extends Controller
 
         $service = Service::find($id);
         $services = Service::where('isValidate', 0);
-
+        dd($request);
         if (!$request->value) {
             $service->update(['isValidate' => 1, 'isActive' => 1]);
             $message = "EL usuario ha sido activado.";
