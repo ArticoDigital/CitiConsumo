@@ -1934,7 +1934,8 @@ body.getReset #resetpassword label {
   font-size: 0.9375rem;
   font-weight: 500;
   color: #4c4c4c;
-  margin: 0 0.0625rem; }
+  margin: 0 0.0625rem;
+  display: inline-block; }
 
 .InfoServices-infoInclude em {
   font-weight: bold;
