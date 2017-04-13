@@ -196,7 +196,7 @@
                                 {{$service->inmediate_response?'Inmediata':$service->responseType->name}}
                             </span>
                             <p>{{$service->description}}</p>
-                            <a href="" class="ViewMore">+Ver más</a>
+                            <a href="" class ="ViewMore">+Ver más</a>
                             <div class="Platform-price row center middle">
                                 <p>${{$service->price}}
                                     <small>X {{$service->rate_type}}</small>
@@ -213,7 +213,7 @@
                                     <li>M</li>
                                     <li>J</li>
                                     <li>V</li>
-                                    <li>S</li>
+                                    <li>S</li>p
                                     <li>D</li>
                                 </ul>
                                 <time>{{$service->hour1}} - {{$service->hour2}}</time>

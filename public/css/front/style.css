@@ -1623,11 +1623,11 @@ body.getReset #resetpassword label {
   background-image: url("../../img/globo-precio.svg");
   position: absolute;
   background-size: cover;
-  height: 5.3125rem;
+  height: 5rem;
   font-size: 1.125rem;
-  width: 5.3125rem;
+  width: 5rem;
   right: 0;
-  top: -0.8125rem;
+  top: -1.25rem;
   color: white; }
   .Platform-price p {
     font-size: 1.125rem !important;
