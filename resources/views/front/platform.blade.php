@@ -213,7 +213,7 @@
                                     <li>M</li>
                                     <li>J</li>
                                     <li>V</li>
-                                    <li>S</li>p
+                                    <li>S</li>
                                     <li>D</li>
                                 </ul>
                                 <time>{{$service->hour1}} - {{$service->hour2}}</time>
