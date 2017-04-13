@@ -78,11 +78,20 @@ class HomeController extends Controller
             'user_message' => $data['message']
         ), function($message)
     {
-        $message->from('danielrq@gmail.com');
-        $message->to('danielrqo@daasad.com', 'Admin')->subject('Contato de pagina');
+        $message->from('no-reply@cityconsumo.com');
+        $message->to('info@cityconsumo.com', 'Admin')->subject('Contacto de pagina');
     });
 
 
+        Mail::send('emails.pieza12',
+        array(
+            'name' => $data['name'],
+            'email' => $data['email'],
+        ), function($message) use ($data)
+            {
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                $message->to($data['email'],$data['name'])->subject('Recibimos tu solicitud City Consumo');
+            });
         //$answer = "El mensaje se ha enviado satisfactoriamente";
         return view('front.contact', ['success' => true]);
          //return redirect()->back()->with('success', true);

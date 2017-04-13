@@ -204,6 +204,17 @@ class ServiceController extends Controller
 
             $this->moveFiles($inputs, $service);
 
+            Mail::send('emails.pieza7',
+            array(
+                'name' => $user->name,
+                'last_name' => $user->last_name,
+                'service' => $service->serviceType->name,
+            ), function($message) use ($user)
+                {
+                    $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                    $message->to($user->email, $user->name)->subject('¡Has registrado un nuevo servicio!');
+                });
+
             return redirect()->route('addService')->with(['alertTitle' => '¡Servicio creado con éxito!', 'alertText' => 'Cuando se apruebe recibirás un correo de confirmación']);
             $this->ispressed = false;
         }

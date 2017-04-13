@@ -15,6 +15,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
+		
 	<style type="text/css">
 		p{
 			margin:10px 0;
@@ -226,8 +227,8 @@
 	
 		.bodyContainer .mcnTextContent a{
 			color:#006699;
-			font-weight:bold;
-			text-decoration:underline;
+			font-weight:normal;
+			text-decoration:none;
 		}
 	
 		#templateFooter{
@@ -497,8 +498,8 @@
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
-                                    <a href="https://www.cityconsumo.com/registro" title="" class="" target="_blank">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/ac90b117-c1b5-4362-b738-548dbfdf5a64.jpg" width="599.9999771118164" style="max-width:1000px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                    <a href="https://www.cityconsumo.com/" title="" class="" target="_blank">
+                                        <img align="center" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/13811778-bad3-42ac-90e9-409be2a5d3de.jpg" width="599.9999771118164" style="max-width:1000px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     </a>
                                 
                             </td>
@@ -510,8 +511,8 @@
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
     <tbody class="mcnDividerBlockOuter">
         <tr>
-            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 6px 18px;">
-                <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;">
+            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 10px 18px;">
+                <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
                     <tbody><tr>
                         <td>
                             <span></span>
@@ -522,40 +523,6 @@
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
 -->
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="599" style="width:599px;">
-				<![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            <div style="text-align: center;"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:150%"><span style="font-size:25px"><span style="color:#555555">Para restablecer tu contraseña<br>
-de City Consumo</span></span></span></div>
-
-                        </td>
-                    </tr>
-                </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
             </td>
         </tr>
     </tbody>
@@ -594,7 +561,7 @@ de City Consumo</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:40px"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;Haz Clic&nbsp;<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" target="_blank">aquí</a></font></span><strong><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp;</font></span><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;</font></strong></span></div>
+                            <div style="text-align: center;"><span style="font-size:33px"><span style="color:#006699"><strong><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Tu cuenta ha sido deshabilitada</span></font></strong></span></span></div>
 
                         </td>
                     </tr>
@@ -613,7 +580,7 @@ de City Consumo</span></span></span></div>
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
     <tbody class="mcnDividerBlockOuter">
         <tr>
-            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 7px 18px;">
+            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 3px 18px;">
                 <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
                     <tbody><tr>
                         <td>
@@ -645,7 +612,7 @@ de City Consumo</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:16px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699">(Si no&nbsp;solicitaste&nbsp;el restablecimiento, has caso omiso a este mensaje)</span></span></span></div>
+                            <div style="text-align: center;"><a href="mailto:info@cityconsumo.com ?subject=CUENTA%20DESABILITADA%20POR%20ERROR" target="_blank"><span style="font-size:24px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:120%"><span style="color:#555555">Escríbenos si se trata de un error&nbsp;</span></span></span></a></div>
 
                         </td>
                     </tr>
@@ -664,7 +631,58 @@ de City Consumo</span></span></span></div>
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
     <tbody class="mcnDividerBlockOuter">
         <tr>
-            <td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
+            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 10px 18px;">
+                <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
+                    <tbody><tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--            
+                <td class="mcnDividerBlockInner" style="padding: 18px;">
+                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="599" style="width:599px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                            <div style="text-align: center;"><span style="color:#006699"><span style="font-size:17px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:120%">(Recuerda revisar nuestras <strong><a href="https://www.cityconsumo.com/terminos" target="_blank"><u>políticas y condiciones)</u></a></strong></span></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
+    <tbody class="mcnDividerBlockOuter">
+        <tr>
+            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 10px 18px;">
                 <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
                     <tbody><tr>
                         <td>

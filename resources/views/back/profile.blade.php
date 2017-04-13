@@ -283,7 +283,7 @@
                     Servicios ({{count($services)}})  <a href="{{route('addService')}}">  +Agregar servicio</a>@endif </div>
         </div>
         @if(isset($userprofile->provider))
-            @if($userprofile->provider->isActive)
+            @if($userprofile->provider->isActive==1)
                 @if(count($services))
                     <table class="rwd-table" style="margin-bottom: 30px">
                         <tr class="header-table">
@@ -364,11 +364,17 @@
                 </div>
             @endif
         @endif
-    @else
+    @elseif($userprofile->role_id == 1)
+        @if(!isset($userprofile->provider->isActive)) 
         <div class="div_box_center">
             <a class="profile-btn-blue" href="{{route('uploadFiles',$userprofile->id)}}">¡Empieza a ofrecer tus
                 servicios!</a>
         </div>
+         @elseif($userprofile->provider->isActive==0)
+         <div class="div_box_center">
+            No has sido activado aún para ofercer servicios.
+        </div>
+        @endif
         
     @endif
     <section id="ConfirmAlert" class="Alert confirm" style="display: none">

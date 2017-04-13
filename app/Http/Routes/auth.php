@@ -62,6 +62,17 @@ Route::get('auth', function () {
                 $user->role_id = 1;
             }
             $user->save();
+            if(!isset($userEmail)){
+                Mail::send('emails.pieza1',
+                array(
+                    'name' => $user->name,
+                ), function($message) use ($user)
+                    {
+                        $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                        $message->to($user->email, $user->name)->subject('¡Bienvenido, ahora eres parte nuestra familia City Consumo!');
+                    });
+
+            }
 
         });
 
@@ -80,7 +91,7 @@ Route::get('auth', function () {
 
         return redirect()->route('login')->with('errorFacebook', 'errors');
 
-        dd($e);
+        //dd($e);
     }
 
 

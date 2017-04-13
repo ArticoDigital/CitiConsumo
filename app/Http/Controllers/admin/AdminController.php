@@ -14,6 +14,7 @@ use City\Http\Controllers\Controller;
 use City\Entities\Service;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Support\Facades\Mail;
 
 use City\User;
 use City\Entities\Food;
@@ -78,7 +79,17 @@ class AdminController extends Controller
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
-        return view('back.uploadFiles');
+        $user = auth()->user();
+        if(!isset($user->provider)){
+            return view('back.uploadFiles');
+        }else{
+            if($user->provider->isActive==1){
+                return view('back.uploadFiles');
+            }
+            
+        }
+        return redirect()->route('myProfile');
+
     }
 
     public function profile(RoleRequest $request, $id) {
@@ -231,6 +242,16 @@ class AdminController extends Controller
                 }
             }
         }
+
+        Mail::send('emails.pieza4',
+        array(
+            'name' => $user->name,
+            'last_name' => $user->last_name,
+        ), function($message) use ($user)
+            {
+                $message->from('no-reply@cityconsumo.com', "Cityconsumo.com");
+                $message->to($user->email, $user->name)->subject('¡Te has registrado con éxito en Cityconsumo!');
+            });
 
         return redirect()->to('admin')->with(['alertTitle' => '¡Solicitud de registro exitosa!', 'alertText' => 'Una vez aprobado tu perfil, podrás postular tus servicios! recibirás un correo de confirmación!']);
     }

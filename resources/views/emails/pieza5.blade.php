@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 	<head>
@@ -14,6 +13,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		
 	<style type="text/css">
 		p{
@@ -409,7 +409,9 @@
 			line-height:115% !important;
 		}
 
-}</style></head>
+}</style>
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document,AKSB=AKSB||{};AKSB.q=[],AKSB.mark=function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"405167",ustr:"",originlat:"0",clientrtt:"30",ghostip:"181.49.255.39",ipv6:false,pct:"10",clientip:"181.49.221.206",requestid:"1e21dc11",region:"27382",protocol:"h2",blver:12,akM:"x",akN:"ae",akTT:"O",akTX:"1",akTI:"1e21dc11",ai:"343001",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    </head>
 	<body>
         <center>
             <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
@@ -497,8 +499,8 @@
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
-                                    <a href="https://www.cityconsumo.com/registro" title="" class="" target="_blank">
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/ac90b117-c1b5-4362-b738-548dbfdf5a64.jpg" width="599.9999771118164" style="max-width:1000px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                    <a href="https://www.cityconsumo.com/" title="" class="" target="_blank">
+                                        <img align="center" alt="" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/f6e76b8b-1bb2-4893-8114-acf331dc8451.png" width="599.9999771118164" style="max-width:1000px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     </a>
                                 
                             </td>
@@ -542,8 +544,74 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:150%"><span style="font-size:25px"><span style="color:#555555">Para restablecer tu contraseña<br>
-de City Consumo</span></span></span></div>
+                            <div dir="ltr" style="text-align: center;"><span style="color:#006699"><strong><span style="font-size:42px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif; line-height:100%">Felicidades {{$name}} {{$last_name}}</span></span></strong></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="599" style="width:599px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                            <div style="text-align: center;"><br>
+<span style="font-size:25px"><span style="color:#555555"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif">¡Ya eres un City Proveedor!</span></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="599" style="width:599px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                            <div style="text-align: center;"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;Comienza publicando un servicio,&nbsp;</span></font></span><strong><a href="https://www.cityconsumo.com/admin/postular-servicio" target="_blank"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:24px">aquí&nbsp;</span></font></span></a><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif"><span style="border-color:initial; border-image:initial; border-style:initial; font-size:24px"><img align="center" data-file-id="202803" height="43" src="https://gallery.mailchimp.com/def8b2b181392454bfe3d49e2/images/b61e50d1-919c-4be8-b6ec-036be9a101e3.png" style="border-image: initial; width: 45px; height: 43px; margin: 0px;" width="45"></span><span style="font-size:24px">&nbsp; &nbsp; &nbsp; &nbsp;</span></font></strong></div>
 
                         </td>
                     </tr>
@@ -594,58 +662,7 @@ de City Consumo</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:40px"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;Haz Clic&nbsp;<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" target="_blank">aquí</a></font></span><strong><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp;</font></span><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;</font></strong></span></div>
-
-                        </td>
-                    </tr>
-                </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
-    <tbody class="mcnDividerBlockOuter">
-        <tr>
-            <td class="mcnDividerBlockInner" style="min-width: 100%; padding: 7px 18px;">
-                <table class="mcnDividerContent" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-top: 2px solid #FFFFFF;">
-                    <tbody><tr>
-                        <td>
-                            <span></span>
-                        </td>
-                    </tr>
-                </tbody></table>
-<!--            
-                <td class="mcnDividerBlockInner" style="padding: 18px;">
-                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
--->
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="599" style="width:599px;">
-				<![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            <div style="text-align: center;"><span style="font-size:16px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699">(Si no&nbsp;solicitaste&nbsp;el restablecimiento, has caso omiso a este mensaje)</span></span></span></div>
+                            <div style="text-align: center;"><span style="font-size:18px"><span style="font-family:source sans pro,helvetica neue,helvetica,arial,sans-serif"><span style="color:#006699">Recuerda revisar las </span><a href="https://www.cityconsumo.com/terminos" target="_blank"><span style="color:#006699"><strong>políticas y condiciones.</strong></span></a></span></span></div>
 
                         </td>
                     </tr>

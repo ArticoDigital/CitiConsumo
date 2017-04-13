@@ -594,7 +594,7 @@ de City Consumo</span></span></span></div>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <div style="text-align: center;"><span style="font-size:40px"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;Haz Clic&nbsp;<a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" target="_blank">aquí</a></font></span><strong><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp;</font></span><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;</font></strong></span></div>
+                            <div style="text-align: center;"><span style="font-size:40px"><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;Haz Clic&nbsp;<a href="https://www.cityconsumo.com/password/email" target="_blank">aquí</a></font></span><strong><span style="color:#006699"><font face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp;</font></span><font color="#555555" face="source sans pro, helvetica neue, helvetica, arial, sans-serif">&nbsp; &nbsp; &nbsp; &nbsp;</font></strong></span></div>
 
                         </td>
                     </tr>
