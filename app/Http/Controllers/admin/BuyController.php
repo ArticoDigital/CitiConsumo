@@ -69,12 +69,12 @@ class BuyController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
-
         $inputs = $request->all();
         $user = auth()->user();
         $user->update($inputs);
         $inputs["id_pay"] = date('YmdHis') . rand(100, 999);
         $zp = ZonaPagos::create();
+
         $id = $zp->invoiceRequest($inputs);
 
         return redirect()->to("https://www.zonapagos.com/" . env('ZP_ROUTE_CODE') . "/pago.asp?estado_pago=iniciar_pago&identificador=" . $id);

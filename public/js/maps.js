@@ -112,6 +112,7 @@ function showInfoProduct(data) {
             $Price: $('#Price'),
             $RateType: $('#RateType'),
             $ResponseType: $('#ResponseType'),
+            $RateTypeForm: $('#RateTypeForm'),
             $DateI: $('#DateI'),
             $DateF: $('#DateF'),
             $hourI: $('#HourI'),
@@ -132,6 +133,7 @@ function showInfoProduct(data) {
     elements.$LocationService.html(data.provider.user.location)
     elements.$Price.html(data.price)
     elements.$RateType.html('X ' + data.rate_type)
+    elements.$RateTypeForm.html(data.rate_type + ("(s)"))
     elements.$DateI.html(data.date_start)
     elements.$DateF.html(data.date_end)
     elements.$hourI.html(data.hour1)

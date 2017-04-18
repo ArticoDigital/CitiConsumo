@@ -196,7 +196,7 @@
                                 {{$service->inmediate_response?'Inmediata':$service->responseType->name}}
                             </span>
                             <p>{{$service->description}}</p>
-                            <a href="" class ="ViewMore">+Ver más</a>
+                            <a href="" class="ViewMore">+Ver más</a>
                             <div class="Platform-price row center middle">
                                 <p>${{$service->price}}
                                     <small>X {{$service->rate_type}}</small>
@@ -257,7 +257,7 @@
                                             <svg width="28px" height="34px" viewBox="383 333 28 34" version="1.1"
                                                  xmlns="http://www.w3.org/2000/svg"
                                                  xmlns:xlink="http://www.w3.org/1999/xlink">
->
+                                                >
                                                 <desc>Created with Sketch.</desc>
                                                 <defs></defs>
                                                 <g id="certificados" stroke="none" stroke-width="1" fill="none"
@@ -337,7 +337,7 @@
                     <h2 style="text-transform: capitalize">{{trans('general.'.$typeService)}} <span></span></h2>
                 </div>
                 <div class="row end col-7">
-                    <h3 class="col-12 "id="NameService"></h3>
+                    <h3 class="col-12 " id="NameService"></h3>
                     <span id="LocationService"></span>
                 </div>
             </div>
@@ -345,7 +345,7 @@
             <div class="InfoServices-infoInclude" id="InfoServices-infoInclude">
                 <em>Mi servicio incluye:</em>
             </div>
-            <form action="">
+            <div class="Platform-formPay">
                 <div class="price row center middle">
                     <div>
                         <b id="Price"></b>
@@ -353,28 +353,43 @@
                     </div>
                 </div>
                 <div class="Form-content">
-                    <h6>Tiempo de respuesta: <b id="ResponseType"></b></h6>
-                    <label for="" class="row between">
-                        <span>Tiempo:</span>
-                        <select name="" id="">
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                        hora(s)
-                    </label>
-                    <label for="" class="row between">
-                        <span style="margin-right: 32px">Día:</span> <input type="text">
-                    </label>
-                    <button>Solicita Ya</button>
+                    @if(Auth::check())
+                        <form action="{{route('buyAction')}}" method="POST" target="_blank">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="idService" id="idServiceInput" value="">
+                            <h6>Tiempo de respuesta: <b id="ResponseType"></b></h6>
+                            <label for="" class="row ">
+
+                                <select name="quantity" id="Quantity">
+                                    @for( $i=1 ; $i <= 10; $i++)
+                                        <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                                </select>
+                                <span id="RateTypeForm"></span>
+                            </label>
+                            <label for="" class="row ">
+                                <span>Día:</span> <input type="text" id="DataDay" name="day">
+                            </label>
+                            <button>Solicita Ya</button>
+                        </form>
+                    @else
+                        <div class="Form-contentRegister">
+                            <p class="col-12">Para poder adquirir un servicio debes estar registrado, si ya tienes una
+                                cuenta, por favor inicia sesion</p>
+                            <div class="row center middle Form-contentRegisterLink">
+                                <a href="{{url('/').'/registro'}}">Ingresar</a>
+                                <a href="{{url('/').'/login'}}">Registrarse</a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-            </form>
+            </div>
 
             <ul class="row Info-available middle">
                 <li class="col-4">
                     <p>Disponibilidad:</p>
                     <div id="Date">
-                    <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                        <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
                     </div>
                 </li>
                 <li class="col-4 ">
@@ -386,7 +401,9 @@
             </ul>
             <ul class="row center Availability-additional center">
                 <li class="experience ">
-                    <div class="row center middle"><em>+</em><aside id="ModalExperience" >5</aside></div>
+                    <div class="row center middle"><em>+</em>
+                        <aside id="ModalExperience">5</aside>
+                    </div>
                     <span><aside id="ModalExperienceName"></aside> años de experiencia</span>
                 </li>
                 <li class="data-check">
@@ -471,7 +488,7 @@
                     </svg>
                     <span>40-80 lbs</span>
                 </li>
-                <li  class="size-5">
+                <li class="size-5">
                     <svg width="45px" height="42px" viewBox="0 0 45 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
@@ -661,6 +678,7 @@
 
 <link rel="stylesheet" href="{{asset('css/select2.css')}}">
 <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
@@ -668,6 +686,7 @@
 <script src="{{asset('js/owl-carousel/owl.carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
         defer></script>
 <script>
@@ -680,7 +699,8 @@
     $('#PayForm .close').on('click', function () {
         $('#PayForm').removeClass('show');
     });
-
+    $('#DataDay').datepicker();
+    $.datepicker.setDefaults($.datepicker.regional['es']);
 
 </script>
 <!-- Smartsupp Live Chat script -->
@@ -708,7 +728,44 @@
             $(this).find("li:nth-of-type(" + daysArray[i] + ")").addClass('active')
         }
     });
+    /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
+    /* Traducido por Vester (xvester@gmail.com). */
+    ( function (factory) {
+        if (typeof define === "function" && define.amd) {
 
+            // AMD. Register as an anonymous module.
+            define(["../widgets/datepicker"], factory);
+        } else {
+
+            // Browser globals
+            factory(jQuery.datepicker);
+        }
+    }(function (datepicker) {
+
+        datepicker.regional.es = {
+            closeText: "Cerrar",
+            prevText: "&#x3C;Ant",
+            nextText: "Sig&#x3E;",
+            currentText: "Hoy",
+            monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio",
+                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+            monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun",
+                "jul", "ago", "sep", "oct", "nov", "dic"],
+            dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+            dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+            dayNamesMin: ["D", "L", "M", "Mi", "J", "V", "S"],
+            weekHeader: "Sm",
+            dateFormat: "dd/mm/yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        };
+        datepicker.setDefaults(datepicker.regional.es);
+
+        return datepicker.regional.es;
+
+    }) );
 </script>
 </body>
 </html>

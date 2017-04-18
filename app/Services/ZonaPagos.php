@@ -1,9 +1,11 @@
 <?php
 
 namespace City\Services;
+use City\Entities\Service;
 use City\User;
 use GuzzleHttp\Client;
 use City\Entities\Buy;
+use Illuminate\Support\Facades\Auth;
 
 class ZonaPagos {
 
@@ -49,6 +51,8 @@ class ZonaPagos {
     /** Retorna el id del pago **/
 
     public function invoiceRequest($inputs){
+
+        $service = Service::find($inputs['idService']);
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
         $user = auth()->user();
         $data = [
@@ -56,16 +60,16 @@ class ZonaPagos {
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
-                "total_con_iva"  => $inputs['value'],
+                "total_con_iva"  => str_replace(".","",$service->price)  * $inputs["quantity"],
                 "valor_iva" => 0,
                 "email" => $user->email,
                 "id_pago" => $inputs["id_pay"],
-                "id_cliente" => $inputs["user_identification"],
-                "tipo_id" => $inputs["dni_type"],
-                "nombre_cliente" => $inputs["name"],
-                "apellido_cliente" => $inputs["last_name"],
-                "descripcion_pago" => $this->cut_text($inputs["description"]),
-                "telefono_cliente" => $inputs["cellphone"],
+                "id_cliente" => $user->user_identification,
+                "tipo_id" => 'cedula',
+                "nombre_cliente" => $user->name,
+                "apellido_cliente" => $user->last_name,
+                "descripcion_pago" => $this->cut_text($service->description),
+                "telefono_cliente" => $user->cellphone,
                 "info_opcional1" => $inputs["idService"],
                 "info_opcional2" => $inputs["quantity"],
                 "info_opcional3" => $user->id,
