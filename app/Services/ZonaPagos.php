@@ -45,7 +45,7 @@ class ZonaPagos {
                 'str_id_pago' => $payId,
             ]
         ];
-
+        dd($data);
         $response = $this->client->get($url, $data);
         dd($response);
         return $response->getBody()->getContents();
