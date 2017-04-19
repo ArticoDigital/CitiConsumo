@@ -723,7 +723,7 @@ $('#showBuyForm').on('click', function () {
     $('#PayForm .close').on('click', function () {
         $('#PayForm').removeClass('show');
     });
-    $('#DataDay').datepicker();
+    $('#DataDay').datepicker({dateFormat: 'yy-mm-dd' });
     $.datepicker.setDefaults($.datepicker.regional['es']);
 
 </script>

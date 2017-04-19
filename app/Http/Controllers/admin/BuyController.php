@@ -115,6 +115,7 @@ class BuyController extends Controller
             'date_service' =>  $inputs['day'],
         ]);
 
+
         $zp = ZonaPagos::create();
 
         $id = $zp->invoiceRequest($inputs);
