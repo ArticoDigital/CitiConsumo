@@ -15,23 +15,25 @@ use Illuminate\Support\Facades\Auth;
 
 class BuyController extends Controller
 {
-    public function outlayList(RoleRequest $request){
-        if($request->isNotAuthorized())
+    public function outlayList(RoleRequest $request)
+    {
+        if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
-        
+
         $outlays = Outlay::with(['provider'])->where('isPayed', 0)->get();
         return view('back.outlay', compact('outlays'));
     }
 
-    public function insertOutlay(RoleRequest $request){
+    public function insertOutlay(RoleRequest $request)
+    {
 
-        if($request->isNotAuthorized())
+        if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
-        
+
         $inputs = $request->all();
-        foreach (explode(',', $inputs['buys_id']) as $buy_id){
+        foreach (explode(',', $inputs['buys_id']) as $buy_id) {
             $buy = Buy::find($buy_id);
-            if(isset($buy))
+            if (isset($buy))
                 $buy->update(['state_id' => 2]);
         }
 
@@ -45,15 +47,16 @@ class BuyController extends Controller
         return redirect()->route('myProfile')->with(['alertTitle' => '¡Solicitud de desembolso!', 'alertText' => 'La solicitud de desembolso ha sido exitosa. Te informaremos cuando el monto solicitado sea consignado a tu cuenta.']);
     }
 
-    public function updateOutlateState(RoleRequest $request, $id){
-        
-        if($request->isNotAuthorized())
+    public function updateOutlateState(RoleRequest $request, $id)
+    {
+
+        if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
 
         $outlay = Outlay::find($id);
         $idBuys = explode(',', $outlay->buys_id);
-        foreach ($idBuys as $idBuy){
-            if($buy = Buy::find($idBuy))
+        foreach ($idBuys as $idBuy) {
+            if ($buy = Buy::find($idBuy))
                 $buy->update(['state_id' => 3]);
         }
 
@@ -65,14 +68,15 @@ class BuyController extends Controller
         return ['message' => 'El desembolso ha sido exitoso.'];
     }
 
-    public function buyAction(RoleRequest $request){
+    public function buyAction(RoleRequest $request)
+    {
 
-        if($request->isNotAuthorized())
+        if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
         $user = Auth::user();
-        if(empty($user->user_identification) ){
+        if (empty($user->user_identification)) {
             return redirect()->back()
-                ->withErrors(['identification'=>''])
+                ->withErrors(['identification' => ''])
                 ->withInput();
         }
         $inputs = $request->all();
@@ -84,20 +88,31 @@ class BuyController extends Controller
         })->count()
         ) {
             return redirect()->back()
-                ->withErrors(['pending'=>'Tiene una compra pendiente, por favor espere que nuestro sistema valide el pago, esto puede tardar algunos minutos'])
+                ->withErrors(['pending' => 'Tiene una compra pendiente, por favor espere que nuestro sistema valide el pago, esto puede tardar algunos minutos'])
                 ->withInput();
         }
 
         $service = Service::find($inputs['idService']);
         $inputs["description"] = $service->description;
-        $inputs["price"] = $service->price;
+        $inputs["price"] =  str_replace(".","",$service->price)  ;
+        $user = auth()->user();
+        $inputs["email"] = $user->email;
+        $inputs["user_identification"] = $user->user_identification;
+        $inputs["nombre_cliente"] = $user->name;
+        $inputs["last_name"] = $user->last_name;
+        $inputs["cellphone"] = $user->cellphone;
+        $inputs["idUser"] = $user->id;
 
         $inputs["id_pay"] = date('YmdHis') . rand(100, 999);
+
         Buy::create([
-            'zp_state'=>'-1',
-            'zp_pay_id'=>$inputs["id_pay"],
-            'value'=>$inputs["price"],
-            'products_quantity'=>$inputs["quantity"]
+            'zp_state' => '-1',
+            'zp_pay_id' => $inputs["id_pay"],
+            'value' => $inputs["price"],
+            'products_quantity' => $inputs["quantity"],
+            'user_id' =>  $inputs["idUser"],
+            'service_id' =>  $inputs['idService'],
+            'date_service' =>  $inputs['day'],
         ]);
 
         $zp = ZonaPagos::create();
@@ -105,21 +120,22 @@ class BuyController extends Controller
         $id = $zp->invoiceRequest($inputs);
         return redirect()->to("https://www.zonapagos.com/" . env('ZP_ROUTE_CODE') . "/pago.asp?estado_pago=iniciar_pago&identificador=" . $id);
 
-/*        Buy::create([
-            'service_id' => $inputs['idService'],
-            'products_quantity' => $inputs['quantity'],
-            /* para el registro del desembolso */
-    /*        'state_id' => 1,
-            'value' => $inputs['value'],
-            'user_id' => Auth::user()->id
-        ]);*/
-        
+        /*        Buy::create([
+                    'service_id' => $inputs['idService'],
+                    'products_quantity' => $inputs['quantity'],
+                    /* para el registro del desembolso */
+        /*        'state_id' => 1,
+                'value' => $inputs['value'],
+                'user_id' => Auth::user()->id
+            ]);*/
+
 
         /*return redirect()->to('admin')->with(['alertTitle' => 'Compra exitosa', 'alertText' => 'Felicitaciones su compra se ha realizado con éxito']);*/
     }
 
-    public function tradeList(){
-        if(auth()->user()->provider){
+    public function tradeList()
+    {
+        if (auth()->user()->provider) {
             $buys = Buy::where('user_id', auth()->user()->id)->get();
             $services = Service::with('buys')->where('provider_id', auth()->user()->provider->id)->get();
             return view('back.tradeList', compact('buys', 'services'));

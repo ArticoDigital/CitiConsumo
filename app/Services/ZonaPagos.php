@@ -54,25 +54,25 @@ class ZonaPagos {
 
 
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
-        $user = auth()->user();
+
         $data = [
             'form_params' => [
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
-                "total_con_iva"  => str_replace(".","",$inputs["price"])  * $inputs["quantity"],
+                "total_con_iva"  => $inputs["price"]  * $inputs["quantity"],
                 "valor_iva" => 0,
-                "email" => $user->email,
+                "email" => $inputs["email"],
                 "id_pago" => $inputs["id_pay"],
-                "id_cliente" => $user->user_identification,
+                "id_cliente" => $inputs["user_identification"],
                 "tipo_id" => 'cedula',
-                "nombre_cliente" => $user->name,
-                "apellido_cliente" => $user->last_name,
+                "nombre_cliente" => $inputs["nombre_cliente"],
+                "apellido_cliente" => $inputs["last_name"],
                 "descripcion_pago" => $this->cut_text($inputs["description"]),
-                "telefono_cliente" => $user->cellphone,
+                "telefono_cliente" => $inputs["cellphone"],
                 "info_opcional1" => $inputs["idService"],
                 "info_opcional2" => $inputs["quantity"],
-                "info_opcional3" => $user->id,
+                "info_opcional3" => $inputs["idUser"] ,
                 "lista_codigos_servicio_multicredito" => "",
                 "lista_nit_codigos_servicio_multicredito" => "",
                 "lista_valores_con_iva" => "",
@@ -86,16 +86,20 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-        Buy::create([
-            'user_id' => $inputs['campo3'],
-            'service_id' => $inputs['campo1'],
-            'products_quantity' => $inputs['campo2'],
-            'value' => $inputs['valor_pagado'],
-            'zp_pay_id' => $inputs['id_pago'],
-            'zp_state' => $inputs['detalle_estado'],
-            'zp_form_pay' => $inputs['id_forma_pago'],
-            'zp_ticket_id' => $inputs['ticketID'],
+
+
+        $Buy = Buy::where('zp_buy_id', $inputs['20170418222548545'])->first();
+        $verifiedData = json_decode($this->checkPay($inputs['id_pago']));
+        $Buy->update([
+            'zp_ticket_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
+            'zp_state' => $verifiedData->res_pagos_v3[0]->int_estado_pago,
+            'bank' => $verifiedData->res_pagos_v3[0]->str_nombre_banco,
+            'transaction_code' => $verifiedData->res_pagos_v3[0]->str_codigo_transaccion,
+            'zp_form_pay' => $verifiedData->res_pagos_v3[0]->int_id_forma_pago,
+            'date_pay' => $verifiedData->res_pagos_v3[0]->dat_fecha,
+            'zp_ticket_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
         ]);
+
         /*
          * array:17 [▼
               "id_pago" => "20161119211935352"
