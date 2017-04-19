@@ -39,14 +39,13 @@ class ZonaPagos {
     {
         $url = 'https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3';
         $data = [
-            'body' => [
+            'form_params' => [
                 'str_id_clave' => $this->key,
                 'int_id_tienda' => $this->shop,
                 'str_id_pago' => $payId,
             ]
         ];
-        dd($data);
-        $response = $this->client->get($url, $data);
+        $response = $this->client->post($url, $data);
         dd($response);
         return $response->getBody()->getContents();
     }
