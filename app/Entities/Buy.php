@@ -10,7 +10,8 @@ class Buy extends Model
     protected $fillable = [
         'state_id', 'user_id', 'service_id',
         'products_quantity', 'zp_ticket_id',
-        'zp_form_pay', 'zp_state', 'zp_pay_id', 'value'
+        'zp_form_pay', 'zp_state', 'zp_pay_id', 'value', 'products_quantity' , 'date_service','bank',
+        'transaction_code','state_detail','date_service'
     ];
 
     public function service(){

@@ -35,7 +35,8 @@ class ZonaPagos {
 
     /** Retorna los datos y estado del pago **/
 
-    public function checkPay($payId){
+    public function checkPay($payId)
+    {
         $url = 'https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3';
         $data = [
             'body' => [
@@ -47,7 +48,6 @@ class ZonaPagos {
         $response = $this->client->post($url, $data);
         return $response->getBody()->getContents();
     }
-
     /** Retorna el id del pago **/
 
     public function invoiceRequest($inputs){
