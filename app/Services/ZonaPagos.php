@@ -90,7 +90,6 @@ class ZonaPagos {
 
 
         $verifiedData = json_decode($this->checkPay($inputs['id_pago']));
-        dd($verifiedData);
         $Buy = Buy::where('zp_pay_id', $inputs['id_pago'])->first();
         $Buy->update([
             'zp_ticket_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
