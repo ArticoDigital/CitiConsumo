@@ -88,8 +88,9 @@ class ZonaPagos {
     public function insertPayResult($inputs){
 
 
-        $Buy = Buy::where('zp_buy_id', $inputs['20170418222548545'])->first();
+
         $verifiedData = json_decode($this->checkPay($inputs['id_pago']));
+        $Buy = Buy::where('zp_buy_id', $inputs['id_pago'])->first();
         $Buy->update([
             'zp_ticket_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
             'zp_state' => $verifiedData->res_pagos_v3[0]->int_estado_pago,
