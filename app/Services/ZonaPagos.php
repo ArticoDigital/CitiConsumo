@@ -46,7 +46,6 @@ class ZonaPagos {
             ]
         ];
         $response = $this->client->post($url, $data);
-        dd($response->getBody()->getContents());
         return $response->getBody()->getContents();
     }
     /** Retorna el id del pago **/
