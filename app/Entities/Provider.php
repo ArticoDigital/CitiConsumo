@@ -27,7 +27,7 @@ class Provider extends Model
 
         static::deleting(function($provider) { // before delete() method call this
             $provider->providerFiles()->delete();
-            $provider->service()->delete();
+            //$provider->service()->delete();
             // do the rest of the cleanup...
         });
     }
