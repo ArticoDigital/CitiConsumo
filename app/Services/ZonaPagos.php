@@ -93,7 +93,7 @@ class ZonaPagos {
             'zp_state' => $inputs['estado_pago'],
             'bank' => $inputs['nombre_banco'],
             'transaction_code' => $inputs['codigo_transaccion'],
-            'zp_form_pay' => $inputs['4'],
+            'zp_form_pay' => $inputs['id_forma_pago'],
         ]);
 
         /*
