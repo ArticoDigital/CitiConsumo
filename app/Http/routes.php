@@ -16,3 +16,8 @@ Route::get('mail',function(){
 
     });
 });
+Route::get('consulta/{id}', function($id){
+    $zp = ZonaPagos::create();
+    dd($zp->checkPay($id));
+});
+
