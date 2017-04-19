@@ -156,9 +156,12 @@ class UserController extends Controller
             return redirect()->route('myProfile');
 
         $provider = Provider::find($request->input('idUser'));
-        $provider->isActive = 0; //0
-        $provider->save();
         $user = $provider->user;
+        //$provider->isActive = 0; //0
+        //$provider->save();
+        //$provider->providerFiles()->delete();
+        $provider->delete();
+        
 
         Mail::send('emails.pieza6',
         array(
