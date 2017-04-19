@@ -46,7 +46,7 @@ class ZonaPagos {
             ]
         ];
 
-        $response = $this->client->post($url, $data);
+        $response = $this->client->get($url, $data);
         dd($response);
         return $response->getBody()->getContents();
     }
