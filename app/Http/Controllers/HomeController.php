@@ -114,6 +114,7 @@ class HomeController extends Controller
 
     public function finalPay(Request $request){
         $zp = ZonaPagos::create();
+        dd($request);
         $zp->insertPayResult($request->all());
     }
 

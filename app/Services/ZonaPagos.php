@@ -52,7 +52,7 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
 
-        $service = Service::find($inputs['idService']);
+
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
         $user = auth()->user();
         $data = [
@@ -60,7 +60,7 @@ class ZonaPagos {
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
-                "total_con_iva"  => str_replace(".","",$service->price)  * $inputs["quantity"],
+                "total_con_iva"  => str_replace(".","",$inputs["price"])  * $inputs["quantity"],
                 "valor_iva" => 0,
                 "email" => $user->email,
                 "id_pago" => $inputs["id_pay"],
@@ -68,7 +68,7 @@ class ZonaPagos {
                 "tipo_id" => 'cedula',
                 "nombre_cliente" => $user->name,
                 "apellido_cliente" => $user->last_name,
-                "descripcion_pago" => $this->cut_text($service->description),
+                "descripcion_pago" => $this->cut_text($inputs["description"]),
                 "telefono_cliente" => $user->cellphone,
                 "info_opcional1" => $inputs["idService"],
                 "info_opcional2" => $inputs["quantity"],

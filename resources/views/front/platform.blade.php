@@ -12,7 +12,7 @@
 
     @yield('styles')
 </head>
-<body class="Platform">
+<body class="Platform" data-url="{{url('admin')}}">
 <div id="Map"
      data-typeService="{{$typeService}}"
      data-image="{{asset('img/' . $icon)}}"
@@ -159,6 +159,7 @@
             </div>
         </div>
     </div>
+
     <section class="Platform-productContent">
         @if(count($services))
             @foreach($services as $service)
@@ -354,7 +355,7 @@
                 </div>
                 <div class="Form-content">
                     @if(Auth::check())
-                        <form action="{{route('buyAction')}}" method="POST" target="_blank">
+                        <form action="{{route('buyAction')}}" method="POST" >
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <input type="hidden" name="idService" id="idServiceInput" value="">
                             <h6>Tiempo de respuesta: <b id="ResponseType"></b></h6>
@@ -676,11 +677,14 @@
     </div>
 </aside>
 
+
 <link rel="stylesheet" href="{{asset('css/select2.css')}}">
 <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.0/sweetalert2.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/sweetalert2/6.6.0/sweetalert2.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/maps.js')}}"></script>
 <script src="{{asset('js/owl-carousel/owl.carousel.js')}}"></script>
@@ -690,9 +694,29 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
         defer></script>
 <script>
+    @if (count($errors) > 0)
 
+  @if($str = $errors->get('identification'))
+  swal({
+        title: 'Oops...',
+        type: 'error',
+        html:
+        'No tenemos el número de identificación, por favor ve a tu ' +
+        '<b><a href="' + $('body').data('url')  +'">perfil</a> </b> ' +
+        'y actualiza tus datos para  realizar la compra ',
 
-    $('#showBuyForm').on('click', function () {
+    })
+
+  @else
+   swal(
+        'Oops...',
+        '{{$errors->all()['identification']}}',
+        'error'
+    )
+  @endif
+  @endif
+
+$('#showBuyForm').on('click', function () {
         $('#PayForm').addClass('show');
     });
 

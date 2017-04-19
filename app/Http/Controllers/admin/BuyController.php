@@ -69,14 +69,40 @@ class BuyController extends Controller
 
         if($request->isNotAuthorized())
             return redirect()->route('myProfile');
+        $user = Auth::user();
+        if(empty($user->user_identification) ){
+            return redirect()->back()
+                ->withErrors(['identification'=>''])
+                ->withInput();
+        }
         $inputs = $request->all();
         $user = auth()->user();
         $user->update($inputs);
+
+        if ($user->whereHas('buys', function ($q) {
+            $q->where('zp_state', '999')->orWhere('zp_state', '888');
+        })->count()
+        ) {
+            return redirect()->back()
+                ->withErrors(['pending'=>'Tiene una compra pendiente, por favor espere que nuestro sistema valide el pago, esto puede tardar algunos minutos'])
+                ->withInput();
+        }
+
+        $service = Service::find($inputs['idService']);
+        $inputs["description"] = $service->description;
+        $inputs["price"] = $service->price;
+
         $inputs["id_pay"] = date('YmdHis') . rand(100, 999);
+        Buy::create([
+            'zp_state'=>'-1',
+            'zp_pay_id'=>$inputs["id_pay"],
+            'value'=>$inputs["price"],
+            'products_quantity'=>$inputs["quantity"]
+        ]);
+
         $zp = ZonaPagos::create();
 
         $id = $zp->invoiceRequest($inputs);
-
         return redirect()->to("https://www.zonapagos.com/" . env('ZP_ROUTE_CODE') . "/pago.asp?estado_pago=iniciar_pago&identificador=" . $id);
 
 /*        Buy::create([
