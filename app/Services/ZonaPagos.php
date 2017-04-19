@@ -87,19 +87,13 @@ class ZonaPagos {
 
     public function insertPayResult($inputs){
 
-
-
-        $verifiedData = json_decode($this->checkPay($inputs['id_pago']));
-        dd($verifiedData);
         $Buy = Buy::where('zp_pay_id', $inputs['id_pago'])->first();
         $Buy->update([
-            'zp_ticket_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
-            'zp_state' => $verifiedData->res_pagos_v3[0]->int_estado_pago,
-            'bank' => $verifiedData->res_pagos_v3[0]->str_nombre_banco,
-            'transaction_code' => $verifiedData->res_pagos_v3[0]->str_codigo_transaccion,
-            'zp_form_pay' => $verifiedData->res_pagos_v3[0]->int_id_forma_pago,
-            'date_pay' => $verifiedData->res_pagos_v3[0]->dat_fecha,
-            'zp_ticket_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
+            'zp_ticket_id' => $inputs['ticketID'],
+            'zp_state' => $inputs['estado_pago'],
+            'bank' => $inputs['nombre_banco'],
+            'transaction_code' => $inputs['1253647'],
+            'zp_form_pay' => $inputs['4'],
         ]);
 
         /*
