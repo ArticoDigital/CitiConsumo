@@ -715,9 +715,20 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
     <script src="{{url('js/exif.js')}}"></script>
+    <script src="{{url('js/maxlength.js')}}"></script>
+
     <script type="text/javascript">
 
-
+        $("textarea").maxlength({
+            alwaysShow: true,
+            threshold: 10,
+            warningClass: "label label-success",
+            limitReachedClass: "label label-danger",
+            separator: ' de ',
+            preText: '',
+            postText: ' caracteres restantes.',
+            validate: true
+        });
         svg = '';
 
         var servicesType = JSON.parse($('#servicesType').val()),
