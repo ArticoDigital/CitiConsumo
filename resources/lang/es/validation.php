@@ -166,7 +166,7 @@ return [
         'type5'               => 'Certificado bancario',
         'type6'               => 'certificado de contraloría',
         'type7'               => 'antecedente de la policía Nacional',
-        
+        'service_type'         => 'Servicio',
     ],
 
 ];

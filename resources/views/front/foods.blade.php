@@ -52,7 +52,7 @@
         </label>
         <label for="food_type" class="col-4 small-12 medium-4 Form-Control small center">
             <span class="icon"><img src="{{asset('img/icons/food.svg')}}" alt="food"></span>
-            <span style="height:42px" class="name">Tipo de Comida</span>
+            <span style="height:42px" class="name">Servicio</span>
             <select class="js-example-basic-multiple" id="food_type" name="service_type[]" multiple>
                 @foreach($foods as $food)
                     <option value="{{$food->id}}">{{$food->name}}</option>

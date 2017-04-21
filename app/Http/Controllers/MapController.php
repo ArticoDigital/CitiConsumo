@@ -25,6 +25,7 @@ class MapController extends Controller
         $icon =  $this->icon($typeService);
         $nDays = null;
         if($service == 'mascotas'){
+
             $date = explode('-', $request->get('date'));
             $nDays = $this->getNumberDays($date[0],  $date[1]);
         }
@@ -157,21 +158,21 @@ class MapController extends Controller
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                //'size' => 'required'
+                'service_type' => 'required'
             ];
         } else if ($service == 'comidas') {
             $rules = [
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                //'food_type' => 'required'
+                'service_type' => 'required'
             ];
         } else {
             $rules = [
                 'lat' => 'required',
                 'lng' => 'required',
                 'date' => 'required',
-                //'service' => 'required'
+                'service_type' => 'required'
             ];
         }
 
