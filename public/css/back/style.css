@@ -1998,6 +1998,8 @@ main.MainBack {
   .profile-item p {
     width: 100%;
     color: #e14220; }
+  .profile-item .error {
+    color: #ff312f; }
 
 .profile-data {
   color: #6C6C6F; }
