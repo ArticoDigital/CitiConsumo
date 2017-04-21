@@ -45,7 +45,7 @@
                     </g>
                 </svg>
             </span>
-            <input id="autocomplete" name="place" type="text" placeholder="Lugar" value="{{old('place')}}">
+            <input id="autocomplete" name="place" type="text" placeholder="¿Dónde estoy?" value="{{old('place')}}">
             <input class="field" id="lat" name="lat" type="hidden" value="{{old('lat')}}">
             <input class="field" id="lng" name="lng" type="hidden" value="{{old('lng')}}">
             <input class="field" id="typeService" name="typeService" type="hidden" value="food">
@@ -96,15 +96,13 @@
 @section('scripts')
     <script src="{{asset('js/select2.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
         $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');
-        $date.daterangepicker(getConfig('multiple'));
-        $date.on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
+        $date.datepicker({dateFormat: 'yy-mm-dd' });
 
         var video = document.getElementById("videoCorp");
 
@@ -129,4 +127,5 @@
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection

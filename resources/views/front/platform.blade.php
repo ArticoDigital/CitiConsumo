@@ -162,6 +162,7 @@
 
     <section class="Platform-productContent">
         @if(count($services))
+
             @foreach($services as $service)
 
                 <article onclick="showInfoProduct({{$service}})" class="row top center Platform-productSection middle"
@@ -350,6 +351,7 @@
                 <div class="price row center middle">
                     <div>
                         <b id="Price"></b>
+                        <input type="hidden" id="PriceFixed">
                         <span id="RateType"></span>
                     </div>
                 </div>
@@ -361,7 +363,7 @@
                             <h6>Tiempo de respuesta: <b id="ResponseType"></b></h6>
                             <label for="" class="row ">
 
-                                <select name="quantity" id="Quantity">
+                                <select name="quantity" id="quantity">
                                     @for( $i=1 ; $i <= 10; $i++)
                                         <option value="{{$i}}">{{$i}}</option>
                                     @endfor
@@ -689,7 +691,7 @@
 <script src="{{asset('js/maps.js')}}"></script>
 <script src="{{asset('js/owl-carousel/owl.carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&callback=initMap" async
         defer></script>

@@ -78,7 +78,7 @@ function succesfull(pos) {
 
     }
 }
-$('.ViewMore').on('click',function (e) {
+$('.ViewMore').on('click', function (e) {
     e.preventDefault();
 });
 $('.InfoServices-close').on('click', function () {
@@ -89,10 +89,11 @@ $('.InfoServices-close').on('click', function () {
 });
 
 $('#quantity').on('change', function () {
-    var quantity = $(this).val() ? $(this).val() : 1;
-    var total = quantity * $('#valueServiceInput').val();
-    $('#valueService').text('$' + thousand(total));
-    $('#valueTotal').val(total);
+    var total = Math.ceil($(this).val() * $('#PriceFixed').text().replace('.', '')).toString()
+        .replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+    $('#Price').html('$' + total);
+    $('#RateType').html('Total');
+
 });
 
 function showInfoProduct(data) {
@@ -110,6 +111,7 @@ function showInfoProduct(data) {
             $LocationService: $('#LocationService'),
             $InfoServices: $('#InfoServices-infoInclude'),
             $Price: $('#Price'),
+            $PriceFixed: $('#PriceFixed'),
             $RateType: $('#RateType'),
             $ResponseType: $('#ResponseType'),
             $RateTypeForm: $('#RateTypeForm'),
@@ -132,6 +134,7 @@ function showInfoProduct(data) {
     elements.$nameService.html(data.provider.user.name + ' ' + data.provider.user.last_name);
     elements.$LocationService.html(data.provider.user.location)
     elements.$Price.html(data.price)
+    elements.$PriceFixed.html(data.price)
     elements.$RateType.html('X ' + data.rate_type)
     elements.$RateTypeForm.html(data.rate_type + ("(s)"))
     elements.$DateI.html(data.date_start)
@@ -146,7 +149,7 @@ function showInfoProduct(data) {
 
     if (data.service_files.length > 0) {
         elements.$certifications.show();
-    }else{
+    } else {
         elements.$certifications.hide();
     }
 
@@ -156,16 +159,16 @@ function showInfoProduct(data) {
         $('#Date').find("span:nth-of-type(" + daysArray[i] + ")").addClass('active')
     }
     $('#Pets li').hide();
-    for (var i = 0; i < sizes.length ; i++) {
+    for (var i = 0; i < sizes.length; i++) {
         $('#Pets .size-' + sizes[i].id).show();
         console.log(sizes[i].id)
     }
     $('.pets-data').hide()
-    if(data.pet.puppy) $('.puppy').show()
-    if(data.pet.adult) $('.adult').show()
-    if(data.pet.elderly) $('.elderly').show()
-    if(data.pet.smoke_free) $('.smoke_free').show()
-    if(data.pet.home_service) $('.home_service').show()
+    if (data.pet.puppy) $('.puppy').show()
+    if (data.pet.adult) $('.adult').show()
+    if (data.pet.elderly) $('.elderly').show()
+    if (data.pet.smoke_free) $('.smoke_free').show()
+    if (data.pet.home_service) $('.home_service').show()
 
     console.log(data)
     elements.$InfoServices.find('span').remove();
@@ -176,13 +179,18 @@ function showInfoProduct(data) {
     )
     $("#owl-carousel").html('');
     var content = "";
+
     data.service_files.forEach(function (item, index) {
-                var img = $("#owl-carousel").data('url') + '/uploads/products/'+item.name;
-                var alt = item.name;
-                content += " <figure class='col-12 small-12 ' style='margin: 0;'>" +
-                     "<img src=\"" +img+ "\" alt=\"" +alt+ "\">" +
-                    "</figure>"
-        console.log('fd')
+
+        if (item.kind_file == 'imagen') {
+            var img = $("#owl-carousel").data('url') + '/uploads/products/' + item.name;
+            var alt = item.name;
+            content += " <figure class='col-12 small-12 ' style='margin: 0;'>" +
+                "<img src=\"" + img + "\" alt=\"" + alt + "\">" +
+                "</figure>"
+        }
+
+
     });
     $("#owl-carousel").html(content);
 
@@ -206,10 +214,10 @@ function showInfoProduct(data) {
 
 
     /*foreach($service->serviceFiles as $file)
-    <figure class='col-12 small-12 ' style='margin: 0;'>
-        <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
-        </figure>
-                        @endforeach*/
+     <figure class='col-12 small-12 ' style='margin: 0;'>
+     <img src="{{asset('uploads/products/'.$file->name)}}" alt="">
+     </figure>
+     @endforeach*/
 
 
     elements.$availableService.html();
