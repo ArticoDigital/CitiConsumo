@@ -61,7 +61,7 @@
                             <input class="col-7 small-7" name="name" id="name" value="{{$userprofile->name}}"
                                    type="text">
                         @endif
-                        <span>{!!  $errors->first('name', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('name', ':message')  !!}</span>
                     </label>
                 </div>
                 <div class="profile-item">
@@ -74,7 +74,7 @@
                             <input class="col-7 small-7" name="last_name" value="{{ $userprofile->last_name}}"
                                    id="last_name" type="text">
                         @endif
-                        <span>{!!  $errors->first('last_name', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('last_name', ':message')  !!}</span>
                     </label>
                 </div>
                 <div class="profile-item">
@@ -87,7 +87,7 @@
                             <input class="col-7 small-7" name="user_identification"
                                    value="{{ $userprofile->user_identification}}" type="text">
                         @endif
-                        <span>{!!  $errors->first('user_identification', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('user_identification', ':message')  !!}</span>
                     </label>
                 </div>
 
@@ -100,7 +100,7 @@
                             <input class="col-7 small-7" name="email" value="{{ $userprofile->email}}" id="email"
                                    type="text">
                         @endif
-                        <span>{!!  $errors->first('email', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('email', ':message')  !!}</span>
                     </label>
                 </div>
 
@@ -114,7 +114,7 @@
                             <input class="col-7 small-7" name="birthday" alt="calendar"
                                    value="{{$userprofile->birthday}}" readonly="true" id="birthday" type="text">
                         @endif
-                        <span>{!!  $errors->first('created_at', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('created_at', ':message')  !!}</span>
                     </label>
 
                 </div>
@@ -130,7 +130,7 @@
                         @endif
                         <input class="field" id="lat" name="lat" type="hidden">
                         <input class="field" id="lng" name="lng" type="hidden">
-                        <span>{!!  $errors->first('location', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('location', ':message')  !!}</span>
                     </label>
                 </div>
 
@@ -144,7 +144,7 @@
                             <input class="col-7 small-7" name="address" value="{{ $userprofile->address}}" id="address"
                                    type="text">
                         @endif
-                        <span>{!!  $errors->first('address',':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('address',':message')  !!}</span>
                     </label>
                 </div>
 
@@ -158,7 +158,7 @@
                             <input class="col-7 small-7" name="cellphone" value="{{ $userprofile->cellphone}}"
                                    id="cellphone" type="text">
                         @endif
-                        <span>{!!  $errors->first('cellphone', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('cellphone', ':message')  !!}</span>
                     </label>
                 </div>
 
@@ -171,7 +171,7 @@
                             <input class="col-7 small-7" name="phone" value="{{ $userprofile->phone}}" id="phone"
                                    type="text">
                         @endif
-                        <span>{!!  $errors->first('phone', ':message')  !!}</span>
+                        <span class="error">{!!  $errors->first('phone', ':message')  !!}</span>
                     </label>
                 </div>
                 <div class="row center">
@@ -187,7 +187,7 @@
                         <label for="password" class="row middle">
                             <span class="col-5 small-5">Nueva Contraseña</span>
                             <input class="col-7 small-7" name="password" value="" id="password" type="password">
-                            <span>{!!  $errors->first('password', ':message')  !!}</span>
+                            <span class="error">{!!  $errors->first('password', ':message')  !!}</span>
                         </label>
                     </div>
                     <div class="profile-item">
@@ -195,7 +195,7 @@
                             <span class="col-5 small-5">Repita la Contraseña</span>
                             <input class="col-7 small-7" name="password_confirmation" value=""
                                    id="password_confirmation" type="password">
-                            <span>{!!  $errors->first('password_confirmation', ':message')  !!}</span>
+                            <span class="error">{!!  $errors->first('password_confirmation', ':message')  !!}</span>
                         </label>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                                        value="{{ $userprofile->bank_account_number}}" id="bank_account_number"
                                        type="text">
                             @endif
-                            <span>{!!  $errors->first('bank_account_number', ':message')  !!}</span>
+                            <span class="error">{!!  $errors->first('bank_account_number', ':message')  !!}</span>
                         </label>
                     </div>
                     <div class="profile-item">
@@ -230,7 +230,7 @@
                                     Corriente
                                 </option>
                             </select>
-                            <span>{!!  $errors->first('bank_type_account', ':message')  !!}</span>
+                            <span class="error">{!!  $errors->first('bank_type_account', ':message')  !!}</span>
                         </label>
                     </div>
                     <div class="profile-item">
@@ -243,7 +243,7 @@
                                 <input class="col-7 small-7" name="bank_name" value="{{ $userprofile->bank_name}}"
                                        id="bank_name" type="text">
                             @endif
-                            <span>{!!  $errors->first('bank_name', ':message')  !!}</span>
+                            <span class="error">{!!  $errors->first('bank_name', ':message')  !!}</span>
                         </label>
                     </div>
                 </div>
