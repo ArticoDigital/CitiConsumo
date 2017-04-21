@@ -1581,7 +1581,9 @@ body.getReset #resetpassword label {
     background: white;
     width: 50vw;
     top: 0;
-    left: 0; }
+    left: 0;
+    max-height: 100vh;
+    overflow-y: scroll; }
     .Platform .Platform-product form {
       padding: 0.3125rem 0.625rem; }
     .Platform .Platform-product div {
