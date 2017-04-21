@@ -223,7 +223,7 @@
                             </a>
                         </i>
                     </div>
-                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description" name="description" minlength="255" maxlength="500"
+                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description" name="description" minlength="250" maxlength="250"
                               placeholder="Describe detalles de tu labor">{!! old('description') !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
@@ -409,12 +409,13 @@
                                               height="14.397878" rx="0.6"></rect>
                                     </g>
                                 </svg>
-                            </label><input id="certificate1" type="file" name="certificate1"
+                            </label>
+                            <input id="certificate1" type="file" name="certificate1"
                                            value="{{old('certificate1')}}" class="col-12 ">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="certificate2 {{($errors->first('certificate2'))?'Errors':''}}" value="{{old('certificate2')}}" class="col-12 small-12">
+                            <label for="certificate2" value="{{old('certificate2')}}" class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
