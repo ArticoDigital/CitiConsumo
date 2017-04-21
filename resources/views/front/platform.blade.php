@@ -188,7 +188,7 @@
 		c14.9-10.4,17.8-31.2,7.4-44.6C256.9,221.8,237.6,218.8,222.8,229.2"/>
                             </g>
 </svg>
-                        <img src="{{asset('uploads/products/' . $service->serviceFiles->first()->name)}}" alt="">
+                        <img src="{{asset('uploads/products/' . $service->serviceFiles->where('kind_file','imagen')->first()->name)}}" alt="">
                     </figure>
                     <div class="Platform-productInfo  col-8 medium-8">
                         <div class="Info">
