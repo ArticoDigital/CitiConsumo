@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Citiconsumo</title>
+    <title>Cityconsumo</title>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}">
@@ -252,7 +252,7 @@
                                     </div>
                                     <span>Sus datos fueron confirmados por nuestro equipo</span>
                                 </li>
-                                @if($service->serviceFiles->count())
+                                @if($service->serviceFiles->where('kind_file','certificado')->count())
                                     <li class="certifications">
 
                                         <div class="row center middle">
