@@ -461,7 +461,8 @@ class ServiceController extends Controller
     private function validator($inputs)
     {
         $rules = [
-            'terms_conditions' => 'required',
+            
+            
             'service' => 'required',
             'service_type_id' => 'required',
             'rate_type' => 'required',
@@ -478,14 +479,22 @@ class ServiceController extends Controller
             
             
             'countFiles' => 'in:3,4,5',
+            'terms_conditions' => 'required',
         ];
 
-      /*  if ($inputs['service'] == 3)
+        /*if ($inputs['service'] == 3)
             $rules['foods-quantity'] = 'required|numeric';
         if ($inputs['service'] == 2)
             $rules['pets-quantity'] = 'required|numeric';*/
-        //if ($inputs['service'] == 1)
+        if ($inputs['service'] == 1){
             //$rules['pets-quantity'] = 'required|numeric';
+            if(!isset($inputs['size1']) and !isset($inputs['size2']) and !isset($inputs['size3']) and !isset($inputs['size4']) ){
+                    $rules['size1'] = 'required';
+                    $rules['size2'] = 'required';
+                    $rules['size3'] = 'required';
+                    $rules['size4'] = 'required';
+            }
+        }
 
         return Validator::make($inputs, $rules);
     }

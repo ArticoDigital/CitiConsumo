@@ -167,6 +167,10 @@ return [
         'type6'               => 'certificado de contraloría',
         'type7'               => 'antecedente de la policía Nacional',
         'service_type'         => 'Servicio',
+        'size1'             => 'trabajo con estos tamaños ',
+        'size2'             => 'trabajo con estos tamaños ',
+        'size3'             => 'trabajo con estos tamaños ',
+        'size4'             => 'trabajo con estos tamaños ',
     ],
 
 ];
