@@ -147,16 +147,15 @@ function showInfoProduct(data) {
         sizes = data.pet ? data.pet.sizes : null;
     elements.$ResponseType.html(response)
 
-    if (data.service_files.length > 0) {
+    if (data.service_files.filter(checkCertificate) > 0) {
         elements.$certifications.show();
     } else {
         elements.$certifications.hide();
     }
-    console.log(data.service_files.filter(checkImage));
-    console.log(data.service_files);
 
-    function checkImage(item) {
-        return item.kind_file == "imagen";
+
+    function checkCertificate(item) {
+        return item.kind_file == "certificado";
     }
     var daysArray = data.days.split(',');
     $('#Date span').removeClass('active');
