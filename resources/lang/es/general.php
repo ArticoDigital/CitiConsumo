@@ -5,7 +5,7 @@ return [
 
 
     'pet' => 'mascotas',
-    'general' => 'Servicios Generales',
+    'general' => 'Servicios',
     'food' => 'Comidas',
 
 
