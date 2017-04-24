@@ -238,7 +238,7 @@
                             </a>
                         </i>
                     </div>
-                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description" name="description" minlength="255" maxlength="500"
+                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description" name="description" minlength="250" maxlength="500"
                               placeholder="Describe detalles de tu labor">{!! (old('description'))?old('description'):$service['description'] !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>

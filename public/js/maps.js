@@ -144,7 +144,7 @@ function showInfoProduct(data) {
     elements.$ModalExperience.html(data.experience_type.id - 1)
     elements.$ModalExperienceName.html(data.experience_type.name)
     var response = (data.inmediate_response) ? 'Inmediata' : data.response_type.name,
-        sizes = data.pet.sizes;
+        sizes = data.pet.sizes ? data.pet.sizes : null ;
     elements.$ResponseType.html(response)
 
     if (data.service_files.length > 0) {
@@ -159,10 +159,13 @@ function showInfoProduct(data) {
         $('#Date').find("span:nth-of-type(" + daysArray[i] + ")").addClass('active')
     }
     $('#Pets li').hide();
-    for (var i = 0; i < sizes.length; i++) {
-        $('#Pets .size-' + sizes[i].id).show();
-        console.log(sizes[i].id)
+    if(sizes.length){
+        for (var i = 0; i < sizes.length; i++) {
+            $('#Pets .size-' + sizes[i].id).show();
+            console.log(sizes[i].id)
+        }
     }
+
     $('.pets-data').hide()
     if (data.pet.puppy) $('.puppy').show()
     if (data.pet.adult) $('.adult').show()
