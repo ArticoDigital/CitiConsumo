@@ -159,7 +159,7 @@ function showInfoProduct(data) {
         $('#Date').find("span:nth-of-type(" + daysArray[i] + ")").addClass('active')
     }
     $('#Pets li').hide();
-    if(sizes.length){
+    if(sizes){
         for (var i = 0; i < sizes.length; i++) {
             $('#Pets .size-' + sizes[i].id).show();
             console.log(sizes[i].id)
