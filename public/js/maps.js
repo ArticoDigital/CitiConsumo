@@ -152,7 +152,12 @@ function showInfoProduct(data) {
     } else {
         elements.$certifications.hide();
     }
+    console.log(data.service_files.filter(checkImage));
+    console.log(data.service_files);
 
+    function checkImage(item) {
+        return item.kind_file == "imagen";
+    }
     var daysArray = data.days.split(',');
     $('#Date span').removeClass('active');
     for (var i = 0; i < daysArray.length; i++) {
@@ -162,7 +167,7 @@ function showInfoProduct(data) {
     if (sizes) {
         for (var i = 0; i < sizes.length; i++) {
             $('#Pets .size-' + sizes[i].id).show();
-            console.log(sizes[i].id)
+
         }
     }
 
