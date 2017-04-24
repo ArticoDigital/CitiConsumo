@@ -144,7 +144,7 @@ function showInfoProduct(data) {
     elements.$ModalExperience.html(data.experience_type.id - 1)
     elements.$ModalExperienceName.html(data.experience_type.name)
     var response = (data.inmediate_response) ? 'Inmediata' : data.response_type.name,
-        sizes = data.pet ? data.pet.sizes : null ;
+        sizes = data.pet ? data.pet.sizes : null;
     elements.$ResponseType.html(response)
 
     if (data.service_files.length > 0) {
@@ -159,7 +159,7 @@ function showInfoProduct(data) {
         $('#Date').find("span:nth-of-type(" + daysArray[i] + ")").addClass('active')
     }
     $('#Pets li').hide();
-    if(sizes){
+    if (sizes) {
         for (var i = 0; i < sizes.length; i++) {
             $('#Pets .size-' + sizes[i].id).show();
             console.log(sizes[i].id)
@@ -167,11 +167,13 @@ function showInfoProduct(data) {
     }
 
     $('.pets-data').hide()
-    if (data.pet.puppy) $('.puppy').show()
-    if (data.pet.adult) $('.adult').show()
-    if (data.pet.elderly) $('.elderly').show()
-    if (data.pet.smoke_free) $('.smoke_free').show()
-    if (data.pet.home_service) $('.home_service').show()
+    if (data.pet) {
+        $('.puppy').show()
+        $('.adult').show()
+        $('.elderly').show()
+        $('.smoke_free').show()
+        $('.home_service').show()
+    }
 
     console.log(data)
     elements.$InfoServices.find('span').remove();
