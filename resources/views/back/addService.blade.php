@@ -196,8 +196,8 @@
             </article>
             <article>
                 <div class="row middle between" style="max-width: 600px">
-                    <label for="">Mi tarifa es:</label> $
-                    <input type="text" class="{{($errors->first('price'))?'Errors':''}}" id="price" name="price"
+                    <label for="">Mi tarifa es:</label>
+                    <input type="text" class= " trucated {{($errors->first('price'))?'Errors':''}}" id="price" name="price"
                            value="{{old('price')}}">
                     <span class="mult">X</span>
                     <select class="js-example-basic-single {{($errors->first('rate_type'))?'Errors':''}}" id="rate_type"
@@ -728,13 +728,22 @@
 
     <script src="{{url('js/mapAddService.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
     <script src="{{url('js/exif.js')}}"></script>
     <script src="{{url('js/maxlength.js')}}"></script>
 
     <script type="text/javascript">
-
+        $('#price').inputmask("numeric", {
+            radixPoint: ".",
+            groupSeparator: ",",
+            digits: 2,
+            autoGroup: true,
+            prefix: '$', //No Space, this will truncate the first character
+            rightAlign: false,
+            oncleared: function () { self.Value(''); }
+        });
         $("textarea").maxlength({
             alwaysShow: true,
             threshold: 10,
