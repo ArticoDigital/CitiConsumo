@@ -144,7 +144,7 @@ function showInfoProduct(data) {
     elements.$ModalExperience.html(data.experience_type.id - 1)
     elements.$ModalExperienceName.html(data.experience_type.name)
     var response = (data.inmediate_response) ? 'Inmediata' : data.response_type.name,
-        sizes = data.pet.sizes ? data.pet.sizes : null ;
+        sizes = data.pet ? data.pet.sizes : null ;
     elements.$ResponseType.html(response)
 
     if (data.service_files.length > 0) {
