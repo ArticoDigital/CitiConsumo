@@ -153,6 +153,8 @@ function showInfoProduct(data) {
         elements.$certifications.hide();
     }
 
+    console.log(data.service_files.filter(checkCertificate))
+    console.log(data.service_files)
 
     function checkCertificate(item) {
         return item.kind_file == "certificado";
