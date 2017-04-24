@@ -168,7 +168,8 @@
 
             <article class="row middle between">
                 <label for="">Mi servicio es:</label>
-                <select class="js-example-basic-single {{($errors->first('service_type_id'))?'Errors':''}}" id="service_type_id" name="service_type_id">
+                <select class="js-example-basic-single {{($errors->first('service_type_id'))?'Errors':''}}"
+                        id="service_type_id" name="service_type_id">
                     <option data-serviceparent="0" value="">Selecciona un servicio</option>
                     @foreach($serviceTypes as $serviceType)
                         <option data-serviceparent="{{$serviceType->kind_service_id}}"
@@ -183,7 +184,8 @@
                     <use xlink:href="#Help"/>
                 </svg>
 
-                <select class="Task Input-large {{($errors->first('service_type_id'))?'Errors':''}}" multiple="multiple" id="service_addition" name="service_addition[]">
+                <select class="Task Input-large {{($errors->first('service_type_id'))?'Errors':''}}" multiple="multiple"
+                        id="service_addition" name="service_addition[]">
                     @if(old('service_addition'))
                         @foreach(old('service_addition') as $servadd)
                             <option value="{{$servadd}}" selected>{{$servadd}}</option>
@@ -195,13 +197,15 @@
             <article>
                 <div class="row middle between" style="max-width: 600px">
                     <label for="">Mi tarifa es:</label> $
-                    <input type="text" class="{{($errors->first('price'))?'Errors':''}}" id="price" name="price" value="{{old('price')}}">
+                    <input type="text" class="{{($errors->first('price'))?'Errors':''}}" id="price" name="price"
+                           value="{{old('price')}}">
                     <span class="mult">X</span>
-                    <select  class="js-example-basic-single {{($errors->first('rate_type'))?'Errors':''}}"  id="rate_type" name="rate_type">
+                    <select class="js-example-basic-single {{($errors->first('rate_type'))?'Errors':''}}" id="rate_type"
+                            name="rate_type">
                         @if(old('rate_type'))
                             <option value="{{old('rate_type')}}" selected>{{old('rate_type')}}</option>
                         @endif>
-                       
+
                     </select>
 
                 </div>
@@ -223,7 +227,8 @@
                             </a>
                         </i>
                     </div>
-                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description" name="description" minlength="250" maxlength="500"
+                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description"
+                              name="description" minlength="250" maxlength="500"
                               placeholder="Describe detalles de tu labor">{!! old('description') !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
@@ -377,7 +382,8 @@
                     <label class=" blue">
                         ¿Qué tiempo tienes de experiencia ejerciendo este servicio?
                     </label>
-                    <select class="js-example-basic-single {{($errors->first('experience_type_id'))?'Errors':''}}" id="experience_type" name="experience_type_id">
+                    <select class="js-example-basic-single {{($errors->first('experience_type_id'))?'Errors':''}}"
+                            id="experience_type" name="experience_type_id">
                         @foreach($experienceTypes as $experienceType)
                             <option value="{{$experienceType->id}}" {{ (old("experience_type_id") == $experienceType->id ? "selected":"") }}>{{$experienceType->name}}</option>
                         @endforeach
@@ -394,7 +400,8 @@
 
 
                         <div class="row col-4 File small-12">
-                            <label for="certificate1" class="{{($errors->first('certificate1'))?'Errors':''}} col-12 small-12">{{old('certificate1')}}
+                            <label for="certificate1"
+                                   class="{{($errors->first('certificate1'))?'Errors':''}} col-12 small-12">{{old('certificate1')}}
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -411,11 +418,12 @@
                                 </svg>
                             </label>
                             <input id="certificate1" type="file" name="certificate1"
-                                           value="{{old('certificate1')}}" class="col-12 ">
+                                   value="{{old('certificate1')}}" class="col-12 ">
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="certificate2" value="{{old('certificate2')}}" class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
+                            <label for="certificate2" value="{{old('certificate2')}}"
+                                   class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -438,7 +446,8 @@
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="certificate3" class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
+                            <label for="certificate3"
+                                   class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -456,7 +465,8 @@
                                     </g>
                                 </svg>
 
-                            </label><input id="certificate3" type="file" class="col-12 " value="{{old('certificate3')}}" value="{{old('certificate3')}}"
+                            </label><input id="certificate3" type="file" class="col-12 " value="{{old('certificate3')}}"
+                                           value="{{old('certificate3')}}"
                                            name="certificate3">
                             <span class="close">X</span>
 
@@ -489,10 +499,12 @@
                     </label>
                     <div class="row middle between" style="max-width: 600px">
                         <span>Desde</span>
-                        <input class="dateSingle {{($errors->first('date_start'))?'Errors':''}}" name="date_start" readonly="true" type="text" autocomplete="off"
+                        <input class="dateSingle {{($errors->first('date_start'))?'Errors':''}}" name="date_start"
+                               readonly="true" type="text" autocomplete="off"
                                value="{{old('date_start')}}">
                         <span>hasta</span>
-                        <input class="dateSingle {{($errors->first('date_end'))?'Errors':''}}" name="date_end" readonly="true" type="text" autocomplete="off"
+                        <input class="dateSingle {{($errors->first('date_end'))?'Errors':''}}" name="date_end"
+                               readonly="true" type="text" autocomplete="off"
                                value="{{old('date_end')}}">
                     </div>
 
@@ -555,7 +567,8 @@
                         <label for="">Respondo en:</label>
 
                         <input type="hidden" value="1" id="hiddenresponse" name="response_type_id">
-                        <select id="answerInSelect" {{(old('inmediate_response')==1)?'disabled':''}} name="response_type_id">
+                        <select id="answerInSelect"
+                                {{(old('inmediate_response')==1)?'disabled':''}} name="response_type_id">
                             @foreach($responseTypes as $responseType)
                                 <option value="{{$responseType->id}}" {{ (old("response_type_id") == $responseType->id ? "selected":"") }}>{{$responseType->name}}</option>
                             @endforeach
@@ -574,7 +587,8 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input class="{{($errors->first('address'))?'Errors':''}}" type="text" name="address" value="{{old('address')}}" id="autocomplete"
+                    <input class="{{($errors->first('address'))?'Errors':''}}" type="text" name="address"
+                           value="{{old('address')}}" id="autocomplete"
                            placeholder="Ej.: Calle 123 #45-67">
 
                     <input type="hidden" name="lat" id="lat" value="{{old('lat')}}">
@@ -649,7 +663,7 @@
             </article>
             <article class="row center middle">
                 <label class="Content-check">
-                    <input type="checkbox"  name="terms_conditions" value="1"
+                    <input type="checkbox" name="terms_conditions" value="1"
 
                            @if(old('terms_conditions'))
                            checked
@@ -657,10 +671,11 @@
                     >
                     <ins class=" {{($errors->first('terms_conditions'))?'Errors':''}}"></ins>
                 </label>
-                <p>Acepto los <a target="blank" href="http://cityconsumo.dev/terminos">términos y condiciones</a> para postular mis servicios</p>
+                <p>Acepto los <a target="blank" href="http://cityconsumo.dev/terminos">términos y condiciones</a> para
+                    postular mis servicios</p>
             </article>
             <article class="row center ">
-                <button  id="createButton"  type="submit"> Postular servicio</button>
+                <button id="createButton" type="submit"> Postular servicio</button>
             </article>
 
         </section>
@@ -734,7 +749,7 @@
 
         var servicesType = JSON.parse($('#servicesType').val()),
             idService;
-        console.log(servicesType);
+
 
         function findService(services) {
             console.log(idService)
@@ -747,8 +762,6 @@
                 }
             }
         });
-
-
         $("#service_type_id").on("change", function () {
 
             var $point = $(".Task");
@@ -814,7 +827,6 @@
             language: 'es'
         });
 
-
         $('.FilesPreview').on('click', '.File .delete', function () {
             $(this).parent().remove();
         });
@@ -869,14 +881,13 @@
             $('#imagesPopup').hide();
         });
 
-
         $('#upload-cut').on('click', function () {
             //var fileInput = document.getElementById('files'),
             //   arrayFiles = fileInput.files,
             //   count = $('#result .File').length;
             $uploadCrop.croppie('result', {
                 type: 'base64',
-                size: { width: 440, height: 440 }
+                size: {width: 440, height: 440}
             }).then(function (resp) {
                 $.ajax({
                     url: '{{route("uploadImageFiles")}}',
@@ -908,11 +919,11 @@
         });
 
 
-       $('form').on('submit', function(){
+        $('form').on('submit', function () {
             $('#createButton').attr("disabled", true);
             var $file = $('#result .File'), positions = '';
 
-            for(var i = 0; i < $file.length; i++){
+            for (var i = 0; i < $file.length; i++) {
                 positions += $file.eq(i).children('.imagePosition').val() + ',';
             }
             $('[name="positions"]').val(positions);
@@ -938,7 +949,7 @@
         });
 
         $('.AddService-icons li').on('click', function () {
-            initMap();
+            initMap1();
             var idService = $(this).data('service'),
                 $service_type_id = $("#service_type_id");
             $service_type_id.children('option').hide();
@@ -962,12 +973,13 @@
 
 
         @if(old("service"))
+            console.log({{old("service")}})
+        setTimeout(function(){  initMap1($('#lat').val(), $('#lng').val()); }, 1000);
 
-initMap($('#lat').val(), $('#lng').val());
         var eq = {{(old("service") == 3) ?'0':old("service")}},
             oldService_type_id = $("#service_type_id").val();
 
-        console.log({{old("service")}})
+
         var idServiceLocal = $('.AddService-icons li:eq(' + eq + ')').data('service'),
             $service_type_id = $("#service_type_id");
         $service_type_id.children('option').hide();
@@ -995,59 +1007,59 @@ initMap($('#lat').val(), $('#lng').val());
             false;
         });
 
-        
-/*   
 
-  
+        /*
 
-        $(window).resize(function() {
-          var viewportWidth = $(window).width();
-          var viewportHeight = $(window).height();
-          doResize(viewportWidth,viewportHeight);
-        });
 
-        var $el = $(".cr-boundary");
-        var elHeight = $el.outerHeight();
-        var elWidth = $el.outerWidth();
 
-        var $wrapper = $(".addService");
+         $(window).resize(function() {
+         var viewportWidth = $(window).width();
+         var viewportHeight = $(window).height();
+         doResize(viewportWidth,viewportHeight);
+         });
 
-        $wrapper.resizable({
-          resize: doResize
-        });
+         var $el = $(".cr-boundary");
+         var elHeight = $el.outerHeight();
+         var elWidth = $el.outerWidth();
 
-        function doResize(vpwidth,vpheight) {
-          console.log(vpwidth+" SSS "+vpheight);
-          var scale, origin;
-            
-          scale = Math.min(
-            vpwidth / elWidth,    
-            vpheight / elHeight
-          );
-          if(scale>1){
-            scale=1;
-          }
-          
-          $el.css({
-            //transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
-            transform: "scale(" + scale + ")"
-          });
-          
-        }
-        var viewportWidth = $(window).width();
-        var viewportHeight = $(window).height();
-          doResize(viewportWidth,viewportHeight);
+         var $wrapper = $(".addService");
 
-          */
+         $wrapper.resizable({
+         resize: doResize
+         });
 
-                //doResize(null, starterData);
+         function doResize(vpwidth,vpheight) {
+         console.log(vpwidth+" SSS "+vpheight);
+         var scale, origin;
+
+         scale = Math.min(
+         vpwidth / elWidth,
+         vpheight / elHeight
+         );
+         if(scale>1){
+         scale=1;
+         }
+
+         $el.css({
+         //transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
+         transform: "scale(" + scale + ")"
+         });
+
+         }
+         var viewportWidth = $(window).width();
+         var viewportHeight = $(window).height();
+         doResize(viewportWidth,viewportHeight);
+
+         */
+
+        //doResize(null, starterData);
 
     </script>
 
 
     <script src="{{url('js/dataPickerEs.js')}}"></script>
     <style type="text/css">
-      
+
     </style>
 @endsection
 @section('styles')

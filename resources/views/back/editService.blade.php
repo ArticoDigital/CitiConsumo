@@ -979,7 +979,7 @@
         });
 
         $('.AddService-icons li').on('click', function () {
-            initMap();
+            initMap1();
             var idService = $(this).data('service'),
                 $service_type_id = $("#service_type_id");
             $service_type_id.children('option').hide();
@@ -1052,7 +1052,7 @@
             false;
         });
 
-        initMap($('#lat').val(), $('#lng').val());
+        setTimeout(function(){  initMap1($('#lat').val(), $('#lng').val()); }, 1000);
 
     </script>
 

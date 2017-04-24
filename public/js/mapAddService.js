@@ -1,4 +1,4 @@
-function initMap(lat, lng) {
+function initMap1(lat, lng) {
     var image = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
 
 
