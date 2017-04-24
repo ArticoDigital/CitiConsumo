@@ -380,8 +380,8 @@
                             <p class="col-12">Para poder adquirir un servicio debes estar registrado, si ya tienes una
                                 cuenta, por favor inicia sesion</p>
                             <div class="row center middle Form-contentRegisterLink">
-                                <a href="{{url('/').'/registro'}}">Ingresar</a>
-                                <a href="{{url('/').'/login'}}">Registrarse</a>
+                                <a href="{{url('/').'/login'}}">Ingresar</a>
+                                <a href="{{url('/').'/registro'}}">Registrarse</a>
                             </div>
                         </div>
                     @endif

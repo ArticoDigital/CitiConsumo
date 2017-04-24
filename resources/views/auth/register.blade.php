@@ -25,7 +25,8 @@
                     </svg>
                 </a>
             </div>
-            <a href="{{route('facebook')}}" class="col-8 small-8" style="color: #777;display: block;font-size: 0.75rem;">Registra con facebook</a>
+            <a href="{{route('facebook')}}" class="col-8 small-8"
+               style="color: #777;display: block;font-size: 0.75rem;">Registra con facebook</a>
             <span class="col-12 small-12" style="margin: 10px 0px;color: black;text-align: center;">ó</span>
         </div>
 
@@ -54,6 +55,10 @@
                 </g>
             </svg>
         </div>
+        <label>
+            <input type="checkbox" required style="max-width: 10px">
+            <span d>Acepto los <a href="" style=" font-weight: bold;color: #004f8f; text-decoration: underline">términos y condiciones</a></span>
+        </label>
         <button>REGISTRATE</button>
     </form>
 @endsection
@@ -63,10 +68,10 @@
         $('#preloader').addClass('hide');
         $('body').css('overflow', 'visible');
 
-        $('.Hamburguer').click(function(){
+        $('.Hamburguer').click(function () {
             $(this).toggleClass('open');
             $(this).siblings().toggleClass('show');
-            if($(this).hasClass('open'))
+            if ($(this).hasClass('open'))
                 $('body').css('overflow', 'hidden');
             else
                 $('body').css('overflow', 'visible');
