@@ -235,8 +235,7 @@ function showInfoProduct(data) {
     $('#PayForm').prepend('<input type="hidden" name="description" value="' + data.description + '">');
     $('.InfoServices').addClass('show');
 
-    if (data.pet.date_end !== undefined)
-        setMaxDate(data.pet.date_end);
+
 }
 
 function setMaxDate(maxDate) {
