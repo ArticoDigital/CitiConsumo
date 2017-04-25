@@ -99,7 +99,7 @@ class ServiceController extends Controller
             $this->ispressed = true;
             $user = auth()->user();
             $inputs = $this->setFiles($request->all());
-
+            $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
             $validate = $this->validator($inputs);
             if ($validate->fails()) {
                 $validate->errors()->first();
@@ -110,7 +110,7 @@ class ServiceController extends Controller
 
             $inputs['provider_id'] = $user->provider->id;
             $inputs['location'] = $inputs['address'];
-            $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
+            //$inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
             //print_r($inputs['days']);
             $inputs['date_start']  = date_format(date_create_from_format('d/m/Y', $inputs['date_start']), 'Y/m/d');
             $inputs['date_end']  = date_format(date_create_from_format('d/m/Y', $inputs['date_end']), 'Y/m/d');
@@ -332,7 +332,7 @@ class ServiceController extends Controller
             $this->ispressed = true;
             $user = auth()->user();
             $inputs = $this->setFiles($request->all());
-
+            $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
             $validate = $this->validator($inputs);
             if ($validate->fails()) {
                 $validate->errors()->first();
@@ -343,7 +343,7 @@ class ServiceController extends Controller
 
             $inputs['provider_id'] = $user->provider->id;
             $inputs['location'] = $inputs['address'];
-            $inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
+            //$inputs['price'] = str_replace(['$', '.', ','], '', $inputs['price']);
             //print_r($inputs['days']);
             $inputs['date_start']  = date_format(date_create_from_format('d/m/Y', $inputs['date_start']), 'Y/m/d');
             $inputs['date_end']  = date_format(date_create_from_format('d/m/Y', $inputs['date_end']), 'Y/m/d');
@@ -367,6 +367,8 @@ class ServiceController extends Controller
             if (isset($inputs['size2']))$array_sizes[]=$inputs['size2'];
             if (isset($inputs['size3']))$array_sizes[]=$inputs['size3'];
             if (isset($inputs['size4']))$array_sizes[]=$inputs['size4'];
+            
+            $service->serviceFiles()->delete();
             
             if ($request->file('certificate1')) {
                     $imageName = str_random(10) . '-&&-' . $request->file('certificate1')->getClientOriginalName();
@@ -424,7 +426,7 @@ class ServiceController extends Controller
             ]);
         }*/
 
-        $service->serviceFiles()->delete();
+        
 
         $this->moveFiles($inputs, $service);
 

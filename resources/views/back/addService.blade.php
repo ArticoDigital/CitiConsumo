@@ -671,7 +671,7 @@
                     >
                     <ins class=" {{($errors->first('terms_conditions'))?'Errors':''}}"></ins>
                 </label>
-                <p>Acepto los <a target="blank" href="http://cityconsumo.dev/terminos">términos y condiciones</a> para
+                <p>Acepto los <a target="blank" href="{{route('terms')}}">términos y condiciones</a> para
                     postular mis servicios</p>
             </article>
             <article class="row center ">

@@ -272,7 +272,7 @@
                                 <input type="checkbox" name="size1" value="1" @if(in_array(1, $sizeid))
                                 checked
                                         @endif>
-                                <ins></ins>
+                                <ins class="{{($errors->first('size1'))?'Errors':''}}"></ins>
                             </label>
 
                             <span class="col-12">
@@ -296,7 +296,7 @@
                                 <input type="checkbox" name="size2" value="2" @if(in_array(2, $sizeid))
                                   checked
                                         @endif>
-                                <ins></ins>
+                                <ins class="{{($errors->first('size2'))?'Errors':''}}"></ins>
                             </label>
                             <span class="col-12">
                                 20-40 lbs <br>
@@ -318,7 +318,7 @@
                                 <input type="checkbox" name="size3" value="3" @if(in_array(3, $sizeid))
                                 checked
                                         @endif>
-                                <ins></ins>
+                                <ins class="{{($errors->first('size3'))?'Errors':''}}"></ins>
                             </label>
                             <span class="col-12">
                                 40-80 lbs <br>
@@ -340,7 +340,7 @@
                                 <input type="checkbox" name="size4" value="4" @if(in_array(4, $sizeid))
                                 checked
                                         @endif>
-                                <ins></ins>
+                                <ins class="{{($errors->first('size4'))?'Errors':''}}"></ins>
                             </label>
                             <span class="col-12">
                                 80+ lbs <br>
@@ -552,7 +552,7 @@
                                     <li><label class="Content-check">
                                             <input id="days" name="days[]" value="{{$key}}" type="checkbox"
                                                     {{ ( is_array($servicedays) && in_array($key, $servicedays) ) ? 'checked ' : '' }} >
-                                            <ins></ins>
+                                            <ins class="{{($errors->first('days'))?'Errors':''}}"></ins>
                                         </label>
                                         <span>{{$dayw}}</span></li>
 
@@ -701,7 +701,7 @@
                     >
                     <ins class=" {{($errors->first('terms_conditions'))?'Errors':''}}"></ins>
                 </label>
-                <p>Acepto los <a href="#">términos y condiciones</a> para postular mis servicios</p>
+                <p>Acepto los <a htarget="blank" href="{{route('terms')}}">términos y condiciones</a> para postular mis servicios</p>
             </article>
             <article class="row center ">
                 <button  id="createButton"  type="submit"> Actualizar servicio</button>
@@ -1012,6 +1012,7 @@
         //}
         //else{
           eq = $('#service').val();
+          
           
         //}
        oldService_type_id = $("#service_type_id").val();
