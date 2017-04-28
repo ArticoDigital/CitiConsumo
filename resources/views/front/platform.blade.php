@@ -286,6 +286,10 @@
                 </article>
 
             @endforeach
+            @else
+            <div class="row center">
+                <p>disculpa no encontramos servicios</p>
+            </div>
         @endif
     </section>
 </div>
