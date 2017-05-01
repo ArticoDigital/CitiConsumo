@@ -42,13 +42,17 @@ Route::post('deleteService', [
 
 Route::post('deleteServiceByProvider', [
     'uses' => 'ServiceController@deleteServiceByProvider',
-    'as' => 'deleteProductByProvider'
+    'as' => 'deleteProductByProvider',
+    'roles' => 2
 ]);
 
 Route::get('editar-servicio/{id}', [
     'uses' => 'ServiceController@edit',
-    'as' => 'editProduct'
+    'as' => 'editProduct',
+    'middleware' => 'userMid',
+    'roles' => [2,3]
 ]);
+
 
 Route::post('editar-servicio/{id}', [
     'uses' => 'ServiceController@update',
@@ -57,7 +61,8 @@ Route::post('editar-servicio/{id}', [
 
 Route::post('insertOutlay', [
     'uses' => 'BuyController@insertOutlay',
-    'as' => 'insertOutlay'
+    'as' => 'insertOutlay',
+    'roles' => 3
 ]);
 
 Route::post('buyAction', [
@@ -67,51 +72,61 @@ Route::post('buyAction', [
 
 Route::post('updateOutlateState/{id}', [
     'uses' => 'BuyController@updateOutlateState',
-    'as' => 'updateOutlateState'
+    'as' => 'updateOutlateState',
+    'roles' => 3
 ]);
 
 Route::post('usuarios-proveedor-activar', [
     'uses' => 'UserController@enabledProvider',
     'as' => 'enabledProvider',
+    'roles' => 3
 ]);
 
 Route::post('usuarios-proveedor-desactivar', [
     'uses' => 'UserController@disabledProvider',
     'as' => 'disableProvider',
+    'roles' => 3
 
 ]);
 
 Route::post('usuarios-proveedor-eliminar', [
     'uses' => 'UserController@deleteProvider',
     'as' => 'deleteProvider',
+    'roles' => 3
 ]);
 Route::post('usuarios-proveedor-reactivar', [
     'uses' => 'UserController@reenableProvider',
     'as' => 'reenableProvider',
+    'roles' => 3
 ]);
 
 Route::get('productos-proveedores', [
     'as' => 'showProductsInactived',
-    'uses' => 'UserController@showProductsInactived'
+    'uses' => 'UserController@showProductsInactived',
+    'roles' => 3
 ]);
 
 Route::get('productos-eliminados', [
     'as' => 'showProductsDeleted',
-    'uses' => 'UserController@showProductsDeleted'
+    'uses' => 'UserController@showProductsDeleted',
+    'roles' => 3
 ]);
 
 Route::post('product/deleteProduct/{id}', [
     'as' => 'deleteProductProvider',
-    'uses' => 'UserController@deleteProductProvider'
+    'uses' => 'UserController@deleteProductProvider',
+    'roles' => 3
 ]);
 Route::post('product/enableProduct/{id}', [
     'as' => 'enableProductProvider',
-    'uses' => 'UserController@enableProductProvider'
+    'uses' => 'UserController@enableProductProvider',
+    'roles' => 3
 ]);
 
 Route::post('usuarios-proveedor-reactivar', [
     'uses' => 'UserController@reenableProvider',
     'as' => 'reenableProvider',
+    'roles' => 3
 ]);
 
 Route::post('uploadTempFiles', [

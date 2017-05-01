@@ -17,6 +17,9 @@ class RoleRequest extends Request
 
     public function authorize()
     {
+        //if(auth()->user()->isAdmin()){
+        //    return true;
+        //}
         $role = auth()->user()->role_id;
         $route = Route::getRoutes()->match($this);
         $roles = isset($route->getAction()['roles']) ? $route->getAction()['roles'] : null;

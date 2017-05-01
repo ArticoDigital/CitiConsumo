@@ -34,6 +34,13 @@ class   User extends Authenticatable
     protected function provider(){
         return $this->hasOne(Provider::class);
     }
+    public function isAdmin(){
+        if($this->role_id == 3){
+            return true;
+        }
+        return false;
+        //return $this->hasOne(Provider::class);
+    }
 
     public function role()
     {
