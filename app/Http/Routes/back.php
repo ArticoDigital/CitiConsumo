@@ -43,6 +43,7 @@ Route::post('deleteService', [
 Route::post('deleteServiceByProvider', [
     'uses' => 'ServiceController@deleteServiceByProvider',
     'as' => 'deleteProductByProvider',
+    'middleware' => 'userMid',
     'roles' => 2
 ]);
 
@@ -56,7 +57,8 @@ Route::get('editar-servicio/{id}', [
 
 Route::post('editar-servicio/{id}', [
     'uses' => 'ServiceController@update',
-    'as' => 'editServicePost'
+    'as' => 'editServicePost',
+    'middleware' => 'userMid'
 ]);
 
 Route::post('insertOutlay', [
