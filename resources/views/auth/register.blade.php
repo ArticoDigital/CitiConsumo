@@ -55,6 +55,13 @@
                 </g>
             </svg>
         </div>
+        @php
+        $attributes = [
+            'data-theme' => 'dark',
+            'data-type' =>  'audio',
+            ];
+        @endphp
+        {!! Captcha::display($attributes) !!}
         <label>
             <input type="checkbox" required style="max-width: 10px">
             <span d>Acepto los <a href="" style=" font-weight: bold;color: #004f8f; text-decoration: underline">términos y condiciones</a></span>

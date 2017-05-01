@@ -154,11 +154,11 @@
           accept-charset="UTF-8" class="AddService-form"
           enctype="multipart/form-data">
         <section>
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+            
             <article>
                 <h4 class="AddService-h4">1. SERVICIO</h4>
                 <p>Describe adicionalmente que tipos de servicios ofreces complementarios a tu labor y digita desde
-                    cuanto esta el valor del servicio.</p>
+                    cuanto esta el valor del servicio. {{$service['service_type']['kind_service_id']}}</p>
             </article>
             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
             <input type="hidden" name="service" id="service"
@@ -167,7 +167,7 @@
 
 
             <article class="row middle between">
-                <label for="">Mi servicio es: {{$service['service_type_id']}}</label>
+                <label for="">Mi servicio es: </label>
                 <select class="js-example-basic-single {{($errors->first('service_type_id'))?'Errors':''}}" id="service_type_id" name="service_type_id">
                     <option data-serviceparent="0" value="">Selecciona un servicio</option>
                     @foreach($serviceTypes as $serviceType)

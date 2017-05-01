@@ -10,7 +10,8 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "adamwathan/eloquent-oauth-l5": "^0.4.2",
         "guzzlehttp/guzzle": "^6.2",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "buzz/laravel-google-captcha": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

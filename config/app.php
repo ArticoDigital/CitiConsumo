@@ -159,6 +159,8 @@ return [
         /* News */
         Barryvdh\Debugbar\ServiceProvider::class,
         'AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider',
+
+        'Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider',
     ],
 
     /*
@@ -209,6 +211,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'SocialAuth' => 'AdamWathan\EloquentOAuth\Facades\OAuth',
+        'Captcha' => '\Buzz\LaravelGoogleCaptcha\CaptchaFacade',
     ],
 
 ];
