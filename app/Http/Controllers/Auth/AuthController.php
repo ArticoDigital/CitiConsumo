@@ -63,6 +63,7 @@ class AuthController extends Controller
                 'email.email' => 'El email no es valido ',
                 'email.unique' => 'Este usuario ya esta registrado',
                 'password.required' => 'La contraseña es obligatoria',
+                'g-recaptcha-response.required' => 'Verifica que no eres un robot'
             ]);
     }
 
