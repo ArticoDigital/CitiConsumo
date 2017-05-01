@@ -99,6 +99,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.js')}}"></script>
     <script>
+        $(window).keydown(function (event) {
+            if ((event.keyCode == 13)) {
+                event.preventDefault();
+                return false;
+            }
+        });
         $(".js-example-basic-multiple").select2({width: '100%'});
 
         var $date = $('#date');

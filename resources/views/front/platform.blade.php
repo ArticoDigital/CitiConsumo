@@ -286,6 +286,10 @@
                 </article>
 
             @endforeach
+            @else
+            <div class="row center">
+                <p>disculpa no encontramos servicios</p>
+            </div>
         @endif
     </section>
 </div>
@@ -459,7 +463,7 @@
                     <span>Tiene certificados profesionales</span>
                 </li>
             </ul>
-            @if($services->first()->pet)
+            @if($services->first() && $services->first()->pet)
                 <h4>Trabajo con estos tamaños:</h4>
                 <ul class="row bottom pets" id="Pets">
                     <li class="size-2">
