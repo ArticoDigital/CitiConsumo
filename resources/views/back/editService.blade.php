@@ -29,7 +29,8 @@
             demuéstrarles en que eres bueno</h2>
         <h3 class="AddService-h3">¿A qué categoría pertenece tu servicio?</h3>
         <ul class=" AddService-icons row center ">
-            <li data-service="3">
+            @if($service['service_type']['kind_service_id'] == 3)
+                <li class="active" data-service="3">
                 <span>
 
 
@@ -65,8 +66,9 @@
                     <div class="x"></div>
                     <div class="x r"></div>
                 </span>
-            </li>
-            <li data-service="1">
+                </li>
+            @elseif($service['service_type']['kind_service_id'] == 1)
+                <li class="active"data-service="1">
                 <span>
 <svg width="100%" viewBox="906 222 285 383" version="1.1" xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -106,8 +108,9 @@
                     <div class="x"></div>
                     <div class="x r"></div>
                 </span>
-            </li>
-            <li data-service="2">
+                </li>
+            @else
+                <li data-service="2">
                 <span>
 
 
@@ -147,14 +150,14 @@
                     <div class="x"></div>
                     <div class="x r"></div>
                 </span>
-            </li>
+                </li>
+            @endif
         </ul>
     </header>
-    <form method="POST"  action="{{route('editServicePost', $service['id'])}}"
+    <form method="POST" action="{{route('editServicePost', $service['id'])}}"
           accept-charset="UTF-8" class="AddService-form"
           enctype="multipart/form-data">
         <section>
-            
             <article>
                 <h4 class="AddService-h4">1. SERVICIO</h4>
                 <p>Describe adicionalmente que tipos de servicios ofreces complementarios a tu labor y digita desde
@@ -168,7 +171,8 @@
 
             <article class="row middle between">
                 <label for="">Mi servicio es: </label>
-                <select class="js-example-basic-single {{($errors->first('service_type_id'))?'Errors':''}}" id="service_type_id" name="service_type_id">
+                <select class="js-example-basic-single {{($errors->first('service_type_id'))?'Errors':''}}"
+                        id="service_type_id" name="service_type_id">
                     <option data-serviceparent="0" value="">Selecciona un servicio</option>
                     @foreach($serviceTypes as $serviceType)
                         <option data-serviceparent="{{$serviceType->kind_service_id}}"
@@ -183,18 +187,20 @@
                     <use xlink:href="#Help"/>
                 </svg>
                 @php
-                $serviceaddition = explode(",",$service['service_addition']);
+                    $serviceaddition = explode(",",$service['service_addition']);
                 @endphp
-                <select class="hidden" multiple="multiple" id="service_addition_old_fields" name="service_addition_old_fields[]">
+                <select class="hidden" multiple="multiple" id="service_addition_old_fields"
+                        name="service_addition_old_fields[]">
                     @if($service['service_addition'])
                         @foreach($serviceaddition as $servadd)
                             <option value="{{$servadd}}" selected>{{$servadd}}</option>
                         @endforeach
                     @endif>
                 </select>
-            
 
-                <select class="Task Input-large {{($errors->first('service_type_id'))?'Errors':''}}" multiple="multiple" id="service_addition" name="service_addition[]">
+
+                <select class="Task Input-large {{($errors->first('service_type_id'))?'Errors':''}}" multiple="multiple"
+                        id="service_addition" name="service_addition[]">
                     @if($service['service_addition'])
                         @foreach($serviceaddition as $servadd)
                             <option value="{{$servadd}}" selected>{{$servadd}}</option>
@@ -206,17 +212,19 @@
             <article>
                 <div class="row middle between" style="max-width: 600px">
                     <label for="">Mi tarifa es:</label> $
-                    <input type="text" class="{{($errors->first('price'))?'Errors':''}}" id="price" name="price" value="{{$service['price']}}" autocomplete="off">
+                    <input type="text" class="{{($errors->first('price'))?'Errors':''}}" id="price" name="price"
+                           value="{{$service['price']}}" autocomplete="off">
                     <span class="mult">X</span>
-                    <input class="hidden" id="rate_type_old_field" value="{{$service['rate_type']}}" name="rate_type_old_field"/>
-                    
-                    
+                    <input class="hidden" id="rate_type_old_field" value="{{$service['rate_type']}}"
+                           name="rate_type_old_field"/>
 
-                    <select  class="js-example-basic-single {{($errors->first('rate_type'))?'Errors':''}}"  id="rate_type" name="rate_type">
+
+                    <select class="js-example-basic-single {{($errors->first('rate_type'))?'Errors':''}}" id="rate_type"
+                            name="rate_type">
                         @if($service['rate_type'])
                             <option value="{{$service['rate_type']}}" selected>{{$service['rate_type']}}</option>
                         @endif>
-                        
+
                     </select>
 
                 </div>
@@ -238,7 +246,8 @@
                             </a>
                         </i>
                     </div>
-                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description" name="description" minlength="250" maxlength="500"
+                    <textarea class="{{($errors->first('description'))?'Errors':''}}" id="description"
+                              name="description" minlength="250" maxlength="500"
                               placeholder="Describe detalles de tu labor">{!! (old('description'))?old('description'):$service['description'] !!}</textarea>
                     <span class="blue" style="float: right; font-size: 13px;">Mínimo 250 carácteres</span>
                 </div>
@@ -259,13 +268,13 @@
                                 </g>
                             </svg>
                             @php
-                            $sizeid=Array();
-                            if($service['service_type']['kind_service_id']=="1"){
-                                
-                                foreach($service["pet"]["sizes"] as $size){
-                                   $sizeid[] = $size["id"];
+                                $sizeid=Array();
+                                if($service['service_type']['kind_service_id']=="1"){
+
+                                    foreach($service["pet"]["sizes"] as $size){
+                                       $sizeid[] = $size["id"];
+                                    }
                                 }
-                            }
                             @endphp
                             <label class="Content-check">
 
@@ -294,7 +303,7 @@
                             </svg>
                             <label class="Content-check">
                                 <input type="checkbox" name="size2" value="2" @if(in_array(2, $sizeid))
-                                  checked
+                                checked
                                         @endif>
                                 <ins class="{{($errors->first('size2'))?'Errors':''}}"></ins>
                             </label>
@@ -378,8 +387,9 @@
                                 <ins></ins>
                             </label><label for="">Mi hogar es una zona libre de humo</label></li>
                         <li><label class="Content-check">
-                                <input type="checkbox" name="home_service" value="1" @if($service['pet']['home_service']==1)
-                                checked
+                                <input type="checkbox" name="home_service" value="1"
+                                       @if($service['pet']['home_service']==1)
+                                       checked
                                         @endif>
                                 <ins></ins>
                             </label><label>Recojo la mascota a domicilio</label></li>
@@ -403,17 +413,18 @@
                     <label class=" blue">
                         ¿Qué tiempo tienes de experiencia ejerciendo este servicio?
                     </label>
-                    <select class="js-example-basic-single {{($errors->first('experience_type_id'))?'Errors':''}}" id="experience_type" name="experience_type_id">
-                    @php
-                    $experienceid= (int)$service['experience_type_id'];
-                    @endphp
+                    <select class="js-example-basic-single {{($errors->first('experience_type_id'))?'Errors':''}}"
+                            id="experience_type" name="experience_type_id">
+                        @php
+                            $experienceid= (int)$service['experience_type_id'];
+                        @endphp
                         @foreach($experienceTypes as $experienceType)
 
                             <option value="{{$experienceType->id}}" {{ ($experienceid) == $experienceType->id ? "selected":"" }}>{{$experienceType->name}}</option>
                         @endforeach
                     </select>
                 </div>
-                
+
                 <div class="col-6 small-12">
                     <label class=" blue">
                         ¿Cuentas con certificaciones?
@@ -424,7 +435,8 @@
 
 
                         <div class="row col-4 File small-12">
-                            <label for="certificate1" class="{{($errors->first('certificate1'))?'Errors':''}} col-12 small-12">
+                            <label for="certificate1"
+                                   class="{{($errors->first('certificate1'))?'Errors':''}} col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -444,7 +456,8 @@
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="certificate2 {{($errors->first('certificate2'))?'Errors':''}}" value="{{old('certificate2')}}" class="col-12 small-12">
+                            <label for="certificate2 {{($errors->first('certificate2'))?'Errors':''}}"
+                                   value="{{old('certificate2')}}" class="col-12 small-12">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -467,7 +480,8 @@
                             <span class="close">X</span>
                         </div>
                         <div class="row col-4 File small-12">
-                            <label for="certificate3" class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
+                            <label for="certificate3"
+                                   class="col-12 small-12 {{($errors->first('certificate2'))?'Errors':''}}">
 
                                 <svg width="25px" height="23px" viewBox="371 885 25 23" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -485,7 +499,8 @@
                                     </g>
                                 </svg>
 
-                            </label><input id="certificate3" type="file" class="col-12 " value="{{old('certificate3')}}" value="{{old('certificate3')}}"
+                            </label><input id="certificate3" type="file" class="col-12 " value="{{old('certificate3')}}"
+                                           value="{{old('certificate3')}}"
                                            name="certificate3">
                             <span class="close">X</span>
 
@@ -517,21 +532,23 @@
                         </i>
                     </label>
                     <div class="row middle between" style="max-width: 600px">
-                    @php
-                   
-                    
-                    $time = strtotime($service['date_start']);
+                        @php
 
-                    $date_start = date('d/m/Y',$time);
-                    $time = strtotime($service['date_end']);
-                    $date_end = date('d/m/Y',$time);
 
-                    @endphp
+                            $time = strtotime($service['date_start']);
+
+                            $date_start = date('d/m/Y',$time);
+                            $time = strtotime($service['date_end']);
+                            $date_end = date('d/m/Y',$time);
+
+                        @endphp
                         <span>Desde</span>
-                        <input class="dateSingle {{($errors->first('date_start'))?'Errors':''}}" name="date_start" readonly="true" type="text" autocomplete="off"
+                        <input class="dateSingle {{($errors->first('date_start'))?'Errors':''}}" name="date_start"
+                               readonly="true" type="text" autocomplete="off"
                                value="{{$date_start}}">
                         <span>hasta</span>
-                        <input class="dateSingle {{($errors->first('date_end'))?'Errors':''}}" name="date_end" readonly="true" type="text" autocomplete="off"
+                        <input class="dateSingle {{($errors->first('date_end'))?'Errors':''}}" name="date_end"
+                               readonly="true" type="text" autocomplete="off"
                                value="{{$date_end}}">
                     </div>
 
@@ -595,7 +612,8 @@
                         <label for="">Respondo en:</label>
 
                         <input type="hidden" value="1" id="hiddenresponse" name="response_type_id">
-                        <select id="answerInSelect" {{($service['inmediate_response']==1)?'disabled':''}} name="response_type_id">
+                        <select id="answerInSelect"
+                                {{($service['inmediate_response']==1)?'disabled':''}} name="response_type_id">
                             @foreach($responseTypes as $responseType)
                                 <option value="{{$responseType->id}}" {{ ($service["response_type_id"] == $responseType->id ? "selected":"") }}>{{$responseType->name}}</option>
                             @endforeach
@@ -614,7 +632,8 @@
                     <h4 class="AddService-h4">4. UBICACIÓN</h4>
 
                     <label for="">Digita tu dirección</label>
-                    <input class="{{($errors->first('address'))?'Errors':''}}" type="text" name="address" value="{{$service['location']}}" id="autocomplete"
+                    <input class="{{($errors->first('address'))?'Errors':''}}" type="text" name="address"
+                           value="{{$service['location']}}" id="autocomplete"
                            placeholder="Ej.: Calle 123 #45-67">
 
                     <input type="hidden" name="lat" id="lat" value="{{$service['lat']}}">
@@ -659,20 +678,20 @@
                     </aside>
 
                     <aside class="FilesPreview" id="result">
-                        
+
                         @if($service['service_files'])
                             @foreach($service['service_files'] as $key => $file)
                                 @if($file['kind_file']=="imagen")
-                                <article class="File">
-                                            <span class="delete">X</span>
-                                            <input type="hidden" name="file{{($key + 1)}}" value="{{$file['name']}}">
-                                            <input type="hidden" class="imagePosition" value="{{($key + 1)}}">
-                                            <img class="thumbnail" src="{{asset( 'uploads/products/'. $file['name'])}}">
-                                </article>
+                                    <article class="File">
+                                        <span class="delete">X</span>
+                                        <input type="hidden" name="file{{($key + 1)}}" value="{{$file['name']}}">
+                                        <input type="hidden" class="imagePosition" value="{{($key + 1)}}">
+                                        <img class="thumbnail" src="{{asset( 'uploads/products/'. $file['name'])}}">
+                                    </article>
                                 @endif
                             @endforeach
                         @endif
-                
+
                     </aside>
 
 
@@ -693,7 +712,7 @@
             </article>
             <article class="row center middle">
                 <label class="Content-check">
-                    <input type="checkbox"  name="terms_conditions" value="1"
+                    <input type="checkbox" name="terms_conditions" value="1"
 
                            @if(old('terms_conditions'))
                            checked
@@ -701,10 +720,11 @@
                     >
                     <ins class=" {{($errors->first('terms_conditions'))?'Errors':''}}"></ins>
                 </label>
-                <p>Acepto los <a htarget="blank" href="{{route('terms')}}">términos y condiciones</a> para postular mis servicios</p>
+                <p>Acepto los <a htarget="blank" href="{{route('terms')}}">términos y condiciones</a> para postular mis
+                    servicios</p>
             </article>
             <article class="row center ">
-                <button  id="createButton"  type="submit"> Actualizar servicio</button>
+                <button id="createButton" type="submit"> Actualizar servicio</button>
             </article>
 
         </section>
@@ -800,18 +820,18 @@
                 optionStringRate = '';
 
             additions.forEach(function (entry) {
-              if(selectedAddValues.includes(entry)){
-                optionString += '<option value="' + entry + '" selected>' + entry + '</option>'
-              }else{
-                optionString += '<option value="' + entry + '">' + entry + '</option>'
-              }
+                if (selectedAddValues.includes(entry)) {
+                    optionString += '<option value="' + entry + '" selected>' + entry + '</option>'
+                } else {
+                    optionString += '<option value="' + entry + '">' + entry + '</option>'
+                }
             });
             rateTypes.forEach(function (entry) {
-              if(selectedRateValue == entry){
-                optionStringRate += '<option value="' + entry + '" selected>' + entry + '</option>'
-              }else{
-                optionStringRate += '<option value="' + entry + '">' + entry + '</option>'
-              }
+                if (selectedRateValue == entry) {
+                    optionStringRate += '<option value="' + entry + '" selected>' + entry + '</option>'
+                } else {
+                    optionStringRate += '<option value="' + entry + '">' + entry + '</option>'
+                }
             });
 
             $rateType.append(optionStringRate);
@@ -914,7 +934,7 @@
             //   count = $('#result .File').length;
             $uploadCrop.croppie('result', {
                 type: 'base64',
-                size: { width: 440, height: 440 }
+                size: {width: 440, height: 440}
             }).then(function (resp) {
                 $.ajax({
                     url: '{{route("uploadImageFiles")}}',
@@ -932,7 +952,7 @@
                         $('.preload').addClass("hidden");
                         var result = $("#result");
                         var image = data.temp;
-                        var position = result.children().length+1;
+                        var position = result.children().length + 1;
                         //for (var i = 0; i < images.length; i++) {
                         //position += 1;
                         result.append("<article class='File'><span class='delete'>X</span><input type='hidden' name='file" + position + "' value='" + image + "'><input type='hidden' class='imagePosition' value='" + position + "'><img class='thumbnail' src='" + image + "'/></article>");
@@ -948,11 +968,11 @@
         });
 
 
-       $('form').on('submit', function(){
+        $('form').on('submit', function () {
             $('#createButton').attr("disabled", true);
             var $file = $('#result .File'), positions = '';
 
-            for(var i = 0; i < $file.length; i++){
+            for (var i = 0; i < $file.length; i++) {
                 positions += $file.eq(i).children('.imagePosition').val() + ',';
             }
             $('[name="positions"]').val(positions);
@@ -978,7 +998,7 @@
 
         });
 
-        $('.AddService-icons li').on('click', function () {
+      /*  $('.AddService-icons li').on('click', function () {
             initMap1();
             var idService = $(this).data('service'),
                 $service_type_id = $("#service_type_id");
@@ -999,26 +1019,22 @@
                 $('.Pets-info').show();
                 $('#Describe').removeClass('col-12')
             }
-        })
+        })*/
 
 
-       
-        
-        
         var eq;
-        
+
         //if($('#service').val() == 3){
-          // eq = '0';
+        // eq = '0';
         //}
         //else{
-          eq = $('#service').val();
-          
-          
-        //}
-       oldService_type_id = $("#service_type_id").val();
-          
+        eq = $('#service').val();
 
-        
+
+        //}
+        oldService_type_id = $("#service_type_id").val();
+
+
         var idServiceLocal = $('.AddService-icons li:eq(' + eq + ')').data('service'),
             $service_type_id = $("#service_type_id");
         $service_type_id.children('option').hide();
@@ -1026,7 +1042,7 @@
         $service_type_id.children("option[value='" + oldService_type_id + "']").prop('selected', true);
         $service_type_id.change();
         $('.AddService-icons li:eq(' + eq + ')').addClass('active');
-        $('#service').val(idServiceLocal);
+        //$('#service').val(idServiceLocal);
 
 
         if (eq != 1) {
@@ -1034,33 +1050,28 @@
             $('#Describe').addClass('col-12');
 
         } else {
-            
+
             $('.Pets-info').show();
             $('#Describe').removeClass('col-12');
         }
 
 
-        
-        
-
-
-        
-
-        
         $('.tooltip').on('click', function (e) {
             e.preventDefault();
             console.log();
             false;
         });
 
-        setTimeout(function(){  initMap1($('#lat').val(), $('#lng').val()); }, 1000);
+        setTimeout(function () {
+            initMap1($('#lat').val(), $('#lng').val());
+        }, 1000);
 
     </script>
 
 
     <script src="{{url('js/dataPickerEs.js')}}"></script>
     <style type="text/css">
-      
+
     </style>
 @endsection
 @section('styles')

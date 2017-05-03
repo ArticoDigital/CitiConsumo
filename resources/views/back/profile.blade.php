@@ -175,7 +175,7 @@
                     </label>
                 </div>
                 <div class="row center">
-                    <button style="margin:25px auto 10px; padding: 9px 28px;font-size: 1.1em;" class="button">Guardar cambios</button>
+                        <button style="margin:25px auto 10px; padding: 9px 28px;font-size: 1.1em;" class="button">Guardar cambios</button>
                 </div>
                 <p class="profile-title">Seguridad</p>
                 <div class="row profile-item border-bottom">

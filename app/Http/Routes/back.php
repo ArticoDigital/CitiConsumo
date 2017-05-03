@@ -64,7 +64,7 @@ Route::post('editar-servicio/{id}', [
 Route::post('insertOutlay', [
     'uses' => 'BuyController@insertOutlay',
     'as' => 'insertOutlay',
-    'roles' => 3
+    'roles' => [3,2]
 ]);
 
 Route::post('buyAction', [

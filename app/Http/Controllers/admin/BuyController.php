@@ -2,6 +2,7 @@
 
 namespace City\Http\Controllers\admin;
 
+use Carbon\Carbon;
 use City\Services\ZonaPagos;
 use Illuminate\Http\Request;
 
@@ -29,21 +30,20 @@ class BuyController extends Controller
 
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
-
+        $isOutlay = Outlay::where('provider_id',auth()->user()->provider->id)->where('isPayed',0)->count();
+        if( $isOutlay )
+            return redirect()->route('myProfile')->with(['alertTitle' => 'Ud ya ha solicitado un desembolso']);
         $inputs = $request->all();
-        foreach (explode(',', $inputs['buys_id']) as $buy_id) {
-            $buy = Buy::find($buy_id);
-            if (isset($buy))
-                $buy->update(['state_id' => 2]);
-        }
-
+        $adminCont = new AdminController();
+        $buysId = explode(',', $adminCont->getBuysNotPayed( auth()->user() )['buys'] );
+        array_pop($buysId);
+        Buy::whereIn('id', $buysId)->update(['state_id' => 2]);
         Outlay::create([
             'value' => $inputs['value'],
-            'buys_id' => $inputs['buys_id'],
+            'buys_id' => implode(',',$buysId),
             'provider_id' => auth()->user()->provider->id,
             'isPayed' => 0
         ]);
-
         return redirect()->route('myProfile')->with(['alertTitle' => '¡Solicitud de desembolso!', 'alertText' => 'La solicitud de desembolso ha sido exitosa. Te informaremos cuando el monto solicitado sea consignado a tu cuenta.']);
     }
 
@@ -54,11 +54,9 @@ class BuyController extends Controller
             return redirect()->route('myProfile');
 
         $outlay = Outlay::find($id);
-        $idBuys = explode(',', $outlay->buys_id);
-        foreach ($idBuys as $idBuy) {
-            if ($buy = Buy::find($idBuy))
-                $buy->update(['state_id' => 3]);
-        }
+        $buysId = explode(',', $outlay->buys_id);
+
+        Buy::whereIn('id', $buysId)->update(['state_id' => 3]);
 
         $outlay->update([
             'isPayed' => 2,
@@ -94,7 +92,7 @@ class BuyController extends Controller
 
         $service = Service::find($inputs['idService']);
         $inputs["description"] = $service->description;
-        $inputs["price"] =  str_replace(".","",$service->price)  ;
+        $inputs["price"] = str_replace(".", "", $service->price);
         $user = auth()->user();
         $inputs["email"] = $user->email;
         $inputs["user_identification"] = $user->user_identification;
@@ -110,9 +108,10 @@ class BuyController extends Controller
             'zp_pay_id' => $inputs["id_pay"],
             'value' => $inputs["price"],
             'products_quantity' => $inputs["quantity"],
-            'user_id' =>  $inputs["idUser"],
-            'service_id' =>  $inputs['idService'],
-            'date_service' =>  $inputs['day'],
+            'user_id' => $inputs["idUser"],
+            'service_id' => $inputs['idService'],
+            'date_service' => $inputs['day'],
+            'state_id' => 1,
         ]);
 
 
@@ -136,10 +135,17 @@ class BuyController extends Controller
 
     public function tradeList()
     {
+        Carbon::setLocale('es');
         if (auth()->user()->provider) {
-            $buys = Buy::where('user_id', auth()->user()->id)->get();
-            $services = Service::with('buys')->where('provider_id', auth()->user()->provider->id)->get();
-            return view('back.tradeList', compact('buys', 'services'));
+            $buys = Buy::with(['service.provider.user', 'service.serviceType'])->where('user_id', auth()->user()->id)->get();
+            //$services = Service::where('provider_id', auth()->user()->provider->id)->with('buys')->get();
+            $providerId = auth()->user()->provider->id;
+            $sales = Buy::whereIn('service_id', function($query) use ($providerId) {
+                $query->select('id')
+                    ->from('services')
+                    ->where('provider_id',$providerId);
+            })->with(['user', 'service.serviceType'])->get();
+            return view('back.tradeList', compact('buys', 'sales'));
         } else {
             return redirect()->to('admin');
         }

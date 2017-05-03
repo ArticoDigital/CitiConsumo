@@ -2268,7 +2268,8 @@ div.profile-photo-light {
   height: 100vh;
   background: rgba(105, 105, 105, 0.94);
   top: 0;
-  display: none; }
+  display: none;
+  left: 0; }
   #imagesPopup button {
     border: none;
     width: 6.25rem;

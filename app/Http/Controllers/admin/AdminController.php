@@ -53,15 +53,14 @@ class AdminController extends Controller
         return view('back.profile', compact('userprofile', 'services', 'buysNotPayed'));
     }
 
-    private function getBuysNotPayed($user){
+    public function getBuysNotPayed($user){
         $buysNotPayed = ['value' => 0, 'buys' => ''];
 
         if(isset($user->provider)){
             $services = Service::where('provider_id', $user->provider->id)
                         ->with(['buys' => function ($buys) {
-                            $buys->where('state_id', 1)->get();
+                            $buys->where('state_id', 1)->where('zp_state', 1)->get();
                         }])->get();
-
             foreach ($services as $service){
                 foreach($service->buys as $buy) {
                     if(isset($buy['value']))

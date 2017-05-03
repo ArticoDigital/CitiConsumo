@@ -40,8 +40,9 @@
                     data: param,
                     url : param.url,
                     success : function(data){
+                        console.log(data);
                         alert(data.message);
-                        location.reload();
+                            location.reload();
                     },
                     error : function(error){
                         console.log(error);
