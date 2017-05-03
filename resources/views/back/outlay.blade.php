@@ -7,6 +7,7 @@
     <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
     <table class="Table rwd-table" id="tableUsers" data-route="{{asset('uploads/provider')}}">
         <tr class="header-table">
+            <th>Id Desembolso</th>
             <th>Usuario</th>
             <th>Email</th>
             <th>Total</th>
@@ -14,6 +15,7 @@
         </tr>
         @foreach($outlays as $outlay)
         <tr style="text-align: center; padding:5px">
+            <td>{{$outlay->id }}</td>
             <td>{{$outlay->provider->user->name . ' ' . $outlay->provider->user->last_name}}</td>
             <td>{{$outlay->provider->user->email}}</td>
             <td>${{number_format($outlay->value, 0, '.', '.')}}</td>
