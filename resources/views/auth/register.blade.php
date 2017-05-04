@@ -57,13 +57,15 @@
         </div>
         @php
         $attributes = [
-            'data-theme' => 'dark',
-            'data-type' =>  'audio',
+            'data-theme' => 'light',
+            'data-size' => 'compact'
             ];
         @endphp
-        {!! Captcha::display($attributes) !!}
+        <div class="row center middle">
+        {!! Captcha::display($attributes, $lang = 'es') !!}
+        </div>
         <label>
-            <input type="checkbox" required style="max-width: 10px">
+            <input type="checkbox" required st$lang = 'es'yle="max-width: 10px">
             <span d>Acepto los <a href="" style=" font-weight: bold;color: #004f8f; text-decoration: underline">términos y condiciones</a></span>
         </label>
         <button>REGISTRATE</button>
