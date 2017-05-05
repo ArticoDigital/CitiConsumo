@@ -41,7 +41,7 @@
                 <th>Cliente</th>
             </tr>
 
-
+            @if($sales != null)
             @foreach($sales as $sale)
                 <tr>
                     <td>{{$sale->zp_ticket_id}}</td>
@@ -52,6 +52,7 @@
                     <td>{{$sale->user->name}}</td>
                 </tr>
             @endforeach
+            @endif
 
         </table>
     </article>

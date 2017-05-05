@@ -147,7 +147,10 @@ class BuyController extends Controller
             })->with(['user', 'service.serviceType'])->get();
             return view('back.tradeList', compact('buys', 'sales'));
         } else {
-            return redirect()->to('admin');
+            $buys = Buy::with(['service.provider.user', 'service.serviceType'])->where('user_id', auth()->user()->id)->get();
+            $sales = null;
+            return view('back.tradeList', compact('buys', 'sales'));
+            //return redirect()->to('admin');
         }
     }
 
