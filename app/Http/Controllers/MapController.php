@@ -30,8 +30,9 @@ class MapController extends Controller
             $date = explode('-', $request->get('date'));
             $nDays = $this->getNumberDays($date[0], $date[1]);
         }
+        $nameService = $service;
         /* dd();*/
-        return view('front.platform', compact('dataMap', 'services', 'icon', 'typeService', 'nDays'));
+        return view('front.platform', compact('dataMap', 'services', 'icon', 'typeService', 'nDays','nameService'));
     }
 
     private function getNumberDays($start, $end)
