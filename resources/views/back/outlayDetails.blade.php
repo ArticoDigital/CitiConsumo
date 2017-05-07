@@ -11,6 +11,7 @@
             <th>Usuario</th>
             <th>Email</th>
             <th>Total</th>
+            <th>Estado de desembolso</th>
             <th>Acciones</th>
         </tr>
         
@@ -19,8 +20,17 @@
             <td>{{$outlay->provider->user->name . ' ' . $outlay->provider->user->last_name}}</td>
             <td>{{$outlay->provider->user->email}}</td>
             <td>${{number_format($outlay->value, 0, '.', '.')}}</td>
+            <td>@if($outlay->isPayed==2)
+                        Desembolsado
+                    @else
+                        No desembolsado
+                    @endif
+                    </td>
             <td class="center">
-                <a href="#" action="{{route('updateOutlateState', $outlay->id)}}" class="updateOutlateState" style="background: #002444;padding: 0.375rem 0.75rem; color: white">Desembolsar</a> <a  href="{{route('viewOutlateDetails', $outlay->id)}}" class="" style="background: #002444;padding: 0.375rem 0.75rem; color: white">Ver detalles</a>
+                @if($outlay->isPayed != 2)
+                <a href="#" action="{{route('updateOutlateState', $outlay->id)}}" class="updateOutlateState" style="background: #002444;padding: 0.375rem 0.75rem; color: white">Desembolsar</a>
+
+                 @endif
             </td>
         </tr>
 
