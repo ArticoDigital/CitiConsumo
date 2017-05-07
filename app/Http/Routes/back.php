@@ -78,6 +78,12 @@ Route::post('updateOutlateState/{id}', [
     'roles' => 3
 ]);
 
+Route::get('viewOutlateDetails/{id}', [
+    'uses' => 'BuyController@viewOutlateDetails',
+    'as' => 'viewOutlateDetails',
+    'roles' => 3
+]);
+
 Route::post('usuarios-proveedor-activar', [
     'uses' => 'UserController@enabledProvider',
     'as' => 'enabledProvider',
@@ -148,6 +154,7 @@ Route::get('desembolso', [
     'as' => 'outlayList',
     'roles' => 3
 ]);
+
 
 Route::get('perfil/{id}', [
     'as' => 'profile',

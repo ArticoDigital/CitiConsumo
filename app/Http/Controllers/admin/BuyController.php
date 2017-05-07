@@ -66,6 +66,26 @@ class BuyController extends Controller
         return ['message' => 'El desembolso ha sido exitoso.'];
     }
 
+    public function viewOutlateDetails(RoleRequest $request, $id)
+    {
+
+        if ($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+
+        $outlay = Outlay::find($id);
+        $buysId = explode(',', $outlay->buys_id);
+
+        $buys=Buy::whereIn('id', $buysId)->with(['user', 'service.serviceType'])->get();
+        //dd($buys);
+       /* $outlay->update([
+            'isPayed' => 2,
+            'id_user' => auth()->user()->id
+        ]);*/
+        return view('back.outlayDetails', compact('buys','outlay'));
+
+        //return ['message' => 'El desembolso ha sido exitoso.'];
+    }
+
     public function buyAction(RoleRequest $request)
     {
 
