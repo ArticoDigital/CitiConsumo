@@ -216,7 +216,14 @@ Route::get('servicio/{id}', [
     'uses' => 'ServiceController@serviceDetail',
     'roles' => [3]
 ]);
-
+Route::get('servicio_p/{id}', [
+    'as' => 'serviceDetailProvider',
+    'uses' => 'ServiceController@serviceDetailProvider',
+]);
+Route::get('servicio_c/{id}', [
+    'as' => 'serviceDetailClient',
+    'uses' => 'BuyController@BuyDetailClient',
+]);
 Route::get('transacciones', [
     'as' => 'tradeList',
     'uses' => 'BuyController@tradeList',

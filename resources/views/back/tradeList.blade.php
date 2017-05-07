@@ -17,6 +17,8 @@
                 <th>Servicio</th>
                 <th>Valor</th>
                 <th>Proveedor</th>
+                <th>Estado de compra</th>
+                <th>Acciones</th>
             </tr>
             @foreach($buys as $buy)
                 <tr>
@@ -25,6 +27,15 @@
                     <td>{{$buy->service->serviceType->name}}</td>
                     <td>${{$buy->value}}</td>
                     <td>{{$buy->service->provider->user->name}}</td>
+                    <td>@if($buy->state_id==3)
+                        desembolsado a proveedor
+                    @elseif($buy->state_id==2)
+                        Aprobado
+                    @elseif($buy->state_id==1)
+                        Rechazado
+                    @endif
+                    </td>
+                    <td><a class="Admin-updateStateProvider" href="{{route('serviceDetailClient',['id' => $buy->id])}}">Ver detalles</a></td>
                 </tr>
             @endforeach
         </table>
@@ -36,9 +47,11 @@
                 <th>ID compra</th>
                 <th>Fecha</th>
                 <th>Servicio</th>
-                <th>Estado</th>
+                
                 <th>Valor</th>
                 <th>Cliente</th>
+                <th>Estado de desembolso</th>
+                <th>Acciones</th>
             </tr>
 
             @if($sales != null)
@@ -47,9 +60,15 @@
                     <td>{{$sale->zp_ticket_id}}</td>
                     <td>{{$sale->created_at->diffForHumans()}}</td>
                     <td>{{$sale->service->serviceType->name}}</td>
-                    <td>{{$sale->state_id}}</td>
+                   
                     <td>${{$sale->value}}</td>
                     <td>{{$sale->user->name}}</td>
+                    <td>@if($sale->state_id==3)
+                    desembolsado
+                    @else
+                    No desembolsado
+                    @endif</td>
+                    <td><a class="Admin-updateStateProvider" href="{{route('serviceDetailClient',['id' => $sale->id])}}">Ver detalles</a></td>
                 </tr>
             @endforeach
             @endif

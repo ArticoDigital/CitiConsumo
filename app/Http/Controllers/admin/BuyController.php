@@ -143,7 +143,8 @@ class BuyController extends Controller
             $sales = Buy::whereIn('service_id', function($query) use ($providerId) {
                 $query->select('id')
                     ->from('services')
-                    ->where('provider_id',$providerId);
+                    ->where('provider_id',$providerId)
+                    ->where('state_id','<>','1');
             })->with(['user', 'service.serviceType'])->get();
             return view('back.tradeList', compact('buys', 'sales'));
         } else {
@@ -152,6 +153,34 @@ class BuyController extends Controller
             return view('back.tradeList', compact('buys', 'sales'));
             //return redirect()->to('admin');
         }
+    }
+
+    public function BuyDetailClient(RoleRequest $request, $id)
+    {
+        if ($request->isNotAuthorized())
+            return redirect()->route('myProfile');
+        $user=auth()->user();
+
+        //$buys = Buy::with(['user', 'service.serviceType'])->where('id', $id)->get();
+        $buys = Buy::with('user', 'service.serviceType')->find($id);
+        if(!$user->isAdmin()){
+            if($user->id == $buys->service->provider->user->id || $user->id == $buys->user->id){
+                if($buys->state_id>1){
+                    return view('back.serviceDetailUser', compact('buys'));
+                }else{
+                    return redirect()->route('tradeList')->with(['alertTitle' => 'Acción no permitida, compra aún no aprobada']);
+                }
+
+            }else{
+                return redirect()->route('tradeList')->with(['alertTitle' => 'Acción no permitida']);
+            }
+        }
+        return view('back.serviceDetailUser', compact('buys'));
+
+        //$service = Service::with('pet', 'food', 'general', 'serviceFiles')->find($buys->service_id);
+        
+        //dd($buys->service->description);
+        
     }
 
 }
