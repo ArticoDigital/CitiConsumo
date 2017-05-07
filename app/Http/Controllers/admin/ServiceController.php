@@ -41,14 +41,14 @@ class ServiceController extends Controller
         $service = Service::with('pet', 'food', 'general', 'serviceFiles')->find($id);
         return view('back.serviceDetail', compact('service'));
     }
-    public function serviceDetailProvider(RoleRequest $request, $id)
+   /* public function serviceDetailProvider(RoleRequest $request, $id)
     {
         if ($request->isNotAuthorized())
             return redirect()->route('myProfile');
         $service = Service::with('pet', 'food', 'general', 'serviceFiles')->find($id);
         //dd($service->provider->user);
         return view('back.serviceDetailProvider', compact('service'));
-    }
+    }*/
     
 
 

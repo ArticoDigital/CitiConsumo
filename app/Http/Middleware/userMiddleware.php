@@ -27,7 +27,7 @@ class userMiddleware
             
             if(isset($service['provider_id'])){
                 if ($service['provider_id'] != $user->provider->id) {
-                    return redirect('admin');
+                    return redirect('admin')->with(['alertTitle' => 'Acción no permitida']);;
                 }
             }
             return $next($request);
