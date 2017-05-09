@@ -718,6 +718,9 @@
 <script>
     @if (count($errors) > 0)
 
+
+
+        @endif
   @if($str = $errors->get('identification'))
   swal({
         title: 'Oops...',
@@ -729,11 +732,14 @@
     })
 
     @else
-swal(
-        'Oops...',
-        '{{$errors->all()['identification']}}',
-        'error'
-    )
+@if($errors->get('form'))
+ swal({
+        title: 'Oops...',
+        type: 'error',
+        html: 'Debes ingresar el día del servicio',
+
+    })
+
     @endif
     @endif
 

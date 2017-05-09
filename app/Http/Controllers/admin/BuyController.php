@@ -13,6 +13,7 @@ use City\Entities\Outlay;
 use City\Entities\Provider;
 use City\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use  Validator;
 
 class BuyController extends Controller
 {
@@ -93,6 +94,14 @@ class BuyController extends Controller
                 ->withErrors(['identification' => ''])
                 ->withInput();
         }
+        $v = Validator::make($request->all(), [
+            'quantity' => 'required|numeric|max:100',
+            'day' => 'required',
+        ]);
+        if ($v->fails())
+            return redirect()->back()->withErrors(['form' => 'ds']);
+
+
         $inputs = $request->all();
         $user = auth()->user();
         $user->update($inputs);
