@@ -30,12 +30,14 @@
                     <td>@if($buy->state_id==3)
                         desembolsado a proveedor
                     @elseif($buy->state_id==2)
-                        Aprobado
-                    @elseif($buy->state_id==1)
-                        Rechazado
+                        desembolso solicitado
+                    @elseif($buy->state_id==1 and $buy->zp_state==1)
+                        Aprobada
+                    @elseif($buy->zp_state!=1)
+                        no defenido
                     @endif
                     </td>
-                    <td><a class="Admin-updateStateProvider" href="{{route('serviceDetailClient',['id' => $buy->id])}}">Ver detalles</a></td>
+                    <td><a target="_blank" class="Admin-updateStateProvider" href="{{route('serviceDetailClient',['id' => $buy->id])}}">Ver detalles</a></td>
                 </tr>
             @endforeach
         </table>
@@ -65,10 +67,12 @@
                     <td>{{$sale->user->name}}</td>
                     <td>@if($sale->state_id==3)
                     desembolsado
-                    @else
-                    No desembolsado
+                    @elseif($sale->state_id==2)
+                    Desembolso solicitado
+                    @elseif($sale->state_id==1 and $sale->zp_state==1)
+                    No solicitado
                     @endif</td>
-                    <td><a class="Admin-updateStateProvider" href="{{route('serviceDetailClient',['id' => $sale->id])}}">Ver detalles</a></td>
+                    <td><a  target="_blank" class="Admin-updateStateProvider" href="{{route('serviceDetailClient',['id' => $sale->id])}}">Ver detalles</a></td>
                 </tr>
             @endforeach
             @endif

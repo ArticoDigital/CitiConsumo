@@ -169,7 +169,8 @@ class BuyController extends Controller
                 $query->select('id')
                     ->from('services')
                     ->where('provider_id',$providerId)
-                    ->where('state_id','<>','1');
+                    ->where('state_id','>=','1')
+                    ->where('zp_state','=','1');
             })->with(['user', 'service.serviceType'])->get();
             return view('back.tradeList', compact('buys', 'sales'));
         } else {
@@ -190,7 +191,7 @@ class BuyController extends Controller
         $buys = Buy::with('user', 'service.serviceType')->find($id);
         if(!$user->isAdmin()){
             if($user->id == $buys->service->provider->user->id || $user->id == $buys->user->id){
-                if($buys->state_id>1){
+                if($buys->state_id>=1 and $buys->zp_state>=1 ){
                     return view('back.serviceDetailUser', compact('buys'));
                 }else{
                     return redirect()->route('tradeList')->with(['alertTitle' => 'Acción no permitida, compra aún no aprobada']);

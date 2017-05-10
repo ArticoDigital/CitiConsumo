@@ -9,10 +9,15 @@
         <li class="col-12"><b>Estado de la compra: </b>@if($buys->state_id==3)
                         desembolsado a proveedor
                     @elseif($buys->state_id==2)
-                        Aprobado
-                    @elseif($buys->state_id==1)
-                        Rechazado
+                        Desembolso solicitado
+                    @elseif($buys->state_id==1 and $buys->zp_state==1)
+                        Aprobada
+                    @elseif($buys->zp_state!=1)
+                        no defenido
                     @endif</li>
+
+                   
+                    
         <li class="col-12"><b>Cliente: </b><a href="#cliente">{{$buys->user->name}} {{$buys->user->last_name}}</a></li>
         <li class="col-12"><b>Fecha de compra: </b>{{$buys->created_at}}</li>
         
