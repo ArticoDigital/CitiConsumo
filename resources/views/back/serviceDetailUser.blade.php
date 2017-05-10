@@ -25,14 +25,7 @@
         <li class="col-12"><b>Valor de la compra: $</b>{{$buys->value}}</li>
         <li class="col-12"><b>Servicio: </b><a href="#servicio">{{$buys->service->serviceType->name}}</a></li>
          <li class="col-12"><b>Proveedor: </b><a href="#proveedor">{{$buys->service->provider->user->name}} {{$buys->service->provider->user->last_name}}</a> </li>
-        <!--<li class="col-12"><b>Fecha de compra:</b>{{$buys->zp_state}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->zp_form_pay}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->zp_ticket_id}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->bank}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->transaction_code}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->state_detail}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->date_service}}</li>
-        <li class="col-12"><b>Fecha de compra:</b>{{$buys->date_pay}}</li>-->
+
 </ul>
         
     </div>
